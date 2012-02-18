@@ -1,0 +1,16 @@
+<h1>Referencias</h1>
+
+Número de referencias {{ numrefs }}
+
+{% for ref in bibTex %}
+
+            Año: {{ ref.year }}
+            Paginas: {{ ref.pages }}
+            Número {{ ref.number }}
+            Volumen: {{ ref.volume }}
+            Journal: {{ ref.journal }}
+            Title: {{ ref.title }}
+            Cite= {{ ref.cite }}
+            Entry Type {{ ref.entryType }}
+
+{% endfor %}

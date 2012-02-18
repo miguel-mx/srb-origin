@@ -1,0 +1,225 @@
+{% extends 'CcmSrbBundle::layout.html.twig' %}
+
+{% block menu %} {{ knp_menu_render('CcmSrbBundle:Builder:mainMenu') }} {% endblock %}
+
+{% set option = 'Detalles de la publicación' %}
+
+{% block col3 %}
+
+<h1>{{entity.type|title}}</h1> <br>
+
+	{% if entity.id != null %}
+	  <div class="ym-g80 ym-gl" >
+	    <div style="padding:3px;"><b> Id: </b> {{ entity.id }}</div>
+	  </div>
+	{% endif %}
+
+	{% if entity.author != null %}
+	  <div class="ym-g80 ym-gl">
+	    <div style="padding:3px;"> <b>Author: </b> {{ entity.author }} </div>
+	  </div>
+	{% endif %}
+	   
+	{% if entity.title != null %}
+	  <div class="ym-g80 ym-gl" >
+	    <div style="padding:3px;"> <b> Title: </b> {{ entity.title }} </div>
+	  </div>
+   	{% endif %}
+
+	{% if entity.type != null %}
+	  <div class="ym-g33 ym-gl">
+	    <div style="padding:3px;"> <b> Type: </b> {{ entity.type }} </div>
+	  </div>	
+	{% endif %}
+
+	{% if entity.yearPreprint != null %}
+	  <div class="ym-g33 ym-gl">
+	    <div style="padding:3px;"> <b> Year Preprint: </b> {{ entity.yearPreprint }} </div>
+	  </div>
+	{% endif %}
+
+   	{% if entity.yearPub != null %}
+	  <div class="ym-g33 ym-gl" >
+	    <div style="padding:3px;"> <b> Year Pub: </b> {{ entity.yearPub }} </div>
+	  </div>
+	{% endif %}
+
+	{% if entity.publication != null %}
+	  <div class="ym-g33 ym-gl">
+   	    <div style="padding:3px;"> <b> Publication: </b> {{ entity.publication }} </div>
+	  </div>
+	{% endif %}
+
+	{% if entity.journal != null %}
+	  <div class="ym-g33 ym-gl">
+	    <div style="padding:3px;"> <b> Journal: </b> {{ entity.journal }} </div>
+   	  </div>
+	{% endif %}
+
+	{% if entity.issue != null %}
+	  <div class="ym-g33 ym-gl">
+	    <div style="padding:3px;"> <b> Issue: </b> {{ entity.issue }} </div>
+	  </div>
+	{% endif %}
+
+	{% if entity.pages != null %}	
+	  <div class="ym-g33 ym-gl">
+	    <div style="padding:3px;"> <b> Pages: </b> {{ entity.pages }} </div>
+	  </div>
+	{% endif %}
+
+        {% if entity.corporateAuthor != null %}
+  	  <div class="ym-g33 ym-gl">
+            <div style="padding:3px;"> <b> Corporate Author: </b> {{ entity.corporateAuthor }}</div>
+	  </div>
+	{% endif %}
+
+	{% if entity.thesis != null %}
+	  <div class="ym-g33 ym-gl">
+            <div style="padding:3px;"> <b> Thesis: </b> {{ entity.thesis }} </div>
+	  </div>
+	{% endif %}
+
+	{% if entity.address != null %}
+          <div class="ym-g33 ym-gl">
+            <div style="padding:3px;"><b> Address: </b> {{ entity.address }} </div>
+	  </div>
+	{% endif %}
+
+	{% if entity.keywords != null %}
+	  <div class="ym-g33 ym-gl">
+            <div style="padding:3px;"><b> Keywords: </b> {{ entity.keywords }} </div>
+	   </div>
+	{% endif %}
+
+	{% if entity.issn != null %}
+	  <div class="ym-g33 ym-gl">
+ 	    <div style="padding:3px;"> <b> ISSN: </b>  {{ entity.issn }} </div>
+	  </div>	
+	{% endif %}
+
+   	{% if entity.abst != null %}
+	  <div class="ym-g100 ym-gl">
+	    <div style="padding:3px;"> <b> Abst: </b> {{ entity.abst }} </div>
+	  </div>
+   	{% endif %}
+	
+	   {% if entity.publisher != null %}
+	     <div class="ym-g33 ym-gl">
+	       <div style="padding:3px;"> <b> Publisher: </b> {{ entity.publisher }} </div>
+	   </div>
+   	{% endif %}
+
+	{% if entity.placePub != null %}
+	  <div class="ym-g33 ym-gl">
+	    <div style="padding:3px;"> <b> Place Pub: </b> {{ entity.placePub }} </div>
+	  </div>
+	{% endif %}
+	 
+	{% if entity.editor != null %}
+	  <div class="ym-g33 ym-gl">
+	    <div style="padding:3px;"> <b> Editor: </b> {{ entity.editor }} </div>
+  	  </div>
+	{% endif %}
+
+	{% if entity.isbn != null %}
+	  <div class="ym-g33 ym-gl">
+	    <div style="padding:3px;"> <b> ISBN: </b> {{ entity.isbn }} </div>
+	  </div>
+	{% endif %}
+
+	{% if entity.medium != null %}
+	  <div class="ym-g33 ym-gl">
+	    <div style="padding:3px;"> <b> Medium: </b> {{ entity.medium }} </div>
+	  </div>
+	{% endif %}
+
+	{% if entity.area != null %}
+	  <div class="ym-g33 ym-gl">
+	    <div style="padding:3px;"> <b> Area: </b> {{ entity.area }} </div>
+	  </div>
+	{% endif %}
+
+	{% if entity.conference != null %}
+  	  <div class="ym-g33 ym-gl">
+	    <div style="padding:3px;"> <b> Conference: </b> {{ entity.conference }} </div>
+	  </div>
+	{% endif %}
+
+	{% if entity.notas != null %}
+	  <div class="ym-g33 ym-gl">
+	    <div style="padding:3px;"> <b> Notas: </b> {{ entity.notas }} </div>
+  	  </div>
+	{% endif %}
+
+	{% if entity.revision != null %}
+          <div class="ym-g33 ym-gl">
+	    <div style="padding:3px;"> <b> Revision: </b> {{ entity.revision }} </div>
+	  </div>
+	{% endif %}
+	
+	{% if entity.file != null %}
+  	  <div class="ym-g33 ym-gl">
+	    <div style="padding:3px;"> <b> File: </b> {{ entity.file }} </div>
+	  </div>
+	{% endif %}
+
+   	{% if entity.url != null %}	
+	  <div class="ym-g80 ym-gl">
+	    <div style="padding:3px;">	<b>URL: </b>{{ entity.url }} </div>
+	   </div>
+	{% endif %}
+
+	{% if entity.doi != null %}
+	  <div class="ym-g80 ym-gl">
+	    <div style="padding:3px;">	<b>DOI: </b> {{ entity.doi }} </div>
+	  </div>
+	{% endif %}
+		
+        {% if entity.arxiv != null %}
+  	  <div class="ym-g33 ym-gl">
+	    <div style="padding:3px;">	<b> Arxiv: </b> {{ entity.arxiv }} </div>
+	  </div>
+	{% endif %}
+	
+	{% if entity.mathscinet != null %}
+  	  <div class="ym-g33 ym-gl">
+	    <div style="padding:3px;">	<b> Mathscinet: </b> {{ entity.mathscinet }} </div>
+	  <div>
+	 {% endif %}
+
+	 {% if entity.zmath != null %}
+	   <div class="ym-g33 ym-gl">
+	    <div style="padding:3px;"> <b> Zmath: </b> {{ entity.zmath }} </div>
+	   </div>
+	 {% endif %}
+
+	 {% if entity.inspires != null %}
+	   <div class="ym-g33 ym-gl">
+	    <div style="padding:3px;">	<b> Inspires: </b> {{ entity.inspires }} </b>
+	   </div>
+	 {% endif %}
+
+   	{% if entity.created != null %}	
+	  <div class="ym-g50 ym-gl">
+	    <div style="padding:3px;"> <b> Created: </b> {{ entity.created|date('Y-m-d H:i:s') }} </div>
+	  </div>
+	{% endif %}
+
+   	{% if entity.modified != null %}
+	  <div class="ym-g50 ym-gl">
+	    <div style="padding:3px;" >	<b>Modified: </b>{{ entity.modified|date('Y-m-d H:i:s') }} </div>
+	  </div>
+	{% endif %}
+{% endblock %}
+
+{% block menuL %}
+
+	<ul class="record_actions">
+          <li> <a href="{{ path('referencia_edit', { 'id': entity.id }) }}"> Editar </a> </li>
+	  <li> <a href="{{ path('refs') }}"> Regresar </a> </li>
+        </ul>
+{% endblock %}
+
+
+

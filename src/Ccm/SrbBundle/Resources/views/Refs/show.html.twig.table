@@ -1,0 +1,141 @@
+{% extends 'CcmSrbBundle::layout.html.twig' %}
+
+{% block menu %}
+{{ knp_menu_render('CcmSrbBundle:Builder:mainMenu') }}
+{% endblock %}
+
+{% set option = 'Detalles de la publicación' %}
+{% block col3 %}
+
+
+<h1>{{entity.type|title}}</h1>
+
+<table class="record_properties">
+    <tbody>
+	   {% if entity.id != null %}
+        <tr>  <th>Id</th>           	<td>{{ entity.id }}</td>             </tr>
+	   {% endif %}
+	   {% if entity.author != null %}
+        <tr>  <th>Author</th>  		<td>{{ entity.author }}</td>         </tr>
+	   {% endif %}
+	   {% if entity.title != null %}
+        <tr>  <th>Title</th>   		<td>{{ entity.title }}</td>          </tr>
+	   {% endif %}
+	   {% if entity.type != null %}
+        <tr>  <th>Type</th>    		<td>{{ entity.type }}</td>           </tr>
+	   {% endif %}
+	   {% if entity.yearPreprint != null %}
+        <tr>  <th>Year Preprint</th>    <td>{{ entity.yearPreprint }}</td>   </tr>
+	   {% endif %}
+	   {% if entity.yearPub != null %}
+        <tr>  <th>Year Pub</th>         <td>{{ entity.yearPub }}</td>        </tr>
+	   {% endif %}
+	   {% if entity.publication != null %}
+        <tr>  <th>Publication</th>      <td>{{ entity.publication }}</td>    </tr>
+	   {% endif %}
+	   {% if entity.journal != null %}
+        <tr>  <th>Journal</th>          <td>{{ entity.journal }}</td>        </tr>
+	   {% endif %}
+	   {% if entity.issue != null %}
+        <tr>  <th>Issue</th>            <td>{{ entity.issue }}</td>          </tr>
+	   {% endif %}
+	   {% if entity.pages != null %}
+	<tr>  <th>Pages</th>            <td>{{ entity.pages }}</td>          </tr>
+	   {% endif %}
+           {% if entity.corporateAuthor != null %}
+        <tr>  <th>Corporate Author</th> <td>{{ entity.corporateAuthor }}</td></tr>
+	   {% endif %}
+	   {% if entity.thesis != null %}
+	<tr>  <th>Thesis</th>           <td>{{ entity.thesis }}</td>         </tr>
+    	   {% endif %}
+	   {% if entity.address != null %}
+        <tr>  <th>Address</th>          <td>{{ entity.address }}</td>        </tr>
+	   {% endif %}
+	   {% if entity.keywords != null %}
+        <tr>  <th>Keywords</th>         <td>{{ entity.keywords }}</td>       </tr>
+	   {% endif %}
+	   {% if entity.abst != null %}
+        <tr>  <th>Abst</th>             <td><p align="justify">{{ entity.abst }}</p></td>           </tr>
+	   {% endif %}
+	   {% if entity.publisher != null %}
+        <tr>  <th>Publisher</th>        <td>{{ entity.publisher }}</td>      </tr>
+	   {% endif %}
+	   {% if entity.placePub != null %}
+        <tr>  <th>Place Pub</th>        <td>{{ entity.placePub }}</td        </tr>
+	   {% endif %}
+	   {% if entity.editor != null %}
+        <tr>  <th>Editor</th>           <td>{{ entity.editor }}</td>         </tr>
+	   {% endif %}
+	   {% if entity.issn != null %}
+        <tr>  <th>ISSN</th>             <td>{{ entity.issn }}</td>           </tr>
+	   {% endif %}
+	   {% if entity.isbn != null %}
+	<tr>  <th>ISBN</th>             <td>{{ entity.isbn }}</td>           </tr>
+	   {% endif %}
+	   {% if entity.medium != null %}
+	<tr>  <th>Medium</th>           <td>{{ entity.medium }}</td>         </tr>
+	   {% endif %}
+	   {% if entity.area != null %}
+	<tr>  <th>Area</th>             <td>{{ entity.area }}</td>           </tr>
+	   {% endif %}
+	   {% if entity.conference != null %}
+	<tr>  <th>Conference</th>       <td>{{ entity.conference }}</td>     </tr>
+	   {% endif %}
+	   {% if entity.notas != null %}
+	<tr>  <th>Notas</th>            <td>{{ entity.notas }}</td>          </tr>
+	   {% endif %}
+	   {% if entity.revision != null %}
+        <tr>  <th>Revision</th>         <td>{{ entity.revision }}</td>       </tr>
+	   {% endif %}
+	   {% if entity.file != null %}
+	<tr>  <th>File</th>             <td>{{ entity.file }}</td>           </tr>
+	   {% endif %}
+	   {% if entity.url != null %}
+	<tr>  <th>URL</th>              <td>{{ entity.url }}</td>            </tr>
+	   {% endif %}
+	   {% if entity.doi != null %}
+	<tr>  <th>DOI</th>         	<td>{{ entity.doi }}</td> 	     </tr>
+	   {% endif %}
+	   {% if entity.arxiv != null %}
+	<tr>  <th>Arxiv</th>            <td>{{ entity.arxiv }}</td>	     </tr>
+	   {% endif %}
+	   {% if entity.mathscinet != null %}
+	<tr>  <th>Mathscinet</th>       <td>{{ entity.mathscinet }}</td>     </tr>
+	   {% endif %}
+	   {% if entity.zmath != null %}
+	<tr>  <th>Zmath</th>            <td>{{ entity.zmath }}</td>          </tr>
+	   {% endif %}
+	   {% if entity.inspires != null %}
+	<tr>  <th>Inspires</th>         <td>{{ entity.inspires }}</td>       </tr>
+	   {% endif %}
+	   {% if entity.created != null %}
+	<tr>  <th>Created</th>          <td>{{ entity.created|date('Y-m-d H:i:s') }}</td>        </tr>
+	   {% endif %}
+	   {% if entity.modified != null %}
+	<tr>  <th>Modified</th>         <td>{{ entity.modified|date('Y-m-d H:i:s') }}</td>       </tr>
+	   {% endif %}
+
+    </tbody>
+</table>
+{% endblock %}
+
+{% block menuL %}
+
+<ul class="record_actions">
+    
+    <li>
+        <a href="{{ path('referencia_edit', { 'id': entity.id }) }}">
+            Editar
+        </a>
+    </li>
+<li>
+        <a href="{{ path('refs') }}">
+            Regresar
+        </a>
+    </li>
+   
+</ul>
+{% endblock %}
+
+
+

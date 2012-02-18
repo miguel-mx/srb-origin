@@ -1,0 +1,119 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>{% block title %}Sistema de Referencias Bibliográficas - CCM UNAM-Morelia {% endblock %}</title>
+<meta name="description" content=""/>
+<meta name="author" content=""/>
+  
+<!-- mobile viewport optimisation -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+<!-- stylesheets -->
+<link rel="stylesheet" href="{{ asset('bundles/ccmsrb/css/central.css') }}" type="text/css"/>
+<link rel="stylesheet" href="{{ asset('bundles/makerlabspager/css/clean.css') }}" type="text/css"/>
+
+<!-- <script type="text/javascript" src="{{ asset('bundles/ccmevsec/js/superfish.js') }}"></script> -->
+<!--<link rel="stylesheet" type="text/css" href="css/superfish.css" media="screen">-->
+ 
+<!--[if lte IE 7]>
+<link rel="stylesheet" href="yaml/core/iehacks.min.css" type="text/css"/>
+<![endif]-->
+
+<!--<script src="js/prototype.js" type="text/javascript"></script>
+<script src="js/scriptaculous.js" type="text/javascript"></script>-->
+        
+<!--<script type="text/javascript" src="superfish/js/jquery-1.2.6.min.js"></script>
+<script type="text/javascript" src="superfish/js/hoverIntent.js"></script>
+<script type="text/javascript" src="superfish/js/superfish.js"></script>
+<script type="text/javascript">
+
+        // initialise plugins
+        jQuery(function(){
+  jQuery('ul.sf-menu').superfish();
+});
+
+</script>-->
+
+</head>
+<body>
+
+<header>
+    <div class="ym-wrapper">
+      <div class="ym-wbox">
+        <h2>Sistema de Referencias Bibliográficas</h2><h3>Centro de Ciencias Matemáticas UNAM-Morelia</h3>
+      </div>
+    </div>
+    </header>
+
+<nav class="ym-hlist">  
+ <div class="ym-wrapper">
+     <div class="ym-wbox">
+ <!--  <ul>
+    <li class="active"><strong>Active</strong></li>
+    <li><a href="#">Link</a></li>
+    <li><a href="#">Link</a></li>
+   <li><a href="#">Link</a></li>
+    <li><a href="#">Link</a></li>
+  </ul> -->
+    {% block menu %} {% endblock %}
+  <!-- optional search form -->
+	 <form class="ym-searchform" form action="{{ path('quick_search') }}" >
+    		<input class="ym-searchfield" type="search" placeholder="Search..." name="query" />
+    		<input class="ym-searchbutton" type="submit" value="Search" />
+  	</form>
+	</div>
+ </div>
+</nav>
+
+
+
+<div class="ym-wrapper">
+ <div id="main">
+  <div class="ym-wbox">
+    <div class="ym-column linearize-level-1">
+      <div class="ym-col1">
+        <div class="ym-gbox-left">
+            <h3>Menu</h3>
+            <div class="nav-wrapper">
+            <h6 class="ym-vlist">{{ option }}</h6>
+             	<ul class="ym-vlist">
+
+		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+			{% block menuL %}   {% endblock %}
+ 	     	</div>
+		{% else %}
+		<ul>
+    		<li> <a href="{{ path('login') }}">  Login </a> </li>
+		</ul>
+		<ul>
+    		<li> <a href="{{ path('busqueda') }}"> Búsqueda </a> </li>
+		</ul>
+        	</div>
+		{% endif %}
+		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+			<br>Sesión iniciada como: <b>{{ app.user.username }}</b><br>
+			<br><a href="{{ path('fos_user_security_logout') }}">Cerrar sesión</a>
+		{% endif %}
+	      	</div>
+	     </div>
+      <div class="ym-col3">
+        {% block col3 %} {% endblock %}
+      </div>
+     </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+    <div class="ym-wrapper">
+      <div class="ym-wbox">
+            <p>© CCM-UNAM Campus Morelia 2012 &ndash; Layout based on <a href="http://www.yaml.de">YAML</a></p>
+      </div>
+    </div>
+</footer>
+
+</body>
+</html>
+

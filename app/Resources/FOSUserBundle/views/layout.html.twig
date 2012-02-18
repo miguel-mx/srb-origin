@@ -1,0 +1,57 @@
+{% extends 'CcmSrbBundle::layout.html.twig' %}
+
+{% block menu %}
+{{ knp_menu_render('CcmSrbBundle:Builder:mainMenu') }}
+{% endblock %}
+
+{% set option =  'Iniciar sesión'  %}
+
+{% block col3 %}
+<div style="align: center">
+
+<H1>Ingresar al Sistema</H1>
+<br><br>
+
+{% for key, message in app.session.getFlashes() %}
+        <div class="{{ key }}">
+{{ message|trans({}, 'FOSUserBundle') }}
+        </div>
+{% endfor %}
+
+
+
+{% if error %}
+    <div  style="color: red">{{ error }}</div>
+{% endif %}
+
+
+
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+Sesión iniciada como: <b>{{ app.user.username }}</b>
+<br><br>
+<a href="{{ path('fos_user_security_logout') }}">Cerrar sesión</a>
+
+</div>
+
+
+{% else %}
+                <!--<a href="{{ path('fos_user_security_login') }}">{{ 'Login'|trans({}, 'FOSUserBundle') }}</a>-->
+
+                <form action="{{ path("fos_user_security_check") }}" method="post">
+                    Usuario<br>
+                    <input type="text" id="username" name="_username" /><br>
+                    Contraseña<br>
+                    <input type="password" id="password" name="_password" /><br>
+                    <input type="checkbox" id="remember_me" name="_remember_me" value="off" />
+                    <label for="remember_me">Recordarme</label><br><br>
+       	       	    <button type="submit" class="ym-button ym-next">Login</button>
+                </form>
+
+{% endif %}
+        </div>
+
+</div>
+
+{% endblock %}
+
+

@@ -1,0 +1,178 @@
+{% extends 'CcmSrbBundle::layout.html.twig' %}
+
+{% block menu %}
+{{ knp_menu_render('CcmSrbBundle:Builder:mainMenu') }}
+{% endblock %}
+
+
+{% block col3 %}
+
+{#
+
+<div>
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+{% else %}
+                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+{% endif %}
+</div>
+
+#}
+
+<h1>Referencias list</h1>
+<table class="records_list">
+    <thead>
+        <tr>
+	    <th>id</th>
+            <th>author</th>
+            <th>title</th>
+            <th>type</th>
+            <!--<th>yearPub</th>
+            <th>yearPreprint</th>
+            <th>publication</th>
+            -->
+	    <th>journal</th>
+<!--             <th>issue</th> -->
+            <th>pages</th>
+<!-- 	    <th>corporateAuthor</th> -->
+<!--             <th>thesis</th> -->
+<!-- 	    <th>address</th> -->
+<!--             <th>keywords</th> -->
+<!--             <th>abst</th> -->
+<!-- 	    <th>publisher</th> -->
+<!-- 	    <th>placePub</th> -->
+<!-- 	    <th>editor</th> -->
+<!-- 	    <th>issn</th> -->
+<!--             <th>isbn</th> -->
+<!--             <th>medium</th> -->
+<!--             <th>area</th> -->
+<!-- 	    <th>conference</th> -->
+<!-- 	    <th>notas</th> -->
+<!-- 	    <th>revision</th> -->
+<!--             <th>file</th> -->
+<!-- 	    <th>url</th> -->
+<!-- 	    <th>doi</th> -->
+<!--     	    <th>arxiv</th> -->
+<!--     	    <th>mathscinet</th> -->
+<!--   	    <th>zmath</th> -->
+<!--             <th>inspires</th> -->
+        </tr>
+    </thead>
+
+
+
+
+
+    <tbody>
+
+{% for item in pager.getResults %}
+
+
+        <tr>
+            <td><a href="{{ path('referencia_show', { 'id': item.id }) }}">{{ item.id }}</a></td>
+           <td>{% for key in item.author|explode %}
+	        <a href="{{key}}"> {{key}}</a> ;
+           {% endfor %}</td>
+
+            <td>{{ item.title }}</td>
+            <td>{{ item.type }}</td>
+            <td>{{ item.journal }}</td>
+            <td>{{ item.pages }}</td>
+
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('referencia_show', { 'id': item.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('referencia_edit', { 'id': item.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+<ul>
+    <li>
+        <a href="{{ path('referencia_new', { 'type': 'articulo' } ) }}">
+            Create a new entry for Article
+        </a>
+    </li>
+</ul>
+
+<ul>
+    <li>
+        <a href="{{ path('referencia_new', { 'type': 'preprint' } ) }}">
+            Create a new entry for Preprint
+        </a>
+    </li>
+</ul>
+
+<ul>
+    <li>
+        <a href="{{ path('referencia_new', { 'type': 'memoria' } ) }}">
+            Create a new entry for Memoria de Congreso
+        </a>
+    </li>
+</ul>
+
+<ul>
+    <li>
+        <a href="{{ path('referencia_new', { 'type': 'libro' } ) }}">
+            Create a new entry for Libro
+        </a>
+    </li>
+</ul>
+
+<ul>
+    <li>
+        <a href="{{ path('referencia_new', { 'type': 'edicion' } ) }}">
+            Create a new entry for Edicion de Libro
+        </a>
+    </li>
+</ul>
+
+<ul>
+    <li>
+        <a href="{{ path('referencia_new', { 'type': 'editor' } ) }}">
+            Create a new entry for Editor de Memorias de Congreso
+        </a>
+    </li>
+</ul>
+
+<ul>
+    <li>
+        <a href="{{ path('referencia_new', { 'type': 'capitulo' } ) }}">
+            Create a new entry for Capitulo de Libro
+        </a>
+    </li>
+</ul>
+
+<ul>
+    <li>
+        <a href="{{ path('upload') }}">
+            Create a new entry by file
+        </a>
+    </li>
+</ul>
+<ul>
+    <li>
+        <a href="{{ path('arxiv') }}">
+            Create a new entry import from Arxiv
+        </a>
+    </li>
+</ul>
+
+
+
+{% if pager.isPaginable %}
+   {{ paginate(pager, 'refs' ) }}
+{% endif %}
+
+{% endblock %}

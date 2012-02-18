@@ -1,0 +1,40 @@
+{% extends 'CcmSrbBundle::layout.html.twig' %}
+
+{% block menu %}
+{{ knp_menu_render('CcmSrbBundle:Builder:mainMenu') }}
+{% endblock %}
+
+{% set option =  'Importar desde archivo'  %}
+
+{% block col3 %}
+
+    <h1>Importar Referencias </h1>
+	<br>
+	{% if app.session.flash('notice') %}
+                <div class="flash-message">
+                    <em>El archivo fue cargado correctamente</em>: {{ app.session.flash('notice') }}
+                </div>
+            {% endif %}
+
+    <form action="" method="POST" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}
+        {{ form_rest(form) }}
+	    <button type="submit" class="ym-button ym-upload" />Importar referencias</button>
+    </form>
+{% endblock %}
+
+{% block menuL %}
+
+<ul>
+    <li>
+        <a href="{{ path('busqueda') }}">
+           Búsqueda
+        </a>
+    </li>
+</ul>
+	<ul class="record_actions">
+    	<li><a href="{{ path('refs') }}"> Regresar </a></li>
+	</ul>
+{% endblock %}
+
+

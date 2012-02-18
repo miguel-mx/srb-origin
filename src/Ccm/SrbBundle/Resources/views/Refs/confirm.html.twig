@@ -1,0 +1,171 @@
+{% extends 'CcmSrbBundle::layout.html.twig' %}
+
+{% block menu %} {{ knp_menu_render('CcmSrbBundle:Builder:mainMenu') }} {% endblock %}
+
+{% set option = 'Resultados de importación' %}
+	
+{% block col3 %}
+
+	<h1>Referencias</h1>
+	Número de referencias encontradas en el archivo {{ numrefs }}<br><br>
+	Los siguientes datos han sido guardados: <br>
+
+	{% for ref in bibTex %}
+
+{# Con el uso de la sentencia if se valida si existe el valor en el arreglo, si existe imprime el valor  #}
+	    
+	   {% if ref.year is defined %}
+		<br><br>Year: {{ ref.year }}<br>
+	   {% endif %}
+
+	   {% if ref.author is defined %}
+		
+	   Author:
+           {% for key, author in ref.author %}
+	       {{author.last}};
+           {% endfor %}
+
+	   {% endif %}
+
+           {% if ref.title is defined %}
+                <br>Title: {{ ref.title }}<br>
+	   {% endif %}
+
+           {% if ref.entryType is defined %}
+	        Entry Type: {{ ref.entryType }}<br>
+	   {% endif %}
+ 
+	   {% if ref.yearpreprint is defined %}
+	        Year preprint : {{ ref.yearpreprint }}<br>
+	   {% endif %}
+
+	   {% if ref.yearpub is defined %}
+	        Year publication : {{ ref.yearpub }}<br>
+	   {% endif %}
+
+	   {% if ref.publication is defined %}
+	        Publication : {{ ref.publication }}<br>
+	   {% endif %}
+
+	   {% if ref.journal is defined %}
+                Journal: {{ ref.journal }}<br>
+	   {% endif %}
+
+           {% if ref.issue is defined %}
+                Issue: {{ ref.issue }}<br>
+	   {% endif %}
+           
+           {% if ref.pages is defined %}
+                Pages: {{ ref.pages }}<br>
+	   {% endif %}
+
+           {% if ref.corporateAuthor is defined %}
+                Corporete Author: {{ ref.corporateAuthor }}<br>
+	   {% endif %}
+
+           {% if ref.thesis is defined %}
+                Thesis : {{ ref.thesis }}<br>
+	   {% endif %}
+
+           {% if ref.address is defined %}
+                Address : {{ ref.address }}<br>
+	   {% endif %}
+
+           {% if ref.keywords is defined %}
+                Key words : {{ ref.keywords }}<br>
+	   {% endif %}
+
+           {% if ref.abst is defined %}
+                Abstract : {{ ref.abst }}<br>
+	   {% endif %}
+
+	   {% if ref.publisher is defined %}
+                Publisher : {{ ref.publisher }}<br>
+	   {% endif %}
+
+           {% if ref.placePub is defined %}
+                Place publication : {{ ref.placePub }}<br>
+	   {% endif %}
+
+           {% if ref.editor is defined %}
+                Editor : {{ ref.editor }}<br>
+	   {% endif %}
+
+           {% if ref.issn is defined %}
+                ISSN : {{ ref.issn }}<br>
+	   {% endif %}
+
+           {% if ref.isbn is defined %}
+                ISBN : {{ ref.isbn }}<br>
+	   {% endif %}
+
+           {% if ref.medium is defined %}
+                Medium : {{ ref.medium }}<br>
+	   {% endif %}
+
+           {% if ref.area is defined %}
+                Area : {{ ref.area }}<br>
+	   {% endif %}
+
+           {% if ref.conference is defined %}
+                Conference : {{ ref.conference }}<br>
+	   {% endif %}
+
+           {% if ref.notas is defined %}
+	        Notes: {{ ref.notas }}<br>
+	   {% endif %}
+	   
+           {% if ref.revision is defined %}
+	        Revision: {{ ref.revision }}<br>
+	   {% endif %}
+	   
+           {% if ref.file is defined %}
+                File {{ ref.file }}<br>
+	   {% endif %}
+
+           {% if ref.url is defined %}
+	        URL: {{ ref.url }}<br>
+	   {% endif %}
+	   
+           {% if ref.doi is defined %}
+	        DOI: {{ ref.doi }}<br>
+	   {% endif %}
+	   
+           {% if ref.arxiv is defined %}
+	        Arxiv: {{ ref.arxiv }}<br>
+	   {% endif %}
+	   
+           {% if ref.mathscinet is defined %}
+	        Notes: {{ ref.mathscinet }}<br>
+	   {% endif %}
+	   
+           {% if ref.zmath is defined %}
+                Zmath: {{ ref.zmath }}<br>
+	   {% endif %}
+
+           {% if ref.inspires is defined %}
+	        Inspires: {{ ref.inspires }}<br>
+	   {% endif %}
+	   
+           {% if ref.created is defined %}
+                Created: {{ ref.created }}<br>
+	   {% endif %}
+
+           {% if ref.modified is defined %}
+	        Notes: {{ ref.modified }}<br>
+	   {% endif %}
+
+	{% endfor %}
+
+{% endblock %}
+
+{% block menuL %}
+	<ul>
+    		<li> <a href="{{ path('search') }}">  Búsqueda </a> </li>
+	</ul>
+	<ul class="record_actions">
+    		<li><a href="{{ path('refs') }}"> Regresar </a></li>
+	</ul>
+{% endblock %}
+
+

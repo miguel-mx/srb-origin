@@ -1,0 +1,52 @@
+<?php
+
+namespace Ccm\SrbBundle\Form;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\MinLength;
+use Symfony\Component\Validator\Constraints\Collection;
+
+
+
+
+class ArticuloType extends AbstractType
+{
+
+
+
+    public function buildForm(FormBuilder $builder, array $options)
+    {
+        $builder
+        ->add('author','text', array('required'=> true))
+        ->add('title','text', array ('required'=>true ))
+        ->add('type', 'choice', array('choices'=>array('article'=>'Article')))
+//        ->add('yearPub','text',array('empty_value' => array('year' => 'Year', 'month' => 'Month', 'day' => 'Day'), 'years'=> range(1950,2012)))
+	->add('yearPub','number', array ('required'=> true ))
+	->add('publication', 'text', array('required' => true))
+        ->add('journal', 'text', array('required' => true))
+	->add('issue', 'text', array('required' => true))
+	->add('pages', 'text', array('required' => true))
+	->add('volume', 'text', array('required' => true))
+	->add('notas', 'text', array('required' => true))
+	->add('abst', 'textarea', array('required' => false))
+	->add('issn', 'text', array('required' => false))
+	->add('url', 'text', array('required' => false))
+	->add('doi', 'text', array('required' => false))
+	
+	
+        ;
+    }
+
+   public function getDefaultOptions(array $options)
+    {
+        return array(
+            'data_class' => 'Ccm\SrbBundle\Entity\Referencia',
+        );
+    }
+    public function getName()
+    {
+        return 'ccm_srbbundle_articulotype';
+    }
+}

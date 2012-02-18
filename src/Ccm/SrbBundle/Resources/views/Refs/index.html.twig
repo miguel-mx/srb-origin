@@ -1,0 +1,100 @@
+{# Ccm/SrbBundle/Resources/views/Refs/index.html.twig #}
+{% extends 'CcmSrbBundle::layout.html.twig' %}
+
+{% block menu %}
+{{ knp_menu_render('CcmEvsecBundle:Builder:mainMenu') }}
+{% endblock %}
+
+{% block col3 %}
+
+<h1>Referencias list</h1>
+<table class="records_list">
+    <thead>
+        <tr>
+	    <th>id</th>
+            <th>author</th>
+            <th>title</th>
+            <th>type</th>
+            <!--<th>yearPub</th>
+            <th>yearPreprint</th>
+            <th>publication</th>
+            -->
+	    <th>journal</th>
+<!--             <th>issue</th> -->
+            <th>pages</th>
+<!-- 	    <th>corporateAuthor</th> -->
+<!--             <th>thesis</th> -->
+<!-- 	    <th>address</th> -->
+<!--             <th>keywords</th> -->
+<!--             <th>abst</th> -->
+<!-- 	    <th>publisher</th> -->
+<!-- 	    <th>placePub</th> -->
+<!-- 	    <th>editor</th> -->
+<!-- 	    <th>issn</th> -->
+<!--             <th>isbn</th> -->
+<!--             <th>medium</th> -->
+<!--             <th>area</th> -->
+<!-- 	    <th>conference</th> -->
+<!-- 	    <th>notas</th> -->
+<!-- 	    <th>revision</th> -->
+<!--             <th>file</th> -->
+<!-- 	    <th>url</th> -->
+<!-- 	    <th>doi</th> -->
+<!--     	    <th>arxiv</th> -->
+<!--     	    <th>mathscinet</th> -->
+<!--   	    <th>zmath</th> -->
+<!--             <th>inspires</th> -->
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('referencia_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+           <td>{% for key in entity.author|explode %}
+	        <a href="{{key}}"> {{key}}</a> ;
+           {% endfor %}</td>
+
+            <td>{{ entity.title }}</td>
+            <td>{{ entity.type }}</td>
+            <td>{{ entity.journal }}</td>
+            <td>{{ entity.pages }}</td>
+<!--             <td>{{ entity.publication }}</td> -->
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('referencia_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('referencia_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('referencia_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+<ul>
+    <li>
+        <a href="{{ path('upload') }}">
+            Create a new entry by file
+        </a>
+    </li>
+</ul>
+<ul>
+    <li>
+        <a href="{{ path('arxiv') }}">
+            Create a new entry import from Arxiv
+        </a>
+    </li>
+</ul>
+
+{% endblock %}
