@@ -1,4 +1,4 @@
-<?
+<?php 
 namespace Ccm\SrbBundle\Twig\Extension;
 
 use Symfony\Component\HttpKernel\KernelInterface;
