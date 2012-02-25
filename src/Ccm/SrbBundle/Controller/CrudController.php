@@ -20,7 +20,8 @@ use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
 use Symfony\Component\Security\Acl\Permission\MaskBuilder;
 use MakerLabs\PagerBundle\Pager;
 use MakerLabs\PagerBundle\Adapter\DoctrineOrmAdapter;
-
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class CrudController extends Controller
 {
@@ -34,8 +35,7 @@ class CrudController extends Controller
     {
         
 	$em = $this->getDoctrine()->getEntityManager();
-
-    $entities = $em->getRepository('CcmSrbBundle:Referencia')->createQueryBuilder('m');
+	$entities = $em->getRepository('CcmSrbBundle:Referencia')->createQueryBuilder('m');
 	$adapter = new DoctrineOrmAdapter($entities);
 	$pager = new Pager($adapter,array('page' => $page, 'limit' => 10));
 	return $this->render('CcmSrbBundle:Refs:list.html.twig',array('pager'=>$pager));
@@ -79,9 +79,9 @@ class CrudController extends Controller
 	if($type=='unpublished'){   $form   = $this->createForm(new PreprintType(), $entity);}
 	if($type=='inproceedings'){ $form   = $this->createForm(new MemoriaType(), $entity);}
 	if($type=='book'){          $form   = $this->createForm(new LibroType(), $entity);}
-	if($type=='edicion'){       $form   = $this->createForm(new EdicionType(), $entity);}
+//	if($type=='edicion'){       $form   = $this->createForm(new EdicionType(), $entity);}
 	if($type=='proceedings'){   $form   = $this->createForm(new EditorType(), $entity);}
-	if($type=='inbook'){  $form   = $this->createForm(new CapituloType(), $entity);}
+	if($type=='incollection'){  $form   = $this->createForm(new CapituloType(), $entity);}
         
         return array(
             'entity' => $entity,
@@ -109,7 +109,7 @@ class CrudController extends Controller
 	if($type=='book'){           $form   = $this->createForm(new LibroType(), $entity);}
 	if($type=='edicion'){        $form   = $this->createForm(new EdicionType(), $entity);}
 	if($type=='proceedings'){    $form   = $this->createForm(new EditorType(), $entity);}
-	if($type=='inbook'){   	$form   = $this->createForm(new CapituloType(), $entity);}
+	if($type=='incollection'){   	$form   = $this->createForm(new CapituloType(), $entity);}
         $form->bindRequest($request);
         if ($form->isValid()) {
 	    
@@ -168,17 +168,19 @@ class CrudController extends Controller
 //     // check for edit access
        if (false === $securityContext->isGranted('EDIT', $entity))
         {
- 		throw $this->createNotFoundException('Denied permission.');
+ 		//throw $this->createNotFoundException('Tu no eres propietario de esta referencia');
+        	throw new AccessDeniedHttpException();
+		//throw new AccessDeniedException('acess denegado');
         }
  
 	if (strcasecmp($entity->getType(), 'article') == 0) {		$editForm = $this->createForm(new ArticuloType(), $entity);}
  	if (strcasecmp($entity->getType(), 'unpublished') == 0) {	$editForm = $this->createForm(new PreprintType(), $entity);}
 	if (strcasecmp($entity->getType(), 'inproceedings') == 0) {	$editForm = $this->createForm(new MemoriaType(), $entity);}
 	if (strcasecmp($entity->getType(), 'book') == 0) {		$editForm = $this->createForm(new LibroType(), $entity);}
-	if (strcasecmp($entity->getType(), 'edicion') == 0) {		$editForm = $this->createForm(new EdcionType(), $entity);}
+//	if (strcasecmp($entity->getType(), 'edicion') == 0) {		$editForm = $this->createForm(new EdcionType(), $entity);}
 	if (strcasecmp($entity->getType(), 'proceedings') == 0) {	$editForm = $this->createForm(new EditorType(), $entity);}
-	if (strcasecmp($entity->getType(), 'inbook') == 0) {		$editForm = $this->createForm(new CapituloType(), $entity);}
-	if(($entity->getType()=='incollection')||($entity->getType()=='misc') ) {$editForm = $this->createForm(new ReferenciaType(), $entity);}
+	if (strcasecmp($entity->getType(), 'incollection') == 0) {		$editForm = $this->createForm(new CapituloType(), $entity);}
+	//if(($entity->getType()=='incollection')||($entity->getType()=='misc') ) {$editForm = $this->createForm(new ReferenciaType(), $entity);}
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
@@ -209,10 +211,10 @@ class CrudController extends Controller
  	if (strcasecmp($entity->getType(), 'unpublished') == 0) {	$editForm = $this->createForm(new PreprintType(), $entity);}
 	if (strcasecmp($entity->getType(), 'inproceedings') == 0) {	$editForm = $this->createForm(new MemoriaType(), $entity);}
 	if (strcasecmp($entity->getType(), 'book') == 0) {		$editForm = $this->createForm(new LibroType(), $entity);}
-	if (strcasecmp($entity->getType(), 'edicion') == 0) {		$editForm = $this->createForm(new EdcionType(), $entity);}
+//	if (strcasecmp($entity->getType(), 'edicion') == 0) {		$editForm = $this->createForm(new EdcionType(), $entity);}
 	if (strcasecmp($entity->getType(), 'proceedings') == 0) {	$editForm = $this->createForm(new EditorType(), $entity);}
-	if (strcasecmp($entity->getType(), 'inbook') == 0) {		$editForm = $this->createForm(new CapituloType(), $entity);}
-	if(($entity->getType()=='incollection')||($entity->getType()=='misc') ) {$editForm = $this->createForm(new ReferenciaType(), $entity);}
+	if (strcasecmp($entity->getType(), 'incollection') == 0) {		$editForm = $this->createForm(new CapituloType(), $entity);}
+	//if(($entity->getType()=='incollection')||($entity->getType()=='misc') ) {$editForm = $this->createForm(new ReferenciaType(), $entity);}
 
         
         $deleteForm = $this->createDeleteForm($id);

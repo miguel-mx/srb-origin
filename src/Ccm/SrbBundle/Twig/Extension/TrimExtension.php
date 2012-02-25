@@ -13,7 +13,11 @@ class TrimExtension extends \Twig_Extension
     }
 
     public function trim($text) {       
-            $out = trim($text);
+	$out = trim($text);
+        
+
+	    
+
             return $out;   
     }
 

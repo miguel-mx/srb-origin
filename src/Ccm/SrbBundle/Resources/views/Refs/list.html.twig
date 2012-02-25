@@ -5,7 +5,7 @@
 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 	{% set option = 'Nueva publicación' %}
 {% else %}
-	{% set option = 'Publicaciones' %}
+	{% set option = 'Ingresar al sistema' %}
 {% endif %}
 
 
@@ -20,7 +20,7 @@
 	</div>
 	<div style="font-size: 85%; color: #6B6B6B; float:left;">  {{ item.type|title }}</div><br>
 	 {{ item.journal }}, {{ item.yearPub }}, {{ item.pages }}<br>
-	  {% for key in item.author|explode %}<a href="{{key}}"> {{key|trim}}</a> ; {% endfor %}<br><br>
+	  {% for key in item.author|explode %}<a href="{{key}}"> {{key|trim }}</a>;  {% endfor %}<br><br>
    {% endfor %}
 
   {% if pager.isPaginable %}
@@ -34,11 +34,11 @@
 	    <li> <a href="{{ path('referencia_new', { 'type': 'article' } ) }}"> Artículo </a> </li>
 	</ul>
 	<ul>
-    	    <li> <a href="{{ path('referencia_new', { 'type': 'inbook' } ) }}"> Capítulo de Libro </a> </li>
+    	    <li> <a href="{{ path('referencia_new', { 'type': 'incollection' } ) }}"> Capítulo de Libro </a> </li>
 	</ul>
-	<ul>
+	{# <!--<ul>
     	    <li> <a href="{{ path('referencia_new', { 'type': 'edicion' } ) }}"> Edicion de Libro </a> </li>
-	</ul>
+	</ul>--> #}
 	<ul>
     	    <li> <a href="{{ path('referencia_new', { 'type': 'proceedings' } ) }}"> Editor de Memorias de Congreso </a> </li>
 	</ul>
@@ -51,15 +51,8 @@
 	<ul>
             <li> <a href="{{ path('referencia_new', { 'type': 'unpublished' } ) }}"> Preprint </a> </li>
 	</ul>
-	<ul>
-    	    <li> <a href="{{ path('upload') }}"> Desde Archivo </a> </li>
-        </ul>
-	<ul>
-    	    <li> <a href="{{ path('arxiv') }}"> Desde Arxiv </a> </li>
-        </ul>
-
-	<ul>
-    	    <li> <a href="{{ path('busqueda') }}"> Búsqueda </a> </li>
-	</ul>
-
 {% endblock %}
+
+
+
+

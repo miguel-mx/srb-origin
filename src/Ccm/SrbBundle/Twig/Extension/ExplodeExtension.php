@@ -14,6 +14,7 @@ class ExplodeExtension extends \Twig_Extension
 
     public function explode($text) {       
             $out = explode(';', $text);
+	    
             return $out;   
     }
 

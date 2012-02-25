@@ -10,23 +10,15 @@ class MemoriaType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-        ->add('author','text', array('required'=>true))
-        ->add('title', 'text', array('required'=>true))
+        ->add('author','text', array('required'=>true,'label'=>'*Author'))
+        ->add('title', 'textarea', array('required'=>true,'label'=>'*Title'))
         ->add('type', 'choice', array('choices'=>array('inproceedings'=>'Inproceedings')))
-      	//->add('yearPub','date',array('empty_value' => array('year' => 'Year', 'month' => 'Month', 'day' => 'Day'), 'years'=> range(1950,2012)))
-        ->add('yearPub','text', array('required'=>true))
-	->add('publication', 'text', array('required' => false))
-        ->add('pages', 'number', array('required'=>true))
-	//->add('corporateAuthor')
-	->add('publisher', 'text', array('required'=>true))
-	->add('editor', 'text',array('required'=>true))
-	->add('placePub', 'text', array('required'=>true))
-	->add('isbn', 'text', array('required'=>true))
-	->add('conference', 'text' , array('required'=>true))
-	//->add('thesis')
-	//->add('address')
-	//->add('keywords')
-	
+      	->add('yearPub','number', array('required'=>true,'label'=>'*Year'))
+	->add('pages', 'number', array('required'=>false,'label'=>'Pages'))
+	->add('address', 'text',array('required'=>false,'label'=>'Address'))
+	->add('notas', 'textarea', array('required'=>false,'label'=>'Notes'))
+	->add('keywords', 'textarea' , array('required'=>false,'label'=>'Keywords'))
+	->add('publisher', 'text', array('required'=>true,'label'=>'*Publisher'))
 	
 	
         ;

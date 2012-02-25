@@ -10,18 +10,17 @@ class CapituloType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-        ->add('author','text')
-        ->add('title', 'text')
-        ->add('type', 'choice', array('choices'=>array('inbook'=>'Inbook')))
-        //->add('yearPub','date',array('empty_value' => array('year' => 'Year', 'month' => 'Month', 'day' => 'Day'), 'years'=> range(1950,2012)))
-	->add('yearPub','text')
-	->add('publication', 'text', array('required' => false))
-        ->add('journal', 'text', array('required' => false))
-	->add('publisher')
-	->add('placePub')
-	->add('editor')
-	->add('isbn', 'text', array('required' => false))
-	
+        ->add('author','text', array('required' => true, 'label' => '*Author'))
+        ->add('title', 'textarea', array('required' => true, 'label' => '*Title'))
+        ->add('type', 'choice', array('choices'=>array('incollection'=>'Incollection')))
+        ->add('yearPub','text', array('required' => true, 'label'=>'Year'))
+	->add('publisher', 'text', array('required' => true, 'label'=>'Publisher'))
+	->add('editor', 'text', array('required' => false, 'label'=>'Editor'))
+	->add('volume', 'text', array('required' => false, 'label'=>'Volume'))
+	->add('pages', 'text', array('required' => false))
+	->add('address', 'text', array('required' => false))
+	->add('notas', 'textarea', array('required' => false))
+	->add('keywords', 'textarea', array('required' => false))
 	
         ;
     }

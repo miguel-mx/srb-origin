@@ -17,12 +17,12 @@ class Upload
 * @var string
 * @Assert\File(maxSize="2000000")
 * @Assert\NotBlank(message="Es necesario seleccionar un archivo")
-* @Assert\File(mimeTypes ={"text/plain"})
+* @Assert\File(mimeTypes ={"text/plain", "text/x-c++"})
 * @Assert\File(mimeTypesMessage={"Favor de seleccionar un archivo válido"})
 */
     protected $attachment;
 
-    protected $upload_dir = '/var/www/web/SRB/web/bundles/ccmsrb/uploads';
+    protected $upload_dir = '/var/www/srb/uploads';
 
 
 

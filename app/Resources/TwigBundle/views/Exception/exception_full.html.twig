@@ -1,9 +1,0 @@
-{% extends 'CcmSrbBundle::layout.html.twig' %}
-
-{% block title %}
-    {{ exception.message }} ({{ status_code }} {{ status_text }})
-{% endblock %}
-
-{% block col3 %}
-    {% include 'TwigBundle:Exception:exception.html.twig' %}
-{% endblock %}

@@ -16,7 +16,9 @@
 
 	{% if entity.author != null %}
 	  <div class="ym-g80 ym-gl">
-	    <div style="padding:3px;"> <b>Author: </b> {{ entity.author }} </div>
+	    <div style="padding:3px;"> <b>Author: </b> {% for key in entity.author|explode %}<a href="{{key}}"> {{key|trim}}</a>   {% endfor %} </div>
+
+    
 	  </div>
 	{% endif %}
 	   
@@ -166,13 +168,13 @@
 
    	{% if entity.url != null %}	
 	  <div class="ym-g80 ym-gl">
-	    <div style="padding:3px;">	<b>URL: </b>{{ entity.url }} </div>
+	    <div style="padding:3px;">	<b>URL: </b><a href="{{ entity.url }}">{{ entity.url }}</a> </div>
 	   </div>
 	{% endif %}
 
 	{% if entity.doi != null %}
 	  <div class="ym-g80 ym-gl">
-	    <div style="padding:3px;">	<b>DOI: </b> {{ entity.doi }} </div>
+	    <div style="padding:3px;">	<b>DOI: </b> <a href="{{ 'http://dx.doi.org/' ~ entity.doi }}"> {{ entity.doi }}</a></div>
 	  </div>
 	{% endif %}
 		
@@ -211,12 +213,26 @@
 	    <div style="padding:3px;" >	<b>Modified: </b>{{ entity.modified|date('Y-m-d H:i:s') }} </div>
 	  </div>
 	{% endif %}
+
+	{% if (is_granted('ROLE_ADMIN', entity)) or (is_granted('EDIT', entity))  %}
+
+	<div class="ym-g80 ym-gl">
+        	<form action="{{ path('referencia_edit', { 'id': entity.id }) }}" method="post">
+            	   <button type="submit" class="ym-button ym-edit">Editar</button>
+        	</form>
+	</div>
+
+{% endif %}
+
 {% endblock %}
 
 {% block menuL %}
 
+{% if (is_granted('ROLE_ADMIN', entity)) or (is_granted('EDIT', entity))  %}
 	<ul class="record_actions">
           <li> <a href="{{ path('referencia_edit', { 'id': entity.id }) }}"> Editar </a> </li>
+{% endif %}
+    	 
 	  <li> <a href="{{ path('refs') }}"> Regresar </a> </li>
         </ul>
 {% endblock %}

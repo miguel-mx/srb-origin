@@ -75,27 +75,58 @@
     <div class="ym-column linearize-level-1">
       <div class="ym-col1">
         <div class="ym-gbox-left">
-            <h3>Menu</h3>
             <div class="nav-wrapper">
             <h6 class="ym-vlist">{{ option }}</h6>
              	<ul class="ym-vlist">
 
 		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 			{% block menuL %}   {% endblock %}
- 	     	</div>
+            
+  	</div>	   
+<div class="nav-wrapper">
+ <h6 class="ym-vlist">Importación</h6>
+	<ul class="ym-vlist">
+
+{% block menuL1 %}
+	<ul>
+    	    <li> <a href="{{ path('upload') }}"> Desde Archivo </a> </li>
+        </ul>
+	<ul>
+    	    <li> <a href="{{ path('arxiv') }}"> Desde Arxiv </a> </li>
+        </ul>
+{% endblock %}
+</div>
+	    
+	   
+
+ 	   
 		{% else %}
 		<ul>
     		<li> <a href="{{ path('login') }}">  Login </a> </li>
 		</ul>
-		<ul>
-    		<li> <a href="{{ path('busqueda') }}"> Búsqueda </a> </li>
-		</ul>
-        	</div>
+		</div>
 		{% endif %}
+<div class="nav-wrapper">
+	    <h6 class="ym-vlist">Búsqueda</h6>
+		<div class="ym-vlist">
+			{% block menuL2 %}
+
+	<ul>
+    	    <li> <a href="{{ path('busqueda') }}"> Búsqueda Avanzada </a> </li>
+	</ul>
+
+{% endblock %}
+</div>
+</div>
+<div class="box info">
 		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-			<br>Sesión iniciada como: <b>{{ app.user.username }}</b><br>
+			Sesión iniciada como: <b>{{ app.user.username }}</b><br>
 			<br><a href="{{ path('fos_user_security_logout') }}">Cerrar sesión</a>
+		{% else %}
+			Usuario: <b>guest</b><br>No has iniciado sesión</b>
 		{% endif %}
+
+</div>
 	      	</div>
 	     </div>
       <div class="ym-col3">
