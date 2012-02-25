@@ -176,3 +176,8 @@
 {% endif %}
 
 {% endblock %}
+
+
+{% block menuL2 %}
+
+{% endblock %}

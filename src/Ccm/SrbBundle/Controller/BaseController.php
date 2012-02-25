@@ -37,7 +37,7 @@ class BaseController extends Controller
       @$ref->setIssue($bibTex[$i]['number']);
       @$ref->setPages($bibTex[$i]['pages']);
       // Obtiene los autores en la variable $autorLast
-      $autores = $this->authString($bibTex);
+     // $autores = $this->authString($bibTex);
       @$ref->setIssn($bibTex[$i]['issn']);
       @$ref->setIsbn($bibTex[$i]['isbn']);
       @$ref->setMedium($bibTex[$i]['medium']);
@@ -52,9 +52,12 @@ class BaseController extends Controller
       @$ref->setInspires($bibTex[$i]['inspires']);
       @$ref->setDoi($bibTex[$i]['doi']);
       @$ref->setUrl($bibTex[$i]['url']);
-     // @$ref->setAuthor($bibTex[$i]['author']);
+      // @$ref->setAuthor($bibTex[$i]['author']);
       //$ref->setAuthors($autorLast);
-      @$ref->setAuthor($this->authString($bibTex));
+      // @$ref->setAuthor($this->authString($bibTex));
+      //@$ref->setAuthor($bibTex[$i]['author'][0]['last']);
+      @$ref->setAuthor($this->authString($bibTex[$i]['author']));
+	//print_r($bibTex[$i]['author']);
       @$ref->setAbst($bibTex[$i]['abstract']);
       @$ref->setCreated();
       @$ref->setModified();
@@ -62,6 +65,7 @@ class BaseController extends Controller
       $em = $this->getDoctrine()->getEntityManager();
       $em->persist($ref);
       $em->flush();
+
 
 	// creating the ACL
            $aclProvider = $this->get('security.acl.provider');
@@ -87,43 +91,21 @@ class BaseController extends Controller
      */
 protected function authString($bibTex)
 {
-// Obtiene los autores en la variable $autorLast
-    $authorLast = '';
-    $authorJr = '';
-    $authorVon = '';
-    $tmpFirst = '';
-    $tmpLast = '';
-    
 
-    for($i=0; $i<count($bibTex); $i++) {
-        for($j=0;$j<count($bibTex[$i]['author']);$j++){
+// Array ( [0] => Array ( [first] => [von] => [last] => Daniele Colosi [jr] => )
+//         [1] => Array ( [first] => [von] => [last] => Robert Oeckl [jr] => ) ) 
+//Array ( [0] => Array ( [first] => [von] => [last] => Robert Oeckl [jr] => ) ) 
 
-            $tmpFirst=$bibTex[$i]['author'][$j]['first'];
-
-            if(array_key_exists('von',$bibTex[$i]['author'][$j])) {
-            $authorVon=$bibTex[$i]['author'][$j]['von'];
-            }
-
-            $tmpLast=$bibTex[$i]['author'][$j]['last'];
-
-            if(array_key_exists('jr',$bibTex[$i]['author'][$j])) {
-              $authorJr=$bibTex[$i]['author'][$j]['jr'];
-            }
-
-            if(count($bibTex[$i]['author'])>1){
-                if($j==0)
-                    $authorLast=$tmpLast." ".$authorVon." ".$tmpFirst;
-                if($j>0)
-                    $authorLast=$authorLast."; ".$authorVon." ".$tmpLast." ".$tmpFirst;
-            }
-            else {
-                $authorLast=$tmpLast." ".$tmpFirst;
-            }
-        }
+	    for($i=0; $i<count($bibTex); $i++) {
+        
+		if($i==0){ $tmpLast=$bibTex[$i]['last'];}
+		if($i>0){ $tmpLast=$tmpLast."; ".$bibTex[$i]['last'];}
+	       
+	    }
+	       return $tmpLast;
     }
 
-    return $authorLast;
-}
+
 
 
  

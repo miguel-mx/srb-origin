@@ -970,4 +970,19 @@ class Referencia
     {
         return $this->modified;
     }
+
+     /**
+     * @Assert\True(message = "Es necesario que exista un Autor o un Editor")
+     */
+    public function isEditorAuthor()
+    
+    {
+	   if (($this->editor != null)|| ($this->author != null)){
+ return true;
+		}
+else
+return false;
+	
+    }
+
 }

@@ -10,18 +10,16 @@ class LibroType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-        ->add('author','text', array('required'=>true))
-        ->add('title', 'text',  array('required'=>true))
-        ->add('type', 'choice', array('choices'=>array('libro'=>'Libro')))
-        //->add('yearPub','date',array('empty_value' => array('year' => 'Year', 'month' => 'Month', 'day' => 'Day'), 'years'=> range(1950,2012)))
-	->add('yearPub','text', array('required'=>true))
-	//->add('pages', 'text', array('required' => false))
-	//->add('address', 'text', array('required' => false))
-	//->add('keywords', 'text', array('required' => false))
+        ->add('author','text', array('required'=>false,'label'=>'Author'))
+        ->add('title', 'textarea',  array('required'=>true,'label'=>'*Title'))
+        ->add('type', 'choice', array('choices'=>array('book'=>'Book')))
+        ->add('yearPub','text', array('required'=>true,'label'=>'Year'))
+	->add('keywords', 'textarea', array('required' => false))
 	->add('publisher', 'text', array('required'=>true))
 	->add('isbn', 'text', array('required' => false))
-	//->add('editor')
-	//->add('notas', 'text', array('required' => false))
+	->add('editor','text', array('required'=>false,'label'=>'Editor'))
+	->add('notas', 'textarea', array('required' => false,'label'=>'Notes'))
+	
 	
 	
 	
@@ -38,4 +36,8 @@ class LibroType extends AbstractType
     {
         return 'ccm_srbbundle_librotype';
     }
+
+   
+
+
 }

@@ -5,8 +5,8 @@
 	
  {% block col3 %}
 
-	<h1>{{ type|title }} Creation</h1> <br>
-	
+	<h1>{{ type|title }} Creation</h1>Campos con (*) son requeridos.<br><br>
+
 	<form action="{{ path('referencia_create', { 'type':  type  } )}}" method="post" {{ form_enctype(form) }}>
   	  <div class="ym-grid">  		
 		
@@ -21,7 +21,7 @@
 		{% if form.title is defined  %}	
 		  <div class="ym-g80 ym-gl">
 		    <div> {{ form_label(form.title) }} </div>
-		    <div> {{ form_widget(form.title, { 'attr': {'size': '70'} }) }} </div>
+		    <div> {{ form_widget(form.title, { 'attr': {'cols': '70','rows':'1'} }) }}  </div>
 		    <div> {{ form_errors(form.title) }}	</div> <br>
 		  </div>
 		{% endif %}
@@ -34,11 +34,36 @@
 		  </div>
 		{% endif %}
 
+   		   		
+		{% if form.editor is defined  %}
+		  <div class="ym-g80 ym-gl">
+		    <div> {{ form_label(form.editor) }} </div>
+		    <div> {{ form_widget(form.editor, { 'attr': {'size': '70'} }) }}</div>
+		    <div> {{ form_errors(form.editor) }} </div>	<br>
+		 </div>
+		{% endif %}
+		
+		{% if form.journal is defined  %}		
+		  <div class="ym-g80 ym-gl">
+		    <div> {{ form_label(form.journal) }} </div>
+		    <div> {{ form_widget(form.journal, { 'attr': {'size': '70'} }) }}</div>
+		    <div> {{ form_errors(form.journal) }} </div> <br>
+		</div>
+		{% endif %}
+
 		{% if form.yearPub is defined  %}	
 		  <div class="ym-g33 ym-gl">
 		    <div> {{ form_label(form.yearPub) }} </div>
 		    <div> {{ form_widget(form.yearPub) }} </div>
 		    <div> {{ form_errors(form.yearPub) }} </div> <br>
+		  </div>
+		{% endif %}
+
+		{% if form.yearPreprint is defined  %}	
+		  <div class="ym-g33 ym-gl">
+		    <div> {{ form_label(form.yearPreprint) }} </div>
+		    <div> {{ form_widget(form.yearPreprint) }} </div>
+		    <div> {{ form_errors(form.yearPreprint) }} </div> <br>
 		  </div>
 		{% endif %}
 
@@ -50,12 +75,12 @@
 		  </div>
 		{% endif %}
 
-		{% if form.journal is defined  %}		
+		{% if form.publisher is defined  %}
 		  <div class="ym-g33 ym-gl">
-		    <div> {{ form_label(form.journal) }} </div>
-		    <div> {{ form_widget(form.journal) }} </div>
-		    <div> {{ form_errors(form.journal) }} </div> <br>
-		</div>
+		    <div> {{ form_label(form.publisher) }} </div>
+		    <div> {{ form_widget(form.publisher) }} </div>
+		    <div> {{ form_errors(form.publisher) }} </div><br>
+		  </div>
 		{% endif %}
 
 		{% if form.issue is defined  %}
@@ -82,36 +107,6 @@
 		  </div>
 		{% endif %}
 
-   		{% if form.notas is defined  %}
-		  <div class="ym-g33 ym-gl">
-		    <div> {{ form_label(form.notas) }} </div>
-		    <div> {{ form_widget(form.notas) }}	</div>
-		    <div> {{ form_errors(form.notas) }}	</div> <br>
-		  </div>
-		{% endif %}
-
-   		{% if form.keywords is defined  %}
-	  	  <div class="ym-g33 ym-gl">
-		    <div> {{ form_label(form.keywords) }} </div>
-		    <div> {{ form_widget(form.keywords) }} </div>
-		    <div> {{ form_errors(form.keywords) }} </div> <br>
-		{% endif %}
-
-		{% if form.publisher is defined  %}
-		  <div class="ym-g33 ym-gl">
-		    <div> {{ form_label(form.publisher) }} </div>
-		    <div> {{ form_widget(form.publisher) }} </div>
-		    <div> {{ form_errors(form.publisher) }} </div><br>
-		  </div>
-		{% endif %}
-
-		{% if form.editor is defined  %}
-		  <div class="ym-g33 ym-gl">
-		    <div> {{ form_label(form.editor) }} </div>
-		    <div> {{ form_widget(form.editor) }} </div>
-		    <div> {{ form_errors(form.editor) }} </div>	<br>
-		 </div>
-		{% endif %}
 
 		{% if form.placePub is defined  %}	
 		  <div class="ym-g33 ym-gl">
@@ -166,6 +161,30 @@
 		    <div> {{ form_label(form.issn) }} </div>
 		    <div> {{ form_widget(form.issn) }} </div>
 		    <div> {{ form_errors(form.issn) }} </div> <br>
+		  </div>
+		{% endif %}
+
+		{% if form.arxiv is defined  %}
+		  <div class="ym-g33 ym-gl">
+		    <div> {{ form_label(form.arxiv) }} </div>
+		    <div> {{ form_widget(form.arxiv) }} </div>
+		    <div> {{ form_errors(form.arxiv) }} </div> <br>
+		  </div>
+		{% endif %}
+
+		{% if form.keywords is defined  %}
+	  	  <div class="ym-g80 ym-gl">
+		    <div> {{ form_label(form.keywords) }} </div>
+		    <div> {{ form_widget(form.keywords, { 'attr': {'cols': '94','rows':'1'} }) }}  </div>
+		    <div> {{ form_errors(form.keywords) }} </div> <br>
+		{% endif %}
+
+
+		{% if form.notas is defined  %}
+		  <div class="ym-g80 ym-gl">
+		    <div> {{ form_label(form.notas) }} </div>
+		    <div> {{ form_widget(form.notas, { 'attr': {'cols': '94','rows':'2'} }) }} 	</div>
+		    <div> {{ form_errors(form.notas) }}	</div> <br>
 		  </div>
 		{% endif %}
 
@@ -225,13 +244,7 @@
 		  </div>
 		{% endif %}
 
-		{% if form.arxiv is defined  %}
-		  <div class="ym-g33 ym-gl">
-		    <div> {{ form_label(form.arxiv) }} </div>
-		    <div> {{ form_widget(form.arxiv) }} </div>
-		    <div> {{ form_errors(form.arxiv) }} </div> <br>
-		  </div>
-		{% endif %}
+		
 
 		{% if form.mathscinet is defined  %}
   		  <div class="ym-g33 ym-gl">
@@ -255,7 +268,13 @@
 		    <div> {{ form_errors(form.inspires) }} </div> <br>
 		{% endif %}
 		{{ form_rest(form) }}
+		<div class="ym-g80 ym-gl">
+			<div>{{ form_errors(form) }}</div>
+		</div>
+
+        
 	</div>
+
 
 	<div class="ym-g80 ym-gl">
     	       	<button type="submit" class="ym-button ym-add">Create {{ type }}</button>
@@ -265,9 +284,6 @@
 {% endblock %}
 
 {% block menuL %}
-	<ul>
-    	  <li> <a href="{{ path('busqueda') }}"> Búsqueda </a> </li>
-	</ul>
 	<ul class="record_actions">
     	  <li><a href="{{ path('refs') }}"> Regresar </a></li>
 	</ul>

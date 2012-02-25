@@ -27,3 +27,10 @@ fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /change-password
 
+login:
+    pattern:   /login
+    defaults:  { _controller: CcmSrbBundle:Security:login }
+
+login_check:
+    pattern:   /login_check
+

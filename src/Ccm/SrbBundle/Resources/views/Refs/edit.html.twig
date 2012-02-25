@@ -18,21 +18,47 @@
 		  </div>
 		{% endif %}
           
-		{% if edit_form.title is defined  %}
-  	          <div class="ym-g66 ym-gl">
-		    <div>  {{ form_label(edit_form.title) }} </div>
-		    <div>  {{ form_widget(edit_form.title, { 'attr': {'size': '70'} }) }}	</div>
-		    <div>  {{ form_errors(edit_form.title) }} </div> <br>
+		
+		{% if edit_form.title is defined  %}	
+		  <div class="ym-g80 ym-gl">
+		    <div> {{ form_label(edit_form.title) }} </div>
+		    <div> {{ form_widget(edit_form.title, { 'attr': {'cols': '70','rows':'1'} }) }}  </div>
+		    <div> {{ form_errors(edit_form.title) }}	</div> <br>
 		  </div>
 		{% endif %}
 
      		{% if edit_form.type is defined  %}
-	  	  <div class="ym-g33 ym-gl">
+	  	  <div class="ym-g20 ym-gl">
    	            <div> {{ form_label(edit_form.type) }} </div>
 		    <div> {{ form_widget(edit_form.type, { 'attr': {'width': '5'} }) }}	</div>
 		    <div> {{ form_errors(edit_form.type) }} </div> <br>
 	          </div>
       		{% endif %}
+
+		{% if edit_form.editor is defined  %}	
+		  <div class="ym-g80 ym-gl">
+	   	    <div> {{ form_label(edit_form.editor) }} </div>
+		    <div> {{ form_widget(edit_form.editor, { 'attr': {'size': '70'} }) }}  </div>
+		    <div> {{ form_errors(edit_form.editor) }} </div> <br>
+		  </div>
+		{% endif %}
+
+		{% if edit_form.journal is defined  %}
+		  <div class="ym-g80 ym-gl">
+	            <div> {{ form_label(edit_form.journal) }} </div>
+		    <div> {{ form_widget(edit_form.journal, { 'attr': {'size': '70'} }) }} </div>
+		    <div> {{ form_errors(edit_form.journal) }} </div> <br>
+		   </div>
+		{% endif %}
+
+		
+		{% if edit_form.publication is defined  %}	
+		  <div class="ym-g33 ym-gl">
+	            <div> {{ form_label(edit_form.publication) }} </div>
+		    <div> {{ form_widget(edit_form.publication) }} </div>
+	   	    <div> {{ form_errors(edit_form.publication) }} </div> <br>
+	    	  </div>
+		{% endif %}
 
 		{% if edit_form.yearPub is defined  %}	
 		  <div class="ym-g33 ym-gl">
@@ -42,21 +68,22 @@
 		  </div>
 		{% endif %}
 
-		{% if edit_form.publication is defined  %}	
+		{% if edit_form.yearPreprint is defined  %}	
 		  <div class="ym-g33 ym-gl">
-	            <div> {{ form_label(edit_form.publication) }} </div>
-		    <div> {{ form_widget(edit_form.publication) }} </div>
-	   	    <div> {{ form_errors(edit_form.publication) }} </div> <br>
-	    	  </div>
+		    <div> {{ form_label(edit_form.yearPreprint) }} </div>
+		    <div> {{ form_widget(edit_form.yearPreprint) }} </div>
+		    <div> {{ form_errors(edit_form.yearPreprint) }} </div> <br>
+		  </div>
 		{% endif %}
 
-		{% if edit_form.journal is defined  %}
+		{% if edit_form.publisher is defined  %}	
 		  <div class="ym-g33 ym-gl">
-	            <div> {{ form_label(edit_form.journal) }} </div>
-		    <div> {{ form_widget(edit_form.journal) }} </div>
-		    <div> {{ form_errors(edit_form.journal) }} </div> <br>
-		   </div>
+		    <div> {{ form_label(edit_form.publisher) }} </div>
+		    <div> {{ form_widget(edit_form.publisher) }} </div>
+		    <div> {{ form_errors(edit_form.publisher) }} </div>	<br>
+		  </div>
 		{% endif %}
+		
 
 		{% if edit_form.issue is defined  %}
 		  <div class="ym-g33 ym-gl">
@@ -79,39 +106,6 @@
 	            <div> {{ form_label(edit_form.volume) }} </div>
 		    <div> {{ form_widget(edit_form.volume) }} </div>
 		    <div> {{ form_errors(edit_form.volume) }} </div> <br>
-	
-		  </div>
-		{% endif %}
-
-   		{% if edit_form.notas is defined  %}
-		  <div class="ym-g33 ym-gl">
-		    <div> {{ form_label(edit_form.notas) }} </div>
-		    <div> {{ form_widget(edit_form.notas) }} </div>
-		    <div> {{ form_errors(edit_form.notas) }} </div> <br>
-		  </div>
-		{% endif %}
-
-   		{% if edit_form.keywords is defined  %}
-		  <div class="ym-g33 ym-gl">
-		    <div> {{ form_label(edit_form.keywords) }} </div>
-		    <div> {{ form_widget(edit_form.keywords) }} </div>
-		    <div> {{ form_errors(edit_form.keywords) }} </div> <br>
-		  </div>
-		{% endif %}
-
-		{% if edit_form.publisher is defined  %}	
-		  <div class="ym-g33 ym-gl">
-		    <div> {{ form_label(edit_form.publisher) }} </div>
-		    <div> {{ form_widget(edit_form.publisher) }} </div>
-		    <div> {{ form_errors(edit_form.publisher) }} </div>	<br>
-		  </div>
-		{% endif %}
-		
-		{% if edit_form.editor is defined  %}	
-		  <div class="ym-g33 ym-gl">
-	   	    <div> {{ form_label(edit_form.editor) }} </div>
-		    <div> {{ form_widget(edit_form.editor) }} </div>
-		    <div> {{ form_errors(edit_form.editor) }} </div> <br>
 		  </div>
 		{% endif %}
 
@@ -157,7 +151,6 @@
 		  </div>
 		{% endif %}
 
-
 		{% if edit_form.address is defined  %}	
 		  <div class="ym-g33 ym-gl">
 	 	    <div> {{ form_label(edit_form.address) }} </div>
@@ -171,6 +164,30 @@
 		    <div> {{ form_label(edit_form.issn) }} </div>
 		    <div> {{ form_widget(edit_form.issn) }} </div>
 		    <div> {{ form_errors(edit_form.issn) }} </div> <br>
+		  </div>
+		{% endif %}
+
+		{% if edit_form.arxiv is defined  %}
+		  <div class="ym-g33 ym-gl">
+		    <div> {{ form_label(edit_form.arxiv) }} </div>
+		    <div> {{ form_widget(edit_form.arxiv) }} </div>
+		    <div> {{ form_errors(edit_form.arxiv) }}</div> <br>
+		  </div>
+		{% endif %}
+
+		{% if edit_form.keywords is defined  %}
+		  <div class="ym-g80 ym-gl">
+		    <div> {{ form_label(edit_form.keywords) }} </div>
+		    <div> {{ form_widget(edit_form.keywords, { 'attr': {'cols': '94','rows':'1'} }) }} </div>
+		    <div> {{ form_errors(edit_form.keywords) }} </div> <br>
+		  </div>
+		{% endif %}
+
+		{% if edit_form.notas is defined  %}
+		  <div class="ym-g80 ym-gl">
+		    <div> {{ form_label(edit_form.notas) }} </div>
+		    <div> {{ form_widget(edit_form.notas, { 'attr': {'cols': '94','rows':'2'} }) }} </div>
+		    <div> {{ form_errors(edit_form.notas) }} </div> <br>
 		  </div>
 		{% endif %}
 
@@ -215,13 +232,7 @@
 		  </div>
 		{% endif %}
 
-		{% if edit_form.arxiv is defined  %}
-		  <div class="ym-g33 ym-gl">
-		    <div> {{ form_label(edit_form.arxiv) }} </div>
-		    <div> {{ form_widget(edit_form.arxiv) }} </div>
-		    <div> {{ form_errors(edit_form.arxiv) }}</div> <br>
-		  </div>
-		{% endif %}
+		
 
 		{% if edit_form.mathscinet is defined  %}
 		  <div class="ym-g33 ym-gl">
@@ -262,20 +273,26 @@
 		    <div> {{ form_errors(edit_form.url) }} </div> <br>
 		  </div>
 		{% endif %}
-	
-		{{ form_rest(edit_form) }}
- 
-		<div class="ym-g25 ym-gl">
+			{{ form_rest(edit_form) }}
+
+		<div class="ym-g80 ym-gl">
+			<div>{{ form_errors(edit_form) }}</div>
+		</div>
+
+ 		<br>
+		<div class="ym-g80 ym-gl">
    	          <button type="submit" class="ym-button ym-save">Guardar</button>
     	 	</div>
-	</form>
 
-	<div class="ym-g25 ym-gl">
+		
+	</div>
+	</form>
+<div class="ym-g80 ym-gl">
         	<form action="{{ path('referencia_delete', { 'id': entity.id }) }}" method="post">
             	  {{ form_widget(delete_form) }}
             	  <button type="submit" class="ym-button ym-delete">Eliminar</button>
         	</form>
-	</div>
+	
   </div>
 {% endblock %}
 

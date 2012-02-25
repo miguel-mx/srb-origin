@@ -10,14 +10,15 @@ class EditorType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-	->add('author','text')
-        ->add('title', 'text')
-        ->add('type', 'choice', array('choices'=>array('editor'=>'Proceedings')))
-	//->add('yearPub','date',array('empty_value' => array('year' => 'Year', 'month' => 'Month', 'day' => 'Day'), 'years'=> range(1950,2012)))
-	->add('yearPub','text')
-	->add('pages', 'text', array('required' => false))
-	->add('publisher')
-	->add('placePub')
+	->add('editor','text', array('required'=>true,'label'=>'*Editor'))
+        ->add('title', 'textarea',array('required'=>true, 'label'=>'*Title'))
+        ->add('type', 'choice', array('choices'=>array('proceedings'=>'Proceedings')))
+	->add('yearPub','number', array('required'=>true,'label'=>'*Year'))
+	->add('publisher','text', array('required'=>true,'label'=>'*Publisher'))
+	->add('volume', 'text', array('required' => false,'label'=>'Volume'))
+	->add('address', 'text', array('required'=>false, 'label'=>'Address'))
+	->add('notas', 'textarea', array('required'=>false, 'label'=>'Notes'))
+	->add('keywords', 'textarea', array('required'=>false, 'label'=>'Keywords'))
 	
         ;
     }

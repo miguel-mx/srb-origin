@@ -25,16 +25,19 @@
 
 {% block menuL %}
 
-<ul>
-    <li>
-        <a href="{{ path('busqueda') }}">
-           Búsqueda
-        </a>
-    </li>
-</ul>
+
 	<ul class="record_actions">
     	<li><a href="{{ path('refs') }}"> Regresar </a></li>
 	</ul>
 {% endblock %}
+
+{% block menuL1 %}
+
+
+	<ul>
+    	    <li> <a href="{{ path('arxiv') }}"> Desde Arxiv </a> </li>
+        </ul>
+{% endblock %}
+
 
 

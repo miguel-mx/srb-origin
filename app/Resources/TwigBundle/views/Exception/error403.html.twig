@@ -1,21 +1,21 @@
 {% extends 'CcmSrbBundle::layout.html.twig' %}
-
 {% block menu %} {{ knp_menu_render('CcmSrbBundle:Builder:mainMenu') }} {% endblock %}
 
 {% block title %} An Error Occurred: {{ status_text }} {% endblock %}
 
-{% set option = status_text %}
+{% set option = 'Privilegios insuficientes' %}
+
 
 {% block col3 %}
 <br>
-<h1>The server returned a "{{ status_code }} {{ status_text }}".</h1>
-<br>
+<h1>No tienes permiso para editar esta publicación "{{ status_code }} {{ status_text }}".</h1><br>
+
+
 <div>
-Something is broken. <br> Sorry for any inconvenience caused.
+Sólo el usuario que ha creado esta referencia puede editar la información de la misma
 </div>
 
 {% endblock %}
-
 
 {% block menuL %}
 	<ul>

@@ -6,9 +6,16 @@
 	
 {% block col3 %}
 
-	<h1>Referencias</h1>
-	Número de referencias encontradas en el archivo {{ numrefs }}<br><br>
+	<h1>Referencias</h1><br>
+	
+
+	{% if numrefs == 0 %}
+	No fue posible importar ninguna referencia, revisar que el archivo tenga un formato de BibTex e intentarlo nuevamente.<br><br>
+	{% endif %}
+ 	{% if numrefs > 0 %}
 	Los siguientes datos han sido guardados: <br>
+	Número de referencias encontradas en el archivo: {{ numrefs }}<br><br>
+	   {% endif %}
 
 	{% for ref in bibTex %}
 
