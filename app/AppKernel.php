@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new MakerLabs\PagerBundle\MakerLabsPagerBundle(),
             new FOQ\ElasticaBundle\FOQElasticaBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
