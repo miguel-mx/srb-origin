@@ -1,0 +1,48 @@
+{% extends 'CcmSrbBundle::layout.html.twig' %}
+
+{% block menu %} {{ knp_menu_render('CcmSrbBundle:Builder:mainMenu') }} {% endblock %}
+
+{% set option = 'Autores' %}
+
+{% block col3 %}
+<h1>Lista de Autores</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Alias</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('author_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td><b>{{ entity.name }}</b></td>
+            <td>{{ entity.alias }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('author_show', { 'id': entity.id }) }}">Ver</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('author_edit', { 'id': entity.id }) }}">Editar</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('author_new') }}">
+            Agregar un nuevo autor
+        </a>
+    </li>
+</ul>
+
+{% endblock %}

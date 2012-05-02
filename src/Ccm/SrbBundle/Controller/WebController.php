@@ -121,7 +121,7 @@ class WebController extends BaseController
 
         }
 
-        $addarray[$i]['entryType'] = 'Article';
+        $addarray[$i]['entryType'] = 'Unpublished';
 
         $temp = explode('/abs/',$entry->get_id());
         $addarray[$i]['arxiv'] = $temp[1];

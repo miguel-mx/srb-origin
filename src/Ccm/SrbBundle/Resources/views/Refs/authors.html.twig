@@ -1,0 +1,35 @@
+{% extends 'CcmSrbBundle::layout.html.twig' %}
+
+{% block menu %} {{ knp_menu_render('CcmSrbBundle:Builder:mainMenu') }} {% endblock %}
+
+{% set option = 'Asociación de autores' %}
+
+{% block col3 %}
+
+<h1><ins>Asociación de Autores</ins></h1>
+<br>
+<form action="{{ path('article_authors', { 'id': entity.id }) }}" method="post" {{ form_enctype(form) }}>
+
+{{ form_errors(form) }}
+<div class="ym-grid">
+<div class="ym-gbox"><b>Publicación:</b> {{ entity.type }} </div>
+<div class="ym-gbox"><b>Título:</b> {{ entity.title }} </div>
+<div class="ym-gbox"><b>Autores BibTex:</b> {{ entity.author }} </div>
+</div>
+
+<br>
+
+<div>
+<b>{{ form_label(form.authors) }}:</b><br><br>
+{{ form_errors(form.authors) }}
+{{ form_widget(form.authors, { 'attr': {'size': '10', 'style':'width: 20em'} }) }}
+</div>
+
+{{ form_rest(form) }}
+
+<p>
+        <button class="ym-button" type="submit">Guardar</button>
+    </p>
+</form>
+
+{% endblock %}

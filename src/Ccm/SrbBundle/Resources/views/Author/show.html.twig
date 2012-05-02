@@ -1,0 +1,43 @@
+{% extends 'CcmSrbBundle::layout.html.twig' %}
+
+{% block menu %} {{ knp_menu_render('CcmSrbBundle:Builder:mainMenu') }} {% endblock %}
+
+{% set option = 'Autor' %}
+
+{% block col3 %}
+
+<div>
+<h1>{{ entity.name }}</h1>
+<br><b>Id:</b> {{ entity.id }}
+<br><br>
+<b>Aliases:</b> {{ entity.alias }}
+
+</div><br>
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('author_references', { 'id': entity.id }) }}">
+            Ver lista de publicaciones
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('author') }}">
+            Regresar a la lista de autores
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('author_edit', { 'id': entity.id }) }}">
+            Editar el registro
+        </a>
+    </li>
+</ul>
+
+{# ¿Se tienen privilegios para borrar el autor? #}
+
+<br>
+        <form action="{{ path('author_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button class="ym-button" type="submit">Borrar el autor</button>
+        </form>
+
+
+{% endblock %}
