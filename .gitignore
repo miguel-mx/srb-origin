@@ -3,7 +3,6 @@ app/bootstrap*
 
 # Symfony directories
 vendor/*
->>>>>>> origin/master
 app/logs/*
 app/cache/*
 web/uploads/*

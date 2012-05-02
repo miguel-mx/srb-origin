@@ -15,25 +15,25 @@
 	  {{ form_errors(form) }}
 
 	  <div class="ym-g80 ym-gl">
-	    <div> {{ form_label(form.Type) }} </div>
+	    <div> Típo de publicación </div>
 	    <div> {{ form_errors(form.Type) }} </div>
 	    <div style="padding:5px;">  {{ form_widget(form.Type, { 'attr': {'size': '30'} }) }} </div>
 	  </div>
-
+<br><br>
 	  <div class="ym-g80 ym-gl">
-	    <div> {{ form_label(form.Author) }} </div>
+	    <div> Nombre de autor </div>
 	    <div> {{ form_errors(form.Author) }} </div>
 	    <div style="padding:5px;"> {{ form_widget(form.Author, { 'attr': {'size': '30'} }) }} </div>
 	  </div>
 
 	  <div class="ym-g25 ym-gl">
-	    <div> {{ form_label(form.yearStart) }} </div>
+	    <div> Año de inicio </div>
 	    <div> {{ form_errors(form.yearStart) }} </div>
 	    <div style="padding:5px;"> {{ form_widget(form.yearStart) }} </div>
 	  </div>
 
 	  <div class="ym-g25 ym-gl">	
-	    <div> {{ form_label(form.yearEnd) }} </div>
+	    <div> Año final </div>
 	    <div> {{ form_errors(form.yearEnd) }} </div>
 	    <div style="padding:5px;">  {{ form_widget(form.yearEnd) }} </div>
 	 </div>

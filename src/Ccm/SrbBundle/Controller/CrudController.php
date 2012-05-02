@@ -59,10 +59,13 @@ class CrudController extends Controller
             throw $this->createNotFoundException('Unable to find Registro entity.');
         }
 
+        $authors = $entity->getAuthors();
+
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
             'entity'      => $entity,
+            'authors'     => $authors,
             'delete_form' => $deleteForm->createView(),        );
     }
 
@@ -85,7 +88,7 @@ class CrudController extends Controller
         
         return array(
             'entity' => $entity,
-	     'type'=> $type,
+            'type'=> $type,
             'form'   => $form->createView()
         );
 	
@@ -270,6 +273,43 @@ class CrudController extends Controller
         }
 
         return $this->redirect($this->generateUrl('refs'));
+    }
+
+   /**
+    * Asocia autores a un artículo
+    *
+    * @Route("/{id}/authors", name="article_authors")
+    */
+    public function addAuthorsAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $entity = $em->getRepository('CcmSrbBundle:Referencia')->find($id);
+
+        if (!$entity) {
+          throw $this->createNotFoundException('Unable to find Registro entity.');
+        }
+
+        // Crea la forma de asociación
+        $form = $this->createFormBuilder($entity)
+            ->add('authors', null, array('label'  => 'Autor(es) Institucionales',))
+            ->getForm();
+
+        $request = $this->getRequest();
+
+        if ($request->getMethod() == 'POST') {
+          $form->bindRequest($request);
+
+          // ¿Se valida la forma?
+
+            $em->persist($entity);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('referencia_show', array('id' => $id)));
+        }
+
+        return $this->render('CcmSrbBundle:Refs:authors.html.twig', array(
+                             'form' => $form->createView(), 'entity' => $entity,
+                                                                          ));
     }
 
     private function createDeleteForm($id)

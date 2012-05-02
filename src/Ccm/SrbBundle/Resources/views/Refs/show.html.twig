@@ -18,8 +18,8 @@
 	  <div class="ym-g80 ym-gl">
 	    <div style="padding:3px;"> <b>Author: </b> {% for key in entity.author|explode %}<a href="{{key}}"> {{key|trim}}</a>   {% endfor %} </div>
 
-    
-	  </div>
+
+     </div>
 	{% endif %}
 	   
 	{% if entity.title != null %}
@@ -214,6 +214,20 @@
 	  </div>
 	{% endif %}
 
+    <div class="ym-grid">
+    <div class="box info">
+    
+    <b> Autores asociados:</b>
+    <ul id="authors">
+        {% for item in authors %}
+            <li><a href="{{ path('author_show', { 'id': item.id }) }}">{{ item.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <br>
+    <a href="{{ path('article_authors', {'id': entity.id }) }}">Asociar autor(es) a éste artículo...</a>
+    </div>
+    </div>
+
 	{% if (is_granted('ROLE_ADMIN', entity)) or (is_granted('EDIT', entity))  %}
 
 	<div class="ym-g80 ym-gl">
@@ -229,11 +243,11 @@
 {% block menuL %}
 
 {% if (is_granted('ROLE_ADMIN', entity)) or (is_granted('EDIT', entity))  %}
-	<ul class="record_actions">
+    <ul class="record_actions">
           <li> <a href="{{ path('referencia_edit', { 'id': entity.id }) }}"> Editar </a> </li>
 {% endif %}
-    	 
-	  <li> <a href="{{ path('refs') }}"> Regresar </a> </li>
+
+    <li> <a href="{{ path('refs') }}"> Regresar </a> </li>
         </ul>
 {% endblock %}
 

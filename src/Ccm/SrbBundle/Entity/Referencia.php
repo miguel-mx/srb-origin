@@ -23,6 +23,12 @@ class Referencia
     */
      private $author;
 
+    /**
+     * @var authors
+     * @ORM\ManyToMany(targetEntity="Author", inversedBy="publications")
+     */
+     private $authors;
+
      /**
      * @ORM\Column(type="string", length=250)
      * @Assert\NotBlank()
@@ -196,6 +202,48 @@ class Referencia
      */
     private $modified;
 
+
+        //--------------------------------------------------------------------------------
+        // Definiciones de métodos para la relación Referencia - Author
+
+       /**
+        * Constructor de la clase, inicializa el arreglo de authors
+        *
+        *
+        */
+        public function __construct()
+        {
+            $this->authors = new \Doctrine\Common\Collections\ArrayCollection();
+        }
+
+       /**
+        * Add Author
+        *
+        * @param Ccm\TestBundle\Entity\Author $author
+        */
+        public function addAuthor(\Ccm\TestBundle\Entity\Author $author)
+        {
+            $author->addPublication($this); // synchronously updating inverse side
+            $this->authors[] = $author;
+        }
+
+       /**
+        * Get authors
+        *
+        * @return Doctrine\Common\Collections\Collection
+        */
+        public function getAuthors()
+        {
+          return $this->authors;
+        }
+
+
+        public function __toString()
+        {
+          return $this->title;
+        }
+
+        //--------------------------------------------------------------------------------
 
         /**
          * @ORM\PrePersist
