@@ -35,6 +35,7 @@ class ArticuloType extends AbstractType
 	->add('url', 'text', array('required' => false))
 	->add('doi', 'text', array('required' => false))
 	
+
 	
         ;
     }

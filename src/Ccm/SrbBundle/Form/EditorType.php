@@ -13,7 +13,7 @@ class EditorType extends AbstractType
 	->add('editor','text', array('required'=>true,'label'=>'*Editor'))
         ->add('title', 'textarea',array('required'=>true, 'label'=>'*Title'))
         ->add('type', 'choice', array('choices'=>array('proceedings'=>'Proceedings')))
-	->add('yearPub','number', array('required'=>true,'label'=>'*Year'))
+	->add('yearPub', 'number', array('required'=>true,'label'=>'*Year'))
 	->add('publisher','text', array('required'=>true,'label'=>'*Publisher'))
 	->add('volume', 'text', array('required' => false,'label'=>'Volume'))
 	->add('address', 'text', array('required'=>false, 'label'=>'Address'))

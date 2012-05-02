@@ -15,7 +15,9 @@ security:
                 provider: fos_userbundle
                 login_path: /login
                 default_target_path: /refs
-            logout:  true     
+            logout:       
+                path: /logout
+                target: /refs
             anonymous:    true
 
     access_control:
