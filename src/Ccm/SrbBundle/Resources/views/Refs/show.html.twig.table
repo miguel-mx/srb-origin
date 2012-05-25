@@ -7,7 +7,7 @@
 {% set option = 'Detalles de la publicación' %}
 {% block col3 %}
 
-
+{{ authors }}
 <h1>{{entity.type|title}}</h1>
 
 <table class="record_properties">

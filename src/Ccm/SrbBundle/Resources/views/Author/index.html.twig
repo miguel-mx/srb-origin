@@ -2,10 +2,13 @@
 
 {% block menu %} {{ knp_menu_render('CcmSrbBundle:Builder:mainMenu') }} {% endblock %}
 
-{% set option = 'Autores' %}
+{% set option = 'Catálogo de Autores' %}
 
 {% block col3 %}
-<h1>Lista de Autores</h1>
+<h1>Catálogo de Autores</h1>
+
+     <div class="ym-grid">
+     <div class="ym-g60 ym-gl">
 
 <table class="records_list">
     <thead>
@@ -36,11 +39,15 @@
     {% endfor %}
     </tbody>
 </table>
+</div>
+</div>
+{% endblock %}
+{% block menuL %}
 
 <ul>
     <li>
         <a href="{{ path('author_new') }}">
-            Agregar un nuevo autor
+            Nuevo Autor
         </a>
     </li>
 </ul>

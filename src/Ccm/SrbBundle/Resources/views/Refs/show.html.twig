@@ -6,6 +6,7 @@
 
 {% block col3 %}
 
+
 <h1>{{entity.type|title}}</h1> <br>
 
 	{% if entity.id != null %}
@@ -214,27 +215,41 @@
 	  </div>
 	{% endif %}
 
-    <div class="ym-grid">
+
+<div class="ym-grid">
+  <div class="ym-g66 ym-gr">
     <div class="box info">
-    
-    <b> Autores asociados:</b>
+
+{% if authors|length == 0  %}	
+
+   <b>Esta referencia no está asociada con algún autor institucional</b> 
+
+{% else %}
+
+   
+   <b> Autores Institucionales asociados:</b>
+
     <ul id="authors">
         {% for item in authors %}
             <li><a href="{{ path('author_show', { 'id': item.id }) }}">{{ item.name }}</a></li>
         {% endfor %}
     </ul>
+
+{% endif %}
+
+{% if (is_granted('ROLE_ADMIN', entity)) or (is_granted('EDIT', entity))  %}
+
     <br>
     <a href="{{ path('article_authors', {'id': entity.id }) }}">Asociar autor(es) a éste artículo...</a>
-    </div>
-    </div>
+  </div>
+</div>
 
-	{% if (is_granted('ROLE_ADMIN', entity)) or (is_granted('EDIT', entity))  %}
-
-	<div class="ym-g80 ym-gl">
+     <div class="ym-g33 ym-gl">
         	<form action="{{ path('referencia_edit', { 'id': entity.id }) }}" method="post">
             	   <button type="submit" class="ym-button ym-edit">Editar</button>
         	</form>
 	</div>
+    </div>
 
 {% endif %}
 
@@ -250,6 +265,5 @@
     <li> <a href="{{ path('refs') }}"> Regresar </a> </li>
         </ul>
 {% endblock %}
-
 
 

@@ -28,12 +28,29 @@
 		{% endif %}
 
      		{% if edit_form.type is defined  %}
-	  	  <div class="ym-g20 ym-gl">
+	  	  <div class="ym-g33 ym-gl">
    	            <div> {{ form_label(edit_form.type) }} </div>
 		    <div> {{ form_widget(edit_form.type, { 'attr': {'width': '5'} }) }}	</div>
 		    <div> {{ form_errors(edit_form.type) }} </div> <br>
-	          </div>
+		 </div>
+		
+		{% if entity.type == 'unpublished'  %}
+		 <div class="ym-g66 ym-gl">
+	  	 <div class="box info">
+   	            Para cambiar el tipo de Unpublished a cualquier otro, primero cambiar el tipo y dar clic en el botón de guardar, una vez cambiado el tipo ya no podrá cambiarse de nuevo.
+		</div><br>
+		</div><br>
+		
       		{% endif %}
+
+	          
+
+		
+      		{% endif %}
+
+     		
+
+
 
 		{% if edit_form.editor is defined  %}	
 		  <div class="ym-g80 ym-gl">

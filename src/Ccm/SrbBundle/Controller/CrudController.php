@@ -10,6 +10,7 @@ use Ccm\SrbBundle\Entity\Referencia;
 use Ccm\SrbBundle\Form\ReferenciaType;
 use Ccm\SrbBundle\Form\ArticuloType;
 use Ccm\SrbBundle\Form\PreprintType;
+use Ccm\SrbBundle\Form\EditPreprintType;
 use Ccm\SrbBundle\Form\MemoriaType;
 use Ccm\SrbBundle\Form\EdicionType;
 use Ccm\SrbBundle\Form\LibroType;
@@ -177,7 +178,7 @@ class CrudController extends Controller
         }
  
 	if (strcasecmp($entity->getType(), 'article') == 0) {		$editForm = $this->createForm(new ArticuloType(), $entity);}
- 	if (strcasecmp($entity->getType(), 'unpublished') == 0) {	$editForm = $this->createForm(new PreprintType(), $entity);}
+ 	if (strcasecmp($entity->getType(), 'unpublished') == 0) {	$editForm = $this->createForm(new EditPreprintType(), $entity);}
 	if (strcasecmp($entity->getType(), 'inproceedings') == 0) {	$editForm = $this->createForm(new MemoriaType(), $entity);}
 	if (strcasecmp($entity->getType(), 'book') == 0) {		$editForm = $this->createForm(new LibroType(), $entity);}
 //	if (strcasecmp($entity->getType(), 'edicion') == 0) {		$editForm = $this->createForm(new EdcionType(), $entity);}
@@ -275,7 +276,15 @@ class CrudController extends Controller
         return $this->redirect($this->generateUrl('refs'));
     }
 
-   /**
+    private function createDeleteForm($id)
+    {
+        return $this->createFormBuilder(array('id' => $id))
+            ->add('id', 'hidden')
+            ->getForm()
+        ;
+    }
+
+  /**
     * Asocia autores a un artículo
     *
     * @Route("/{id}/authors", name="article_authors")
@@ -284,39 +293,67 @@ class CrudController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
         $entity = $em->getRepository('CcmSrbBundle:Referencia')->find($id);
-
         if (!$entity) {
           throw $this->createNotFoundException('Unable to find Registro entity.');
         }
 
         // Crea la forma de asociación
-        $form = $this->createFormBuilder($entity)
-            ->add('authors', null, array('label'  => 'Autor(es) Institucionales',))
-            ->getForm();
+          $form = $this->createFormBuilder($entity)
+              ->add('authors', null, array('label'  => 'Autor(es) Institucionales','required'=>false))
+              ->getForm();
 
+	
         $request = $this->getRequest();
 
-        if ($request->getMethod() == 'POST') {
-          $form->bindRequest($request);
+ 
+         if ($request->getMethod() == 'POST') {
 
-          // ¿Se valida la forma?
+           $form->bindRequest($request);
+           if ($form->isValid()) {
 
-            $em->persist($entity);
-            $em->flush();
+             $aclProvider = $this->container->get('security.acl.provider');
+	     $objectIdentity = ObjectIdentity::fromDomainObject($entity); 
+	     $authors=$entity->getAuthors(); //Obtiene los autores que se asocian a la referencia
+	     $acl = $aclProvider->findAcl($objectIdentity);//Verifica si existe un registro en ACL de la referencia
+             $aces = $acl->getObjectAces();//Obtiene cada uno de los ACEs relacionados con ACL
+             $j=0; 	
+	    //Se crea un arreglo con los autores existentes
+             foreach($aces as $ace){
+	       $useraces[$j] = $ace->getSecurityIdentity()->getUsername();
+               $j++;
+             }	
+	    //Si no hay autores que se vayan a relacionar con la referencia, se hace redirect a referencia_show
+	       if (count($authors)==0){
+                 $em->persist($entity);
+                 $em->flush();
+                 return $this->redirect($this->generateUrl('referencia_show', array('id' => $id)));
+	       }
+	    //Si existen autores que se vayan a relacionar con la referencia, se valida que no existan como ACE
+	       else{
+                 foreach($authors as $author){
+                   $user=$author->getUser();
+ 	           if(in_array($user,$useraces)){
+	             $aclProvider->updateAcl($acl);
+                   }
+	    //Si no existe un ACE asociado, se crea un nuevo registro ACE usando el autor como usuario y la referencia asociada a la ACL
+ 	           else{
+	             $securityIdentity = new UserSecurityIdentity($user, 'Ccm\\SrbBundle\\Entity\\User');
+                     $acl->insertObjectAce($securityIdentity, MaskBuilder::MASK_OWNER);
+	             $aclProvider->updateAcl($acl);	
+	           }
+                $em->persist($entity);
+                $em->flush();
+	       
+                }   
+                return $this->redirect($this->generateUrl('referencia_show', array('id' => $id)));
+              }
+            }	
 
-            return $this->redirect($this->generateUrl('referencia_show', array('id' => $id)));
-        }
-
+         }
         return $this->render('CcmSrbBundle:Refs:authors.html.twig', array(
                              'form' => $form->createView(), 'entity' => $entity,
                                                                           ));
-    }
+   }
 
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder(array('id' => $id))
-            ->add('id', 'hidden')
-            ->getForm()
-        ;
-    }
 }
+

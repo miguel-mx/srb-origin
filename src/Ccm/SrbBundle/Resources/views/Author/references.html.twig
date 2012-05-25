@@ -2,7 +2,7 @@
 
 {% block menu %} {{ knp_menu_render('CcmSrbBundle:Builder:mainMenu') }} {% endblock %}
 
-{% set option = 'Referencias del Author' %}
+{% set option = 'Referencias de ' ~ name %}
 
 {% block col3 %}
 <h1>Referencias de {{ name }}</h1><br><br>
@@ -17,5 +17,23 @@
 {{ item.journal }}, {{ item.yearPub }}, {{ item.pages }}<br>
 {% for key in item.author|explode %}<a href="{{key}}"> {{key|trim }}</a>;  {% endfor %}<br><br>
 {% endfor %}
+
+{% endblock %}
+
+{% block menuL %}
+
+<ul class="record_actions">
+         
+ 
+    <li>
+        <a href="{{ path('author') }}">
+           Lista de autores
+        </a>
+    </li>
+
+
+{# ¿Se tienen privilegios para borrar el autor? #}
+
+
 
 {% endblock %}

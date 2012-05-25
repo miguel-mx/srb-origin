@@ -6,7 +6,7 @@
 
 {% block col3 %}
 
-<h1>Agregar Autor</h1>
+<h1>Nuevo Autor</h1>
 
 <form action="{{ path('author_create') }}" method="post" {{ form_enctype(form) }}>
 
@@ -18,26 +18,28 @@
 <div>
 <b>{{ form_label(form.name) }}:</b><br>
 {{ form_errors(form.name) }}
-{{ form_widget(form.name) }}
+{{ form_widget(form.name, { 'attr': {'size': '35'} }) }}
 </div>
 <br><br>
 <div>
 <b>{{ form_label(form.alias) }}:</b><br>
 {{ form_errors(form.alias) }}
-{{ form_widget(form.alias) }}
+{{ form_widget(form.alias, { 'attr': {'cols': '35','rows':'2'} }) }}
 </div>
 
 {{ form_rest(form) }}
 
     <p>
-        <button class="ym-button" type="submit">Aceptar</button>
+        <button class="ym-button ym-add" type="submit">Guardar</button>
     </p>
 </form>
+{% endblock %}
+{% block menuL %}
 
 <ul class="record_actions">
     <li>
         <a href="{{ path('author') }}">
-            Regresar a la lista de autores
+            Lista de autores
         </a>
     </li>
 </ul>

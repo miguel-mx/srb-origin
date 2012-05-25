@@ -6,7 +6,7 @@
 
 {% block col3 %}
 
-<h1>Editar</h1>
+<h1>Editar Información del Autor</h1>
 
 <form action="{{ path('author_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
 
@@ -17,34 +17,60 @@
 <div>
 <b>{{ form_label(edit_form.name) }}:</b><br>
 {{ form_errors(edit_form.name) }}
-{{ form_widget(edit_form.name) }}
+{{ form_widget(edit_form.name, { 'attr': {'size': '35'} }) }}
 </div>
 <br>
 <div>
 <b>{{ form_label(edit_form.alias) }}:</b><br>
 {{ form_errors(edit_form.alias) }}
-{{ form_widget(edit_form.alias) }}
+{{ form_widget(edit_form.alias, { 'attr': {'cols': '35','rows':'2'} }) }}
+</div>
+
+<div>
+<b>{{ form_label(edit_form.user) }}:</b><br><br>
+{{ form_errors(edit_form.user) }}
+{{ form_widget(edit_form.user, { 'attr': {'size': '10', 'style':'width: 20em'} }) }}
 </div>
 
 {{ form_rest(edit_form) }}
 
     <p>
-        <button class="ym-button" type="submit">Guardar</button>
+        <button class="ym-button ym-save" type="submit">Guardar</button>
     </p>
 </form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('author') }}">
-            Regresar a la lista de autores
-        </a>
-    </li>
-    <li>
+
+    
+    
         <form action="{{ path('author_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
-            <button class="ym-button" type="submit">Borrar</button>
+            <button class="ym-button ym-delete" type="submit">Eliminar </button>
         </form>
-    </li>
-</ul>
+    
+
 
 {% endblock %}
+
+{% block menuL %}
+
+<ul class="record_actions">
+         
+        <li>
+        <a href="{{ path('author_references', { 'id': entity.id }) }}">
+            Publicaciones del autor
+        </a>
+    </li>
+    
+    <li>
+        <a href="{{ path('author') }}">
+            Lista de autores
+        </a>
+    </li>
+
+
+{# ¿Se tienen privilegios para borrar el autor? #}
+
+
+
+{% endblock %}
+

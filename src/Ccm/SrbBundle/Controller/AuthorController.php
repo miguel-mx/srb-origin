@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Ccm\SrbBundle\Entity\Author;
 use Ccm\SrbBundle\Form\AuthorType;
-
+use JMS\SecurityExtraBundle\Annotation\Secure;
 /**
  * Author controller.
  *
@@ -20,6 +20,7 @@ class AuthorController extends Controller
      * Lists all Author entities.
      *
      * @Route("/", name="author")
+    * @Secure(roles="ROLE_ADMIN")
      * @Template()
      */
     public function indexAction()
@@ -35,6 +36,7 @@ class AuthorController extends Controller
      * Finds and displays a Author entity.
      *
      * @Route("/{id}/show", name="author_show")
+     * @Secure(roles="IS_AUTHENTICATED_ANONYMOUSLY")
      * @Template()
      */
     public function showAction($id)
@@ -57,7 +59,8 @@ class AuthorController extends Controller
     /**
      * Displays a form to create a new Author entity.
      *
-     * @Route("/new", name="author_new")
+     * @Route("/author/new", name="author_new")
+    * @Secure(roles="ROLE_ADMIN")
      * @Template()
      */
     public function newAction()
@@ -76,6 +79,7 @@ class AuthorController extends Controller
      *
      * @Route("/create", name="author_create")
      * @Method("post")
+     * @Secure(roles="ROLE_ADMIN")
      * @Template("CcmSrbBundle:Author:new.html.twig")
      */
     public function createAction()
@@ -104,6 +108,7 @@ class AuthorController extends Controller
      * Displays a form to edit an existing Author entity.
      *
      * @Route("/{id}/edit", name="author_edit")
+     * @Secure(roles="ROLE_ADMIN")
      * @Template()
      */
     public function editAction($id)
@@ -130,6 +135,7 @@ class AuthorController extends Controller
      * Edits an existing Author entity.
      *
      * @Route("/{id}/update", name="author_update")
+     * @Secure(roles="ROLE_ADMIN")
      * @Method("post")
      * @Template("CcmSrbBundle:Author:edit.html.twig")
      */
@@ -168,6 +174,7 @@ class AuthorController extends Controller
      * Deletes a Author entity.
      *
      * @Route("/{id}/delete", name="author_delete")
+     * @Secure(roles="ROLE_ADMIN")
      * @Method("post")
      */
     public function deleteAction($id)
@@ -196,6 +203,7 @@ class AuthorController extends Controller
     * Presenta publicaciones de un autor
     *
     * @Route("/{id}/references", name="author_references")
+    * @Secure(roles="IS_AUTHENTICATED_ANONYMOUSLY")
     */
     public function referencesAction($id)
     {

@@ -288,3 +288,19 @@
     	  <li><a href="{{ path('refs') }}"> Regresar </a></li>
 	</ul>
 {% endblock %}
+
+{% block menuL1 %}
+<div class="nav-wrapper">
+ <h6 class="ym-vlist">Importación</h6>
+	<ul class="ym-vlist">
+
+
+	<ul>
+    	    <li> <a href="{{ path('upload') }}"> Desde Archivo </a> </li>
+        </ul>
+	<ul>
+    	    <li> <a href="{{ path('arxiv') }}"> Desde Arxiv </a> </li>
+        </ul>
+
+</div>
+{% endblock %}

@@ -40,11 +40,16 @@
 <body>
 
 <header>
+
     <div class="ym-wrapper">
       <div class="ym-wbox">
-        <h2>Sistema de Referencias Bibliográficas</h2><h3>Centro de Ciencias Matemáticas UNAM-Morelia</h3>
-      </div>
+<img src="{{ asset('bundles/ccmsrb/images/unam_blanco.png') }}" height="110px" width="105px" align="left"/>        
+
+<br><br><br>
+<h2>Sistema de Referencias Bibliográficas</h2><h3>Centro de Ciencias Matemáticas UNAM</h3>
+
     </div>
+</div>
     </header>
 
 <nav class="ym-hlist">  
@@ -83,20 +88,12 @@
 			{% block menuL %}   {% endblock %}
             
   	</div>	   
-<div class="nav-wrapper">
- <h6 class="ym-vlist">Importación</h6>
-	<ul class="ym-vlist">
+
 
 {% block menuL1 %}
-	<ul>
-    	    <li> <a href="{{ path('upload') }}"> Desde Archivo </a> </li>
-        </ul>
-	<ul>
-    	    <li> <a href="{{ path('arxiv') }}"> Desde Arxiv </a> </li>
-        </ul>
-{% endblock %}
-</div>
-	    
+
+
+{% endblock %}	    
 	   
 
  	   

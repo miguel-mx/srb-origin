@@ -38,12 +38,17 @@ class Author
    /**
     * @var array $publications
     *
-    * @ORM\ManyToMany(targetEntity="Referencia", mappedBy="authors")
+    * @ORM\ManyToMany(targetEntity="Ccm\SrbBundle\Entity\Referencia", mappedBy="authors")
     *
     * The mappedBy attribute designates the field in the entity that is the owner of the relationship.
     */
     private $publications;
 
+    /**
+    *
+    * @ORM\OneToOne(targetEntity="Ccm\SrbBundle\Entity\User", inversedBy="author")
+    */
+    private $user;
 
     public function __construct()
     {
@@ -124,5 +129,35 @@ class Author
     public function __toString()
     {
       return $this->name;
+    }
+
+    /**
+     * Add publications
+     *
+     * @param Ccm\SrbBundle\Entity\Referencia $publications
+     */
+    public function addReferencia(\Ccm\SrbBundle\Entity\Referencia $publications)
+    {
+        $this->publications[] = $publications;
+    }
+
+    /**
+     * Set user
+     *
+     * @param Ccm\SrbBundle\Entity\User $user
+     */
+    public function setUser(\Ccm\SrbBundle\Entity\User $user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * Get user
+     *
+     * @return Ccm\SrbBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

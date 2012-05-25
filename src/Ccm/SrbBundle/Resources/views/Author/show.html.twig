@@ -2,42 +2,70 @@
 
 {% block menu %} {{ knp_menu_render('CcmSrbBundle:Builder:mainMenu') }} {% endblock %}
 
-{% set option = 'Autor' %}
+{% set option = 'Autor ' ~ entity.name %}
 
 {% block col3 %}
 
 <div>
-<h1>{{ entity.name }}</h1>
-<br><b>Id:</b> {{ entity.id }}
+<h1>{{'Información sobre el autor ' ~ entity.name }}</h1>
+<br><b>Id Institucional:</b> {{ entity.id }}
 <br><br>
-<b>Aliases:</b> {{ entity.alias }}
+<b>También aparece como:</b> {{ entity.alias }}<br><br>
+<b>Este autor está relacionado con el usuario:</b> {{ entity.user }}
+<br><br>
+        <a href="{{ path('author_references', { 'id': entity.id }) }}">
+            Ver lista de publicaciones de {{ entity.name }}
+        </a>
 
 </div><br>
+
+{% if (is_granted('ROLE_ADMIN', entity)) or (is_granted('EDIT', entity))  %}
+
+<br>
+        	<form action="{{ path('author_edit', { 'id': entity.id }) }}" method="post">
+            	   <button type="submit" class="ym-button ym-edit">Editar</button>
+        	</form>
+	</div>
+
+{% endif %}
+
+{% endblock %}
+
+
+{% block menuL %}
+
 <ul class="record_actions">
-    <li>
+
+<li>
         <a href="{{ path('author_references', { 'id': entity.id }) }}">
             Ver lista de publicaciones
         </a>
     </li>
-    <li>
-        <a href="{{ path('author') }}">
-            Regresar a la lista de autores
-        </a>
-    </li>
+
+{% if (is_granted('ROLE_ADMIN', entity)) or (is_granted('EDIT', entity))  %}
+         
     <li>
         <a href="{{ path('author_edit', { 'id': entity.id }) }}">
-            Editar el registro
+            Editar información
         </a>
     </li>
-</ul>
+
+    <li>
+        <a href="{{ path('author') }}">
+            Lista de autores
+        </a>
+    </li>
+{% endif %}    
 
 {# ¿Se tienen privilegios para borrar el autor? #}
 
-<br>
-        <form action="{{ path('author_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button class="ym-button" type="submit">Borrar el autor</button>
-        </form>
 
 
+{% endblock %}
+
+
+
+
+
+{% block menuL1 %}
 {% endblock %}

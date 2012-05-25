@@ -19,6 +19,12 @@ class User extends BaseUser
      */
     protected $id;
 
+     /**
+     * @ORM\OneToOne(targetEntity="Ccm\SrbBundle\Entity\Author", mappedBy="user")
+     */
+    private $author;
+
+
     public function __construct()
     {
         parent::__construct();
@@ -33,5 +39,26 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
+    }
+
+
+    /**
+     * Set author
+     *
+     * @param Ccm\SrbBundle\Entity\Author $author
+     */
+    public function setAuthor(\Ccm\SrbBundle\Entity\Author $author)
+    {
+        $this->author = $author;
+    }
+
+    /**
+     * Get author
+     *
+     * @return Ccm\SrbBundle\Entity\Author 
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 }
