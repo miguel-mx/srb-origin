@@ -7,7 +7,7 @@ use Ccm\SrbBundle\Entity\Referencia;
 use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
 use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
 use Symfony\Component\Security\Acl\Permission\MaskBuilder;
-
+use Symfony\Component\Security\Acl\Domain\RoleSecurityIdentity;
 
 
 class BaseController extends Controller
@@ -37,7 +37,7 @@ class BaseController extends Controller
       @$ref->setIssue($bibTex[$i]['number']);
       @$ref->setPages($bibTex[$i]['pages']);
       // Obtiene los autores en la variable $autorLast
-     // $autores = $this->authString($bibTex);
+      // $autores = $this->authString($bibTex);
       @$ref->setIssn($bibTex[$i]['issn']);
       @$ref->setIsbn($bibTex[$i]['isbn']);
       @$ref->setMedium($bibTex[$i]['medium']);
@@ -57,7 +57,7 @@ class BaseController extends Controller
       // @$ref->setAuthor($this->authString($bibTex));
       //@$ref->setAuthor($bibTex[$i]['author'][0]['last']);
       @$ref->setAuthor($this->authString($bibTex[$i]['author']));
-	//print_r($bibTex[$i]['author']);
+      //print_r($bibTex[$i]['author']);
       @$ref->setAbst($bibTex[$i]['abstract']);
       @$ref->setCreated();
       @$ref->setModified();
@@ -66,20 +66,19 @@ class BaseController extends Controller
       $em->persist($ref);
       $em->flush();
 
+      // creating the ACL
+      $aclProvider = $this->get('security.acl.provider');
+      $objectIdentity = ObjectIdentity::fromDomainObject($ref);
+      $acl = $aclProvider->createAcl($objectIdentity);
 
-	// creating the ACL
-           $aclProvider = $this->get('security.acl.provider');
-           $objectIdentity = ObjectIdentity::fromDomainObject($ref);
-           $acl = $aclProvider->createAcl($objectIdentity);
- 
-          // retrieving the security identity of the currently logged-in user
-           $securityContext = $this->get('security.context');
-           $user = $securityContext->getToken()->getUser();
-           $securityIdentity = UserSecurityIdentity::fromAccount($user);
-// 
-//         // grant owner access
-           $acl->insertObjectAce($securityIdentity, MaskBuilder::MASK_OWNER);
-           $aclProvider->updateAcl($acl);
+      // retrieving the security identity of the currently logged-in user
+      $securityContext = $this->get('security.context');
+      $user = $securityContext->getToken()->getUser();
+      $securityIdentity = UserSecurityIdentity::fromAccount($user);
+
+      // grant owner access
+      $acl->insertObjectAce($securityIdentity, MaskBuilder::MASK_OWNER);
+      $aclProvider->updateAcl($acl);
     } // For cada referencia
 
 }
@@ -92,26 +91,35 @@ class BaseController extends Controller
 protected function authString($bibTex)
 {
 
-// Array ( [0] => Array ( [first] => [von] => [last] => Daniele Colosi [jr] => )
-//         [1] => Array ( [first] => [von] => [last] => Robert Oeckl [jr] => ) ) 
-//Array ( [0] => Array ( [first] => [von] => [last] => Robert Oeckl [jr] => ) ) 
+//Array ( [0] => Array ( [first] => Alejandro [von] => [last] => Corichi [jr] => ) 
+//        [1] => Array ( [first] => Edward [von] => [last] => Wilson-Ewing [jr] => ) 
+//        [2] => Array ( [first] => gerardo [von] => tejero [last] => gomez [jr] => ) ) 
 
-	    for($i=0; $i<count($bibTex); $i++) {
-        
-		if($i==0){ $tmpLast=$bibTex[$i]['last'];}
-		if($i>0){ $tmpLast=$tmpLast."; ".$bibTex[$i]['last'];}
-	       
-	    }
-	       return $tmpLast;
+         for($i=0; $i<count($bibTex); $i++) {
+
+                if($i==0){ 
+                $tmpLast=$bibTex[$i]['last'];
+                $tmpVon=$bibTex[$i]['von'];
+                $tmpFirst=$bibTex[$i]['first'];
+                $tmpauth=$tmpVon." ".$tmpLast." ".$tmpFirst;
+
+                }
+                if($i>0){ 
+                $tmpLast=$bibTex[$i]['last'];
+                $tmpVon=$bibTex[$i]['von'];
+                $tmpFirst=$bibTex[$i]['first'];
+                $tmpauth1=$tmpVon." ".$tmpLast." ".$tmpFirst;
+                $tmpauth=$tmpauth."; ".$tmpauth1;
+                }
+
+
+
+        }
+
+       return $tmpauth;
     }
 
-
-
-
- 
-
-
-} // Class
+} 
 
 
   

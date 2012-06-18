@@ -24,12 +24,7 @@ class User extends BaseUser
      */
     private $author;
 
-
-    public function __construct()
-    {
-        parent::__construct();
-        // your own logic
-    }
+    
 
     /**
      * Get id
@@ -61,4 +56,5 @@ class User extends BaseUser
     {
         return $this->author;
     }
-}
+
+ }

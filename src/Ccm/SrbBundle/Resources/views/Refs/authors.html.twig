@@ -24,15 +24,13 @@
 {{ form_widget(form.authors, { 'attr': {'size': '10', 'style':'width: 20em'} }) }}
 </div>
 
-
 <p>
-			{{ form_rest(form) }}
+      {{ form_rest(form) }}
         <button class="ym-button ym-save" type="submit">Guardar</button>
     </p>
 </form>
 
 {% endblock %}
-
 
 {% block menuL %}
 {% if (is_granted('ROLE_ADMIN', entity)) or (is_granted('EDIT', entity))  %}

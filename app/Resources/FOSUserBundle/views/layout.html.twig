@@ -1,5 +1,4 @@
 {% extends 'CcmSrbBundle::layout.html.twig' %}
-
 {% block menu %}
 {{ knp_menu_render('CcmSrbBundle:Builder:mainMenu') }}
 {% endblock %}
@@ -18,17 +17,11 @@
         </div>
 {% endfor %}
 
-
-
-
-
 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 Sesión iniciada como: <b>{{ app.user.username }}</b>
 <br><br>
 <a href="{{ path('fos_user_security_logout') }}">Cerrar sesión</a>
-
 </div>
-
 
 {% else %}
                 <!--<a href="{{ path('fos_user_security_login') }}">{{ 'Login'|trans({}, 'FOSUserBundle') }}</a>-->
