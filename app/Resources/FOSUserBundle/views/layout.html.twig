@@ -7,7 +7,14 @@
 {% set option =  'Iniciar sesión'  %}
 
 {% block col3 %}
-<div style="align: center">
+<div class="ym-grid">
+
+<div class="ym-g25 ym-gl">
+<div class="ym-gbox"><br /></div>
+</div>
+
+<div class="ym-g50 ym-gl">
+<div class="ym-gbox">
 
 <H1>Ingresar al Sistema</H1>
 <br><br>
@@ -27,9 +34,6 @@ Sesión iniciada como: <b>{{ app.user.username }}</b>
 <br><br>
 <a href="{{ path('fos_user_security_logout') }}">Cerrar sesión</a>
 
-</div>
-
-
 {% else %}
                 <!--<a href="{{ path('fos_user_security_login') }}">{{ 'Login'|trans({}, 'FOSUserBundle') }}</a>-->
 
@@ -44,9 +48,14 @@ Sesión iniciada como: <b>{{ app.user.username }}</b>
                 </form>
 
 {% endif %}
-        </div>
 
 </div>
+</div>
 
+<div class="ym-g25 ym-gl">
+<div class="ym-gbox"><br /></div>
+</div>
+
+</div>
 {% endblock %}
 

@@ -35,11 +35,11 @@ class CrudController extends Controller
     public function indexAction($page)
     {
         
-	$em = $this->getDoctrine()->getEntityManager();
-	$entities = $em->getRepository('CcmSrbBundle:Referencia')->createQueryBuilder('m');
-	$adapter = new DoctrineOrmAdapter($entities);
-	$pager = new Pager($adapter,array('page' => $page, 'limit' => 10));
-	return $this->render('CcmSrbBundle:Refs:list.html.twig',array('pager'=>$pager));
+    $em = $this->getDoctrine()->getEntityManager();
+    $entities = $em->getRepository('CcmSrbBundle:Referencia')->createQueryBuilder('m');
+    $adapter = new DoctrineOrmAdapter($entities);
+    $pager = new Pager($adapter,array('page' => $page, 'limit' => 10));
+    return $this->render('CcmSrbBundle:Refs:list.html.twig',array('pager'=>$pager));
 
         //return array('entities' => $entities);
     }

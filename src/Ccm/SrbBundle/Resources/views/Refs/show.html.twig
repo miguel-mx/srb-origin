@@ -6,26 +6,24 @@
 
 {% block col3 %}
 
-
 <h1>{{entity.type|title}}</h1> <br>
 
 	{% if entity.id != null %}
 	  <div class="ym-g80 ym-gl" >
-	    <div style="padding:3px;"><b> Id: </b> {{ entity.id }}</div>
+	    <div style="padding:5px 0;"><b> Id: </b> {{ entity.id }}</div>
 	  </div>
 	{% endif %}
 
 	{% if entity.author != null %}
-	  <div class="ym-g80 ym-gl">
-	    <div style="padding:3px;"> <b>Author: </b> {% for key in entity.author|explode %}<a href="{{key}}"> {{key|trim}}</a>   {% endfor %} </div>
-
-
+	  <div class="ym-gl">
+	    <div style="padding:5px 0;"> <b>Author: </b> {% for key in entity.author|explode %}<a href="{{key}}"> {{key|trim}}</a>   {% endfor %}
+        </div>
      </div>
 	{% endif %}
 	   
 	{% if entity.title != null %}
-	  <div class="ym-g80 ym-gl" >
-	    <div style="padding:3px;"> <b> Title: </b> {{ entity.title }} </div>
+	  <div class="ym-gl" >
+	    <div style="padding:5px 0;"> <b> Title: </b> {{ entity.title }} </div>
 	  </div>
    	{% endif %}
 
@@ -71,7 +69,7 @@
 	  </div>
 	{% endif %}
 
-        {% if entity.corporateAuthor != null %}
+    {% if entity.corporateAuthor != null %}
   	  <div class="ym-g33 ym-gl">
             <div style="padding:3px;"> <b> Corporate Author: </b> {{ entity.corporateAuthor }}</div>
 	  </div>
@@ -84,7 +82,7 @@
 	{% endif %}
 
 	{% if entity.address != null %}
-          <div class="ym-g33 ym-gl">
+      <div class="ym-g33 ym-gl">
             <div style="padding:3px;"><b> Address: </b> {{ entity.address }} </div>
 	  </div>
 	{% endif %}
@@ -103,11 +101,11 @@
 
    	{% if entity.abst != null %}
 	  <div class="ym-g100 ym-gl">
-	    <div style="padding:3px;"> <b> Abst: </b> {{ entity.abst }} </div>
+	    <div style="padding:5px 0;"> <b> Abst: </b> {{ entity.abst }} </div>
 	  </div>
    	{% endif %}
 	
-	   {% if entity.publisher != null %}
+	{% if entity.publisher != null %}
 	     <div class="ym-g33 ym-gl">
 	       <div style="padding:3px;"> <b> Publisher: </b> {{ entity.publisher }} </div>
 	   </div>
@@ -156,7 +154,7 @@
 	{% endif %}
 
 	{% if entity.revision != null %}
-          <div class="ym-g33 ym-gl">
+      <div class="ym-g33 ym-gl">
 	    <div style="padding:3px;"> <b> Revision: </b> {{ entity.revision }} </div>
 	  </div>
 	{% endif %}
@@ -170,7 +168,7 @@
    	{% if entity.url != null %}	
 	  <div class="ym-g80 ym-gl">
 	    <div style="padding:3px;">	<b>URL: </b><a href="{{ entity.url }}">{{ entity.url }}</a> </div>
-	   </div>
+	  </div>
 	{% endif %}
 
 	{% if entity.doi != null %}
@@ -179,7 +177,7 @@
 	  </div>
 	{% endif %}
 		
-        {% if entity.arxiv != null %}
+    {% if entity.arxiv != null %}
   	  <div class="ym-g33 ym-gl">
 	    <div style="padding:3px;">	<b> Arxiv: </b> {{ entity.arxiv }} </div>
 	  </div>
@@ -188,30 +186,36 @@
 	{% if entity.mathscinet != null %}
   	  <div class="ym-g33 ym-gl">
 	    <div style="padding:3px;">	<b> Mathscinet: </b> {{ entity.mathscinet }} </div>
-	  <div>
-	 {% endif %}
+	  </div>
+	{% endif %}
 
-	 {% if entity.zmath != null %}
+    {% if entity.zmath != null %}
 	   <div class="ym-g33 ym-gl">
 	    <div style="padding:3px;"> <b> Zmath: </b> {{ entity.zmath }} </div>
 	   </div>
-	 {% endif %}
+	{% endif %}
 
-	 {% if entity.inspires != null %}
+	{% if entity.inspires != null %}
 	   <div class="ym-g33 ym-gl">
-	    <div style="padding:3px;">	<b> Inspires: </b> {{ entity.inspires }} </b>
+	    <div style="padding:3px;">	<b> Inspires: </b> {{ entity.inspires }} </b> </div>
 	   </div>
-	 {% endif %}
+	{% endif %}
 
    	{% if entity.created != null %}	
 	  <div class="ym-g50 ym-gl">
-	    <div style="padding:3px;"> <b> Created: </b> {{ entity.created|date('Y-m-d H:i:s') }} </div>
+	    <div style="padding:3px;">
+            <img src="{{ asset('bundles/ccmsrb/images/createdate.png') }}" alt="Created" style="padding:0 5px 0 0;" />
+            <b>Created: </b> {{ entity.created|date('Y-m-d H:i:s') }}
+        </div>
 	  </div>
 	{% endif %}
 
    	{% if entity.modified != null %}
 	  <div class="ym-g50 ym-gl">
-	    <div style="padding:3px;" >	<b>Modified: </b>{{ entity.modified|date('Y-m-d H:i:s') }} </div>
+	    <div style="padding:3px;" >
+            <img src="{{ asset('bundles/ccmsrb/images/modifydate.png') }}" alt="Modified" style="0 5px 0 0;" />
+            <b>Modified: </b>{{ entity.modified|date('Y-m-d H:i:s') }}
+        </div>
 	  </div>
 	{% endif %}
 
@@ -222,12 +226,12 @@
 
 {% if authors|length == 0  %}	
 
-   <b>Esta referencia no está asociada con algún autor institucional</b> 
+   <img src="{{ asset('bundles/ccmsrb/images/icons/warning.png') }}" alt="Warn" style="padding:0 5px;" />
+   <b>Esta referencia no está asociada con algún autor institucional</b>
 
 {% else %}
 
-   
-   <b> Autores Institucionales asociados:</b>
+   <b> Autores Institucionales Asociados a la Referencia:</b>
 
     <ul id="authors">
         {% for item in authors %}
@@ -241,6 +245,7 @@
 
     <br>
     <a href="{{ path('article_authors', {'id': entity.id }) }}">Asociar autor(es) a éste artículo...</a>
+    </div>
   </div>
 </div>
 
@@ -249,7 +254,7 @@
             	   <button type="submit" class="ym-button ym-edit">Editar</button>
         	</form>
 	</div>
-    </div>
+
 
 {% endif %}
 
@@ -263,7 +268,6 @@
 {% endif %}
 
     <li> <a href="{{ path('refs') }}"> Regresar </a> </li>
-        </ul>
-{% endblock %}
 
+{% endblock %}
 

@@ -9,20 +9,60 @@
 
 {% block col3 %}
 
-<h1>Búsqueda Bibliográfica {{ msg }}</h1>
-<br><br>
+    <h1>Busqueda Avanzada</h1><br>app.request.query.all<br>
 
-<form action="{{ path('search') }}" method="post" {{ form_enctype(form) }}>
 
-    {{ form_errors(form) }}
+    <form action="{{ path('query') }}" method="get" >
 
-    {{ form_widget(form) }}
+<div class="ym-grid">
 
-    {{ form_rest(form) }}
-    <br>
-    <button type="submit" class="ym-button ym-search" /> Buscar</button>
+       <div>
+         <div><br><b>Título:</b></div><div><input type="text" name="Title" style="width: 50%"/></div>
+       </div>
 
-</form>
+      <div>
+        <div><br><b>Típo de Publicación:</b></div>
+        <div>  </div>
+      </div>
+
+      <div>
+        <div">  <select name="Type"  style="width: 50%"><option value="article">Article</option><option value="incollection">Incollection</option><option value="proceedings">Proceedings</option><option value="book">Book</option><option value="inproceedings">Inproceedings</option><option value="unpublished">Unpublished</option></select> </div>
+      </div>
+
+      <div>
+        <div><br><b>Autor:</b></div><div><input type="text" name="Author" style="width: 50%"/></div>
+      </div>
+
+      <div class="ym-g20 ym-gl">
+        <div><br><b>Año de inicio </b></div>
+      <div>  </div>
+      <div> <select name="yearStart" required="required"><option value="1999">1999</option><option value="2000">2000</option><option value="2001">2001</option><option value="2002">2002</option><option value="2003">2003</option><option value="2004">2004</option><option value="2005">2005</option><option value="2006">2006</option><option value="2007">2007</option><option value="2008">2008</option><option value="2009">2009</option><option value="2010">2010</option><option value="2011">2011</option><option value="2012">2012</option></select> </div>
+      </div>
+
+      <div class="ym-g20 ym-gl">
+        <div><br><b>Año final</b></div>
+      <div>  </div>
+      <div>  <select name="yearEnd" required="required"><option value="1999">1999</option><option value="2000">2000</option><option value="2001">2001</option><option value="2002">2002</option><option value="2003">2003</option><option value="2004">2004</option><option value="2005">2005</option><option value="2006">2006</option><option value="2007">2007</option><option value="2008">2008</option><option value="2009">2009</option><option value="2010">2010</option><option value="2011">2011</option><option value="2012">2012</option></select> </div>
+      </div>
+
+      <div class="ym-g80 ym-gl">
+         <div><br><b>Mostrar todos los años?</b></div>
+         <div><input type="checkbox"  name="allYears" value="1" /></div>
+      </div>
+      <br>
+
+      <div class="ym-g80">
+      <div>
+        <button type="submit" class="ym-button ym-search" /> Buscar</button>
+      </div>
+      </div>
+
+
+</div>
+
+
+    </form>
+
 
 {% endblock %}
 
@@ -35,7 +75,6 @@
             Regresar
         </a>
     </li>
-   
-    
 </ul>
+
 {% endblock %}

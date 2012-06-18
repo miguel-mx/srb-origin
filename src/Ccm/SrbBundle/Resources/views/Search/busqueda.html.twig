@@ -10,7 +10,7 @@
 	<h1>Búsqueda</h1><br><br>
 	<div class="ym-grid">  		
 
-	<form action="{{ path('busqueda') }}" method="post" {{ form_enctype(form) }}>
+	<form action="{{ path('query') }}" method="get" {{ form_enctype(form) }}>
 
 	  {{ form_errors(form) }}
 
@@ -46,7 +46,11 @@
 	  </div>
 	</form>
        </div>
+
+
+
 {% endblock %}
+
 
 {% block menuL %}
 

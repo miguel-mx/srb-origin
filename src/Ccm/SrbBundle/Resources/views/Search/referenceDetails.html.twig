@@ -1,0 +1,9 @@
+{# Resources/views/Search/referenceDetails.html.twig #}
+
+{% for item in pager.getResults %}
+
+<div style="float:left;">{{ item.id }}.- <b><a href="{{ path('referencia_show', { 'id': item.id }) }}">{{ item.title | title }}</a></b>,</div><div style="font-size: 85%; color: #6B6B6B; float:left;">  {{ item.type|title }}</div><br>
+{{ item.journal }}, ({{ item.yearPub }}), {{ item.pages }}<br>
+{% for key in item.author|explode %}<a href="qsearch?query={{key|trim|url_encode() }}"> {{key}}</a> ; {% endfor %}<br><br>
+
+{% endfor %}
