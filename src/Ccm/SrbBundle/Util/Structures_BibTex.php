@@ -627,7 +627,9 @@ class Structures_BibTex
     function _extractAuthors($entry) {
         $entry       = $this->_unwrap($entry);
         $authorarray = array();
+	$authorarray = explode(', ', $entry);
         $authorarray = explode(' and ', $entry);
+	
         for ($i = 0; $i < sizeof($authorarray); $i++) {
             $author = trim($authorarray[$i]);
             /*The first version of how an author could be written (First von Last)

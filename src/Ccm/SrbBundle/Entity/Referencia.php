@@ -153,7 +153,7 @@ class Referencia
     protected $notas;
 
      /**
-     * @ORM\Column(type="string", length=250, nullable=true)
+     * @ORM\Column(type="boolean", length=2, nullable=true)
      */
     protected $revision;
 
@@ -201,6 +201,15 @@ class Referencia
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $modified;
+
+     /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="modifiedby")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     *
+     * @var User $user
+     *
+     */
+    private $user;
 
 
         //--------------------------------------------------------------------------------
@@ -251,16 +260,17 @@ class Referencia
         public function prePersist()
         {
             $this->setCreated(new \DateTime());
-            $this->setModified(new \DateTime());
+            //$this->setModified(new \DateTime());
         }
 
-       
+
         /**
          * @ORM\PreUpdate
          */
         public function preUpdate()
         {
             $this->setModified(new \DateTime());
+
         }
 
         /**
@@ -277,14 +287,13 @@ class Referencia
          * Set modified
          *
          * @param datetime $modified
+
          */
         public function setModified($modified)
         {
             $this->modified = $modified;
+
         }
-       
-
-
 
     /**
      * Get id
@@ -1023,14 +1032,32 @@ class Referencia
      * @Assert\True(message = "Es necesario que exista un Autor o un Editor")
      */
     public function isEditorAuthor()
-    
+
     {
-	   if (($this->editor != null)|| ($this->author != null)){
- return true;
-		}
-else
-return false;
-	
+     if (($this->editor != null)|| ($this->author != null)){
+        return true;	}
+        else
+        return false;
+
     }
 
+    /**
+     * Set user
+     *
+     * @param Ccm\SrbBundle\Entity\User $user
+     */
+    public function setUser(\Ccm\SrbBundle\Entity\User $user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * Get user
+     *
+     * @return Ccm\SrbBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

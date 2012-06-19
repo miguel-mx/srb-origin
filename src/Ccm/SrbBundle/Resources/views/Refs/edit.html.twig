@@ -26,6 +26,12 @@
 		    <div> {{ form_errors(edit_form.title) }}	</div> <br>
 		  </div>
 		{% endif %}
+     
+                {% if repeat is defined %}
+	         <div class="ym-g80 ym-gl" >
+	           <div style="padding:3px;"><b> {{ repeat }} </b></div>
+	         </div>
+	        {% endif %}
 
      		{% if edit_form.type is defined  %}
 	  	  <div class="ym-g33 ym-gl">
@@ -43,15 +49,9 @@
 		
       		{% endif %}
 
-	          
-
-		
       		{% endif %}
 
      		
-
-
-
 		{% if edit_form.editor is defined  %}	
 		  <div class="ym-g80 ym-gl">
 	   	    <div> {{ form_label(edit_form.editor) }} </div>

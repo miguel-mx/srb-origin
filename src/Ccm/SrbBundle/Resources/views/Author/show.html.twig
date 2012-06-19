@@ -31,7 +31,6 @@
 
 {% endblock %}
 
-
 {% block menuL %}
 
 <ul class="record_actions">
@@ -43,7 +42,7 @@
     </li>
 
 {% if (is_granted('ROLE_ADMIN', entity)) or (is_granted('EDIT', entity))  %}
-         
+
     <li>
         <a href="{{ path('author_edit', { 'id': entity.id }) }}">
             Editar información
@@ -55,17 +54,11 @@
             Lista de autores
         </a>
     </li>
-{% endif %}    
+{% endif %}
 
 {# ¿Se tienen privilegios para borrar el autor? #}
 
-
-
 {% endblock %}
-
-
-
-
 
 {% block menuL1 %}
 {% endblock %}

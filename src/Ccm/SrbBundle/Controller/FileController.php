@@ -44,18 +44,41 @@ class FileController extends BaseController
             if ($file) {
                 $file->move($upload->getUploadDir(), $randomName);
             }
-	//$ret = $upload->dummySend();
-
+	
         // upload->bibTex regresa una estructura de Bibtex
-		$bibTex = $upload->bibTex($randomName);
-	$numrefs=count($bibTex);
+	$bibTex = $upload->bibTex($randomName);
+	$repository = $this->getDoctrine()->getRepository('CcmSrbBundle:Referencia');
+        $j=0;
+	$k=0;
+	$norepeat=null;
+	$repeat=null;
+         
+
+	for($i=0;$i<count($bibTex);$i++){
+	  $titles= $repository->findOneByTitle($bibTex[$i]['title']);
+	   if ($titles){
+              $repeat[$k]=$bibTex[$i];
+	      $k++;
+	      unset($titles);
+ 	   }
+           else {
+           $norepeat[$j]=$bibTex[$i];
+	   $j++;
+           }
+       }
+	
+	$numrefsTotal=count($repeat)+count($norepeat);
+        $numrefsRepeat= count($repeat);
+	$numrefsNoRepeat= count($norepeat);
+
         // ******************************
         // Guarda las referencias
-        $this->persistBibStructure($bibTex);
+        $this->persistBibStructure($norepeat);
 
         // ******************************
         // Muestra las referencias leídas
-        return $this->render('CcmSrbBundle:Refs:confirm.html.twig', array('bibTex' => $bibTex,'numrefs'=>$numrefs));
+        return $this->render('CcmSrbBundle:Refs:confirm.html.twig', array('bibTex' => $norepeat,'numrefsTotal'=>$numrefsTotal,
+		'numrefsRepeat'=>$numrefsRepeat, 'numrefsNoRepeat'=>$numrefsNoRepeat, 'bibTexRepeat'=>$repeat));
 
 	    // $this->get('session')->setFlash('notice', $randomName);
         // return $this->render('CcmSrbBundle::upload.html.twig', array('refs'=>$refs, ));

@@ -39,38 +39,29 @@
     </p>
 </form>
 
-
-    
-    
         <form action="{{ path('author_delete', { 'id': entity.id }) }}" method="post">
             {{ form_widget(delete_form) }}
             <button class="ym-button ym-delete" type="submit">Eliminar </button>
         </form>
-    
-
 
 {% endblock %}
 
 {% block menuL %}
 
 <ul class="record_actions">
-         
+
         <li>
         <a href="{{ path('author_references', { 'id': entity.id }) }}">
             Publicaciones del autor
         </a>
     </li>
-    
+
     <li>
         <a href="{{ path('author') }}">
             Lista de autores
         </a>
     </li>
 
-
 {# ¿Se tienen privilegios para borrar el autor? #}
-
-
-
 {% endblock %}
 

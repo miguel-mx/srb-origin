@@ -1,5 +1,4 @@
 {% extends 'CcmSrbBundle::layout.html.twig' %}
-
 {% block menu %}
 {{ knp_menu_render('CcmSrbBundle:Builder:mainMenu') }}
 {% endblock %}
@@ -24,10 +23,6 @@
 {{ message|trans({}, 'FOSUserBundle') }}
         </div>
 {% endfor %}
-
-
-
-
 
 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 Sesión iniciada como: <b>{{ app.user.username }}</b>
