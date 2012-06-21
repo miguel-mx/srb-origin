@@ -1,0 +1,138 @@
+{% if ref.title is defined %}
+    <div style="color: #0060A6; font-size: 1.4em; padding:5px 0;">{{ ref.title }}</div>
+{% endif %}
+
+{% if ref.author is defined %}
+    <b>Author: </b>
+    {% for key, author in ref.author %}
+    {{ author.last }};
+    {% endfor %}
+{% endif %}
+<br />
+{% if ref.abst is defined %}
+        <b>Abstract: </b>{{ ref.abst }}<br>
+{% endif %}
+
+{% if ref.entryType is defined %}
+        <b>Type: </b>{{ ref.entryType }}<br>
+{% endif %}
+
+{% if ref.journal is defined %}
+        <b>Journal: </b>{{ ref.journal }}<br>
+{% endif %}
+
+{% if ref.year is defined %}
+        <b>Year: </b>{{ ref.year }}<br>
+{% endif %}
+
+{% if ref.yearpreprint is defined %}
+        <b>Year preprint: </b>{{ ref.yearpreprint }}<br>
+{% endif %}
+
+{% if ref.yearpub is defined %}
+        <b>Year publication:</b> {{ ref.yearpub }}<br>
+{% endif %}
+
+{% if ref.publication is defined %}
+        <b>Publication:</b> {{ ref.publication }}<br>
+{% endif %}
+
+{% if ref.issue is defined %}
+        <b>Issue: </b>{{ ref.issue }}<br>
+{% endif %}
+
+{% if ref.pages is defined %}
+        <b>Pages: </b>{{ ref.pages }}<br>
+{% endif %}
+
+{% if ref.corporateAuthor is defined %}
+        <b>Corporete Author: </b>{{ ref.corporateAuthor }}<br>
+{% endif %}
+
+{% if ref.thesis is defined %}
+        <b>Thesis: </b>{{ ref.thesis }}<br>
+{% endif %}
+
+{% if ref.address is defined %}
+        <b>Address: </b>{{ ref.address }}<br>
+{% endif %}
+
+{% if ref.keywords is defined %}
+        <b>Key words:</b> {{ ref.keywords }}<br>
+{% endif %}
+
+{% if ref.publisher is defined %}
+        <b>Publisher: </b>{{ ref.publisher }}<br>
+{% endif %}
+
+{% if ref.placePub is defined %}
+        <b>Place publication: </b>{{ ref.placePub }}<br>
+{% endif %}
+
+{% if ref.editor is defined %}
+        <b>Editor: </b>{{ ref.editor }}<br>
+{% endif %}
+
+{% if ref.issn is defined %}
+        <b>ISSN:</b> {{ ref.issn }}<br>
+{% endif %}
+
+{% if ref.isbn is defined %}
+        <b>ISBN: </b>{{ ref.isbn }}<br>
+{% endif %}
+
+{% if ref.medium is defined %}
+        <b>Medium: </b>{{ ref.medium }}<br>
+{% endif %}
+
+{% if ref.area is defined %}
+        <b>Area: </b>{{ ref.area }}<br>
+{% endif %}
+
+{% if ref.conference is defined %}
+        <b>Conference: </b>{{ ref.conference }}<br>
+{% endif %}
+
+{% if ref.notas is defined %}
+        <b>Notes: </b>{{ ref.notas }}<br>
+{% endif %}
+
+{% if ref.revision is defined %}
+        <b>Revision: </b>{{ ref.revision }}<br>
+{% endif %}
+
+{% if ref.file is defined %}
+        <b>File: </b>{{ ref.file }}<br>
+{% endif %}
+
+{% if ref.url is defined %}
+        <b>URL: </b>{{ ref.url }}<br>
+{% endif %}
+
+{% if ref.doi is defined %}
+        <b>DOI: </b>{{ ref.doi }}<br>
+{% endif %}
+
+{% if ref.arxiv is defined %}
+        <b>Arxiv: </b>{{ ref.arxiv }}<br>
+{% endif %}
+
+{% if ref.mathscinet is defined %}
+        <b>Notes: </b>{{ ref.mathscinet }}<br>
+{% endif %}
+
+{% if ref.zmath is defined %}
+        <b>Zmath: </b>{{ ref.zmath }}<br>
+{% endif %}
+
+{% if ref.inspires is defined %}
+        <b>Inspires: </b>{{ ref.inspires }}<br>
+{% endif %}
+
+{% if ref.created is defined %}
+        <b>Created: </b>{{ ref.created }}<br>
+{% endif %}
+
+{% if ref.modified is defined %}
+        <b>Notes: </b>{{ ref.modified }}<br>
+{% endif %}

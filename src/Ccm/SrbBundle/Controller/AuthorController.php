@@ -20,7 +20,7 @@ class AuthorController extends Controller
      * Lists all Author entities.
      *
      * @Route("/", name="author")
-    * @Secure(roles="ROLE_ADMIN")
+     * @Secure(roles="ROLE_ADMIN")
      * @Template()
      */
     public function indexAction()
@@ -95,7 +95,7 @@ class AuthorController extends Controller
             $em->flush();
 
             return $this->redirect($this->generateUrl('author_show', array('id' => $entity->getId())));
-            
+
         }
 
         return array(

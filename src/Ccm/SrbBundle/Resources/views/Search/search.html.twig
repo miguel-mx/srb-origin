@@ -1,0 +1,43 @@
+{% extends 'CcmSrbBundle::layout.html.twig' %}
+
+{% block menu %}
+{{ knp_menu_render('CcmSrbBundle:Builder:mainMenu') }}
+{% endblock %}
+{% set option =  'Resultados de la búsqueda'  %}
+
+
+{% block col3 %}
+<div class="ym-grid">
+  <div class="ym-gbox"><br />
+
+<h1>Resultados de la búsqueda</h1>
+<br><br>
+
+{% for item in pager.getResults %}
+
+    {% include 'CcmSrbBundle:Search:referenceDetails.html.twig' %}
+
+{% endfor %}
+
+{% if pager.isPaginable %}
+{{ paginate(pager, 'search', {'q': app.request.query.all['q']}) }}
+{% endif %}
+
+{#  app.request.host #}
+{# app.request.query.all['q'] #}
+
+  </div>
+</div>
+{% endblock %}
+
+{% block menuL %}
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('refs') }}">
+            Regresar
+        </a>
+    </li>
+</ul>
+
+{% endblock %}

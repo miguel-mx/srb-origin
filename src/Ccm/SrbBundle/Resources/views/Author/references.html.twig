@@ -5,6 +5,7 @@
 {% set option = 'Referencias de ' ~ name %}
 
 {% block col3 %}
+<div class="ym-gbox-right">
 <h1>Referencias de {{ name }}</h1><br><br>
 
 {% for item in publications %}
@@ -18,22 +19,20 @@
 {% for key in item.author|explode %}<a href="{{key}}"> {{key|trim }}</a>;  {% endfor %}<br><br>
 {% endfor %}
 
+</div>
+<!-- gbox-right -->
+
 {% endblock %}
 
 {% block menuL %}
 
 <ul class="record_actions">
-         
- 
     <li>
         <a href="{{ path('author') }}">
            Lista de autores
         </a>
     </li>
 
-
 {# ¿Se tienen privilegios para borrar el autor? #}
-
-
 
 {% endblock %}

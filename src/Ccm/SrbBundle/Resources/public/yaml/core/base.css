@@ -208,9 +208,9 @@
 	.ym-column { display:table; width:100%;  overflow:hidden; }
 
 	/* .ym-col1 { float:left; width:20%; } */
-    .ym-col1 { float: left; width:20%; }
+    .ym-col1 { float: left; width:230px; }
 
-	.ym-col2 { float:right; width:20%; }
+	.ym-col2 { float:right; width:230px; }
 	
      /* .ym-col3 { width:auto; margin:0 10%; } */
      .ym-col3 { overflow: hidden;  min-height: 500px;}
@@ -247,7 +247,7 @@
 	}
 
 	.ym-gl { float:left; margin: 0; }
-	.ym-gr { float:right; margin: 0 0 0 -5px; }
+	.ym-gr { float:right; margin: 0; }
 
 	.ym-g20 { width:20%; }
 	.ym-g40 { width:40%; }

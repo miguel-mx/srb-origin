@@ -7,24 +7,39 @@
 
 
 {% block col3 %}
-<br>
+<div class="ym-grid">
+  <div class="ym-gbox"><br />
+
 <h1>Resultados de la búsqueda</h1>
 <br><br>
 
 {% for item in pager.getResults %}
 
-<div style="float:left;">{{ item.id }}.- <b><a href="{{ path('referencia_show', { 'id': item.id }) }}">{{ item.title | title }}</a></b>,</div><div style="font-size: 85%; color: #6B6B6B; float:left;">  {{ item.type|title }}</div><br>
-{{ item.journal }}, ({{ item.yearPub }}), {{ item.pages }}<br>
-{% for key in item.author|explode %}<a href="qsearch?query={{key|trim|url_encode() }}"> {{key}}</a> ; {% endfor %}<br><br>
+    {% include 'CcmSrbBundle:Search:referenceDetails.html.twig' %}
 
 {% endfor %}
 
-
 {% if pager.isPaginable %}
-{{ paginate(pager, ruta) }}
+{{ paginate(pager, 'query' , {
+        'Title'    : app.request.query.all['Title'],
+        'Type'     : app.request.query.all['Type'],
+        'Author'   : app.request.query.all['Author'],
+        'yearStart': app.request.query.all['yearStart'],
+        'yearEnd'  : app.request.query.all['yearEnd'],
+        'allYears' : app.request.query.all['allYears']
+        }) }}
 {% endif %}
 
+{#  app.request.host #}
+{# app.request.query.all['yearStart'] #}
+{# app.request.query.all['yearEnd'] #}
+{# app.request.getRequestUri #}
+{# path(my_router_params()) #}
+{# queryString #}
 
+<br /><br />
+  </div>
+</div>
 {% endblock %}
 
 {% block menuL %}
@@ -36,7 +51,6 @@
             Regresar
         </a>
     </li>
-   
-    
+
 </ul>
 {% endblock %}

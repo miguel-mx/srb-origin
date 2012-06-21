@@ -6,13 +6,37 @@
 {% set option =  'Importar desde ArXiv'  %}
 	
 {% block col3 %}
-<h1>Importación de referencias de Arxiv</h1>
-<br>
+<div class="ym-gbox-right">
+  <div class="ym-grid">
+    <!-- 2 col margen a la derecha -->
+    <div style="margin-left: 160px;"><br />
 
-	<form action="{{ path('arxiv_post') }}" method="post" {{ form_enctype(form) }}>
-		{{ form_widget(form) }}
-	    <button type="submit" class="ym-button ym-upload" />Importar referencia</button>
-	</form>
+        <div style="margin-top: 10px;">
+            <h1>Importación desde Arxiv</h1>
+            <br>
+        </div>
+
+    <form action="{{ path('arxiv_post') }}" method="post" {{ form_enctype(form) }}>
+
+        {{ form_errors(form) }}
+
+        <div style="color: red; font-weight: bold;">{{ form_errors(form.idlist) }}</div>
+        <div><b>ArXive Id's:</b><br /><br /></div>
+        <div>{{ form_widget(form.idlist, { 'attr': {'size': '35%'} }) }}</div>
+
+        <!--{{ form_widget(form) }}-->
+        {{ form_rest(form) }}
+
+        <button type="submit" class="ym-button ym-upload" />Importar referencia</button>
+    </form>
+
+    </div>
+    <!-- margin -->
+
+  </div>
+  <!-- grid -->
+</div>
+<!-- block col3 -->
 {% endblock %}
 
 {% block menuL %}

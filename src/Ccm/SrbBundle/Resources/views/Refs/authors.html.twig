@@ -5,15 +5,16 @@
 {% set option = 'Asociación de autores' %}
 
 {% block col3 %}
+<div class="ym-gbox-right">
 
 <h1>Asociación de Autores</h1>
 <br>
 <form action="{{ path('article_authors', { 'id': entity.id }) }}" method="post" {{ form_enctype(form) }}>
 
 <div class="ym-grid">
-<div class="ym-gbox"><b>Publicación:</b> {{ entity.type }} </div>
-<div class="ym-gbox"><b>Título:</b> {{ entity.title }} </div>
-<div class="ym-gbox"><b>Autores:</b> {{ entity.author }} </div>
+<div class="ym-g80 ym-gl" style="color: #0060A6; font-size: 1.4em; padding: 3px 0;">{{ entity.title }} </div>
+<div class="ym-g80 ym-gl">{{ entity.author }} </div>
+<div class="ym-g80 ym-gl" style="padding: 5px 0;"><b>Type:</b> {{ entity.type | title }} </div>
 </div>
 
 <br>
@@ -21,7 +22,7 @@
 <div>
 <b>{{ form_label(form.authors) }}:</b><br><br>
 {{ form_errors(form.authors) }}
-{{ form_widget(form.authors, { 'attr': {'size': '10', 'style':'width: 20em'} }) }}
+{{ form_widget(form.authors, { 'attr': {'size': '10', 'style':'width: 40%'} }) }}
 </div>
 
 <p>
@@ -29,6 +30,9 @@
         <button class="ym-button ym-save" type="submit">Guardar</button>
     </p>
 </form>
+
+</div>
+<!-- block col3 -->
 
 {% endblock %}
 

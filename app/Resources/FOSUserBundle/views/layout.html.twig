@@ -6,10 +6,17 @@
 {% set option =  'Iniciar sesión'  %}
 
 {% block col3 %}
-<div style="align: center">
+<div class="ym-gbox-right">
+  <div class="ym-grid">
 
-<H1>Ingresar al Sistema</H1>
-<br><br>
+
+    <!-- 2 col margen a la derecha -->
+    <div style="margin-left: 160px;"><br />
+
+        <div style="margin-top: 10px;">
+            <H1>Ingresar</H1>
+        </div>
+        <br>
 
 {% for key, message in app.session.getFlashes() %}
         <div class="{{ key }}">
@@ -21,25 +28,35 @@
 Sesión iniciada como: <b>{{ app.user.username }}</b>
 <br><br>
 <a href="{{ path('fos_user_security_logout') }}">Cerrar sesión</a>
-</div>
 
 {% else %}
                 <!--<a href="{{ path('fos_user_security_login') }}">{{ 'Login'|trans({}, 'FOSUserBundle') }}</a>-->
 
                 <form action="{{ path("fos_user_security_check") }}" method="post">
-                    Usuario<br>
-                    <input type="text" id="username" name="_username" /><br>
-                    Contraseña<br>
-                    <input type="password" id="password" name="_password" /><br>
+                    <div style="padding:5px 0;">
+                    <b>Usuario</b><br>
+                    <input type="text" id="username" name="_username" style="width: 40%" /><br>
+                    </div>
+
+                    <div style="padding:5px 0;">
+                    <b>Contraseña</b><br>
+                    <input type="password" id="password" name="_password" style="width: 40%" /><br>
+                    </div>
+
+                    <div style="padding:5px 0;">
                     <input type="checkbox" id="remember_me" name="_remember_me" value="off" />
                     <label for="remember_me">Recordarme</label><br><br>
-       	       	    <button type="submit" class="ym-button ym-next">Login</button>
+                    </div>
+
+                    <button type="submit" class="ym-button ym-next">Login</button>
                 </form>
 
 {% endif %}
         </div>
-
+        <!-- 2 col margen a la derecha -->
+  </div>
+  <!-- grid -->
 </div>
-
+<!-- gbox -->
 {% endblock %}
 

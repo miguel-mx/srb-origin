@@ -4,282 +4,275 @@
 {% set option =  'Nuevo ' ~ type  %}
 
  {% block col3 %}
+ <div class="ym-grid">
+  <div class="ym-gbox"><br />
 
-<h1>{{ type|title }} Creation</h1>Campos con (*) son requeridos.<br><br>
+    <h1>{{ type|title }} Nueva Referencia</h1><br />Campos con (*) son requeridos.<br><br>
 
-<form action="{{ path('referencia_create', { 'type':  type  } )}}" method="post" {{ form_enctype(form) }}>
-<div class="ym-grid">
-{% if form.author is defined  %}
-  <div class="ym-g80 ym-gl">
-    <div> {{ form_label(form.author) }} </div>
-    <div> {{ form_widget(form.author, { 'attr': {'size': '70'} }) }} </div>
-    <div> {{ form_errors(form.author) }} </div>	<br>
- </div>
-{% endif %}
+    <form action="{{ path('referencia_create', { 'type':  type  } )}}" method="post" {{ form_enctype(form) }}>
 
-{% if form.revision is defined  %}
-  <div class="ym-g20 ym-gl">
-    <div> {{ form_label(form.revision) }} </div>
-    <div> {{ form_widget(form.revision) }} </div>
-    <div> {{ form_errors(form.revision) }} </div> <br>
+        {% if form.title is defined  %}
+            <div> {{ form_label(form.title) }} </div>
+            <div> {{ form_widget(form.title, { 'attr': {'style': 'width: 95%','rows':'1'} }) }}  </div>
+            <div> {{ form_errors(form.title) }} </div> <br>
+        {% endif %}
+
+        {% if form.author is defined  %}
+            <div> {{ form_label(form.author) }} </div>
+            <div> {{ form_widget(form.author, { 'attr': {'style': 'width:95%'} }) }} </div>
+            <div> {{ form_errors(form.author) }} </div>	<br>
+        {% endif %}
+
+        {% if form.type is defined  %}
+            <div> {{ form_label(form.type) }} </div>
+            <div> {{ form_widget(form.type) }} </div>
+            <div> {{ form_errors(form.type) }} </div> <br>
+        {% endif %}
+
+        {% if form.abst is defined  %}
+            <div> {{ form_label(form.abst) }} </div>
+            <div> {{ form_widget(form.abst, { 'attr': {'style': 'width:95%','rows':'7'} }) }} </div>
+            <div> {{ form_errors(form.abst) }} </div> <br>
+        {% endif %}
+
+        {% if form.keywords is defined  %}
+            <div> {{ form_label(form.keywords) }} </div>
+            <div> {{ form_widget(form.keywords, { 'attr': {'style': 'width:95%','rows':'1'} }) }}  </div>
+            <div> {{ form_errors(form.keywords) }} </div> <br>
+        {% endif %}
+
+        {% if form.editor is defined  %}
+            <div> {{ form_label(form.editor) }} </div>
+            <div> {{ form_widget(form.editor, { 'attr': {'style': 'width:95%'} }) }}</div>
+            <div> {{ form_errors(form.editor) }} </div>	<br>
+        {% endif %}
+
+        {% if form.journal is defined  %}
+            <div> {{ form_label(form.journal) }} </div>
+            <div> {{ form_widget(form.journal, { 'attr': {'style': 'width:95%'} }) }}</div>
+            <div> {{ form_errors(form.journal) }} </div> <br>
+        {% endif %}
+
+    <div class="ym-grid">
+
+        {% if form.yearPub is defined  %}
+          <div class="ym-g33 ym-gl">
+          <div class="ym-gbox-left">
+            <div> {{ form_label(form.yearPub) }} </div>
+            <div> {{ form_widget(form.yearPub, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(form.yearPub) }} </div> <br>
+          </div>
+          </div>
+        {% endif %}
+
+        {% if form.yearPreprint is defined  %}
+          <div class="ym-g33 ym-gl">
+            <div> {{ form_label(form.yearPreprint) }} </div>
+            <div> {{ form_widget(form.yearPreprint, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(form.yearPreprint) }} </div> <br>
+          </div>
+        {% endif %}
+
+        {% if form.publication is defined  %}
+          <div class="ym-g33 ym-gl">
+            <div> {{ form_label(form.publication) }} </div>
+            <div> {{ form_widget(form.publication, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(form.publication) }} </div> <br>
+          </div>
+        {% endif %}
+
+        {% if form.publisher is defined  %}
+          <div class="ym-g33 ym-gl">
+            <div> {{ form_label(form.publisher) }} </div>
+            <div> {{ form_widget(form.publisher, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(form.publisher) }} </div><br>
+          </div>
+        {% endif %}
+
+        {% if form.issue is defined  %}
+          <div class="ym-g33 ym-gl">
+          <div class="ym-gbox-left">
+            <div> {{ form_label(form.issue) }} </div>
+            <div> {{ form_widget(form.issue, { 'attr': {'style': 'width:80%'} }) }}	</div>
+            <div> {{ form_errors(form.issue) }}	</div> <br>
+          </div>
+          </div>
+        {% endif %}
+
+        {% if form.pages is defined  %}
+          <div class="ym-g33 ym-gl">
+          <div class="ym-gbox-left">
+            <div> {{ form_label(form.pages) }} </div>
+            <div> {{ form_widget(form.pages, { 'attr': {'style': 'width:80%'} }) }}	</div>
+            <div> {{ form_errors(form.pages) }}	</div> <br>
+          </div>
+          </div>
+        {% endif %}
+
+        {% if form.volume is defined  %}
+          <div class="ym-g33 ym-gl">
+            <div> {{ form_label(form.volume) }} </div>
+            <div> {{ form_widget(form.volume, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(form.volume) }} </div>	<br>
+          </div>
+        {% endif %}
+
+        {% if form.placePub is defined  %}
+          <div class="ym-g33 ym-gl">
+            <div> {{ form_label(form.placePub) }} </div>
+            <div> {{ form_widget(form.placePub, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(form.placePub) }} </div> <br>
+          </div>
+        {% endif %}
+
+        {% if form.isbn is defined  %}
+          <div class="ym-g33 ym-gl">
+            <div> {{ form_label(form.isbn) }} </div>
+            <div> {{ form_widget(form.isbn, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(form.isbn) }} </div> <br>
+          </div>
+        {% endif %}
+
+        {% if form.conference is defined  %}
+          <div class="ym-g33 ym-gl">
+            <div> {{ form_label(form.conference) }} </div>
+            <div> {{ form_widget(form.conference, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(form.conference) }} </div> <br>
+          </div>
+        {% endif %}
+
+        {% if form.corporateAuthor is defined  %}
+          <div class="ym-g33 ym-gl">
+            <div> {{ form_label(form.corporateAuthor) }} </div>
+            <div> {{ form_widget(form.corporateAuthor, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(form.corporateAuthor) }} </div> <br>
+          </div>
+        {% endif %}
+
+        {% if form.thesis is defined  %}
+          <div class="ym-g33 ym-gl">
+            <div> {{ form_label(form.thesis) }} </div>
+            <div> {{ form_widget(form.thesis, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(form.thsesis) }} </div> <br>
+          </div>
+        {% endif %}
+
+        {% if form.address is defined  %}
+          <div class="ym-g33 ym-gl">
+            <div> {{ form_label(form.address) }} </div>
+            <div> {{ form_widget(form.address, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(form.address) }} </div> <br>
+          </div>
+        {% endif %}
+
+        {% if form.issn is defined  %}
+          <div class="ym-g33 ym-gl">
+            <div> {{ form_label(form.issn) }} </div>
+            <div> {{ form_widget(form.issn, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(form.issn) }} </div> <br>
+          </div>
+        {% endif %}
+
+        {% if form.arxiv is defined  %}
+          <div class="ym-g33 ym-gl">
+            <div> {{ form_label(form.arxiv) }} </div>
+            <div> {{ form_widget(form.arxiv, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(form.arxiv) }} </div> <br>
+          </div>
+        {% endif %}
+
+    </div>
+
+        {% if form.notas is defined  %}
+            <div> {{ form_label(form.notas) }} </div>
+            <div> {{ form_widget(form.notas, { 'attr': {'style': 'width:95%','rows':'2'} }) }} 	</div>
+            <div> {{ form_errors(form.notas) }}	</div> <br>
+        {% endif %}
+
+        {% if form.medium is defined  %}
+          <div class="ym-g33 ym-gl">
+            <div> {{ form_label(form.medium) }} </div>
+            <div> {{ form_widget(form.medium, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(form.medium) }} </div>	<br>
+          </div>
+        {% endif %}
+
+        {% if form.area is defined  %}
+          <div class="ym-g33 ym-gl">
+            <div> {{ form_label(form.area) }} </div>
+            <div> {{ form_widget(form.area, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(form.area) }} </div> <br>
+          </div>
+        {% endif %}
+
+        {% if form.revision is defined  %}
+          <div class="ym-g33 ym-gl">
+            <!--  <div> {{ form_label(form.revision) }} </div>-->
+            <div> {{ form_widget(form.revision, { 'attr': {'style': 'width:80%'} }) }} Revisado.</div>
+            <div> {{ form_errors(form.revision) }} </div> <br>
+          </div>
+        {% endif %}
+
+        {% if form.file is defined  %}
+          <div class="ym-g33 ym-gl">
+            <div> {{ form_label(form.file) }} </div>
+            <div> {{ form_widget(form.file, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(form.file) }} </div> <br>
+          </div>
+        {% endif %}
+
+        {% if form.url is defined  %}
+        <div class="ym-g80 ym-gl">
+            <div> {{ form_label(form.url) }} </div>
+            <div> {{ form_widget(form.url, { 'attr': {'style': 'width: 50%'} }) }} </div>
+            <div> {{ form_errors(form.url) }} </div> <br>
+        </div>
+        {% endif %}
+
+        {% if form.doi is defined  %}
+        <div class="ym-g80 ym-gl">
+            <div> {{ form_label(form.doi) }} </div>
+            <div> {{ form_widget(form.doi, { 'attr': {'style': 'width: 50%'} }) }} </div>
+            <div> {{ form_errors(form.doi) }} </div> <br>
+        </div>
+        {% endif %}
+
+        {% if form.mathscinet is defined  %}
+        <div class="ym-g33 ym-gl">
+            <div> {{ form_label(form.mathscinet) }} </div>
+            <div> {{ form_widget(form.mathscinet, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(form.mathscinet) }} </div> <br>
+        </div>
+        {% endif %}
+
+        {% if form.zmath is defined  %}
+        <div class="ym-g33 ym-gl">
+            <div> {{ form_label(form.zmath) }} </div>
+            <div> {{ form_widget(form.zmath, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(form.zmath) }} </div> <br>
+        </div>
+        {% endif %}
+
+        {% if form.inspires is defined  %}
+          <div class="ym-g33 ym-gl">
+            <div> {{ form_label(form.inspires) }} </div>
+            <div> {{ form_widget(form.inspires, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(form.inspires) }} </div> <br>
+          </div>
+        {% endif %}
+
+        {{ form_rest(form) }}
+        <div class="ym-g80 ym-gl">
+            <div>{{ form_errors(form) }}</div>
+        </div>
+
+    <div class="ym-g80 ym-gl">
+        <button type="submit" class="ym-button ym-add">Create {{ type }}</button>
+    </div>
+    </form>
+
   </div>
-{% endif %}
-
-
-{% if form.title is defined  %}	
-  <div class="ym-g80 ym-gl">
-    <div> {{ form_label(form.title) }} </div>
-    <div> {{ form_widget(form.title, { 'attr': {'cols': '70','rows':'1'} }) }}  </div>
-    <div> {{ form_errors(form.title) }}	</div> <br>
-  </div>
-{% endif %}
-
-{% if repeat is defined %}
-  <div class="ym-g80 ym-gl" >
-    <div style="padding:3px;"><b>La <a href="{{ path('referencia_show', { 'id': repeat }) }}">
-	 referencia {{ repeat }}</a> tiene el mismo título </b></div>
-  </div>
-{% endif %}
-
-{% if form.type is defined  %}	
-  <div class="ym-g20 ym-gl">
-    <div> {{ form_label(form.type) }} </div>
-    <div> {{ form_widget(form.type) }} </div>
-    <div> {{ form_errors(form.type) }} </div> <br>
-  </div>
-{% endif %}
-
-{% if form.editor is defined  %}
-  <div class="ym-g80 ym-gl">
-    <div> {{ form_label(form.editor) }} </div>
-    <div> {{ form_widget(form.editor, { 'attr': {'size': '70'} }) }}</div>
-    <div> {{ form_errors(form.editor) }} </div>	<br>
- </div>
-{% endif %}
-
-{% if form.journal is defined  %}		
-  <div class="ym-g80 ym-gl">
-    <div> {{ form_label(form.journal) }} </div>
-    <div> {{ form_widget(form.journal, { 'attr': {'size': '70'} }) }}</div>
-    <div> {{ form_errors(form.journal) }} </div> <br>
-  </div>
-{% endif %}
-
-{% if form.yearPub is defined  %}	
-  <div class="ym-g33 ym-gl">
-    <div> {{ form_label(form.yearPub) }} </div>
-    <div> {{ form_widget(form.yearPub) }} </div>
-    <div> {{ form_errors(form.yearPub) }} </div> <br>
-  </div>
-{% endif %}
-
-{% if form.yearPreprint is defined  %}	
-  <div class="ym-g33 ym-gl">
-    <div> {{ form_label(form.yearPreprint) }} </div>
-    <div> {{ form_widget(form.yearPreprint) }} </div>
-    <div> {{ form_errors(form.yearPreprint) }} </div> <br>
-  </div>
-{% endif %}
-
-{% if form.publication is defined  %}
-  <div class="ym-g33 ym-gl">
-    <div> {{ form_label(form.publication) }} </div>
-    <div> {{ form_widget(form.publication) }} </div>
-    <div> {{ form_errors(form.publication) }} </div> <br>
-  </div>
-{% endif %}
-
-{% if form.publisher is defined  %}
-  <div class="ym-g33 ym-gl">
-    <div> {{ form_label(form.publisher) }} </div>
-    <div> {{ form_widget(form.publisher) }} </div>
-    <div> {{ form_errors(form.publisher) }} </div><br>
-  </div>
-{% endif %}
-
-{% if form.issue is defined  %}
-  <div class="ym-g33 ym-gl">
-    <div> {{ form_label(form.issue) }} </div>
-    <div> {{ form_widget(form.issue) }}	</div>
-    <div> {{ form_errors(form.issue) }}	</div> <br>
-  </div>
-{% endif %}
-
-{% if form.pages is defined  %}
-  <div class="ym-g33 ym-gl">
-    <div> {{ form_label(form.pages) }} </div>
-    <div> {{ form_widget(form.pages) }}	</div>
-    <div> {{ form_errors(form.pages) }}	</div>	<br>
-  </div>
-{% endif %}
-
-{% if form.volume is defined  %}
-  <div class="ym-g33 ym-gl">
-    <div> {{ form_label(form.volume) }} </div>
-    <div> {{ form_widget(form.volume) }} </div>
-    <div> {{ form_errors(form.volume) }} </div>	<br>
-  </div>
-{% endif %}
-
-{% if form.placePub is defined  %}	
-  <div class="ym-g33 ym-gl">
-   <div> {{ form_label(form.placePub) }} </div>
-   <div> {{ form_widget(form.placePub) }} </div>
-   <div> {{ form_errors(form.placePub) }} </div> <br>
-  </div>
-{% endif %}
-
-{% if form.isbn is defined  %}
-  <div class="ym-g33 ym-gl">
-    <div> {{ form_label(form.isbn) }} </div>
-    <div> {{ form_widget(form.isbn) }} </div>
-    <div> {{ form_errors(form.isbn) }} </div> <br>
-  </div>
-{% endif %}
-
-{% if form.conference is defined  %}
-  <div class="ym-g33 ym-gl">
-    <div> {{ form_label(form.conference) }} </div>
-    <div> {{ form_widget(form.conference) }} </div>
-    <div> {{ form_errors(form.conference) }} </div> <br>
-  </div>
-{% endif %}
-
-{% if form.corporateAuthor is defined  %}
-  <div class="ym-g33 ym-gl">
-    <div> {{ form_label(form.corporateAuthor) }} </div>
-    <div> {{ form_widget(form.corporateAuthor) }} </div>
-    <div> {{ form_errors(form.corporateAuthor) }} </div> <br>
-  </div>
-{% endif %}
-
-{% if form.thesis is defined  %}
-  <div class="ym-g33 ym-gl">
-    <div> {{ form_label(form.thesis) }} </div>
-    <div> {{ form_widget(form.thesis) }} </div>
-    <div> {{ form_errors(form.thsesis) }} </div> <br>
-  </div>
-{% endif %}
-
-{% if form.address is defined  %}
-  <div class="ym-g33 ym-gl">
-    <div> {{ form_label(form.address) }} </div>
-    <div> {{ form_widget(form.address) }} </div>
-    <div> {{ form_errors(form.address) }} </div> <br>
-  </div>
-{% endif %}
-
-{% if form.issn is defined  %}
-  <div class="ym-g33 ym-gl">
-    <div> {{ form_label(form.issn) }} </div>
-    <div> {{ form_widget(form.issn) }} </div>
-    <div> {{ form_errors(form.issn) }} </div> <br>
-  </div>
-{% endif %}
-
-{% if form.arxiv is defined  %}
-  <div class="ym-g33 ym-gl">
-    <div> {{ form_label(form.arxiv) }} </div>
-    <div> {{ form_widget(form.arxiv) }} </div>
-    <div> {{ form_errors(form.arxiv) }} </div> <br>
-  </div>
-{% endif %}
-
-{% if form.keywords is defined  %}
-  <div class="ym-g80 ym-gl">
-    <div> {{ form_label(form.keywords) }} </div>
-    <div> {{ form_widget(form.keywords, { 'attr': {'cols': '94','rows':'1'} }) }}  </div>
-    <div> {{ form_errors(form.keywords) }} </div> <br>
-{% endif %}
-
-{% if form.notas is defined  %}
-  <div class="ym-g80 ym-gl">
-    <div> {{ form_label(form.notas) }} </div>
-    <div> {{ form_widget(form.notas, { 'attr': {'cols': '94','rows':'2'} }) }} 	</div>
-    <div> {{ form_errors(form.notas) }}	</div> <br>
-  </div>
-{% endif %}
-
-{% if form.abst is defined  %}
-  <div class="ym-g80 ym-gl">
-    <div> {{ form_label(form.abst) }} </div> 
-    <div> {{ form_widget(form.abst, { 'attr': {'cols': '94','rows':'7'} }) }} </div>
-    <div> {{ form_errors(form.abst) }} </div> <br>
-  </div>
-{% endif %}
-
-{% if form.medium is defined  %}
-  <div class="ym-g33 ym-gl">
-   <div> {{ form_label(form.medium) }} </div>
-   <div> {{ form_widget(form.medium) }} </div>
-   <div> {{ form_errors(form.medium) }} </div>	<br>
- </div>
-{% endif %}
-
-{% if form.area is defined  %}
-  <div class="ym-g33 ym-gl">
-    <div> {{ form_label(form.area) }} </div>
-    <div> {{ form_widget(form.area) }} </div>
-    <div> {{ form_errors(form.area) }} </div> <br>
-  </div>
-{% endif %}
-
-{% if form.file is defined  %}
-  <div class="ym-g33 ym-gl">
-    <div> {{ form_label(form.file) }} </div>
-    <div> {{ form_widget(form.file) }} </div>
-    <div> {{ form_errors(form.file) }} </div> <br>
-{% endif %}
-
-{% if form.url is defined  %}	
-  <div class="ym-g80 ym-gl">
-    <div> {{ form_label(form.url) }} </div>
-    <div> {{ form_widget(form.url, { 'attr': {'size': '70'} }) }} </div>
-    <div> {{ form_errors(form.url) }} </div> <br>
-  </div>
-{% endif %}
-
-{% if form.doi is defined  %}
-  <div class="ym-g80 ym-gl">
-    <div> {{ form_label(form.doi) }} </div>
-    <div> {{ form_widget(form.doi, { 'attr': {'size': '70'} }) }} </div>
-    <div> {{ form_errors(form.doi) }} </div> <br>
-  </div>
-{% endif %}
-
-{% if form.mathscinet is defined  %}
-  <div class="ym-g33 ym-gl">
-    <div> {{ form_label(form.mathscinet) }} </div>
-    <div> {{ form_widget(form.mathscinet) }} </div>
-    <div> {{ form_errors(form.mathscinet) }} </div> <br>
-  </div>
-{% endif %}
-
-{% if form.zmath is defined  %}
-  <div class="ym-g33 ym-gl">
-    <div> {{ form_label(form.zmath) }} </div>
-    <div> {{ form_widget(form.zmath) }} </div>
-    <div> {{ form_errors(form.zmath) }} </div> <br>
-{% endif %}
-
-{% if form.inspires is defined  %}
-  <div class="ym-g33 ym-gl">
-    <div> {{ form_label(form.inspires) }} </div>
-    <div> {{ form_widget(form.inspires) }} </div>
-    <div> {{ form_errors(form.inspires) }} </div> <br>
-{% endif %}
-
-{{ form_rest(form) }}
-
-<div class="ym-g80 ym-gl">
- <div>{{ form_errors(form) }}</div>
 </div>
-</div>
-
-<div class="ym-g80 ym-gl">
- <button type="submit" class="ym-button ym-add">Create {{ type }}</button>
-</div>
-</form>
 
 {% endblock %}
 

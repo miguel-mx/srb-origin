@@ -40,16 +40,16 @@
 	}
 
 	* html .ym-wrapper {
-		width: 1140px;	/* IE6 support */
+		width: 960px;	/* IE6 support */
 	}
 
 	.ym-wrapper {
 		text-align:left;
 		margin:0 auto;
-		max-width: 90em;
+		max-width: 960px;
 	}
 	.ym-wbox {
-		padding: 20px;
+		padding: 10px;
 		position: relative;
 	}
 
@@ -119,8 +119,8 @@
 	}
 
 	header .ym-wbox {
-		padding-bottom: 20px;
-        padding-top: 20px;
+		padding-bottom: 30px;
+        padding-top: 30px;
 	}
 
 	header h1,
@@ -422,6 +422,11 @@
 		display:inline-block;
 		width: 165px !important;
 	}
+
+    footer .ym-wbox {
+        padding: 40px 10px;
+    }
+
 	footer a {
 		color:#999;
 	}
@@ -479,9 +484,9 @@
 
 	/*--------------------------------------------------------------------*/
 
-	.ym-gbox-left { padding:0 20px 0 0; }
+	.ym-gbox-left { padding: 0 10px 0 0; }
 
-	.ym-gbox-right { padding:0 0 0 20px; }
+	.ym-gbox-right { padding: 0 0 0 10px; }
 
 	.ym-cbox { padding:0 10px; }
 

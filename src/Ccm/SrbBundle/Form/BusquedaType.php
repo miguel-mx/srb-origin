@@ -29,9 +29,19 @@ class BusquedaType extends AbstractType
                      '2012' => '2012',
                                        ));
 
+       $type = array('choices' => array(
+                    'article' => 'Article',
+                    'incollection' => 'Incollection',
+                    'proceedings' => 'Proceedings',
+                    'book' => 'Book',
+                    'inproceedings' => 'Inproceedings',
+                    'unpublished' => 'Unpublished',
+                                       ));
+
         $builder
-            ->add('Type', 'text', array('required'  => false))
-            ->add('Author', 'text', array('required'  => false))
+            ->add('Title', 'text', array('required'  => false))
+            ->add('Type', 'choice', $type)
+            ->add('Author', 'entity', array('class' => 'CcmSrbBundle:User'))
             ->add('yearStart','choice', $years)
             ->add('yearEnd','choice', $years)
             ->add('allYears','checkbox', array(

@@ -101,7 +101,7 @@
 		float:right;
 		display: inline;
 		line-height: 2em;
-		padding: 0.5em 1.5em;
+		padding: 0.5em .3em;
 	}
 
 	.ym-searchform .ym-searchfield {
