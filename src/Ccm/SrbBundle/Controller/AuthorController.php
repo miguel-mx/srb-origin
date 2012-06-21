@@ -12,14 +12,14 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
 /**
  * Author controller.
  *
- * @Route("/author")
+ * @Route("/authors")
  */
 class AuthorController extends Controller
 {
     /**
      * Lists all Author entities.
      *
-     * @Route("/", name="author")
+     * @Route("/list/", name="author")
      * @Secure(roles="ROLE_ADMIN")
      * @Template()
      */
@@ -35,7 +35,7 @@ class AuthorController extends Controller
     /**
      * Finds and displays a Author entity.
      *
-     * @Route("/{id}/show", name="author_show")
+     * @Route("/author/{id}/show", name="author_show")
      * @Secure(roles="IS_AUTHENTICATED_ANONYMOUSLY")
      * @Template()
      */
@@ -77,7 +77,7 @@ class AuthorController extends Controller
     /**
      * Creates a new Author entity.
      *
-     * @Route("/create", name="author_create")
+     * @Route("/author/create", name="author_create")
      * @Method("post")
      * @Secure(roles="ROLE_ADMIN")
      * @Template("CcmSrbBundle:Author:new.html.twig")
@@ -107,7 +107,7 @@ class AuthorController extends Controller
     /**
      * Displays a form to edit an existing Author entity.
      *
-     * @Route("/{id}/edit", name="author_edit")
+     * @Route("/author/{id}/edit", name="author_edit")
      * @Secure(roles="ROLE_ADMIN")
      * @Template()
      */
@@ -134,7 +134,7 @@ class AuthorController extends Controller
     /**
      * Edits an existing Author entity.
      *
-     * @Route("/{id}/update", name="author_update")
+     * @Route("/author/{id}/update", name="author_update")
      * @Secure(roles="ROLE_ADMIN")
      * @Method("post")
      * @Template("CcmSrbBundle:Author:edit.html.twig")
@@ -173,7 +173,7 @@ class AuthorController extends Controller
     /**
      * Deletes a Author entity.
      *
-     * @Route("/{id}/delete", name="author_delete")
+     * @Route("/author/{id}/delete", name="author_delete")
      * @Secure(roles="ROLE_ADMIN")
      * @Method("post")
      */
@@ -202,7 +202,7 @@ class AuthorController extends Controller
    /**
     * Presenta publicaciones de un autor
     *
-    * @Route("/{id}/references", name="author_references")
+    * @Route("/author/{id}/references", name="author_references")
     * @Secure(roles="IS_AUTHENTICATED_ANONYMOUSLY")
     */
     public function referencesAction($id)

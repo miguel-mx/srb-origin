@@ -217,8 +217,8 @@ class WebController extends BaseController
 
 
     // Guarda las referencias
-    $this->persistBibStructure($addarray);
-    $numrefsTotal=count($addarray);
+    $this->persistBibStructure($norepeat);
+    //$numrefsTotal=count($addarray);
 
          //return $this->render('CcmSrbBundle:Refs:confirm.html.twig', array('bibTex' => $addarray,'numrefsTotal'=>$numrefsTotal));
         return $this->render('CcmSrbBundle:Refs:confirm.html.twig', array('bibTex' => $norepeat,'numrefsTotal'=>$numrefsTotal,
