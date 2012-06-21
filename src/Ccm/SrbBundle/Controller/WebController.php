@@ -135,11 +135,12 @@ class WebController extends BaseController
             // Convierte $name en last/first
             $lfname = explode(" ", $name);
 
+            
             // $addarray[$i]['author'][$j]['first'] = $lfname[0];
-	    $addarray[$i]['author'][$j]['von'] = '';	
-	    $addarray[$i]['author'][$j]['last'] = '';
-	    $addarray[$i]['author'][$j++]['first'] = $name;
-            //$addarray[$i]['author'][$j++]['last']  = $lfname[1];
+	    $addarray[$i]['author'][$j]['first'] = $lfname[0];	
+	    $addarray[$i]['author'][$j]['von'] = '';
+	    //$addarray[$i]['author'][$j++]['first'] = $name;
+            $addarray[$i]['author'][$j]['last']  = $lfname[1];
 
         array_push($authors,' '.$name);
         }
@@ -190,10 +191,38 @@ class WebController extends BaseController
         $i++;
     } // For cada referencia
 
+        $repository = $this->getDoctrine()->getRepository('CcmSrbBundle:Referencia');
+        $m=0;
+        $n=0;
+        $norepeat=null;
+        $repeat=null;
+
+
+        for($m=0;$m<count($addarray);$m++){
+           $titles= $repository->findOneByTitle($addarray[$m]['title']);
+           if ($titles){
+              $repeat[$n]=$addarray[$m];
+              $n++;
+              unset($titles);
+           }
+           else {
+           $norepeat[$n]=$addarray[$m];
+           $n++;
+           }
+       }
+
+        $numrefsTotal=count($repeat)+count($norepeat);
+        $numrefsRepeat= count($repeat);
+        $numrefsNoRepeat= count($norepeat);
+
+
     // Guarda las referencias
     $this->persistBibStructure($addarray);
-    $numrefs=count($addarray);
-    return $this->render('CcmSrbBundle:Refs:confirm.html.twig', array('bibTex' => $addarray,'numrefs'=>$numrefs));
+    $numrefsTotal=count($addarray);
+
+         //return $this->render('CcmSrbBundle:Refs:confirm.html.twig', array('bibTex' => $addarray,'numrefsTotal'=>$numrefsTotal));
+        return $this->render('CcmSrbBundle:Refs:confirm.html.twig', array('bibTex' => $norepeat,'numrefsTotal'=>$numrefsTotal,
+                 'numrefsRepeat'=>$numrefsRepeat, 'numrefsNoRepeat'=>$numrefsNoRepeat, 'bibTexRepeat'=>$repeat));
 
 
 }
