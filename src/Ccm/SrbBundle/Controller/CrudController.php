@@ -28,14 +28,14 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 class CrudController extends Controller
 {
     /**
-     * Lists all Reeferencia entities.
+     * Lists all Referencia entities.
      *
      * @Route("/refs/{page}", defaults={"page" = 1 }, name="refs")
      * @Template()
      */
     public function indexAction($page)
     {
-        
+
     $em = $this->getDoctrine()->getEntityManager();
     $entities = $em->getRepository('CcmSrbBundle:Referencia')->createQueryBuilder('m');
     $adapter = new DoctrineOrmAdapter($entities);

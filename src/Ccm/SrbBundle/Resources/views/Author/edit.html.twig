@@ -5,44 +5,57 @@
 {% set option = 'Editar Autor' %}
 
 {% block col3 %}
+<div class="ym-gbox-right">
 
-<h1>Editar Información del Autor</h1>
+    <div style="margin-left: 160px;"><br />
+    <h1>Editar Información del Autor</h1>
 
-<form action="{{ path('author_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    <form action="{{ path('author_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
 
-{# form_widget(edit_form) #}
-{{ form_errors(edit_form) }}
+    {# form_widget(edit_form) #}
+    {{ form_errors(edit_form) }}
 
-<br><br>
-<div>
-<b>{{ form_label(edit_form.name) }}:</b><br>
-{{ form_errors(edit_form.name) }}
-{{ form_widget(edit_form.name, { 'attr': {'size': '35'} }) }}
-</div>
-<br>
-<div>
-<b>{{ form_label(edit_form.alias) }}:</b><br>
-{{ form_errors(edit_form.alias) }}
-{{ form_widget(edit_form.alias, { 'attr': {'cols': '35','rows':'2'} }) }}
-</div>
+    <br><br>
+    <div>
+        <b>{{ form_label(edit_form.name) }}:</b><br>
+        {{ form_errors(edit_form.name) }}
+        {{ form_widget(edit_form.name, { 'attr': {'size': '35'} }) }}
+    </div>
+<br/>
 
-<div>
-<b>{{ form_label(edit_form.user) }}:</b><br><br>
-{{ form_errors(edit_form.user) }}
-{{ form_widget(edit_form.user, { 'attr': {'size': '10', 'style':'width: 20em'} }) }}
-</div>
+    <div>
+        <b>{{ form_label(edit_form.alias) }}:</b><br>
+        {{ form_errors(edit_form.alias) }}
+        {{ form_widget(edit_form.alias, { 'attr': {'cols': '35','rows':'2'} }) }}
+    </div>
+<br />
+    <div>
+        <b>{{ form_label(edit_form.user) }}:</b><br>
+        {{ form_errors(edit_form.user) }}
+        {{ form_widget(edit_form.user, { 'attr': {'size': '10', 'style':'width: 20em'} }) }}
+    </div>
 
+<br /><br />
 {{ form_rest(edit_form) }}
 
-    <p>
-        <button class="ym-button ym-save" type="submit">Guardar</button>
-    </p>
-</form>
+        <div class="ym-grid">
+          <div class="ym-g33 ym-gl">
+            <button class="ym-button ym-save" type="submit">Guardar</button>
+          </div>
 
-        <form action="{{ path('author_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button class="ym-button ym-delete" type="submit">Eliminar </button>
-        </form>
+          <div class="ym-g33 ym-gl">
+          </form>
+
+            <form action="{{ path('author_delete', { 'id': entity.id }) }}" method="post">
+                {{ form_widget(delete_form) }}
+                <button class="ym-button ym-delete" type="submit">Eliminar </button>
+            </form>
+          </div>
+        </div>
+
+    </div>
+</div>
+<!-- gbox-right -->
 
 {% endblock %}
 

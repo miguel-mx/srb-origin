@@ -31,7 +31,7 @@ class WebController extends BaseController
     $idlist = '';
 
     $form = $this->createFormBuilder($idlist)
-        ->add('idlist', 'text')
+        ->add('idlist', 'text', array('label' => 'ArXiv Ids:'))
         ->getForm();
 
     return $this->render('CcmSrbBundle:Refs:arxiv.html.twig', array(

@@ -8,61 +8,72 @@
 
 
 {% block col3 %}
+<div class="ym-gbox-right">
+  <div class="ym-grid">
 
-    <h1>Busqueda Avanzada</h1><br>app.request.query.all<br>
+    <!-- 2 col margen a la derecha -->
+    <div style="margin-left: 160px;"><br />
+
+
+    <div style="margin-top: 10px;">
+        <h1>Busqueda Avanzada</h1>
+    </div>
 
 
     <form action="{{ path('query') }}" method="get" >
 
-<div class="ym-grid">
-
-       <div>
-         <div><br><b>Título:</b></div><div><input type="text" name="Title" style="width: 50%"/></div>
+       <div style="padding: 5px 0;">
+         <br><b>Título:</b>
+         <div>
+            <input type="text" name="Title" style="width: 380px;"/>
+         </div>
        </div>
 
-      <div>
-        <div><br><b>Típo de Publicación:</b></div>
-        <div>  </div>
+      <div style="padding: 5px 0;">
+        <br><b>Típo de Publicación:</b>
       </div>
 
       <div>
-        <div">  <select name="Type"  style="width: 50%"><option value="article">Article</option><option value="incollection">Incollection</option><option value="proceedings">Proceedings</option><option value="book">Book</option><option value="inproceedings">Inproceedings</option><option value="unpublished">Unpublished</option></select> </div>
+        <select name="Type"  style="width: 380px;"><option value="article">Article</option><option value="incollection">Incollection</option><option value="proceedings">Proceedings</option><option value="book">Book</option><option value="inproceedings">Inproceedings</option><option value="unpublished">Unpublished</option></select>
       </div>
 
-      <div>
-        <div><br><b>Autor:</b></div><div><input type="text" name="Author" style="width: 50%"/></div>
+      <div style="padding: 5px 0;">
+        <br><b>Autor:</b>
+        <div>
+            <input type="text" name="Author" style="width: 380px"/>
+        </div>
       </div>
 
-      <div class="ym-g20 ym-gl">
-        <div><br><b>Año de inicio </b></div>
-      <div>  </div>
-      <div> <select name="yearStart" required="required"><option value="1999">1999</option><option value="2000">2000</option><option value="2001">2001</option><option value="2002">2002</option><option value="2003">2003</option><option value="2004">2004</option><option value="2005">2005</option><option value="2006">2006</option><option value="2007">2007</option><option value="2008">2008</option><option value="2009">2009</option><option value="2010">2010</option><option value="2011">2011</option><option value="2012">2012</option></select> </div>
+      <div class="ym-g33 ym-gl">
+        <br /><b>Año de inicio </b><br />
+        <div style="padding: 5px 0;">
+            <select name="yearStart" required="required"><option value="1999">1999</option><option value="2000">2000</option><option value="2001">2001</option><option value="2002">2002</option><option value="2003">2003</option><option value="2004">2004</option><option value="2005">2005</option><option value="2006">2006</option><option value="2007">2007</option><option value="2008">2008</option><option value="2009">2009</option><option value="2010">2010</option><option value="2011">2011</option><option value="2012">2012</option></select>
+        </div>
       </div>
 
-      <div class="ym-g20 ym-gl">
-        <div><br><b>Año final</b></div>
-      <div>  </div>
-      <div>  <select name="yearEnd" required="required"><option value="1999">1999</option><option value="2000">2000</option><option value="2001">2001</option><option value="2002">2002</option><option value="2003">2003</option><option value="2004">2004</option><option value="2005">2005</option><option value="2006">2006</option><option value="2007">2007</option><option value="2008">2008</option><option value="2009">2009</option><option value="2010">2010</option><option value="2011">2011</option><option value="2012">2012</option></select> </div>
+      <div class="ym-g33 ym-gl">
+        <br /><b>Año final</b><br />
+        <select name="yearEnd" required="required"><option value="1999">1999</option><option value="2000">2000</option><option value="2001">2001</option><option value="2002">2002</option><option value="2003">2003</option><option value="2004">2004</option><option value="2005">2005</option><option value="2006">2006</option><option value="2007">2007</option><option value="2008">2008</option><option value="2009">2009</option><option value="2010">2010</option><option value="2011">2011</option><option value="2012">2012</option></select>
       </div>
 
       <div class="ym-g80 ym-gl">
-         <div><br><b>Mostrar todos los años?</b></div>
-         <div><input type="checkbox"  name="allYears" value="1" /></div>
+         <br><b>Mostrar todos los años?</b><br />
+         <input type="checkbox"  name="allYears" value="1" />
       </div>
       <br>
 
-      <div class="ym-g80">
-      <div>
+      <div class="ym-g80 ym-gl">
         <button type="submit" class="ym-button ym-search" /> Buscar</button>
       </div>
-      </div>
-
-
-</div>
-
 
     </form>
 
+    </div>
+    <!-- Espacio horizontal 2 col -->
+  </div>
+  <!-- div grid -->
+</div>
+<!-- block col3 -->
 
 {% endblock %}
 

@@ -5,29 +5,33 @@
 {% set option = 'Autor ' ~ entity.name %}
 
 {% block col3 %}
+<div class="ym-gbox-right">
+    <!-- 2 col margen a la derecha -->
+    <div style="margin-left: 160px;"><br />
 
-<div>
-<h1>{{'Información sobre el autor ' ~ entity.name }}</h1>
-<br><b>Id Institucional:</b> {{ entity.id }}
-<br><br>
-<b>También aparece como:</b> {{ entity.alias }}<br><br>
-<b>Este autor está relacionado con el usuario:</b> {{ entity.user }}
-<br><br>
+        <h1>{{entity.name }}</h1>
+        <br /><br />
+        <b>Id Institucional:</b> {{ entity.id }}
+        <br><br>
+        <b>También aparece como:</b> {{ entity.alias }}<br><br>
+        <b>Este autor está relacionado con el usuario:</b> {{ entity.user }}
+        <br><br>
         <a href="{{ path('author_references', { 'id': entity.id }) }}">
             Ver lista de publicaciones de {{ entity.name }}
         </a>
 
-</div><br>
-
 {% if (is_granted('ROLE_ADMIN', entity)) or (is_granted('EDIT', entity))  %}
 
-<br>
-        	<form action="{{ path('author_edit', { 'id': entity.id }) }}" method="post">
-            	   <button type="submit" class="ym-button ym-edit">Editar</button>
-        	</form>
-	</div>
-
+    <br /><br />
+    <form action="{{ path('author_edit', { 'id': entity.id }) }}" method="post">
+        <button type="submit" class="ym-button ym-edit">Editar</button>
+    </form>
 {% endif %}
+
+    </div><br>
+    <!-- div margin -->
+</div>
+<!-- gbox-right -->
 
 {% endblock %}
 

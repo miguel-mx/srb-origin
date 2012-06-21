@@ -7,15 +7,15 @@
 
 
 {% block col3 %}
-<br>
+<div class="ym-grid">
+  <div class="ym-gbox"><br />
+
 <h1>Resultados de la búsqueda</h1>
 <br><br>
 
 {% for item in pager.getResults %}
 
-<div style="float:left;">{{ item.id }}.- <b><a href="{{ path('referencia_show', { 'id': item.id }) }}">{{ item.title | title }}</a></b>,</div><div style="font-size: 85%; color: #6B6B6B; float:left;">  {{ item.type|title }}</div><br>
-{{ item.journal }}, ({{ item.yearPub }}), {{ item.pages }}<br>
-{% for key in item.author|explode %}<a href="qsearch?query={{key|trim|url_encode() }}"> {{key}}</a> ; {% endfor %}<br><br>
+    {% include 'CcmSrbBundle:Search:referenceDetails.html.twig' %}
 
 {% endfor %}
 
@@ -38,7 +38,8 @@
 {# queryString #}
 
 <br /><br />
-
+  </div>
+</div>
 {% endblock %}
 
 {% block menuL %}

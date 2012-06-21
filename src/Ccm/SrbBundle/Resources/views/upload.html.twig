@@ -7,31 +7,47 @@
 {% set option =  'Importar desde archivo'  %}
 
 {% block col3 %}
+<div class="ym-gbox-right">
+  <div class="ym-grid">
+    <!-- 2 col margen a la derecha -->
+    <div style="margin-left: 160px;"><br />
 
-    <h1>Importar Referencias </h1>
-	<br>
-	{% if app.session.flash('notice') %}
+        <div style="margin-top: 10px;">
+        <h1>Importar Referencias </h1>
+        <br>
+        {% if app.session.flash('notice') %}
                 <div class="flash-message">
                     <em>El archivo fue cargado correctamente</em>: {{ app.session.flash('notice') }}
                 </div>
-            {% endif %}
+        {% endif %}
+        </div>
+        <!-- margin -->
 
     <form action="" method="POST" {{ form_enctype(form) }}>
         {{ form_errors(form) }}
+
+        <div style="color: red; font-weight: bold;">{{ form_errors(form.attachment) }}</div>
+        <div><b>Desde archivo:</b><br /><br /></div>
+        <div>{{ form_widget(form.attachment, { 'attr': {'size': '35%'} }) }}</div>
+
         {{ form_rest(form) }}
-	    <button type="submit" class="ym-button ym-upload" />Importar referencias</button>
+        <button type="submit" class="ym-button ym-upload" />Importar referencias</button>
     </form>
+
+    </div>
+    <!-- margin -->
+
+  </div>
+  <!-- grid -->
+</div>
+<!-- block col3 -->
 {% endblock %}
 
 {% block menuL %}
 
+    <ul class="record_actions">
+        <li><a href="{{ path('refs') }}"> Regresar </a></li>
+    </ul>
 
-	<ul class="record_actions">
-    	<li><a href="{{ path('refs') }}"> Regresar </a></li>
-	</ul>
 {% endblock %}
-
-
-
-
 
