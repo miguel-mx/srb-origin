@@ -192,13 +192,7 @@
         <b>Ref Id: </b> {{ entity.id }}
       </div>
     {% endif %}
-
-    {% if entity.notas != null %}
-      <div style="padding:5px 0;">
-        <b>Notas: </b> {{ entity.notas }}
-      </div>
-    {% endif %}
-
+    
     {% if entity.created != null %}
       <div class="ym-g33 ym-gl" style="padding:5px 0;">
             <img src="{{ asset('bundles/ccmsrb/images/createdate.png') }}" alt="Created" style="padding:0 5px 0 0;" />
@@ -215,16 +209,22 @@
 
     {% if entity.revision != null %}
       {% if entity.revision == 1 %}
-        <div class="ym-g33 ym-gl" style="padding:5px 0;">
+        <div class="ym-g80 ym-gl" style="padding:5px 0;">
             <img src="{{ asset('bundles/ccmsrb/images/tick.png') }}" alt="Warn" style="padding:0 5px 0 0;" />
             <b> Referencia revisada por: </b> {{ entity.user }}
         </div>
       {% endif %}
     {% else %}
-        <div class="ym-g33 ym-gl" style="padding:5px 0;">
+        <div class="ym-g80 ym-gl" style="padding:5px 0;">
             <img src="{{ asset('bundles/ccmsrb/images/error.png') }}" alt="Warn" style="padding:0 5px 0 0;" />
             <b> Referencia no revisada</b>
         </div>
+    {% endif %}
+
+    {% if entity.notas != null %}
+      <div class="ym-g80 ym-gl" style="padding:5px 0;">
+        <b>Notas: </b> {{ entity.notas }}
+      </div>
     {% endif %}
 
 </div>
@@ -235,8 +235,10 @@
 
 {% if authors|length == 0  %}	
 
+    <div style="padding:5px 0;">
    <img src="{{ asset('bundles/ccmsrb/images/error.png') }}" alt="Warn" style="padding:0 5px 0 0;" />
    <b>Esta referencia no está asociada con algún autor institucional</b>
+   </div>
 
 {% else %}
 

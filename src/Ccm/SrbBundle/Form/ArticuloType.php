@@ -30,7 +30,7 @@ class ArticuloType extends AbstractType
    ->add('url', 'text', array('required' => false))
    ->add('doi', 'text', array('required' => false))
    ->add('revision', 'checkbox', array('label' => 'Aprobación','required'  => false))
-     ;
+    ;
     }
 
  public function getDefaultOptions(array $options)

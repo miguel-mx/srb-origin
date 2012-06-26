@@ -82,7 +82,7 @@ class BaseController extends Controller
     } // For cada referencia
 
 }
-     
+
     /**
      * Obtiene la cadena de autores
      * 
@@ -119,7 +119,6 @@ protected function authString($bibTex)
        return $tmpauth;
     }
 
-} 
-
-
-  
+}
+ 
+ 

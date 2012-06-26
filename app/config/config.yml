@@ -86,3 +86,4 @@ foq_elastica:
                         model:  Ccm\SrbBundle\Entity\Referencia
                         provider:
                         finder:
+                        listener:
