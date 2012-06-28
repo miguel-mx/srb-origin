@@ -1,6 +1,7 @@
 {% extends 'CcmSrbBundle::layout.html.twig' %}
 
 {% block menu %} {{ knp_menu_render('CcmSrbBundle:Builder:mainMenu') }} {% endblock %}
+
 {% set option =  'Nuevo ' ~ type  %}
 
  {% block col3 %}
@@ -57,11 +58,9 @@
 
         {% if form.yearPub is defined  %}
           <div class="ym-g33 ym-gl">
-          <div class="ym-gbox-left">
             <div> {{ form_label(form.yearPub) }} </div>
             <div> {{ form_widget(form.yearPub, { 'attr': {'style': 'width:80%'} }) }} </div>
             <div> {{ form_errors(form.yearPub) }} </div> <br>
-          </div>
           </div>
         {% endif %}
 
@@ -91,21 +90,17 @@
 
         {% if form.issue is defined  %}
           <div class="ym-g33 ym-gl">
-          <div class="ym-gbox-left">
             <div> {{ form_label(form.issue) }} </div>
             <div> {{ form_widget(form.issue, { 'attr': {'style': 'width:80%'} }) }}	</div>
             <div> {{ form_errors(form.issue) }}	</div> <br>
-          </div>
           </div>
         {% endif %}
 
         {% if form.pages is defined  %}
           <div class="ym-g33 ym-gl">
-          <div class="ym-gbox-left">
             <div> {{ form_label(form.pages) }} </div>
             <div> {{ form_widget(form.pages, { 'attr': {'style': 'width:80%'} }) }}	</div>
             <div> {{ form_errors(form.pages) }}	</div> <br>
-          </div>
           </div>
         {% endif %}
 
@@ -205,14 +200,6 @@
           </div>
         {% endif %}
 
-        {% if form.revision is defined  %}
-          <div class="ym-g33 ym-gl">
-            <!--  <div> {{ form_label(form.revision) }} </div>-->
-            <div> {{ form_widget(form.revision, { 'attr': {'style': 'width:80%'} }) }} Revisado.</div>
-            <div> {{ form_errors(form.revision) }} </div> <br>
-          </div>
-        {% endif %}
-
         {% if form.file is defined  %}
           <div class="ym-g33 ym-gl">
             <div> {{ form_label(form.file) }} </div>
@@ -224,7 +211,7 @@
         {% if form.url is defined  %}
         <div class="ym-g80 ym-gl">
             <div> {{ form_label(form.url) }} </div>
-            <div> {{ form_widget(form.url, { 'attr': {'style': 'width: 50%'} }) }} </div>
+            <div> {{ form_widget(form.url, { 'attr': {'style': 'width: 80%'} }) }} </div>
             <div> {{ form_errors(form.url) }} </div> <br>
         </div>
         {% endif %}
@@ -232,7 +219,7 @@
         {% if form.doi is defined  %}
         <div class="ym-g80 ym-gl">
             <div> {{ form_label(form.doi) }} </div>
-            <div> {{ form_widget(form.doi, { 'attr': {'style': 'width: 50%'} }) }} </div>
+            <div> {{ form_widget(form.doi, { 'attr': {'style': 'width: 80%'} }) }} </div>
             <div> {{ form_errors(form.doi) }} </div> <br>
         </div>
         {% endif %}

@@ -9,6 +9,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Ccm\SrbBundle\Entity\Author;
 use Ccm\SrbBundle\Form\AuthorType;
 use JMS\SecurityExtraBundle\Annotation\Secure;
+use MakerLabs\PagerBundle\Pager;
+use MakerLabs\PagerBundle\Adapter\ArrayAdapter;
+use MakerLabs\PagerBundle\Adapter\DoctrineOrmAdapter;
+
 /**
  * Author controller.
  *
@@ -198,24 +202,40 @@ class AuthorController extends Controller
 
         return $this->redirect($this->generateUrl('author'));
     }
-
+//     * @Route("/refs/{page}", defaults={"page" = 1 }, name="refs")
    /**
     * Presenta publicaciones de un autor
     *
+    * --route("/references/{id}/{page}", defaults={"page" = 1 }, name="author_references")
     * @Route("/author/{id}/references", name="author_references")
     * @Secure(roles="IS_AUTHENTICATED_ANONYMOUSLY")
     */
-    public function referencesAction($id)
+    public function referencesAction($id, $page)
     {
 
       $em = $this->getDoctrine()->getEntityManager();
       $entity = $em->getRepository('CcmSrbBundle:Author')->find($id);
 
       if (!$entity) {
-        throw $this->createNotFoundException('Unable to find Author entity.');
+        throw $this->createNotFoundException('No se encontró al autor con éste ID');
       }
 
-      $publications = $entity->getPublications();
+
+      $repository = $this->getDoctrine()->getRepository('CcmSrbBundle:Referencia');
+
+      $query = $repository->createQueryBuilder('q')
+                ->select('r', 'a')
+                ->from('Ccm\SrbBundle\Entity\Referencia', 'r')
+                ->innerJoin('r.authors', 'a')
+                ->where('a.id = 1');
+
+
+        $publications = $entity->getPublications();
+//       $publications = $em->getRepository('CcmSrbBundle:Referencia')->createQueryBuilder('f');
+//       $adapter = new DoctrineOrmAdapter($publications);
+      $adapter = new DoctrineOrmAdapter($query);
+
+      $pager = new Pager($adapter, array('page' => $page, 'limit' => 2));
 
       return $this->render('CcmSrbBundle:Author:references.html.twig',array('publications'=> $publications, 'name'=> $entity->getName()));
 

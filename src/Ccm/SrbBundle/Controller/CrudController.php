@@ -129,10 +129,10 @@ class CrudController extends Controller
             'entity' => $entity,'type'=>$type,
             'repeat'=>$titles->getId(),
             'form'   => $form->createView()
-     );
+            );
 
-    }
-           else {
+        }
+        else {
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($entity);
             $em->flush();

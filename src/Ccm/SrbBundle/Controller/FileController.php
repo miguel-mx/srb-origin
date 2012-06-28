@@ -23,8 +23,8 @@ use Ccm\SrbBundle\Entity\Referencia;
 
 class FileController extends BaseController
 {
-    
-  
+
+
     /**
      * Carga archivo en formato BibTex
      * @Route("/upload", name="upload")
@@ -40,36 +40,36 @@ class FileController extends BaseController
         $form->bindRequest($request);
         if ($form->isValid()) {
             $file = $form['attachment']->getData();
-		    $randomName= $upload->generateRandomFileName($file);
+            $randomName= $upload->generateRandomFileName($file);
             if ($file) {
                 $file->move($upload->getUploadDir(), $randomName);
             }
-	
-        // upload->bibTex regresa una estructura de Bibtex
-	$bibTex = $upload->bibTex($randomName);
-	$repository = $this->getDoctrine()->getRepository('CcmSrbBundle:Referencia');
-        $j=0;
-	$k=0;
-	$norepeat=null;
-	$repeat=null;
-         
 
-	for($i=0;$i<count($bibTex);$i++){
-	  $titles= $repository->findOneByTitle($bibTex[$i]['title']);
-	   if ($titles){
+    // upload->bibTex regresa una estructura de Bibtex
+    $bibTex = $upload->bibTex($randomName);
+    $repository = $this->getDoctrine()->getRepository('CcmSrbBundle:Referencia');
+        $j=0;
+    $k=0;
+    $norepeat=null;
+    $repeat=null;
+
+
+    for($i=0;$i<count($bibTex);$i++){
+      $titles= $repository->findOneByTitle($bibTex[$i]['title']);
+       if ($titles){
               $repeat[$k]=$bibTex[$i];
-	      $k++;
-	      unset($titles);
- 	   }
-           else {
-           $norepeat[$j]=$bibTex[$i];
-	   $j++;
-           }
+          $k++;
+          unset($titles);
        }
-	
-	$numrefsTotal=count($repeat)+count($norepeat);
-        $numrefsRepeat= count($repeat);
-	$numrefsNoRepeat= count($norepeat);
+       else {
+           $norepeat[$j]=$bibTex[$i];
+       $j++;
+       }
+    }
+
+    $numrefsTotal=count($repeat)+count($norepeat);
+    $numrefsRepeat= count($repeat);
+    $numrefsNoRepeat= count($norepeat);
 
         // ******************************
         // Guarda las referencias
@@ -78,9 +78,9 @@ class FileController extends BaseController
         // ******************************
         // Muestra las referencias leídas
         return $this->render('CcmSrbBundle:Refs:confirm.html.twig', array('bibTex' => $norepeat,'numrefsTotal'=>$numrefsTotal,
-		'numrefsRepeat'=>$numrefsRepeat, 'numrefsNoRepeat'=>$numrefsNoRepeat, 'bibTexRepeat'=>$repeat));
+        'numrefsRepeat'=>$numrefsRepeat, 'numrefsNoRepeat'=>$numrefsNoRepeat, 'bibTexRepeat'=>$repeat));
 
-	    // $this->get('session')->setFlash('notice', $randomName);
+        // $this->get('session')->setFlash('notice', $randomName);
         // return $this->render('CcmSrbBundle::upload.html.twig', array('refs'=>$refs, ));
 
         } // Is valid
@@ -96,5 +96,3 @@ class FileController extends BaseController
 
 } // Class
 
-
-  

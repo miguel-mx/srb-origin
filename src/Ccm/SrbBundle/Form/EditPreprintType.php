@@ -12,7 +12,7 @@ class EditPreprintType extends AbstractType
   $builder
   ->add('author', 'text', array('required' => true, 'label'=>'*Author'))
   ->add('title', 'textarea', array('required' => true, 'label'=>'*Title'))
-  ->add('type', 'choice', array('choices'=>array('unpublished'=>'Unpublished', 'article'=>'Article', 'incollection'=>'Incollection', 'Proceedings'=>'proceedings', 'Book'=>'book', 'Inproceedings'=>'inproceedings')))
+  ->add('type', 'choice', array('choices'=>array('unpublished'=>'Unpublished', 'article'=>'Article', 'incollection'=>'Incollection', 'proceedings'=>'Proceedings', 'book'=>'Book', 'inproceedings'=>'Inproceedings')))
   ->add('yearPreprint','number', array('required' => true,'label'=>'Year End'))
   ->add('keywords', 'textarea', array('required' => false,'label'=>'Keywords'))
   ->add('notas', 'textarea', array('required' => false,'label'=>'Notes'))

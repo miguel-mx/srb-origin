@@ -81,7 +81,7 @@ class WebController extends BaseController
     // Dos registros
     //$search_query = 'id_list=0804.4631,1106.1605';
     $search_query = 'id_list='.$idlist;
-    
+
     $start = 0;                     // retreive the first 5 results
     $max_results = 30;
 
@@ -98,10 +98,10 @@ class WebController extends BaseController
 
     $totalResults = $feed->get_feed_tags($opensearch_ns,'totalResults');
     // Run through each entry, and print out information
+
     $i = 0;
 
     foreach ($feed->get_items() as $entry) {
-
 
         $addarray[$i]['title'] = $entry->get_title();
 
@@ -121,7 +121,7 @@ class WebController extends BaseController
 
         }
 
-        $addarray[$i]['entryType'] = 'Unpublished';
+        $addarray[$i]['entryType'] = 'unpublished';
 
         $temp = explode('/abs/',$entry->get_id());
         $addarray[$i]['arxiv'] = $temp[1];
@@ -135,14 +135,15 @@ class WebController extends BaseController
             // Convierte $name en last/first
             $lfname = explode(" ", $name);
 
-            
-            // $addarray[$i]['author'][$j]['first'] = $lfname[0];
-	    $addarray[$i]['author'][$j]['first'] = $lfname[0];	
-	    $addarray[$i]['author'][$j]['von'] = '';
-	    //$addarray[$i]['author'][$j++]['first'] = $name;
-            $addarray[$i]['author'][$j]['last']  = $lfname[1];
+
+        // $addarray[$i]['author'][$j]['first'] = $lfname[0];
+        $addarray[$i]['author'][$j]['first'] = $lfname[0];
+        $addarray[$i]['author'][$j]['von'] = '';
+        //$addarray[$i]['author'][$j++]['first'] = $name;
+        $addarray[$i]['author'][$j++]['last']  = $lfname[1];
 
         array_push($authors,' '.$name);
+
         }
 
         // get the links to the abs page and pdf for this e-print
@@ -155,20 +156,20 @@ class WebController extends BaseController
                 $addarray[$i]['file'] = $link['attribs']['']['href'];
                 //print("pdf link: ".$link['attribs']['']['href'].EOL);
             }
-        
+
         }
 
         # The journal reference, comments and primary_category sections live under
         # the arxiv namespace
         $journal_ref_raw = $entry->get_item_tags($arxiv_ns,'journal_ref');
-        
+
         if ($journal_ref_raw) {
             $journal_ref = $journal_ref_raw[0]['data'];
             $addarray[$i]['journal'] = $journal_ref_raw[0]['data'];
         }
 
         $comments_raw = $entry->get_item_tags($arxiv_ns,'comment');
-        
+
         if ($comments_raw) {
             $addarray[$i]['notas'] = $comments_raw[0]['data'];
         }
@@ -184,7 +185,7 @@ class WebController extends BaseController
         }
 
         $categories_string = join(', ',$categories);
-    
+
         $addarray[$i]['keywords'] = $categories_string;
         $addarray[$i]['abstract'] = $entry->get_description();
 
