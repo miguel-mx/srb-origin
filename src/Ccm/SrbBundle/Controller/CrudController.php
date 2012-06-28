@@ -25,6 +25,8 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Ccm\SrbBundle\Controller\RoleSecurityIdentity;
+
 class CrudController extends Controller
 {
     /**
@@ -146,8 +148,9 @@ class CrudController extends Controller
            $securityIdentity = UserSecurityIdentity::fromAccount($user);
 
 
-           $sid = new RoleSecurityIdentity(ROLE_SUPER_ADMIN);
+           $sid = new RoleSecurityIdentity('ROLE_SUPER_ADMIN');
            $acl->insertClassAce($sid, MaskBuilder::MASK_OWNER); 
+	    
            // grant owner access
            $acl->insertObjectAce($securityIdentity, MaskBuilder::MASK_OWNER);
            $aclProvider->updateAcl($acl);

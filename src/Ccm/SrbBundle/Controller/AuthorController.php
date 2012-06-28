@@ -19,7 +19,7 @@ class AuthorController extends Controller
     /**
      * Lists all Author entities.
      *
-     * @Route("/list/", name="author")
+     * @Route("/list", name="author")
      * @Secure(roles="ROLE_ADMIN")
      * @Template()
      */

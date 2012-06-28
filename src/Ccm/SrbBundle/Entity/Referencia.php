@@ -103,7 +103,7 @@ class Referencia
     protected $keywords;
 
      /**
-     * @ORM\Column(type="string", length=500, nullable=true)
+     * @ORM\Column(type="string", length=1500, nullable=true)
      */
     protected $abst;
 
