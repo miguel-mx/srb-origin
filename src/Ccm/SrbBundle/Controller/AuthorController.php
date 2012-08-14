@@ -202,12 +202,11 @@ class AuthorController extends Controller
 
         return $this->redirect($this->generateUrl('author'));
     }
-//     * @Route("/refs/{page}", defaults={"page" = 1 }, name="refs")
+
    /**
     * Presenta publicaciones de un autor
     *
-    * --route("/references/{id}/{page}", defaults={"page" = 1 }, name="author_references")
-    * @Route("/author/{id}/references", name="author_references")
+    * @Route("/references/{id}/{page}", defaults={"page" = 1 }, requirements={"id" = "\d+"}, name="author_references")
     * @Secure(roles="IS_AUTHENTICATED_ANONYMOUSLY")
     */
     public function referencesAction($id, $page)
@@ -220,24 +219,22 @@ class AuthorController extends Controller
         throw $this->createNotFoundException('No se encontró al autor con éste ID');
       }
 
+      $request = $em->getRepository('CcmSrbBundle:Referencia');
 
-      $repository = $this->getDoctrine()->getRepository('CcmSrbBundle:Referencia');
-
-      $query = $repository->createQueryBuilder('q')
-                ->select('r', 'a')
+      $query = $request->createQueryBuilder('q')
+                ->select('r , a')
                 ->from('Ccm\SrbBundle\Entity\Referencia', 'r')
                 ->innerJoin('r.authors', 'a')
-                ->where('a.id = 1');
+                ->where('a.id = :id')
+                ->setParameter('id', $id)
+                ->getQuery();
 
+      $references = $query->getResult();
 
-        $publications = $entity->getPublications();
-//       $publications = $em->getRepository('CcmSrbBundle:Referencia')->createQueryBuilder('f');
-//       $adapter = new DoctrineOrmAdapter($publications);
-      $adapter = new DoctrineOrmAdapter($query);
+      $adapter = new ArrayAdapter($references);
+      $pager = new Pager($adapter, array('page' => $page, 'limit' => 10));
 
-      $pager = new Pager($adapter, array('page' => $page, 'limit' => 2));
-
-      return $this->render('CcmSrbBundle:Author:references.html.twig',array('publications'=> $publications, 'name'=> $entity->getName()));
+      return $this->render('CcmSrbBundle:Author:references.html.twig',array('pager'=> $pager, 'id' => $id, 'name'=> $entity->getName()));
 
     }
 

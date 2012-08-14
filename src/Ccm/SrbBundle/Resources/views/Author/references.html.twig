@@ -8,11 +8,15 @@
 <div class="ym-gbox-right">
 <h1>Referencias de {{ name }}</h1><br>
 
-{% for item in publications %}
+{% for item in pager.getResults %}
 
     {% include 'CcmSrbBundle:Search:referenceDetails.html.twig' %}
 
 {% endfor %}
+
+{% if pager.isPaginable %}
+    {{ paginate(pager, 'author_references', {'id': id}) }}
+{% endif %}
 
 
 </div>
