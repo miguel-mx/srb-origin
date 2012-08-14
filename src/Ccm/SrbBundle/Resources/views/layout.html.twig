@@ -1,6 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN" "http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd" [<!ENTITY mathml "http://www.w3.org/1998/Math/MathML">]>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
@@ -20,13 +19,13 @@
 <!-- <script type="text/javascript" src="{{ asset('bundles/ccmevsec/js/superfish.js') }}"></script> -->
 <!--<link rel="stylesheet" type="text/css" href="css/superfish.css" media="screen">-->
  
-<!--[if lte IE 7]>
-<link rel="stylesheet" href="yaml/core/iehacks.min.css" type="text/css"/>
-<![endif]-->
+<!--[if lte IE 7] -->
+<!-- <link rel="stylesheet" href="yaml/core/iehacks.min.css" type="text/css"/> -->
+<!--[endif]-->
 
 <!--<script src="js/prototype.js" type="text/javascript"></script>
 <script src="js/scriptaculous.js" type="text/javascript"></script>-->
-        
+
 <!--<script type="text/javascript" src="superfish/js/jquery-1.2.6.min.js"></script>
 <script type="text/javascript" src="superfish/js/hoverIntent.js"></script>
 <script type="text/javascript" src="superfish/js/superfish.js"></script>
@@ -44,32 +43,31 @@
 
 <header>
 <div class="ym-wrapper">
-    <div class="ym-wbox">
-        <img style="float:left" src="{{ asset('bundles/ccmsrb/images/unam_blanco.png') }}" height="110" width="105" alt="Logo UNAM"/>
-    <br /><br /><br />
-<h2> Sistema de Referencias Bibliográficas</h2><h3>Centro de Ciencias Matemáticas UNAM</h3>
-
+  <div style="padding:15px 10px;">
+    <div class="ym-grid">
+        <div style="float:left; width:230px;">
+        <center><img src="{{ asset('bundles/ccmsrb/images/unam_blanco.png') }}" alt="Logo UNAM" /></center>
+        </div>
+        <br /><br />
+        <div style="float:left; padding:0 0 0 10px;">
+        <h2> Sistema de Referencias Bibliográficas</h2><h3>Centro de Ciencias Matemáticas UNAM</h3>
+        <div>
     </div>
+  </div>
 </div>
-    </header>
+</header>
 
 <nav class="ym-hlist">  
 <div class="ym-wrapper">
-     <div class="ym-wbox">
- <!--  <ul>
-    <li class="active"><strong>Active</strong></li>
-    <li><a href="#">Link</a></li>
-    <li><a href="#">Link</a></li>
-   <li><a href="#">Link</a></li>
-    <li><a href="#">Link</a></li>
-  </ul> -->
+    <div class="ym-wbox">
+
     {% block menu %} {% endblock %}
-  <!-- optional search form -->
-	 <form class="ym-searchform" action="{{ path('search') }}" method="get">
-    		<input class="ym-searchfield" type="search" placeholder="Search..." name="q" />
-    		<input class="ym-searchbutton" type="submit" value="Search" />
-  	</form>
-	</div>
+    <!-- optional search form -->
+|   <form class="ym-searchform" action="{{ path('search') }}" method="get">
+            <input class="ym-searchfield" type="search" placeholder="Search..." name="q" />
+            <input class="ym-searchbutton" type="submit" value="Search" />
+    </form>
+    </div>
  </div>
 </nav>
 
