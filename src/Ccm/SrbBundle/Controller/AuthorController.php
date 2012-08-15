@@ -23,8 +23,7 @@ class AuthorController extends Controller
     /**
      * Lists all Author entities.
      *
-     * @Route("/list", name="author")
-     * @Secure(roles="ROLE_ADMIN")
+     * @Route("/list/", name="author")
      * @Template()
      */
     public function indexAction()
@@ -40,7 +39,7 @@ class AuthorController extends Controller
      * Finds and displays a Author entity.
      *
      * @Route("/author/{id}/show", name="author_show")
-     * @Secure(roles="IS_AUTHENTICATED_ANONYMOUSLY")
+     * secure(roles="IS_AUTHENTICATED_ANONYMOUSLY")
      * @Template()
      */
     public function showAction($id)

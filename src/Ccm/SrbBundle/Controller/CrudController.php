@@ -210,7 +210,7 @@ class CrudController extends Controller
         //if (strcasecmp($entity->getType(), 'edicion') == 0) {		$editForm = $this->createForm(new EdcionType(), $entity);}
         if (strcasecmp($entity->getType(), 'proceedings') == 0) {	$editForm = $this->createForm(new EditorType(), $entity);}
         if (strcasecmp($entity->getType(), 'incollection') == 0) {		$editForm = $this->createForm(new CapituloType(), $entity);}
-        if(($entity->getType()=='incollection')||($entity->getType()=='misc') || ($entity->getType()=='') ) {$editForm = $this->createForm(new ReferenciaType(), $entity);}
+        if(($entity->getType()=='misc') || ($entity->getType()=='') ) {$editForm = $this->createForm(new ReferenciaType(), $entity);}
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
@@ -245,7 +245,7 @@ class CrudController extends Controller
         //if (strcasecmp($entity->getType(), 'edicion') == 0) {		$editForm = $this->createForm(new EdcionType(), $entity);}  
         if (strcasecmp($entity->getType(), 'proceedings') == 0) {	$editForm = $this->createForm(new EditorType(), $entity);}
         if (strcasecmp($entity->getType(), 'incollection') == 0) {		$editForm = $this->createForm(new CapituloType(), $entity);}
-        if(($entity->getType()=='incollection')||($entity->getType()=='misc') || ($entity->getType()=='') ) {$editForm = $this->createForm(new ReferenciaType(), $entity);}
+        if(($entity->getType()=='misc') || ($entity->getType()=='') ) {$editForm = $this->createForm(new ReferenciaType(), $entity);}
 
         $deleteForm = $this->createDeleteForm($id);
         $request = $this->getRequest();

@@ -14,9 +14,9 @@ class Builder extends ContainerAware
 
         $menu->setCurrentUri($this->container->get('request')->getRequestUri());
 
-        $menu->addChild('Inicio', array('route' => 'refs'));
-        $menu->addChild('ArXiv', array('route' => 'arxiv'));
-        $menu->addChild('Upload', array('route' => 'upload'));
+        $menu->addChild('Referencias', array('route' => 'refs'));
+        $menu->addChild('Autores', array('route' => 'author'));
+        $menu->addChild('Cuenta', array('route' => 'fos_user_profile_show'));
 //         $menu->addChild('Login', array('route' => 'login'));
 
 
