@@ -30,9 +30,11 @@
                     <li>
                         <a href="{{ path('author_show', { 'id': entity.id }) }}">Ver</a>
                     </li>
-                    <li>
-                        <a href="{{ path('author_edit', { 'id': entity.id }) }}">Editar</a>
-                    </li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li>
+                            <a href="{{ path('author_edit', { 'id': entity.id }) }}">Editar</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </td>
         </tr>

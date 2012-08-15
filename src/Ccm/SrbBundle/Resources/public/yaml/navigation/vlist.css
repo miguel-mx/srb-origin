@@ -25,9 +25,10 @@
 		padding:3px 0px 3px 10%; /* LTR */
 		margin:0;
 		color:#444;
-		background-color:#fff;
+		/* background-color:#fff; 
 		border-top:2px #ddd solid;
-		border-bottom:4px #888 solid;
+		border-bottom:4px #888 solid; */
+        border-bottom:2px #888 solid;
 	}
 
 	.ym-vlist {
@@ -35,7 +36,7 @@
 		overflow:hidden;
 		margin:0 0 1.5em 0;
 		list-style-type:none;
-		border-bottom:2px #ddd solid;
+		/* border-bottom:2px #ddd solid; */
 	}
 
 	.ym-vlist ul {
@@ -73,7 +74,7 @@
 
 	/* active list element */
 	.ym-vlist li.active {
-		color:#fff;
+		color:#0060A6;
 		background-color:#444;
 	}
 
@@ -88,7 +89,7 @@
 
 	.ym-vlist li a:focus,
 	.ym-vlist li a:hover,
-	.ym-vlist li a:active { background-color:#888; color:#fff; outline: 0 none; }
+	.ym-vlist li a:active { /* background-color:#888; */ color:#555; outline: 0 none; }
 
 	/* Level 2 */
 	.ym-vlist li ul li a,

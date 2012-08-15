@@ -15,13 +15,13 @@ security:
                 provider: fos_userbundle
                 login_path: /login
                 default_target_path: /refs
-            logout:       
+            logout:
                 path: /logout
                 target: /refs
             anonymous:    true
 
     access_control:
-#        - { path: ^/author, role: ROLE_ADMIN }
+#        - { path: ^/author, role: ROLE_USER }
         - { path: ^/author/new, role: ROLE_ADMIN }
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
