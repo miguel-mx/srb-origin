@@ -48,6 +48,9 @@ Sesión iniciada como: <b>{{ app.user.username }}</b>
                     <label for="remember_me">Recordarme</label><br><br>
                     </div>
 
+                    {% if error %}
+                       <div style="color: red;">{{ error|trans({}, 'FOSUserBundle') }}</div>
+                    {% endif %}
                     <button type="submit" class="ym-button ym-next">Login</button>
                 </form>
 

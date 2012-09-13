@@ -257,12 +257,15 @@
           </div>
         {% endif %}
 
-        {% if edit_form.revision is defined  %}
+
+         {% if edit_form.revision is defined  %} 
+           {% if is_granted("ROLE_SUPER_ADMIN") %}
           <div class="ym-g33 ym-gl">
-            <div> {{ form_widget(edit_form.revision, { 'attr': {'style': 'width:80%'} }) }} Revisado.</div>
-            <div> {{ form_errors(edit_form.revision) }} </div> <br>
+            <div> {{ form_widget(edit_form.revision)}}</div>
+            <div> {{ form_errors(edit_form.revision) }}--- </div> <br>
           </div>
-        {% endif %}
+          {% endif %} 
+        {% endif %}  
 
         {{ form_rest(edit_form) }}
 

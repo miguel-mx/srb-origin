@@ -108,9 +108,9 @@ class Author
    /**
     * Add publication
     *
-    * @param Ccm\TestBundle\Entity\Referencia $refs
+    * @param Ccm\SrbBundle\Entity\Referencia $refs
     */
-    public function addPublication(\Ccm\TestBundle\Entity\Referencia $refs)
+    public function addPublication(\Ccm\SrbBundle\Entity\Referencia $refs)
     {
         $this->publications[] = $refs;
     }

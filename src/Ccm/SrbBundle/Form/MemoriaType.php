@@ -13,12 +13,15 @@ class MemoriaType extends AbstractType
   ->add('author','text', array('required'=>true,'label'=>'*Author'))
   ->add('title', 'textarea', array('required'=>true,'label'=>'*Title'))
   ->add('type', 'choice', array('choices'=>array('inproceedings'=>'Inproceedings')))
-  ->add('yearPub','number', array('required'=>true,'label'=>'*Year'))
-  ->add('pages', 'number', array('required'=>false,'label'=>'Pages'))
+  ->add('yearPub','text', array('required'=>true,'label'=>'*Year'))
+  ->add('pages', 'text', array('required'=>false,'label'=>'Pages'))
+  ->add('issue', 'text', array('required'=>false,'label'=>'Issue'))
+  ->add('volume', 'text', array('required'=>false,'label'=>'Volume'))
+  ->add('journal', 'text', array('required'=>false,'label'=>'Journal'))
   ->add('address', 'text',array('required'=>false,'label'=>'Address'))
   ->add('notas', 'textarea', array('required'=>false,'label'=>'Notes'))
   ->add('keywords', 'textarea' , array('required'=>false,'label'=>'Keywords'))
-  ->add('publisher', 'text', array('required'=>true,'label'=>'*Publisher'))
+  ->add('publisher', 'text', array('required'=>false,'label'=>'Publisher'))
   ->add('revision', 'checkbox', array('label' => 'Aprobación','required'  => false))
 
       ;

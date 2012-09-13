@@ -7,6 +7,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Ccm\SrbBundle\Entity\Referencia;
+use Ccm\SrbBundle\Entity\Author;
+use Ccm\SrbBundle\Entity\User;
 use Ccm\SrbBundle\Form\ReferenciaType;
 use Ccm\SrbBundle\Form\ArticuloType;
 use Ccm\SrbBundle\Form\PreprintType;
@@ -133,7 +135,18 @@ class CrudController extends Controller
 
         }
         else {
+
+           // retrieving the security identity of the currently logged-in user
+           $securityContext = $this->get('security.context');
+           $user = $securityContext->getToken()->getUser();
+           $securityIdentity = UserSecurityIdentity::fromAccount($user);
+
             $em = $this->getDoctrine()->getEntityManager();
+
+            if(false === $this->get('security.context')->isGranted('ROLE_SUPER_ADMIN')) {
+            $entity->addAuthor($user->getAuthor());
+            }
+
             $em->persist($entity);
             $em->flush();
 
@@ -142,18 +155,17 @@ class CrudController extends Controller
            $objectIdentity = ObjectIdentity::fromDomainObject($entity);
            $acl = $aclProvider->createAcl($objectIdentity);
 
-           // retrieving the security identity of the currently logged-in user
-           $securityContext = $this->get('security.context');
-           $user = $securityContext->getToken()->getUser();
-           $securityIdentity = UserSecurityIdentity::fromAccount($user);
 
 
-           $sid = new RoleSecurityIdentity('ROLE_SUPER_ADMIN');
-           $acl->insertClassAce($sid, MaskBuilder::MASK_OWNER); 
+           //$sid = new RoleSecurityIdentity('ROLE_SUPER_ADMIN');
+
+
+           //$acl->insertClassAce($sid, MaskBuilder::MASK_OWNER); 
 	    
            // grant owner access
            $acl->insertObjectAce($securityIdentity, MaskBuilder::MASK_OWNER);
            $aclProvider->updateAcl($acl);
+
 
            return $this->redirect($this->generateUrl('referencia_show', array('id' => $entity->getId(),'type'=>$type)));
            }
@@ -336,7 +348,7 @@ class CrudController extends Controller
     }
 
   /**
-    * Asocia autores a un artículo
+    * Asocia autores a una publicación
     *
     * @Route("/{id}/authors", name="article_authors")
     */
@@ -344,14 +356,37 @@ class CrudController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
         $entity = $em->getRepository('CcmSrbBundle:Referencia')->find($id);
-        if (!$entity) {
+	if (!$entity) {
           throw $this->createNotFoundException('Unable to find Registro entity.');
         }
+        $autores = $entity->getAuthor();
+        $autores = explode("; ",$autores);
+        $k=0; 
+        for($k=0;$k<count($autores);$k++){
+           $em = $this->getDoctrine()->getEntityManager();
+           $query = $em->createQuery(
+                    'SELECT a FROM CcmSrbBundle:Author a WHERE a.name like :name or a.alias like :name ')
+                     ->setParameter('name', '%'.trim($autores[$k]).'%')
+                     ->setMaxResults('1');
+           $result = $query->getOneOrNullResult();
+           if($result){
+              $preferred[$k] = $result->getId();
+           }
+        }
+
 
         // Crea la forma de asociación
+ 
+if(count(@$preferred)>0){
           $form = $this->createFormBuilder($entity)
-              ->add('authors', null, array('label'  => 'Autor(es) Institucionales','required'=>false))
+               ->add('authors', null, array('label'  => 'Autor(es) Institucionales','required'=>false, 'multiple'=>true, 'expanded'=>false, 'preferred_choices' => $preferred) )
               ->getForm();
+}
+else{
+         $form = $this->createFormBuilder($entity)
+               ->add('authors', null, array('label'  => 'Autor(es) Institucionales','required'=>false, 'multiple'=>true, 'expanded'=>false))
+               ->getForm();
+}
 
          $request = $this->getRequest();
 

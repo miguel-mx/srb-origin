@@ -30,6 +30,7 @@ class BusquedaType extends AbstractType
                                        ));
 
        $type = array('choices' => array(
+                    'all' => 'Todos',
                     'article' => 'Article',
                     'incollection' => 'Incollection',
                     'proceedings' => 'Proceedings',
@@ -45,7 +46,7 @@ class BusquedaType extends AbstractType
             ->add('yearStart','choice', $years)
             ->add('yearEnd','choice', $years)
             ->add('allYears','checkbox', array(
-                  'label'     => 'Mostrar todos los años? ',
+                  'label'     => '¿Mostrar todos los años? ',
                   'required'  => false
                   ));
     }

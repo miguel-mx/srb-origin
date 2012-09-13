@@ -55,7 +55,7 @@ class FileController extends BaseController
 
 
     for($i=0;$i<count($bibTex);$i++){
-      $titles= $repository->findOneByTitle($bibTex[$i]['title']);
+      $titles= $repository->findOneByTitle(preg_replace("'\s+'",' ', $bibTex[$i]['title']));
        if ($titles){
               $repeat[$k]=$bibTex[$i];
           $k++;

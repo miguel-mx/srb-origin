@@ -228,9 +228,9 @@ class Referencia
        /**
         * Add Author
         *
-        * @param Ccm\TestBundle\Entity\Author $author
+        * @param Ccm\SrbBundle\Entity\Author $author
         */
-        public function addAuthor(\Ccm\TestBundle\Entity\Author $author)
+        public function addAuthor(\Ccm\SrbBundle\Entity\Author $author)
         {
             $author->addPublication($this); // synchronously updating inverse side
             $this->authors[] = $author;

@@ -9,9 +9,14 @@
 {% block col3 %}
 <div class="ym-grid">
   <div class="ym-gbox"><br />
-
+{% if pager.getResults|length == 0   %}
+<h1>No se encontraron resultados en la búsqueda</h1>
+ {% else %}
 <h1>Resultados de la búsqueda</h1>
+{% endif %}
+
 <br><br>
+
 
 {% for item in pager.getResults %}
 

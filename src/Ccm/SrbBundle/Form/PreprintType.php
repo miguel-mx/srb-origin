@@ -13,7 +13,7 @@ class PreprintType extends AbstractType
   ->add('author', 'text', array('required' => true, 'label'=>'*Author'))
   ->add('title', 'textarea', array('required' => true, 'label'=>'*Title'))
   ->add('type', 'choice', array('choices'=>array('unpublished'=>'Unpublished')))
-  ->add('yearPreprint','number', array('required' => true,'label'=>'Year End'))
+  ->add('yearPreprint','number', array('required' => true,'label'=>'Year Preprint'))
   ->add('keywords', 'textarea', array('required' => false,'label'=>'Keywords'))
   ->add('notas', 'textarea', array('required' => false,'label'=>'Notes'))
   ->add('abst', 'textarea', array('required' => false,'label'=>'Abstract'))

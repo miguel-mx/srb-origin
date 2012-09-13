@@ -28,7 +28,9 @@ class BaseController extends Controller
 
       $ref = new Referencia();
 
-      @$ref->setTitle($bibTex[$i]['title']);
+      $title=preg_replace("'\s+'",' ', $bibTex[$i]['title']);
+      @$ref->setTitle($title);
+      //@$ref->setTitle($bibTex[$i]['title']);
       @$ref->setType($bibTex[$i]['entryType']);
       @$ref->setYearPreprint($bibTex[$i]['yearpreprint']);	
       @$ref->setYearPub($bibTex[$i]['year']);
@@ -43,7 +45,9 @@ class BaseController extends Controller
       @$ref->setMedium($bibTex[$i]['medium']);
       @$ref->setArea($bibTex[$i]['area']);
       @$ref->setConference($bibTex[$i]['conference']);
-      @$ref->setNotas($bibTex[$i]['notas']);	
+      //$notes=preg_replace("'\s+'",' ', $bibTex[$i]['notas']);
+      //@$ref->setNotas($notes);
+      @$ref->setNotas(preg_replace("'\s+'",' ',$bibTex[$i]['notas']));	
       @$ref->setrevision($bibTex[$i]['revision']);
       @$ref->setFile($bibTex[$i]['file']);
       @$ref->setArxiv($bibTex[$i]['arxiv']);
@@ -52,17 +56,29 @@ class BaseController extends Controller
       @$ref->setInspires($bibTex[$i]['inspires']);
       @$ref->setDoi($bibTex[$i]['doi']);
       @$ref->setUrl($bibTex[$i]['url']);
+      @$ref->setPublisher($bibTex[$i]['publisher']);
       // @$ref->setAuthor($bibTex[$i]['author']);
       //$ref->setAuthors($autorLast);
       // @$ref->setAuthor($this->authString($bibTex));
       //@$ref->setAuthor($bibTex[$i]['author'][0]['last']);
       @$ref->setAuthor($this->authString($bibTex[$i]['author']));
       //print_r($bibTex[$i]['author']);
-      @$ref->setAbst($bibTex[$i]['abstract']);
+      //$abst=preg_replace("'\s+'",' ', $bibTex[$i]['abstract']);
+      //@$ref->setAbst($abst);
+      @$ref->setAbst(preg_replace("'\s+'",' ',$bibTex[$i]['abstract']));
       @$ref->setCreated();
       @$ref->setModified();
       // Manejo de errores???
       $em = $this->getDoctrine()->getEntityManager();
+
+       // retrieving the security identity of the currently logged-in user
+      $securityContext = $this->get('security.context');
+      $user = $securityContext->getToken()->getUser();
+      $securityIdentity = UserSecurityIdentity::fromAccount($user);
+
+      if(false === $this->get('security.context')->isGranted('ROLE_SUPER_ADMIN')) {
+            $ref->addAuthor($user->getAuthor());
+            }
       $em->persist($ref);
       $em->flush();
 
@@ -71,10 +87,7 @@ class BaseController extends Controller
       $objectIdentity = ObjectIdentity::fromDomainObject($ref);
       $acl = $aclProvider->createAcl($objectIdentity);
 
-      // retrieving the security identity of the currently logged-in user
-      $securityContext = $this->get('security.context');
-      $user = $securityContext->getToken()->getUser();
-      $securityIdentity = UserSecurityIdentity::fromAccount($user);
+
 
       // grant owner access
       $acl->insertObjectAce($securityIdentity, MaskBuilder::MASK_OWNER);

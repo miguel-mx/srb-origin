@@ -45,7 +45,7 @@ class SearchController extends Controller
 
           // Construye la consulta
 
-          if(!empty($criterios['Type'])) {
+          if(!empty($criterios['Type']) ) {
             $dql .= 'LOWER(r.type) LIKE :type AND ';
             $qb->setParameter('type', '%'.strtolower($criterios['Type']).'%');
           }

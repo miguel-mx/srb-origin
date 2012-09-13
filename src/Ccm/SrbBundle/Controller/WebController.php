@@ -174,6 +174,11 @@ class WebController extends BaseController
             $addarray[$i]['notas'] = $comments_raw[0]['data'];
         }
 
+
+        $published = $entry->get_item_tags($atom_ns,'published');
+        $addarray[$i]['yearpreprint'] = substr($published[0]['data'],0,4);
+
+
         $primary_category_raw = $entry->get_item_tags($arxiv_ns, 'primary_category');
         $primary_category = $primary_category_raw[0]['attribs']['']['term'];
 
@@ -200,7 +205,7 @@ class WebController extends BaseController
 
 
         for($m=0;$m<count($addarray);$m++){
-           $titles= $repository->findOneByTitle($addarray[$m]['title']);
+           $titles= $repository->findOneByTitle(preg_replace("'\s+'",' ',$addarray[$m]['title']));
            if ($titles){
               $repeat[$n]=$addarray[$m];
               $n++;
