@@ -237,7 +237,7 @@
 
     <div style="padding:5px 0;">
    <img src="{{ asset('bundles/ccmsrb/images/error.png') }}" alt="Warn" style="padding:0 5px 0 0;" />
-   <b>Esta referencia no está asociada con algún autor institucional</b>
+   <b>Esta referencia no tiene un autor institucional asociado</b>
    </div>
 
 {% else %}
@@ -286,7 +286,7 @@
    <ul class="record_actions">
       <li> <a href="{{ path('referencia_edit', { 'id': entity.id }) }}"> Editar </a> </li>
 {% endif %}
-    <li> <a href="{{ path('refs') }}"> Regresar </a> </li>
+    <li> <a href="{{ path('index') }}"> Regresar </a> </li>
 
 {% endblock %}
 

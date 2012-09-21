@@ -237,6 +237,34 @@ class AuthorController extends Controller
 
     }
 
+   /**
+    * Presenta publicaciones de un usuario
+    *
+    * @Route("/myrefs/{page}", defaults={"page" = 1 }, requirements={"id" = "\d+"}, name="my_refs")
+    * @Secure(roles="ROLE_USER")
+    */
+    public function userrefsAction($page)
+    {
+
+      // retrieving the security identity of the currently logged-in user
+      $securityContext = $this->get('security.context');
+      $user = $securityContext->getToken()->getUser();
+
+      $author = $user->getAuthor();
+      
+      if (!$author) {
+        throw $this->createNotFoundException('No existe un author asociado al usuario');
+      }
+      
+      $response = $this->forward('CcmSrbBundle:Author:references', array(
+                                 'id'  => $author->getId(),
+                                 'page' => $page
+                                                                        ));
+
+      return $response;
+
+    }
+
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder(array('id' => $id))

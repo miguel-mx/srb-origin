@@ -31,13 +31,41 @@ use Ccm\SrbBundle\Controller\RoleSecurityIdentity;
 
 class CrudController extends Controller
 {
+
+   /**
+   * Index page
+   *
+   * @Route("/", name="index")
+   * @Template()
+   */
+   public function indexAction()
+   {
+     $em = $this->getDoctrine()->getRepository('CcmSrbBundle:Referencia');
+
+     $q =$em->createQueryBuilder('p')
+         ->orderBy('p.id', 'desc')
+         ->getQuery();
+
+     $q->setMaxResults(5);
+
+     $entity = $q->getResult();
+
+     if (!$entity) {
+       throw $this->createNotFoundException('Unable to find Registro entity.');
+     }
+
+     return $this->render('CcmSrbBundle:Refs:index.html.twig', array('entity'=>$entity));
+
+        //return array('entities' => $entities);
+   }
+
     /**
      * Lists all Referencia entities.
      *
      * @Route("/refs/{page}", defaults={"page" = 1 }, name="refs")
      * @Template()
      */
-    public function indexAction($page)
+    public function refsAction($page)
     {
 
     $em = $this->getDoctrine()->getEntityManager();
@@ -143,7 +171,7 @@ class CrudController extends Controller
 
             $em = $this->getDoctrine()->getEntityManager();
 
-            if(false === $this->get('security.context')->isGranted('ROLE_SUPER_ADMIN')) {
+            if(false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
             $entity->addAuthor($user->getAuthor());
             }
 
@@ -157,7 +185,7 @@ class CrudController extends Controller
 
 
 
-           //$sid = new RoleSecurityIdentity('ROLE_SUPER_ADMIN');
+           //$sid = new RoleSecurityIdentity('ROLE_ADMIN');
 
 
            //$acl->insertClassAce($sid, MaskBuilder::MASK_OWNER); 
@@ -198,14 +226,14 @@ class CrudController extends Controller
 
            $securityContext = $this->container->get('security.context');
 
-//            if ( (false === $securityContext->isGranted('ROLE_SUPER_ADMIN')) || (false === $securityContext->isGranted('EDIT', $entity) )) {
+//            if ( (false === $securityContext->isGranted('ROLE_ADMIN')) || (false === $securityContext->isGranted('EDIT', $entity) )) {
 //                   throw new AccessDeniedHttpException();
 //
 //            }
 
 
         // check for edit access
-        if ((false === $securityContext->isGranted('ROLE_SUPER_ADMIN')))
+        if ((false === $securityContext->isGranted('ROLE_ADMIN')))
          {
 
         if ((false === $securityContext->isGranted('EDIT', $entity)))
@@ -281,7 +309,7 @@ class CrudController extends Controller
            else {
 
 
-         if(false === $this->get('security.context')->isGranted('ROLE_SUPER_ADMIN')) {
+         if(false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
 
                 $user = $this->container->get('security.context')->getToken()->getUser();
                 $entity->setUser($user); 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>{% block title %}Documentación Sistema de Referencias Bibliográficas - CCM UNAM-Morelia {% endblock %}</title>
+<meta name="description" content=""/>
+<meta name="author" content=""/>
+  
+<!-- mobile viewport optimisation -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+<!-- stylesheets -->
+<link rel="stylesheet" href="{{ asset('bundles/ccmsrb/css/central.css') }}" type="text/css"/>
+<!-- <link rel="stylesheet" href="{{ asset('bundles/whiteoctoberpagerfanta/css/pagerfantaDefault.css') }}" type="text/css" media="all" /> -->
+<link rel="shortcut icon" href="{{ asset('bundles/ccmsrb/images/favicon.ico') }}" />
+
+</head>
+<body>
+
+<div class="ym-wrapper">
+   <div class="ym-wbox markdown-body">
+
+        {{ html | raw }}
+
+   </div>
+</div>
+
+
+</body>

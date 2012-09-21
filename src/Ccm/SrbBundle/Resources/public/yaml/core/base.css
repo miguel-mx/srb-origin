@@ -451,6 +451,7 @@
 	.ym-fbox-select select { width:60%; }
 	.ym-full .ym-fbox-select select { width:94.8%; }
 	.ym-columnar .ym-fbox-select select { width:68.8%; }
+
 }
 
 @media print {

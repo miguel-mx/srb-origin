@@ -16,6 +16,7 @@
             <th>Id</th>
             <th>Nombre</th>
             <th>Alias</th>
+            <th>Referencias</th>
             <th>Opciones</th>
         </tr>
     </thead>
@@ -25,6 +26,9 @@
             <td><a href="{{ path('author_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td><b>{{ entity.name }}</b></td>
             <td>{{ entity.alias }}</td>
+            <td>
+             <a href="{{ path('author_references', { 'id': entity.id }) }}">Referencias</a>
+            </td>
             <td>
                 <ul>
                     <li>

@@ -456,7 +456,8 @@
 	/*--- TYPOGRAPHY -----------------------------------------------------*/
 
 	h2 {
-		letter-spacing:-2px;
+/*		letter-spacing:-2px;
+ */
 	}
 
 	h2[id] {
@@ -791,4 +792,5 @@
 	#secondary .linearize-level-1 > [class*="ym-g"] > [class*="ym-gbox"] {
 		padding: 0;
 	}
+    
 }

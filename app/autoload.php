@@ -20,8 +20,8 @@ $loader->registerNamespaces(array(
     'FOQ'              => __DIR__.'/../vendor/bundles',
     'Knp\Bundle'       => __DIR__.'/../vendor/bundles',
     'Knp\Menu'         => __DIR__.'/../vendor/KnpMenu/src',
+    'Knp'              => __DIR__.'/../vendor/bundles',
     'WhiteOctober\PagerfantaBundle' => __DIR__.'/../vendor/bundles',
-    'Pagerfanta'                    => __DIR__.'/../vendor/pagerfanta/src',
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',

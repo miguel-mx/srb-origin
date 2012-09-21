@@ -13,9 +13,13 @@
         <br /><br />
         <b>Id Institucional:</b> {{ entity.id }}
         <br><br>
-        <b>También aparece como:</b> {{ entity.alias }}<br><br>
-        <b>Este autor está relacionado con el usuario:</b> {{ entity.user }}
-        <br><br>
+        <b>Alias:</b> {{ entity.alias }}<br><br>
+
+        {% if (is_granted('ROLE_USER', entity)) %}
+            <b>Usuario asociado:</b> {{ entity.user }}
+            <br><br>
+        {% endif %}
+
         <a href="{{ path('author_references', { 'id': entity.id }) }}">
             Ver lista de publicaciones de {{ entity.name }}
         </a>

@@ -32,40 +32,22 @@
 {% block menuL %}
     <ul>
         <li> <a href="{{ path('referencia_new', { 'type': 'article' } ) }}"> Artículo </a> </li>
-    </ul>
-    <ul>
         <li> <a href="{{ path('referencia_new', { 'type': 'incollection' } ) }}"> Capítulo de Libro </a> </li>
-    </ul>
-    {# <!--<ul>
-        <li> <a href="{{ path('referencia_new', { 'type': 'edicion' } ) }}"> Edicion de Libro </a> </li>
-    </ul>--> #}
-    <ul>
         <li> <a href="{{ path('referencia_new', { 'type': 'proceedings' } ) }}"> Editor de Memorias de Congreso </a> </li>
-    </ul>
-    <ul>
         <li> <a href="{{ path('referencia_new', { 'type': 'book' } ) }}"> Libro </a> </li>
-    </ul>
-    <ul>
         <li> <a href="{{ path('referencia_new', { 'type': 'inproceedings' } ) }}"> Memoria de Congreso </a> </li>
-    </ul>
-    <ul>
         <li> <a href="{{ path('referencia_new', { 'type': 'unpublished' } ) }}"> Preprint </a> </li>
     </ul>
 {% endblock %}
 
 
 {% block menuL1 %}
-<div class="nav-wrapper">
- <h6 class="ym-vlist">Importación</h6>
-    <ul class="ym-vlist">
-
+{% if is_granted('ROLE_ADMIN') %}
+    <h6 class="ym-vlist">Importar</h6>
     <ul>
         <li> <a href="{{ path('upload') }}"> Desde Archivo </a> </li>
-    </ul>
-    <ul>
         <li> <a href="{{ path('arxiv') }}"> Desde Arxiv </a> </li>
     </ul>
-
-</div>
+{% endif %}
 {% endblock %}
 

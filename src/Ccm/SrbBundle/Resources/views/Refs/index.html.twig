@@ -1,104 +1,79 @@
-{# Ccm/SrbBundle/Resources/views/Refs/index.html.twig #}
 {% extends 'CcmSrbBundle::layout.html.twig' %}
 
 {% block menu %}
-{{ knp_menu_render('CcmEvsecBundle:Builder:mainMenu') }}
+
+    {{ knp_menu_render('CcmSrbBundle:Builder:mainMenu') }}
+
 {% endblock %}
+
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+{% set option = 'Nueva publicación' %}
+{% else %}
+{% set option = 'Ingresar al sistema' %}
+{% endif %}
 
 {% block col3 %}
 <div class="ym-grid">
   <div class="ym-gbox"><br />
 
-<h1>Referencias list</h1>
-<table class="records_list">
-    <thead>
-        <tr>
-	    <th>id</th>
-            <th>author</th>
-            <th>title</th>
-            <th>type</th>
-            <!--<th>yearPub</th>
-            <th>yearPreprint</th>
-            <th>publication</th>
-            -->
-	    <th>journal</th>
-<!--             <th>issue</th> -->
-            <th>pages</th>
-<!-- 	    <th>corporateAuthor</th> -->
-<!--             <th>thesis</th> -->
-<!-- 	    <th>address</th> -->
-<!--             <th>keywords</th> -->
-<!--             <th>abst</th> -->
-<!-- 	    <th>publisher</th> -->
-<!-- 	    <th>placePub</th> -->
-<!-- 	    <th>editor</th> -->
-<!-- 	    <th>issn</th> -->
-<!--             <th>isbn</th> -->
-<!--             <th>medium</th> -->
-<!--             <th>area</th> -->
-<!-- 	    <th>conference</th> -->
-<!-- 	    <th>notas</th> -->
-<!-- 	    <th>revision</th> -->
-<!--             <th>file</th> -->
-<!-- 	    <th>url</th> -->
-<!-- 	    <th>doi</th> -->
-<!--     	    <th>arxiv</th> -->
-<!--     	    <th>mathscinet</th> -->
-<!--   	    <th>zmath</th> -->
-<!--             <th>inspires</th> -->
-        </tr>
-    </thead>
+  <h2>Referencias Bibliográficas del Centro de Ciencias Matemáticas UNAM</h2><br />
+  <div class="ym-g62 ym-gl">
+El Sistema de Referencias Bibliográficas es un repositorio de producción bibliográfica del Centro de Ciencias Matemáticas.
+  </div>
 
-    <tbody>
-    {% for entity in entities %}
-        <tr>
-            <td><a href="{{ path('referencia_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-           <td>{% for key in entity.author|explode %}
-	        <a href="{{key}}"> {{key}}</a> ;
-           {% endfor %}</td>
+   <div class="ym-g62 ym-gl" style="padding: 20px 0">
+   <b>Busqueda rápida</b>
+   </div>
+   <div class="ym-g62 ym-gl">
+   <!-- optional search form -->
+   <form action="{{ path('search') }}" method="get">
+            <input type="search" size="40px" placeholder="Search..." name="q" />
+            <input  type="submit" value="Search" />
+    </form>
+   </div>
 
-            <td>{{ entity.title }}</td>
-            <td>{{ entity.type }}</td>
-            <td>{{ entity.journal }}</td>
-            <td>{{ entity.pages }}</td>
-<!--             <td>{{ entity.publication }}</td> -->
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('referencia_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('referencia_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-            </td>
-        </tr>
+    <div class="ym-g62 ym-gl" style="padding: 20px 0">
+    <br />
+    <b>Entradas más recientes</b><br />
+    </div>
+
+    <div class="ym-gbox ym-gl">
+    {% for item in entity %}
+
+        {% include 'CcmSrbBundle:Search:referenceDetails.html.twig' %}
+
     {% endfor %}
-    </tbody>
-</table>
-
-<ul>
-    <li>
-        <a href="{{ path('referencia_new') }}">
-            Create a new entry
-        </a>
-    </li>
-</ul>
-<ul>
-    <li>
-        <a href="{{ path('upload') }}">
-            Create a new entry by file
-        </a>
-    </li>
-</ul>
-<ul>
-    <li>
-        <a href="{{ path('arxiv') }}">
-            Create a new entry import from Arxiv
-        </a>
-    </li>
-</ul>
+    </div>
 
   </div>
 </div>
 {% endblock %}
+
+
+{% block menuL %}
+    <ul>
+        <li> <a href="{{ path('referencia_new', { 'type': 'article' } ) }}"> Artículo </a> </li>
+        <li> <a href="{{ path('referencia_new', { 'type': 'incollection' } ) }}"> Capítulo de Libro </a> </li>
+{# <!--<ul>
+        <li> <a href="{{ path('referencia_new', { 'type': 'edicion' } ) }}"> Edicion de Libro </a> </li>
+    </ul>--> #}
+        <li> <a href="{{ path('referencia_new', { 'type': 'proceedings' } ) }}"> Editor de Memorias de Congreso </a> </li>
+        <li> <a href="{{ path('referencia_new', { 'type': 'book' } ) }}"> Libro </a> </li>
+        <li> <a href="{{ path('referencia_new', { 'type': 'inproceedings' } ) }}"> Memoria de Congreso </a> </li>
+        <li> <a href="{{ path('referencia_new', { 'type': 'unpublished' } ) }}"> Preprint </a> </li>
+    </ul>
+{% endblock %}
+
+
+{% block menuL1 %}
+
+{% if is_granted('ROLE_ADMIN') %}
+    <h6 class="ym-vlist">Importar</h6>
+    <ul>
+        <li> <a href="{{ path('upload') }}"> Desde Archivo </a> </li>
+        <li> <a href="{{ path('arxiv') }}"> Desde Arxiv </a> </li>
+    </ul>
+
+{% endif %}
+{% endblock %}
+

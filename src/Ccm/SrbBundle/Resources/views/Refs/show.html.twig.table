@@ -129,7 +129,7 @@
         </a>
     </li>
 <li>
-        <a href="{{ path('refs') }}">
+        <a href="{{ path('index') }}">
             Regresar
         </a>
     </li>

@@ -8,7 +8,7 @@
  <div class="ym-grid">
   <div class="ym-gbox"><br />
 
-    <h1>{{ type|title }} Nueva Referencia</h1><br />Campos con (*) son requeridos.<br><br>
+    <h1>Nuevo {{ type|title }}</h1><br />Campos con (*) son requeridos.<br><br>
 
     <form action="{{ path('referencia_create', { 'type':  type  } )}}" method="post" {{ form_enctype(form) }}>
 
@@ -248,14 +248,18 @@
           </div>
         {% endif %}
 
- {% if edit_form.revision is defined  %} 
-        {% if is_granted("ROLE_SUPER_ADMIN") %}
-          <div class="ym-g33 ym-gl">
-            <div> {{ form_widget(edit_form.revision)}}</div>
-            <div> {{ form_errors(edit_form.revision) }}--- </div> <br>
-          </div>
-         {% endif %} 
-   {% endif %} 
+        {% if form.revision is defined  %}
+        <div class="ym-g33 ym-gl">
+                {% if is_granted("ROLE_ADMIN") %}
+                    <div>Revisado</div>
+                    <div> {{ form_widget(form.revision)}} </div>
+                {% else %}
+                    <div>Revisado (solo como administrador)</div>
+                    <div> {{ form_widget(form.revision, { 'attr': { 'disabled': 'disabled' } })}} </div>
+                {% endif %}
+                <div> {{ form_errors(form.revision) }} </div> <br>
+             </div>
+       {% endif %}
 
         {{ form_rest(form) }}
         <div class="ym-g80 ym-gl">
@@ -274,19 +278,7 @@
 
 {% block menuL %}
 <ul class="record_actions">
-   <li><a href="{{ path('refs') }}"> Regresar </a></li>
+   <li><a href="{{ path('index') }}"> Regresar </a></li>
 </ul>
 {% endblock %}
 
-{% block menuL1 %}
-<div class="nav-wrapper">
- <h6 class="ym-vlist">Importación</h6>
-  <ul class="ym-vlist">
-  <ul>
-    <li> <a href="{{ path('upload') }}"> Desde Archivo </a> </li>
-  </ul>
-  <ul>
-    <li> <a href="{{ path('arxiv') }}"> Desde Arxiv </a> </li>
-  </ul>
-</div>
-{% endblock %}

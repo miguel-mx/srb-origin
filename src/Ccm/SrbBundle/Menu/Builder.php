@@ -10,19 +10,19 @@ class Builder extends ContainerAware
     public function mainMenu(FactoryInterface $factory)
     {
 
-	$menu = $factory->createItem('root');
+        $menu = $factory->createItem('root');
 
-        $menu->setCurrentUri($this->container->get('request')->getRequestUri());
+//         $menu->setCurrentUri($this->container->get('request')->getRequestUri());
 
-        $menu->addChild('Referencias', array('route' => 'refs'));
+        $menu->addChild('Inicio', array('route' => 'index'));
         $menu->addChild('Autores', array('route' => 'author'));
-        $menu->addChild('Cuenta', array('route' => 'fos_user_profile_show'));
+        $menu->addChild('Usuario', array('route' => 'fos_user_profile_show'));
 //         $menu->addChild('Login', array('route' => 'login'));
 
 
-	$menu->setAttribute('class','sf-menu');
+    $menu->setAttribute('class','sf-menu');
 
-	return $menu;
+    return $menu;
 
     }
 }

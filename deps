@@ -83,3 +83,6 @@
     git=https://github.com/KnpLabs/KnpMenuBundle.git
     target=bundles/Knp/Bundle/MenuBundle
 
+[KnpMarkdownBundle]
+    git=http://github.com/KnpLabs/KnpMarkdownBundle.git
+    target=/bundles/Knp/Bundle/MarkdownBundle

@@ -258,14 +258,18 @@
         {% endif %}
 
 
-         {% if edit_form.revision is defined  %} 
-           {% if is_granted("ROLE_SUPER_ADMIN") %}
-          <div class="ym-g33 ym-gl">
-            <div> {{ form_widget(edit_form.revision)}}</div>
-            <div> {{ form_errors(edit_form.revision) }}--- </div> <br>
-          </div>
-          {% endif %} 
-        {% endif %}  
+         {% if edit_form.revision is defined  %}
+             <div class="ym-g33 ym-gl">
+                {% if is_granted("ROLE_ADMIN") %}
+                    <div>Revisado</div>
+                    <div> {{ form_widget(edit_form.revision)}} </div>
+                {% else %}
+                    <div>Revisado (solo como administrador)</div>
+                    <div> {{ form_widget(edit_form.revision, { 'attr': { 'disabled': 'disabled' } })}} </div>
+                {% endif %}
+                <div> {{ form_errors(edit_form.revision) }} </div> <br>
+             </div>
+        {% endif %}
 
         {{ form_rest(edit_form) }}
 
@@ -295,9 +299,6 @@
 
 {% block menuL %}
     <ul>
-        <li> <a href="{{ path('search') }}">  Búsqueda </a> </li>
-    </ul>
-    <ul class="record_actions">
-        <li> <a href="{{ path('refs') }}"> Regresar </a> </li>
+        <li> <a href="{{ path('index') }}"> Regresar </a> </li>
     </ul>
 {% endblock %}
