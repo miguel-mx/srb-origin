@@ -18,6 +18,12 @@
             <div> {{ form_errors(edit_form.title) }}    </div> <br>
         {% endif %}
 
+        {% if edit_form.bookTitle is defined  %}
+            <div> {{ form_label(edit_form.bookTitle) }} </div>
+            <div> {{ form_widget(edit_form.bookTitle, { 'attr': {'style': 'width: 95%','rows':'1'} }) }}  </div>
+            <div> {{ form_errors(edit_form.bookTitle) }} </div> <br>
+        {% endif %}
+
         {% if edit_form.author is defined  %}
             <div> {{ form_label(edit_form.author) }} </div>
             <div> {{ form_widget(edit_form.author, { 'attr': {'style': 'width:95%'} }) }} </div>
@@ -29,7 +35,7 @@
             <div> {{ form_widget(edit_form.type, { 'attr': {'width': '20'} }) }}	</div>
             <div> {{ form_errors(edit_form.type) }} </div> 
 
-            {% if entity.type == 'unpublished'  %}
+            {% if entity.type == 'preprint'  %}
               <div class="box info" style="width: 90%;">
                 Para cambiar el tipo de Unpublished a cualquier otro, primero cambiar el tipo y dar clic en el botón de guardar, una vez cambiado el tipo ya no podrá cambiarse de nuevo.
               </div>
@@ -184,6 +190,38 @@
           </div>
         {% endif %}
 
+        {% if edit_form.reportNumber is defined  %}
+          <div class="ym-g33 ym-gl">
+            <div> {{ form_label(edit_form.reportNumber) }} </div>
+            <div> {{ form_widget(edit_form.reportNumber, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(edit_form.reportNumber) }} </div> <br>
+          </div>
+        {% endif %}
+
+        {% if edit_form.msc is defined  %}
+          <div class="ym-g33 ym-gl">
+            <div> {{ form_label(edit_form.msc) }} </div>
+            <div> {{ form_widget(edit_form.msc, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(edit_form.msc) }} </div> <br>
+          </div>
+        {% endif %}
+
+       {% if edit_form.zmath is defined  %}
+        <div class="ym-g33 ym-gl">
+            <div> {{ form_label(edit_form.zmath) }} </div>
+            <div> {{ form_widget(edit_form.zmath, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(edit_form.zmath) }} </div> <br>
+        </div>
+        {% endif %}
+
+       {% if edit_form.mrNumber is defined  %}
+          <div class="ym-g33 ym-gl">
+            <div> {{ form_label(edit_form.mrNumber) }} </div>
+            <div> {{ form_widget(edit_form.mrNumber, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(edit_form.mrNumber) }} </div> <br>
+          </div>
+        {% endif %}
+
     </div>
     <!-- grid interno -->
 
@@ -241,14 +279,6 @@
           </div>
         {% endif %}
 
-        {% if edit_form.zmath is defined  %}
-          <div class="ym-g33 ym-gl">
-            <div> {{ form_label(edit_form.zmath) }} </div>
-            <div> {{ form_widget(edit_form.zmath) }} </div>
-            <div> {{ form_errors(edit_form.zmath) }} </div> <br>
-          </div>
-        {% endif %}
-
         {% if edit_form.inspires is defined  %}
           <div class="ym-g33 ym-gl">
             <div> {{ form_label(edit_form.inspires) }} </div>
@@ -256,7 +286,6 @@
             <div> {{ form_errors(edit_form.inspires) }} </div> <br>
           </div>
         {% endif %}
-
 
          {% if edit_form.revision is defined  %}
              <div class="ym-g33 ym-gl">

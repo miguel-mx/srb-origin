@@ -13,8 +13,12 @@
 {% if item.yearPub != null %}{{ item.yearPub }}, {% endif %}
 {% if item.pages != null %}p. {{ item.pages }}{% endif %}
 <br>
+{% if item.author != null %}
 {% for key in item.author|explode %}
     <a href="{{ path('search', {'q': key | trim | url_encode() }) }}"> {{key}}</a>;
-{% endfor %}<br><br>
-
+{% endfor %}
+{% else %}
+{% if item.editor != null %}{{ item.editor }}{% endif %}
+{% endif %}
+<br><br>
 

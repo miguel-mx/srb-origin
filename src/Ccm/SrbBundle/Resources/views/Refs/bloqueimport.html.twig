@@ -8,6 +8,11 @@
     {{ author.last }};
     {% endfor %}
 {% endif %}
+
+{% if ref.editor is defined %}
+        <b>Editor: </b>{{ ref.editor }}<br>
+{% endif %}
+
 <br />
 {% if ref.abst is defined %}
         <b>Abstract: </b>{{ ref.abst }}<br>
@@ -67,10 +72,6 @@
 
 {% if ref.placePub is defined %}
         <b>Place publication: </b>{{ ref.placePub }}<br>
-{% endif %}
-
-{% if ref.editor is defined %}
-        <b>Editor: </b>{{ ref.editor }}<br>
 {% endif %}
 
 {% if ref.issn is defined %}
