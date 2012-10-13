@@ -113,7 +113,7 @@ class CrudController extends Controller
     {
         $entity = new Referencia();
         if($type=='article'){       $form   = $this->createForm(new ArticuloType(), $entity);}
-        if($type=='unpublished'){   $form   = $this->createForm(new PreprintType(), $entity);}
+        if($type=='preprint'){      $form   = $this->createForm(new PreprintType(), $entity);}
         if($type=='inproceedings'){ $form   = $this->createForm(new MemoriaType(), $entity);}
         if($type=='book'){          $form   = $this->createForm(new LibroType(), $entity);}
         //if($type=='edicion'){       $form   = $this->createForm(new EdicionType(), $entity);}
@@ -140,12 +140,12 @@ class CrudController extends Controller
         $entity  = new Referencia();
         $request = $this->getRequest();
         if($type=='article'){        $form   = $this->createForm(new ArticuloType(), $entity);}
-        if($type=='unpublished'){    $form   = $this->createForm(new PreprintType(), $entity);}
+        if($type=='preprint'){       $form   = $this->createForm(new PreprintType(), $entity);}
         if($type=='inproceedings'){  $form   = $this->createForm(new MemoriaType(), $entity);}
         if($type=='book'){           $form   = $this->createForm(new LibroType(), $entity);}
         if($type=='edicion'){        $form   = $this->createForm(new EdicionType(), $entity);}
         if($type=='proceedings'){    $form   = $this->createForm(new EditorType(), $entity);}
-        if($type=='incollection'){   	$form   = $this->createForm(new CapituloType(), $entity);}
+        if($type=='incollection'){   $form   = $this->createForm(new CapituloType(), $entity);}
         $form->bindRequest($request);
         if ($form->isValid()) {
 
@@ -207,7 +207,7 @@ class CrudController extends Controller
         );
     }
 
-    /**
+/**
      * Displays a form to edit an existing Referencia entity.
      *
      * @Route("/{id}/edit", name="referencia_edit")
@@ -217,40 +217,29 @@ class CrudController extends Controller
     {
 
         $em = $this->getDoctrine()->getEntityManager();
-
         $entity = $em->getRepository('CcmSrbBundle:Referencia')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Registro entity.');
         }
-
-           $securityContext = $this->container->get('security.context');
-
-//            if ( (false === $securityContext->isGranted('ROLE_ADMIN')) || (false === $securityContext->isGranted('EDIT', $entity) )) {
-//                   throw new AccessDeniedHttpException();
-//
-//            }
-
+        $securityContext = $this->container->get('security.context');
 
         // check for edit access
         if ((false === $securityContext->isGranted('ROLE_ADMIN')))
          {
-
         if ((false === $securityContext->isGranted('EDIT', $entity)))
          {
-
             throw new AccessDeniedHttpException();
          }
          }
 
         if (strcasecmp($entity->getType(), 'article') == 0) {		$editForm = $this->createForm(new ArticuloType(), $entity);}
-        if (strcasecmp($entity->getType(), 'unpublished') == 0) {	$editForm = $this->createForm(new EditPreprintType(), $entity);}
+        if (strcasecmp($entity->getType(), 'preprint') == 0) {	        $editForm = $this->createForm(new EditPreprintType(), $entity);}
         if (strcasecmp($entity->getType(), 'inproceedings') == 0) {	$editForm = $this->createForm(new MemoriaType(), $entity);}
         if (strcasecmp($entity->getType(), 'book') == 0) {		$editForm = $this->createForm(new LibroType(), $entity);}
-        //if (strcasecmp($entity->getType(), 'edicion') == 0) {		$editForm = $this->createForm(new EdcionType(), $entity);}
         if (strcasecmp($entity->getType(), 'proceedings') == 0) {	$editForm = $this->createForm(new EditorType(), $entity);}
-        if (strcasecmp($entity->getType(), 'incollection') == 0) {		$editForm = $this->createForm(new CapituloType(), $entity);}
-        if(($entity->getType()=='misc') || ($entity->getType()=='') ) {$editForm = $this->createForm(new ReferenciaType(), $entity);}
+        if (strcasecmp($entity->getType(), 'incollection') == 0) {	$editForm = $this->createForm(new CapituloType(), $entity);}
+        if(($entity->getType()=='misc') || ($entity->getType()=='') ) { $editForm = $this->createForm(new ReferenciaType(), $entity);}
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
@@ -271,31 +260,27 @@ class CrudController extends Controller
     public function updateAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
-
         $entity = $em->getRepository('CcmSrbBundle:Referencia')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Registro entity.');
         }
 
-        if (strcasecmp($entity->getType(), 'article') == 0) {		$editForm = $this->createForm(new ArticuloType(), $entity);}
-        if (strcasecmp($entity->getType(), 'unpublished') == 0) {	$editForm = $this->createForm(new PreprintType(), $entity);}
-        if (strcasecmp($entity->getType(), 'inproceedings') == 0) {	$editForm = $this->createForm(new MemoriaType(), $entity);}
-        if (strcasecmp($entity->getType(), 'book') == 0) {		$editForm = $this->createForm(new LibroType(), $entity);}
-        //if (strcasecmp($entity->getType(), 'edicion') == 0) {		$editForm = $this->createForm(new EdcionType(), $entity);}  
-        if (strcasecmp($entity->getType(), 'proceedings') == 0) {	$editForm = $this->createForm(new EditorType(), $entity);}
-        if (strcasecmp($entity->getType(), 'incollection') == 0) {		$editForm = $this->createForm(new CapituloType(), $entity);}
-        if(($entity->getType()=='misc') || ($entity->getType()=='') ) {$editForm = $this->createForm(new ReferenciaType(), $entity);}
+        if (strcasecmp($entity->getType(), 'article') == 0) {	      $editForm = $this->createForm(new ArticuloType(), $entity);}
+        if (strcasecmp($entity->getType(), 'preprint') == 0){         $editForm = $this->createForm(new EditPreprintType(), $entity);}
+        if (strcasecmp($entity->getType(), 'inproceedings') == 0){    $editForm = $this->createForm(new MemoriaType(), $entity);}
+        if (strcasecmp($entity->getType(), 'book') == 0) {            $editForm = $this->createForm(new LibroType(), $entity);}
+        if (strcasecmp($entity->getType(), 'proceedings') == 0) {     $editForm = $this->createForm(new EditorType(), $entity);}
+        if (strcasecmp($entity->getType(), 'incollection') == 0) {    $editForm = $this->createForm(new CapituloType(), $entity);}
+        if(($entity->getType()=='misc') || ($entity->getType()=='')){ $editForm = $this->createForm(new ReferenciaType(), $entity);}
 
         $deleteForm = $this->createDeleteForm($id);
         $request = $this->getRequest();
         $editForm->bindRequest($request);
         $repository = $this->getDoctrine()->getRepository('CcmSrbBundle:Referencia');
-
         $titles= $repository->findOneById($id);
 
        if ($editForm->isValid()) {
-
        if ($titles && ($titles->getId() != $entity->getId()) ){
 
        return array(
@@ -304,12 +289,10 @@ class CrudController extends Controller
             'repeat'=>'La referencia número '.$titles->getId().' tiene el mismo título',
             'delete_form' => $deleteForm->createView(),
         );
+       }
+       else {
 
-      }
-           else {
-
-
-         if(false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+       if(false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
 
                 $user = $this->container->get('security.context')->getToken()->getUser();
                 $entity->setUser($user); 
@@ -319,18 +302,22 @@ class CrudController extends Controller
 
         }
 
-                $user = $this->container->get('security.context')->getToken()->getUser();
-                $entity->setUser($user); 
-                $em->persist($entity);
-                $em->flush();
+       else{
+       $user = $this->container->get('security.context')->getToken()->getUser();
+       $entity->setUser($user); 
+       $em->persist($entity);
+       $em->flush();
 
-            return $this->redirect($this->generateUrl('referencia_edit', array('id' => $id)));
+      }
+      }
+      }
 
- }
- }
+       return $this->redirect($this->generateUrl('referencia_edit', array('id'=>$id)));	
+ 
+  }
 
 
-    }
+
 
     /**
      * Deletes a Referencia entity.

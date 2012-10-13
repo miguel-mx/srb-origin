@@ -20,7 +20,7 @@ class ArticuloType extends AbstractType
    //->add('yearPub','text',array('empty_value' => array('year' => 'Year', 'month' => 'Month', 'day' => 'Day'), 'years'=> range(1950,2012)))
    ->add('yearPub','number', array ('required'=> true , 'label'=>'*Year'))
    ->add('journal', 'text', array('required' => true, 'label'=>'*Journal'))
-   ->add('issue', 'text', array('required' => false))
+   ->add('issue', 'text', array('required' => false, 'label'=>'Number'))
    ->add('pages', 'text', array('required' => false))
    ->add('volume', 'text', array('required' => false))
    ->add('keywords', 'textarea', array('required' => false))
@@ -29,6 +29,10 @@ class ArticuloType extends AbstractType
    ->add('issn', 'text', array('required' => false))
    ->add('url', 'text', array('required' => false))
    ->add('doi', 'text', array('required' => false))
+   ->add('arxiv', 'text', array('required' => false))
+   ->add('mrNumber', 'text', array('required' => false, 'label'=>'MR Number'))
+   ->add('msc', 'text', array('required' => false, 'label'=>'MSC'))
+   ->add('zmath', 'text', array('required' => false, 'label'=>'Zbl Number'))
    ->add('revision', 'checkbox', array('label' => 'Aprobación','required'  => false))
     ;
     }

@@ -193,6 +193,27 @@ class Referencia
     protected $inspires;
 
      /**
+     * @ORM\Column(type="string", length=250, nullable=true)
+     */
+    protected $reportNumber;
+
+     /**
+     * @ORM\Column(type="string", length=250, nullable=true)
+     */
+    protected $msc;
+
+     /**
+     * @ORM\Column(type="string", length=250, nullable=true)
+     */
+    protected $mrNumber;
+
+     /**
+     * @ORM\Column(type="string", length=250, nullable=true)
+     */
+    protected $bookTitle;
+
+
+ /**
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $created;
@@ -1060,4 +1081,87 @@ class Referencia
     {
         return $this->user;
     }
+
+
+    /**
+     * Set reportNumber
+     *
+     * @param string $reportNumber
+     */
+    public function setReportNumber($reportNumber)
+    {
+        $this->reportNumber = $reportNumber;
+    }
+
+    /**
+     * Get reportNumber
+     *
+     * @return string 
+     */
+    public function getReportNumber()
+    {
+        return $this->reportNumber;
+    }
+
+    /**
+     * Set msc
+     *
+     * @param string $msc
+     */
+    public function setMsc($msc)
+    {
+        $this->msc = $msc;
+    }
+
+    /**
+     * Get msc
+     *
+     * @return string 
+     */
+    public function getMsc()
+    {
+        return $this->msc;
+    }
+
+     /**
+     * Set mrNumber
+     *
+     * @param string $mrNumber
+     */
+    public function setMrnumber($mrNumber)
+    {
+        $this->mrNumber = $mrNumber;
+    }
+
+    /**
+     * Get mrNumber
+     *
+     * @return string 
+     */
+    public function getMrNumber()
+    {
+        return $this->mrNumber;
+    }
+
+   /**
+     * Set bookTitle
+     *
+     * @param string $bookTitle
+     */
+    public function setBookTitle($bookTitle)
+    {
+        $this->bookTitle = $bookTitle;
+    }
+
+    /**
+     * Get bookTitle
+     *
+     * @return string 
+     */
+    public function getBookTitle()
+    {
+        return $this->bookTitle;
+    }
+
+
 }

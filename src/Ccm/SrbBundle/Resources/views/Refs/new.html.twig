@@ -18,6 +18,13 @@
             <div> {{ form_errors(form.title) }} </div> <br>
         {% endif %}
 
+        {% if form.bookTitle is defined  %}
+            <div> {{ form_label(form.bookTitle) }} </div>
+            <div> {{ form_widget(form.bookTitle, { 'attr': {'style': 'width: 95%','rows':'1'} }) }}  </div>
+            <div> {{ form_errors(form.bookTitle) }} </div> <br>
+        {% endif %}
+
+
         {% if form.author is defined  %}
             <div> {{ form_label(form.author) }} </div>
             <div> {{ form_widget(form.author, { 'attr': {'style': 'width:95%'} }) }} </div>
@@ -53,6 +60,7 @@
             <div> {{ form_widget(form.journal, { 'attr': {'style': 'width:95%'} }) }}</div>
             <div> {{ form_errors(form.journal) }} </div> <br>
         {% endif %}
+
 
     <div class="ym-grid">
 
@@ -176,6 +184,37 @@
           </div>
         {% endif %}
 
+        {% if form.reportNumber is defined  %}
+          <div class="ym-g33 ym-gl">
+            <div> {{ form_label(form.reportNumber) }} </div>
+            <div> {{ form_widget(form.reportNumber, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(form.reportNumber) }} </div> <br>
+          </div>
+        {% endif %}
+
+        {% if form.msc is defined  %}
+          <div class="ym-g33 ym-gl">
+            <div> {{ form_label(form.msc) }} </div>
+            <div> {{ form_widget(form.msc, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(form.msc) }} </div> <br>
+          </div>
+        {% endif %}
+
+       {% if form.zmath is defined  %}
+        <div class="ym-g33 ym-gl">
+            <div> {{ form_label(form.zmath) }} </div>
+            <div> {{ form_widget(form.zmath, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(form.zmath) }} </div> <br>
+        </div>
+        {% endif %}
+
+       {% if form.mrNumber is defined  %}
+          <div class="ym-g33 ym-gl">
+            <div> {{ form_label(form.mrNumber) }} </div>
+            <div> {{ form_widget(form.mrNumber, { 'attr': {'style': 'width:80%'} }) }} </div>
+            <div> {{ form_errors(form.mrNumber) }} </div> <br>
+          </div>
+        {% endif %}
     </div>
 
         {% if form.notas is defined  %}
@@ -232,13 +271,6 @@
         </div>
         {% endif %}
 
-        {% if form.zmath is defined  %}
-        <div class="ym-g33 ym-gl">
-            <div> {{ form_label(form.zmath) }} </div>
-            <div> {{ form_widget(form.zmath, { 'attr': {'style': 'width:80%'} }) }} </div>
-            <div> {{ form_errors(form.zmath) }} </div> <br>
-        </div>
-        {% endif %}
 
         {% if form.inspires is defined  %}
           <div class="ym-g33 ym-gl">
@@ -247,6 +279,7 @@
             <div> {{ form_errors(form.inspires) }} </div> <br>
           </div>
         {% endif %}
+
 
         {% if form.revision is defined  %}
         <div class="ym-g33 ym-gl">

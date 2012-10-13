@@ -112,6 +112,30 @@
         <b> ISSN: </b>  {{ entity.issn }}
       </div>
     {% endif %}
+ 
+    {% if entity.msc != null %}
+      <div class="ym-g33 ym-gl" style="padding:5px 0;">
+        <b> MSC: </b> {{ entity.msc }} </b>
+      </div>
+    {% endif %}
+
+    {% if entity.mrNumber != null %}
+      <div class="ym-g33 ym-gl" style="padding:5px 0;">
+        <b> MR Number: </b> {{ entity.mrNumber }} </b>
+      </div>
+    {% endif %}
+
+    {% if entity.reportNumber != null %}
+      <div class="ym-g33 ym-gl" style="padding:5px 0;">
+        <b> Report Number: </b> {{ entity.reportNumber }} </b>
+      </div>
+    {% endif %}
+
+    {% if entity.bookTitle != null %}
+      <div class="ym-g80 ym-gl" style="padding:5px 0;">
+        <b> Book Title: </b> {{ entity.bookTitle }} </b>
+      </div>
+    {% endif %}
 
     {% if entity.medium != null %}
       <div class="ym-g33 ym-gl" style="padding:5px 0;">
@@ -173,11 +197,15 @@
       </div>
     {% endif %}
 
+
+
     {% if entity.inspires != null %}
       <div class="ym-g80 ym-gl" style="padding:5px 0;">
         <b> Inspires: </b> {{ entity.inspires }} </b>
       </div>
     {% endif %}
+
+
 
 </div>
  <!-- grid -->

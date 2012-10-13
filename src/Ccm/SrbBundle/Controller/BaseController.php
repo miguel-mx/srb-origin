@@ -57,6 +57,10 @@ class BaseController extends Controller
       @$ref->setDoi($bibTex[$i]['doi']);
       @$ref->setUrl($bibTex[$i]['url']);
       @$ref->setPublisher($bibTex[$i]['publisher']);
+      @$ref->setReportNumber($bibtex[$i]['reportNumber']);
+      @$ref->setMrNumber($bibtex[$i]['mrNumber']);
+      @$ref->setMsc($bibtex[$i]['msc']);
+      @$ref->setBookTitle($bibtex[$i]['bookTitle']);
       // @$ref->setAuthor($bibTex[$i]['author']);
       //$ref->setAuthors($autorLast);
       // @$ref->setAuthor($this->authString($bibTex));
