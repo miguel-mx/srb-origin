@@ -16,7 +16,9 @@
 <div class="ym-grid">
   <div class="ym-gbox"><br />
 
-  <h2>Referencias Bibliográficas del Centro de Ciencias Matemáticas UNAM</h2><br />
+  <h1>Centro de Ciencias Matemáticas UNAM</h1><br />
+  <h2>Referencias Bibliográficas</h2><br />
+  
   <div class="ym-g62 ym-gl">
 El Sistema de Referencias Bibliográficas es un repositorio de producción bibliográfica del Centro de Ciencias Matemáticas.
   </div>
@@ -31,19 +33,6 @@ El Sistema de Referencias Bibliográficas es un repositorio de producción bibli
             <input  type="submit" value="Search" />
     </form>
    </div>
-
-    <div class="ym-g62 ym-gl" style="padding: 20px 0">
-    <br />
-    <b>Entradas más recientes</b><br />
-    </div>
-
-    <div class="ym-gbox ym-gl">
-    {% for item in entity %}
-
-        {% include 'CcmSrbBundle:Search:referenceDetails.html.twig' %}
-
-    {% endfor %}
-    </div>
 
   </div>
 </div>
