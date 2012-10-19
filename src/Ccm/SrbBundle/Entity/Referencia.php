@@ -20,7 +20,7 @@ class Referencia
 
      /**
      * @ORM\Column(type="text", nullable=true)
-    */
+     */
      private $author;
 
     /**
@@ -57,7 +57,7 @@ class Referencia
      /**
      * @ORM\Column(type="string", length=250, nullable=true)
 
-     
+
      */
     protected $publication;
 

@@ -20,13 +20,15 @@ class EditorType extends AbstractType
   ->add('journal', 'text', array('required'=>false))
   ->add('issue', 'text', array('required'=>false, 'label'=>'Number'))
   ->add('notas', 'textarea', array('required'=>false, 'label'=>'Notes'))
-  ->add('doi', 'text', array('required'=>false))
+  ->add('doi', 'text', array('required' => false, 'label'=>'DOI'))
   ->add('url', 'text', array('required'=>false))
   ->add('mrNumber', 'text', array('required'=>false, 'label'=>'MR Number'))
   ->add('zmath', 'text', array('required'=>false, 'label'=>'Zbl Number'))
   ->add('msc', 'text', array('required'=>false, 'label'=>'MSC'))
   ->add('keywords', 'textarea', array('required'=>false, 'label'=>'Keywords'))
-  ->add('revision', 'checkbox', array('label' => 'Aprobación','required'  => false))
+  ->add('revision', 'checkbox', array('label' => 'Aprobación','required'=> false))
+  ->add('issn', 'text', array('required' => false, 'label'=>'ISSN'))
+
 
         ;
     }

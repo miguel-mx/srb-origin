@@ -40,21 +40,8 @@ class CrudController extends Controller
    */
    public function indexAction()
    {
-     $em = $this->getDoctrine()->getRepository('CcmSrbBundle:Referencia');
 
-     $q =$em->createQueryBuilder('p')
-         ->orderBy('p.id', 'desc')
-         ->getQuery();
-
-     $q->setMaxResults(5);
-
-     $entity = $q->getResult();
-
-     if (!$entity) {
-       throw $this->createNotFoundException('Unable to find Registro entity.');
-     }
-
-     return $this->render('CcmSrbBundle:Refs:index.html.twig', array('entity'=>$entity));
+     return $this->render('CcmSrbBundle:Refs:index.html.twig');
 
         //return array('entities' => $entities);
    }
