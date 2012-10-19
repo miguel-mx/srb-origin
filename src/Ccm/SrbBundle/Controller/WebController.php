@@ -147,17 +147,17 @@ class WebController extends BaseController
         }
 
         // get the links to the abs page and pdf for this e-print
-        foreach ($entry->get_item_tags($atom_ns,'link') as $link) {
-
-          if ($link['attribs']['']['rel'] == 'alternate') {
-                $addarray[$i]['url'] = $link['attribs']['']['href'];
-                //print("abs page link: ".$link['attribs']['']['href'].EOL);
-            } elseif ($link['attribs']['']['title'] == 'pdf') {
-                $addarray[$i]['file'] = $link['attribs']['']['href'];
-                //print("pdf link: ".$link['attribs']['']['href'].EOL);
-            }
-
-        }
+//         foreach ($entry->get_item_tags($atom_ns,'link') as $link) {
+// 
+//           if ($link['attribs']['']['rel'] == 'alternate') {
+//                 $addarray[$i]['url'] = $link['attribs']['']['href'];
+//                 //print("abs page link: ".$link['attribs']['']['href'].EOL);
+//             } elseif ($link['attribs']['']['title'] == 'pdf') {
+//                 $addarray[$i]['file'] = $link['attribs']['']['href'];
+//                 //print("pdf link: ".$link['attribs']['']['href'].EOL);
+//             }
+// 
+//         }
 
         # The journal reference, comments and primary_category sections live under
         # the arxiv namespace
