@@ -314,7 +314,10 @@
    <ul class="record_actions">
       <li> <a href="{{ path('referencia_edit', { 'id': entity.id }) }}"> Editar </a> </li>
 {% endif %}
-      <li> <a href="{{ app.request.headers.get('referer') }}"> Regresar </a> </li>
+
+
+
+      <li> <a href='javascript:history.back(1)'> Regresar </a> </li>
    </ul>
 
 <br />
