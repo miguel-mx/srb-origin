@@ -13,7 +13,7 @@ class ReferenciaType extends AbstractType
   $builder
   ->add('author','text')
   ->add('title', 'text')
-  ->add('type', 'choice', array('empty_value' => 'Choose an option','choices'=>array('Article'=>'article','Incollection'=>'incollection','memoria'=>'Memoria de Congreso','Proceedings'=>'proceedings','Book'=>'book','Inproceedings'=>'inproceedings','Unpublished'=>'unpublished')))
+ ->add('type', 'choice', array('choices'=>array('empty_value' => 'Choose an option','preprint'=>'Preprint', 'article'=>'Article', 'incollection'=>'Incollection', 'proceedings'=>'Proceedings', 'book'=>'Book', 'inproceedings'=>'Inproceedings')))
   //->add('yearPub','date',array('empty_value' => array('year' => 'Year', 'month' => 'Month', 'day' => 'Day'), 'years'=> range(1950,2012)))
   //->add('yearPreprint','date',array('empty_value' => array('year' => 'Year', 'month' => 'Month', 'day' => 'Day'), 'years'=> range(1950,2012)))
   ->add('publication', 'text', array('required' => false))

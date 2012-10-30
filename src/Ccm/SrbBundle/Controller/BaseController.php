@@ -65,7 +65,7 @@ class BaseController extends Controller
       //$ref->setAuthors($autorLast);
       // @$ref->setAuthor($this->authString($bibTex));
       //@$ref->setAuthor($bibTex[$i]['author'][0]['last']);
-      @$ref->setAuthor($this->authString($bibTex[$i]['author']));
+      @$ref->setAuthor(preg_replace("'\s+'",' ',$this->authString($bibTex[$i]['author'])));
       //print_r($bibTex[$i]['author']);
       //$abst=preg_replace("'\s+'",' ', $bibTex[$i]['abstract']);
       //@$ref->setAbst($abst);
@@ -118,14 +118,16 @@ protected function authString($bibTex)
                 $tmpLast=$bibTex[$i]['last'];
                 $tmpVon=$bibTex[$i]['von'];
                 $tmpFirst=$bibTex[$i]['first'];
-                $tmpauth=$tmpVon." ".$tmpLast." ".$tmpFirst;
+//                $tmpauth=$tmpVon." ".$tmpLast." ".$tmpFirst;
+                  $tmpauth=$tmpFirst. " ".$tmpVon." ".$tmpLast;
 
                 }
                 if($i>0){ 
                 $tmpLast=$bibTex[$i]['last'];
                 $tmpVon=$bibTex[$i]['von'];
                 $tmpFirst=$bibTex[$i]['first'];
-                $tmpauth1=$tmpVon." ".$tmpLast." ".$tmpFirst;
+//              $tmpauth1=$tmpVon." ".$tmpLast." ".$tmpFirst;
+                $tmpauth1=$tmpFirst." ".$tmpVon." ".$tmpLast;
                 $tmpauth=$tmpauth."; ".$tmpauth1;
                 }
 

@@ -39,7 +39,7 @@
 {% block menuL %}
 {% if (is_granted('ROLE_ADMIN', entity)) or (is_granted('EDIT', entity))  %}
     <ul class="record_actions">
-          <li> <a href="{{ path('referencia_show', { 'id': entity.id }) }}"> Regresar </a> </li>
+      <li> <a href='javascript:history.back(1)'> Regresar </a> </li>
      <ul>
 {% endif %}
 

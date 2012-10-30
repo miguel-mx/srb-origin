@@ -1,9 +1,14 @@
 {% extends 'CcmSrbBundle::layout.html.twig' %}
 
+{% block head %} 
+
+{% endblock %}
+
 {% block menu %} {{ knp_menu_render('CcmSrbBundle:Builder:mainMenu') }} {% endblock %}
 
 {% set option = 'Detalles de la publicación' %}
 
+{% block body %}<body onload="">{% endblock %}
 {% block col3 %}
 <div class="ym-gbox-right">
 
@@ -315,9 +320,7 @@
       <li> <a href="{{ path('referencia_edit', { 'id': entity.id }) }}"> Editar </a> </li>
 {% endif %}
 
-
-
-      <li> <a href='javascript:history.back(1)'> Regresar </a> </li>
+      <li> <a href="{{ app.session.get('last_page') }}"> Regresar </a> </li>
    </ul>
 
 <br />

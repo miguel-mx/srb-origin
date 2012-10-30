@@ -28,6 +28,8 @@ class EditorType extends AbstractType
   ->add('keywords', 'textarea', array('required'=>false, 'label'=>'Keywords'))
   ->add('revision', 'checkbox', array('label' => 'Aprobación','required'=> false))
   ->add('issn', 'text', array('required' => false, 'label'=>'ISSN'))
+  ->add('pages', 'text', array('required' => false))
+
 
 
         ;

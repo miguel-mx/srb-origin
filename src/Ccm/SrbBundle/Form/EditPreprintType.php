@@ -21,6 +21,10 @@ class EditPreprintType extends AbstractType
   ->add('reportNumber', 'text', array('required' => false,'label'=>'Report Number'))
   ->add('msc', 'text', array('required' => false,'label'=>'MSC'))
   ->add('revision', 'checkbox', array('label' =>'Revisado','required'=> false))
+  ->add('url', 'text', array('required' => false))
+  ->add('pages', 'text', array('required' => false))
+
+
 
         ;
  }
