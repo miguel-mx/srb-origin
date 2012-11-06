@@ -19,8 +19,12 @@ class PreprintType extends AbstractType
   ->add('abst', 'textarea', array('required' => false,'label'=>'Abstract'))
   ->add('arxiv', 'text', array('required' => false,'label'=>'ArXiv'))
   ->add('reportNumber', 'text', array('required' => false,'label'=>'Report Number'))
-  ->add('msc', 'text', array('required' => false,'label'=>'MSC'))
+  ->add('msc', 'textarea', array('required' => false,'label'=>'MSC'))
   ->add('revision', 'checkbox', array('label' => 'Aprobación','required'  => false))
+  ->add('url', 'text', array('required' => false))
+  ->add('pages', 'text', array('required' => false))
+
+
 
         ;
     }

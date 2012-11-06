@@ -47,6 +47,12 @@ class FileController extends BaseController
 
     // upload->bibTex regresa una estructura de Bibtex
     $bibTex = $upload->bibTex($randomName);
+
+        //if ($bibTex) {
+          //  throw $this->createNotFoundException(print_r($bibTex));
+        //}
+
+
     $repository = $this->getDoctrine()->getRepository('CcmSrbBundle:Referencia');
         $j=0;
     $k=0;

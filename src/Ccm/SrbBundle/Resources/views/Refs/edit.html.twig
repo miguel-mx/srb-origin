@@ -1,4 +1,11 @@
 {% extends 'CcmSrbBundle::layout.html.twig' %}
+{% block head %} 
+<meta http-equiv="cache-control" content="no-cache"> <!-- tells browser not to cache -->
+<meta http-equiv="expires" content="0"> <!-- says that the cache expires 'now' -->
+<meta http-equiv="pragma" content="no-cache">
+
+{% endblock %}
+
 
 {% block menu %} {{ knp_menu_render('CcmSrbBundle:Builder:mainMenu') }} {% endblock %}
 
@@ -67,15 +74,15 @@
         {% if edit_form.keywords is defined  %}
          <div class="ym-g75 ym-gl">
             <div> {{ form_label(edit_form.keywords) }} </div>
-            <div> {{ form_widget(edit_form.keywords, { 'attr': {'style': 'width:93%','rows':'1'} }) }}  </div>
+            <div> {{ form_widget(edit_form.keywords, { 'attr': {'style': 'width:93%','rows':'4'} }) }}  </div>
             <div> {{ form_errors(edit_form.keywords) }} </div> <br>
          </div>
         {% endif %}
 
        {% if edit_form.msc is defined  %}
-        <div class="ym-g25 ym-gl">
+        <div class="ym-g75 ym-gl">
             <div> {{ form_label(edit_form.msc) }} </div>
-            <div> {{ form_widget(edit_form.msc, { 'attr': {'style': 'width:80%','rows':'1'} }) }}  </div>
+            <div> {{ form_widget(edit_form.msc, { 'attr': {'style': 'width:93%','rows':'4'} }) }}  </div>
             <div> {{ form_errors(edit_form.msc) }} </div> <br>
         </div>
        {% endif %}
@@ -213,6 +220,8 @@
             <div> {{ form_errors(edit_form.reportNumber) }} </div> <br>
           </div>
         {% endif %}
+   </div>
+   <div class="ym-grid">
 
         {% if edit_form.zmath is defined  %}
         <div class="ym-g25 ym-gl">
@@ -289,19 +298,19 @@
           </div>
         {% endif %}
 
-        {% if edit_form.notas is defined  %}
-          <div class="ym-g75 ym-gl">
-            <div> {{ form_label(edit_form.notas) }} </div>
-            <div> {{ form_widget(edit_form.notas, { 'attr': {'style': 'width:93%','rows':'2'} }) }} </div>
-            <div> {{ form_errors(edit_form.notas) }} </div> <br>
-          </div>
-        {% endif %}
-
         {% if edit_form.url is defined  %}
           <div class="ym-g75 ym-gl">
             <div> {{ form_label(edit_form.url) }} </div>
             <div> {{ form_widget(edit_form.url, { 'attr': {'style': 'width: 93%'} }) }} </div>
             <div> {{ form_errors(edit_form.url) }} </div> <br>
+          </div>
+        {% endif %}
+
+        {% if edit_form.notas is defined  %}
+          <div class="ym-g75 ym-gl">
+            <div> {{ form_label(edit_form.notas) }} </div>
+            <div> {{ form_widget(edit_form.notas, { 'attr': {'style': 'width:93%','rows':'2'} }) }} </div>
+            <div> {{ form_errors(edit_form.notas) }} </div> <br>
           </div>
         {% endif %}
 

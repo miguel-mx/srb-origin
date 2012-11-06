@@ -24,10 +24,12 @@ class EditorType extends AbstractType
   ->add('url', 'text', array('required'=>false))
   ->add('mrNumber', 'text', array('required'=>false, 'label'=>'MR Number'))
   ->add('zmath', 'text', array('required'=>false, 'label'=>'Zbl Number'))
-  ->add('msc', 'text', array('required'=>false, 'label'=>'MSC'))
+  ->add('msc', 'textarea', array('required'=>false, 'label'=>'MSC'))
   ->add('keywords', 'textarea', array('required'=>false, 'label'=>'Keywords'))
   ->add('revision', 'checkbox', array('label' => 'Aprobación','required'=> false))
   ->add('issn', 'text', array('required' => false, 'label'=>'ISSN'))
+  ->add('pages', 'text', array('required' => false))
+
 
 
         ;

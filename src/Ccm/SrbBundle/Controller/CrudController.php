@@ -40,7 +40,7 @@ class CrudController extends Controller
    */
    public function indexAction()
    {
-
+     //unset($_SERVER['last_page']);
      return $this->render('CcmSrbBundle:Refs:index.html.twig');
 
         //return array('entities' => $entities);
@@ -79,6 +79,20 @@ class CrudController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Registro entity.');
         }
+            $request = $this->getRequest();
+            $session = $this->getRequest()->getSession();
+            $referer = $request->server->get('HTTP_REFERER');
+            if(isset($referer)) {
+              if(preg_match('/search/', str_replace("?"," ",$referer))||preg_match('/references/', str_replace("/"," ",$referer))) {
+                 $last_page = $referer;
+                 $session->set('last_page', $last_page);
+              }
+              else {
+	           unset($_SERVER['last_page']);
+              }
+           }	
+
+
 
         $authors = $entity->getAuthors();
 
@@ -263,6 +277,7 @@ class CrudController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
         $request = $this->getRequest();
+
         $editForm->bindRequest($request);
         $repository = $this->getDoctrine()->getRepository('CcmSrbBundle:Referencia');
         $titles= $repository->findOneById($id);
@@ -299,7 +314,7 @@ class CrudController extends Controller
       }
       }
 
-       return $this->redirect($this->generateUrl('referencia_edit', array('id'=>$id)));	
+       return $this->redirect($this->generateUrl('referencia_show', array('id'=>$id)));	
  
   }
 

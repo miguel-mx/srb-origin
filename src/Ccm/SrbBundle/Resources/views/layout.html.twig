@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+{% block head %}<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>{% endblock %}
 
 <title>{% block title %}Sistema de Referencias Bibliográficas - CCM UNAM-Morelia {% endblock %}</title>
 <meta name="description" content=""/>
@@ -39,7 +39,7 @@
 </script>-->
 
 </head>
-<body>
+{% block body %}<body>{% endblock %}
 
 <header>
 <div class="ym-wrapper">

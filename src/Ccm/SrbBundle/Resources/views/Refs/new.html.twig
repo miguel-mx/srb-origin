@@ -58,15 +58,15 @@
         {% if form.keywords is defined  %}
          <div class="ym-g75 ym-gl">
             <div> {{ form_label(form.keywords) }} </div>
-            <div> {{ form_widget(form.keywords, { 'attr': {'style': 'width:93%','rows':'1'} }) }}  </div>
+            <div> {{ form_widget(form.keywords, { 'attr': {'style': 'width:93%','rows':'4'} }) }}  </div>
             <div> {{ form_errors(form.keywords) }} </div> <br>
          </div>
         {% endif %}
 
        {% if form.msc is defined  %}
-        <div class="ym-g25 ym-gl">
+        <div class="ym-g75 ym-gl">
             <div> {{ form_label(form.msc) }} </div>
-            <div> {{ form_widget(form.msc, { 'attr': {'style': 'width:80%','rows':'1'} }) }}  </div>
+            <div> {{ form_widget(form.msc, { 'attr': {'style': 'width:93%','rows':'4'} }) }}  </div>
             <div> {{ form_errors(form.msc) }} </div> <br>
         </div>
        {% endif %}
@@ -194,7 +194,9 @@
             <div> {{ form_errors(form.thsesis) }} </div> <br>
           </div>
         {% endif %}
-
+     </div>
+   
+     <div class="ym-grid">
 
         {% if form.reportNumber is defined  %}
           <div class="ym-g25 ym-gl">
@@ -277,20 +279,20 @@
           </div>
         {% endif %}
 
-        {% if form.notas is defined  %}
-          <div class="ym-g75 ym-gl">
-            <div> {{ form_label(form.notas) }} </div>
-            <div> {{ form_widget(form.notas, { 'attr': {'style': 'width:93%','rows':'2'} }) }} 	</div>
-            <div> {{ form_errors(form.notas) }}	</div> <br>
-          </div>
-        {% endif %}
-
         {% if form.url is defined  %}
         <div class="ym-g75 ym-gl">
             <div> {{ form_label(form.url) }} </div>
             <div> {{ form_widget(form.url, { 'attr': {'style': 'width: 93%'} }) }} </div>
             <div> {{ form_errors(form.url) }} </div> <br>
         </div>
+        {% endif %}
+
+        {% if form.notas is defined  %}
+          <div class="ym-g75 ym-gl">
+            <div> {{ form_label(form.notas) }} </div>
+            <div> {{ form_widget(form.notas, { 'attr': {'style': 'width:93%','rows':'2'} }) }} 	</div>
+            <div> {{ form_errors(form.notas) }}	</div> <br>
+          </div>
         {% endif %}
 
         {% if form.revision is defined  %}

@@ -51,21 +51,38 @@ class BaseController extends Controller
       @$ref->setrevision($bibTex[$i]['revision']);
       @$ref->setFile($bibTex[$i]['file']);
       @$ref->setArxiv($bibTex[$i]['arxiv']);
+      @$ref->setAddress($bibTex[$i]['address']);
+      @$ref->setKeywords(preg_replace("'\s+'",' ',$bibTex[$i]['keywords']));
+
+      if (preg_match( '/^[\-+]?[0-9]*\.*\,?[0-9]+$/', $bibTex[$i]['cite'])) {
+          @$ref->setZmath($bibTex[$i]['cite']);
+      }
+      else {
+          @$ref->setZmath($bibTex[$i]['zmath']);
+        }
+
       @$ref->setMathscinet($bibTex[$i]['mathscinet']);
-      @$ref->setZmath($bibTex[$i]['zmath']);
       @$ref->setInspires($bibTex[$i]['inspires']);
       @$ref->setDoi($bibTex[$i]['doi']);
       @$ref->setUrl($bibTex[$i]['url']);
       @$ref->setPublisher($bibTex[$i]['publisher']);
       @$ref->setReportNumber($bibtex[$i]['reportNumber']);
-      @$ref->setMrNumber($bibtex[$i]['mrNumber']);
-      @$ref->setMsc($bibtex[$i]['msc']);
-      @$ref->setBookTitle($bibtex[$i]['bookTitle']);
+      @$ref->setMrNumber($bibTex[$i]['mrnumber']);
+
+      if(@$bibTex[$i]['classmath']) {
+      @$ref->setMsc(preg_replace("'\s+'",' ',$bibTex[$i]['classmath']));
+      }
+
+      if(@$bibTex[$i]['mrclass']) {
+      @$ref->setMsc(preg_replace("'\s+'",' ',$bibTex[$i]['mrclass']));
+      }
+
+      @$ref->setBookTitle($bibTex[$i]['booktitle']);
       // @$ref->setAuthor($bibTex[$i]['author']);
       //$ref->setAuthors($autorLast);
       // @$ref->setAuthor($this->authString($bibTex));
       //@$ref->setAuthor($bibTex[$i]['author'][0]['last']);
-      @$ref->setAuthor($this->authString($bibTex[$i]['author']));
+      @$ref->setAuthor(preg_replace("'\s+'",' ',$this->authString($bibTex[$i]['author'])));
       //print_r($bibTex[$i]['author']);
       //$abst=preg_replace("'\s+'",' ', $bibTex[$i]['abstract']);
       //@$ref->setAbst($abst);
@@ -118,14 +135,16 @@ protected function authString($bibTex)
                 $tmpLast=$bibTex[$i]['last'];
                 $tmpVon=$bibTex[$i]['von'];
                 $tmpFirst=$bibTex[$i]['first'];
-                $tmpauth=$tmpVon." ".$tmpLast." ".$tmpFirst;
+//                $tmpauth=$tmpVon." ".$tmpLast." ".$tmpFirst;
+                  $tmpauth=$tmpFirst. " ".$tmpVon." ".$tmpLast;
 
                 }
                 if($i>0){ 
                 $tmpLast=$bibTex[$i]['last'];
                 $tmpVon=$bibTex[$i]['von'];
                 $tmpFirst=$bibTex[$i]['first'];
-                $tmpauth1=$tmpVon." ".$tmpLast." ".$tmpFirst;
+//              $tmpauth1=$tmpVon." ".$tmpLast." ".$tmpFirst;
+                $tmpauth1=$tmpFirst." ".$tmpVon." ".$tmpLast;
                 $tmpauth=$tmpauth."; ".$tmpauth1;
                 }
 

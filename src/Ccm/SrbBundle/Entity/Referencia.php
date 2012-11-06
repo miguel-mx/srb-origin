@@ -30,7 +30,7 @@ class Referencia
      private $authors;
 
      /**
-     * @ORM\Column(type="string", length=250)
+     * @ORM\Column(type="string", length=1500)
      * @Assert\NotBlank()
      */
     protected $title;
@@ -98,7 +98,7 @@ class Referencia
     protected $address;
 
      /**
-     * @ORM\Column(type="string", length=250, nullable=true)
+     * @ORM\Column(type="string", length=1500, nullable=true)
      */
     protected $keywords;
 
@@ -148,7 +148,7 @@ class Referencia
     protected $conference;
 
      /**
-     * @ORM\Column(type="string", length=250, nullable=true)
+     * @ORM\Column(type="string", length=1500, nullable=true)
      */
     protected $notas;
 
@@ -198,17 +198,17 @@ class Referencia
     protected $reportNumber;
 
      /**
-     * @ORM\Column(type="string", length=250, nullable=true)
+     * @ORM\Column(type="string", length=1500, nullable=true)
      */
     protected $msc;
 
      /**
-     * @ORM\Column(type="string", length=250, nullable=true)
+     * @ORM\Column(type="string", length=1500, nullable=true)
      */
     protected $mrNumber;
 
      /**
-     * @ORM\Column(type="string", length=250, nullable=true)
+     * @ORM\Column(type="string", length=1500, nullable=true)
      */
     protected $bookTitle;
 
@@ -1128,7 +1128,7 @@ class Referencia
      *
      * @param string $mrNumber
      */
-    public function setMrnumber($mrNumber)
+    public function setMrNumber($mrNumber)
     {
         $this->mrNumber = $mrNumber;
     }
