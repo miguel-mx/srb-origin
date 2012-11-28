@@ -82,11 +82,12 @@ class SearchController extends Controller
 
           $page = 1;
           $adapter = new DoctrineOrmAdapter($qb);
-          $pager = new Pager($adapter, array('page' => $page, 'limit' => 10));
+          $limit = 10;
+          $pager = new Pager($adapter, array('page' => $page, 'limit' => $limit));
 
           //$this->setPager($pager);
 
-          return $this->render('CcmSrbBundle:Search:result.html.twig', array('pager' => $pager));
+          return $this->render('CcmSrbBundle:Search:result.html.twig', array('pager' => $pager, 'page' => $page, 'limit' => $limit));
 
         }
       }
