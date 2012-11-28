@@ -16,11 +16,16 @@
 {% endif %}
 
 <br><br>
-
+X
+{% set i = 1 %}
 
 {% for item in pager.getResults %}
 
+    {% set i = i + (( page - 1) * limit) %}
+    {{ page limit i }}
     {% include 'CcmSrbBundle:Search:referenceDetails.html.twig' %}
+
+    {% set i = i + 1 %}
 
 {% endfor %}
 

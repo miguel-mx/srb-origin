@@ -1,7 +1,7 @@
 {# Resources/views/Search/referenceDetails.html.twig #}
 
 <div style="float:left;">
-    {{ item.id }}.- <b><a href="{{ path('referencia_show', { 'id': item.id }) }}">{{ item.title | title }}</a></b>,
+{{ i }} - <b><a href="{{ path('referencia_show', { 'id': item.id }) }}">{{ item.title | title }}</a></b>,
 </div>
 <div style="font-size: 85%; color: #6B6B6B; float:left;">
     {{ item.type|title }}
