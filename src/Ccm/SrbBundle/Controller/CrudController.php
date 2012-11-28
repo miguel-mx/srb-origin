@@ -83,7 +83,9 @@ class CrudController extends Controller
             $session = $this->getRequest()->getSession();
             $referer = $request->server->get('HTTP_REFERER');
             if(isset($referer)) {
-              if(preg_match('/search/', str_replace("?"," ",$referer))||preg_match('/references/', str_replace("/"," ",$referer))) {
+              if( (preg_match('/search/', str_replace("?"," ",$referer))) ||
+                  (preg_match('/references/', str_replace("/"," ",$referer)))||
+                  (preg_match('/query?/', str_replace("/"," ",$referer)))) {
                  $last_page = $referer;
                  $session->set('last_page', $last_page);
               }

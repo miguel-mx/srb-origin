@@ -1,17 +1,20 @@
 {# Resources/views/Search/referenceDetails.html.twig #}
 
 <div style="float:left;">
-    {{ item.id }}.- <b><a href="{{ path('referencia_show', { 'id': item.id }) }}">{{ item.title | title }}</a></b>,
+{{ i }} - <b><a href="{{ path('referencia_show', { 'id': item.id }) }}">{{ item.title }}</a></b>,
 </div>
 <div style="font-size: 85%; color: #6B6B6B; float:left;">
     {{ item.type|title }}
 </div><br>
+{% if item.booktitle != null %}{{ item.booktitle }}, {% endif %}
 {% if item.journal != null %}{{ item.journal }}, {% endif %}
 {% if item.volume != null %}Vol. {{ item.volume }}, {% endif %}
 {% if item.issue != null %}Issue {{ item.issue }}, {% endif %}
 {% if item.yearPreprint != null %}Year preprint {{ item.yearPreprint }}, {% endif %}
 {% if item.yearPub != null %}{{ item.yearPub }}, {% endif %}
-{% if item.pages != null %}p. {{ item.pages }}{% endif %}
+{% if item.pages != null %}p. {{ item.pages }}, {% endif %}
+{% if item.publisher != null %}{{ item.publisher }}, {% endif %}
+{% if item.address != null %}{{ item.address }}{% endif %}
 <br>
 {% if item.author != null %}
 {% for key in item.author|explode %}

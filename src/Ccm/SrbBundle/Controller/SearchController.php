@@ -82,11 +82,12 @@ class SearchController extends Controller
 
           $page = 1;
           $adapter = new DoctrineOrmAdapter($qb);
-          $pager = new Pager($adapter, array('page' => $page, 'limit' => 10));
+          $limit = 10;
+          $pager = new Pager($adapter, array('page' => $page, 'limit' => $limit));
 
           //$this->setPager($pager);
 
-          return $this->render('CcmSrbBundle:Search:result.html.twig', array('pager' => $pager));
+          return $this->render('CcmSrbBundle:Search:result.html.twig', array('pager' => $pager, 'page' => $page, 'limit' => $limit));
 
         }
       }
@@ -175,9 +176,10 @@ class SearchController extends Controller
                   $page = $criterios['page'];
 
               $adapter = new DoctrineOrmAdapter($qb);
-              $pager = new Pager($adapter, array('page' => $page, 'limit' => 10));
+              $limit = 10;
+              $pager = new Pager($adapter, array('page' => $page, 'limit' => $limit));
 
-          return $this->render('CcmSrbBundle:Search:result.html.twig', array('pager' => $pager));
+          return $this->render('CcmSrbBundle:Search:result.html.twig', array('pager' => $pager, 'page' => $page, 'limit' => $limit));
     }
 
 
@@ -200,9 +202,11 @@ class SearchController extends Controller
       $referencias = $finder->find($searchTerm, 100);
 
       $adapter = new ArrayAdapter($referencias);
-      $pager = new Pager($adapter, array('page' => $page, 'limit' => 10));
 
-      return $this->render('CcmSrbBundle:Search:search.html.twig', array('pager' => $pager));
+      $limit = 10;
+      $pager = new Pager($adapter, array('page' => $page, 'limit' => $limit));
+
+      return $this->render('CcmSrbBundle:Search:search.html.twig', array('pager' => $pager, 'page' => $page, 'limit' => $limit));
     }
 
 }
