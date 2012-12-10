@@ -27,7 +27,7 @@
 
     {% if entity.author != null %}
       <div style="padding:10px 0;">
-        {% for key in entity.author|explode %}<a href="{{ path('search', {'q': key | trim | url_encode() }) }}"> {{key|trim}}</a>, {% endfor %}
+        {% for key in entity.author|explode %}<a href="{{ path('search', {'q': key | trim | url_encode() }) }}"> {{key|trim}}</a>; {% endfor %}
       </div>
     {% endif %}
  

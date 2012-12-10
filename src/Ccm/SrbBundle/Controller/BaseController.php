@@ -26,7 +26,7 @@ class BaseController extends Controller
 
         $ref = new Referencia();
         $title=preg_replace("'\s+'",' ', $bibTex[$i]['title']);
-        @$ref->setTitle($title);
+        @$ref->setTitle(trim($title,"."));
         @$ref->setType($bibTex[$i]['entryType']);
         @$ref->setYearPreprint($bibTex[$i]['yearpreprint']);	
         @$ref->setYearPub($bibTex[$i]['year']);
@@ -66,7 +66,7 @@ class BaseController extends Controller
                         if(@preg_match('@([0-9]{2}[aA-zZ][0-9]{2})@',$classmath[$k])) {
                             $csms=$csms." ".$classmath[$k].",";
                         }
-                        @$ref->setMsc(trim(preg_replace("'\s+'",' ',$csms)));
+                        @$ref->setMsc(trim( trim(preg_replace("'\s+'",' ',$csms) ) ,","));
                     }
                 }
 
