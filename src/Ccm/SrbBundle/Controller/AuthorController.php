@@ -233,7 +233,7 @@ class AuthorController extends Controller
       $adapter = new ArrayAdapter($references);
       $pager = new Pager($adapter, array('page' => $page, 'limit' => 10));
 
-      return $this->render('CcmSrbBundle:Author:references.html.twig',array('pager'=> $pager, 'id' => $id, 'name'=> $entity->getName()));
+      return $this->render('CcmSrbBundle:Author:references.html.twig',array('pager'=> $pager, 'page' => $page, 'limit' => 10, 'id' => $id, 'name'=> $entity->getName()));
 
     }
 
