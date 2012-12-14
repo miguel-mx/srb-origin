@@ -218,22 +218,20 @@ class AuthorController extends Controller
         throw $this->createNotFoundException('No se encontró al autor con éste ID');
       }
 
-      $request = $em->getRepository('CcmSrbBundle:Referencia');
-
-      $query = $request->createQueryBuilder('q')
-                ->select('r , a')
+      $qb = $em->createQueryBuilder('q')
+                ->select('r')
                 ->from('Ccm\SrbBundle\Entity\Referencia', 'r')
-                ->innerJoin('r.authors', 'a')
+                ->leftJoin('r.authors', 'a')
                 ->where('a.id = :id')
-                ->setParameter('id', $id)
-                ->getQuery();
+                ->orderBy('r.yearPub', 'DESC')
+                ->setParameter('id', $id);
 
-      $references = $query->getResult();
+      $limit = 10;
+      $adapter = new DoctrineOrmAdapter($qb);
 
-      $adapter = new ArrayAdapter($references);
-      $pager = new Pager($adapter, array('page' => $page, 'limit' => 10));
+      $pager = new Pager($adapter, array('page' => $page, 'limit' => $limit));
 
-      return $this->render('CcmSrbBundle:Author:references.html.twig',array('pager'=> $pager, 'page' => $page, 'limit' => 10, 'id' => $id, 'name'=> $entity->getName()));
+      return $this->render('CcmSrbBundle:Author:references.html.twig',array('pager'=> $pager, 'page' => $page, 'limit' => $limit, 'id' => $id, 'name'=> $entity->getName()));
 
     }
 

@@ -54,13 +54,21 @@
       <div class="ym-g33 ym-gl">
         <br /><b>Año de inicio </b><br />
         <div style="padding: 5px 0;">
-            <select name="yearStart" required="required"><option value="1999">1999</option><option value="2000">2000</option><option value="2001">2001</option><option value="2002">2002</option><option value="2003">2003</option><option value="2004">2004</option><option value="2005">2005</option><option value="2006">2006</option><option value="2007">2007</option><option value="2008">2008</option><option value="2009">2009</option><option value="2010">2010</option><option value="2011">2011</option><option value="2012">2012</option></select>
+            <select name="yearStart" required="required">
+                {% for i in 2012..1999 %}
+                <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
         </div>
       </div>
 
       <div class="ym-g33 ym-gl">
         <br /><b>Año final</b><br />
-        <select name="yearEnd" required="required"><option value="1999">1999</option><option value="2000">2000</option><option value="2001">2001</option><option value="2002">2002</option><option value="2003">2003</option><option value="2004">2004</option><option value="2005">2005</option><option value="2006">2006</option><option value="2007">2007</option><option value="2008">2008</option><option value="2009">2009</option><option value="2010">2010</option><option value="2011">2011</option><option value="2012">2012</option></select>
+        <select name="yearEnd" required="required">
+                {% for i in 2012..1999 %}
+                <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+        </select>
       </div>
 
       <div class="ym-g80 ym-gl">
