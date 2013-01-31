@@ -13,6 +13,7 @@ class BusquedaType extends AbstractType
     {
 
       $years = array('choices' => array(
+                     '2013' => '2013',
                      '2012' => '2012',
                      '2011' => '2011',
                      '2010' => '2010',
