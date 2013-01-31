@@ -77,7 +77,7 @@ class Referencia
     protected $volume;
 
      /**
-     * @ORM\Column(type="string", length=10, nullable=true)
+     * @ORM\Column(type="string", length=30, nullable=true)
      */
     protected $pages;
 
@@ -103,7 +103,7 @@ class Referencia
     protected $keywords;
 
      /**
-     * @ORM\Column(type="string", length=1500, nullable=true)
+     * @ORM\Column(type="string", length=2500, nullable=true)
      */
     protected $abst;
 
@@ -148,7 +148,7 @@ class Referencia
     protected $conference;
 
      /**
-     * @ORM\Column(type="string", length=1500, nullable=true)
+     * @ORM\Column(type="string", length=2500, nullable=true)
      */
     protected $notas;
 
@@ -163,17 +163,17 @@ class Referencia
     protected $file;
 
      /**
-     * @ORM\Column(type="string", length=250, nullable=true)
+     * @ORM\Column(type="string", length=500, nullable=true)
      */
     protected $url;
 
      /**
-     * @ORM\Column(type="string", length=250, nullable=true)
+     * @ORM\Column(type="string", length=500, nullable=true)
      */
     protected $doi;
 
      /**
-     * @ORM\Column(type="string", length=250, nullable=true)
+     * @ORM\Column(type="string", length=500, nullable=true)
      */
     protected $arxiv;
 
