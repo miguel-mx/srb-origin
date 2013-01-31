@@ -50,7 +50,6 @@
       </div>
     {% endif %}
 
-   
 
   <div class="ym-grid">
       {% if entity.keywords != null %}
@@ -94,9 +93,7 @@
       <div style="padding:10px 0 5px 0; font-weight: ">
          <b>Journal: </b>{{ entity.journal }}
       </div>
-    <div>
-  </div>
-</div>
+    </div>
     {% endif %}
 
     {% if entity.issn != null %}
@@ -104,55 +101,53 @@
       <div style="padding:10px 0 5px 0; font-weight:">
       <b>ISSN:</b>  {{ entity.issn }}
       </div>
-     <div>
-  </div>
+     </div>
     {% endif %}
 </div>
 
- 
 
 <div class="ym-grid">
-
     {% if entity.yearPub != null %}
        <div class="ym-g25 ym-gl">
         <div style="padding:10px 0 5px 0; font-weight:">
          <b>Year: </b> {{ entity.yearPub }}
         </div>
       </div>
- {% endif %}
+    {% endif %}
 
-   {% if entity.volume != null %}
+    {% if entity.volume != null %}
      <div class="ym-g25 ym-gl">
       <div style="padding:10px 0 5px 0; font-weight:">
         <b>Volume: </b> {{ entity.volume }}
       </div>
      </div>
- {% endif %}
+    {% endif %}
 
    {% if entity.issue != null %}
    <div class="ym-g25 ym-gl">
       <div style="padding:10px 0 5px 0; font-weight:">
         <b>Number: </b> {{ entity.issue }}
-   </div>
-   </div>
- {% endif %}
+      </div>
+    </div>
+    {% endif %}
 
    {% if entity.yearPreprint != null %}
    <div class="ym-g25 ym-gl">
       <div style="padding:10px 0 5px 0; font-weight:">
          <b>Year Preprint: </b> {{ entity.yearPreprint }}
-   </div>
-   </div>
- {% endif %}
+      </div>
+    </div>
+    {% endif %}
 
-       {% if entity.pages != null %}
-   <div class="ym-g25 ym-gl">
+    {% if entity.pages != null %}
+    <div class="ym-g25 ym-gl">
       <div style="padding:10px 0 5px 0; font-weight:">
          <b>Pages: </b> {{ entity.pages }}
       </div>
-   </div>
- {% endif %}
+    </div>
+    {% endif %}
 </div>
+
 <div class="ym-grid">
 
  {% if entity.mathscinet != null %}
@@ -172,7 +167,6 @@
     {% endif %}
 
 </div>
-
 
 
 <div class="ym-grid">
@@ -268,7 +262,7 @@
       <div style="background: none no-repeat scroll center center #9B9B9B; height: 1px; margin: 3px 0; "></div>
 
 
-    <div style="padding-top:10px;">
+ <div style="padding-top:10px;">
 
 
     {% if entity.created != null %}
@@ -343,10 +337,10 @@
     </div>
 {% endif %}
 
-    </div>
-    <!-- grid 66% -->
-  </div>
-  <!-- grid -->
+
+  </div>  <!-- g66-->
+
+  </div> <!-- grid -->
 
 </div>
 <!-- block col3 -->
