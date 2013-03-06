@@ -80,7 +80,7 @@ foq_elastica:
                         abst: { analyzer: snowball }
                         keywords:
                         isbn:
-                        area:
+                        advisor:
                     persistence:
                         driver: orm
                         model:  Ccm\SrbBundle\Entity\Referencia

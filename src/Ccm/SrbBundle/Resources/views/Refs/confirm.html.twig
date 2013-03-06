@@ -5,66 +5,66 @@
 {% set option = 'Resultados de importación' %}
 
 {% block col3 %}
-<div class="ym-gbox-right">
+    <div class="ym-gbox-right">
 
-    <h1>Referencias</h1><br>
+        <h1>Referencias</h1><br>
 
-    <b>Referencias en el archivo:</b> {{ numrefsTotal }}<br>
+        <b>Referencias en el archivo:</b> {{ numrefsTotal }}<br>
 
-    {% if numrefsTotal == 0 %}
-    <div class="box info" style="padding: 10px;">
-    <img src="{{ asset('bundles/ccmsrb/images/icons/alert.png') }}" alt="Alert" style="padding:0 5px 0 0;"/>
-    No se encontró ninguna referencia, favor de revisar que el archivo tenga un formato de BibTex.<br><br>
+        {% if numrefsTotal == 0 %}
+            <div class="box info" style="padding: 10px;">
+                <img src="{{ asset('bundles/ccmsrb/images/icons/alert.png') }}" alt="Alert" style="padding:0 5px 0 0;"/>
+                No se encontró ninguna referencia, favor de revisar que el archivo tenga un formato de BibTex.<br><br>
+            </div>
+        {% endif %}
+
+        {% if numrefsNoRepeat > 0 %}
+            <div class="box info" style="padding: 10px;">
+                <div style="float:left;">
+                    <img src="{{ asset('bundles/ccmsrb/images/icons/accept.png') }}" alt="Accept" style="padding:0 5px 0 0;"/>
+                </div>
+                <div style="margin:0 40px;">
+                    <b>Las siguientes referencias han sido importadas</b><br>
+                    Número de referencias importadas: {{ numrefsNoRepeat }}<br>
+                </div>
+            </div>
+            {% for ref in bibTex %}
+                {# Con el uso de la sentencia if se valida si existe el valor en el arreglo, si existe imprime el valor  #}
+
+                <div style="padding: 10px 0;">
+                    {% include 'CcmSrbBundle:Refs:bloqueimport.html.twig' %}
+                </div>
+                <div style="background: none no-repeat scroll center center #9B9B9B; height: 1px; margin: 3px 0; "></div>
+
+            {% endfor %}
+
+        {% endif %}
+
+
+        {% if numrefsRepeat > 0 %}
+            <div class="box info" style="padding: 10px;">
+                <div style="float:left;">
+                    <img src="{{ asset('bundles/ccmsrb/images/icons/warning.png') }}" alt="Warn" style="padding:0 5px 0 0;"/>
+                </div>
+                <div style="margin:0 40px;">
+                    <b>Las siguientes referencias no fueron guardadas porque sus títulos ya existen en el sistema.</b> <br />
+                    Número de referencias que no fueron guardadas: {{ numrefsRepeat }}<br>
+                </div>
+            </div>
+
+            {% for ref in bibTexRepeat %}
+                {# Con el uso de la sentencia if se valida si existe el valor en el arreglo, si existe imprime el valor  #}
+
+                <div style="padding: 10px 0;">
+                    {% include 'CcmSrbBundle:Refs:bloqueimport.html.twig' %}
+                </div>
+                <div style="background: none no-repeat scroll center center #9B9B9B; height: 1px; margin: 3px 0; "></div>
+
+            {% endfor %}
+        {% endif %}
+
     </div>
-    {% endif %}
-
-    {% if numrefsNoRepeat > 0 %}
-    <div class="box info" style="padding: 10px;">
-      <div style="float:left;">
-         <img src="{{ asset('bundles/ccmsrb/images/icons/accept.png') }}" alt="Accept" style="padding:0 5px 0 0;"/>
-      </div>
-      <div style="margin:0 40px;">
-          <b>Las siguientes referencias han sido importadas</b><br>
-          Número de referencias importadas: {{ numrefsNoRepeat }}<br>
-      </div>
-    </div>
-    {% for ref in bibTex %}
-    {# Con el uso de la sentencia if se valida si existe el valor en el arreglo, si existe imprime el valor  #}
-
-    <div style="padding: 10px 0;">
-        {% include 'CcmSrbBundle:Refs:bloqueimport.html.twig' %}
-    </div>
-    <div style="background: none no-repeat scroll center center #9B9B9B; height: 1px; margin: 3px 0; "></div>
-
-    {% endfor %}
-
-{% endif %}
-
-
-{% if numrefsRepeat > 0 %}
-    <div class="box info" style="padding: 10px;">
-        <div style="float:left;">
-            <img src="{{ asset('bundles/ccmsrb/images/icons/warning.png') }}" alt="Warn" style="padding:0 5px 0 0;"/>
-        </div>
-        <div style="margin:0 40px;">
-            <b>Las siguientes referencias no fueron guardadas porque sus títulos ya existen en el sistema.</b> <br />
-            Número de referencias que no fueron guardadas: {{ numrefsRepeat }}<br>
-        </div>
-    </div>
-
-    {% for ref in bibTexRepeat %}
-    {# Con el uso de la sentencia if se valida si existe el valor en el arreglo, si existe imprime el valor  #}
-
-    <div style="padding: 10px 0;">
-        {% include 'CcmSrbBundle:Refs:bloqueimport.html.twig' %}
-    </div>
-    <div style="background: none no-repeat scroll center center #9B9B9B; height: 1px; margin: 3px 0; "></div>
-
-    {% endfor %}
-{% endif %}
-
-</div>
-<!-- block col3 -->
+    <!-- block col3 -->
 {% endblock %}
 
 {% block menuL %}

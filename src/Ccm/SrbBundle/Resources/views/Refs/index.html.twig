@@ -7,35 +7,35 @@
 {% endblock %}
 
 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-{% set option = 'Nueva publicación' %}
+    {% set option = 'Nueva publicación' %}
 {% else %}
-{% set option = 'Ingresar al sistema' %}
+    {% set option = 'Ingresar al sistema' %}
 {% endif %}
 
 {% block col3 %}
-<div class="ym-grid">
-  <div class="ym-gbox"><br />
+    <div class="ym-grid">
+        <div class="ym-gbox"><br />
 
-  <h1>Centro de Ciencias Matemáticas UNAM</h1><br />
-  <h2>Referencias Bibliográficas</h2><br />
-  
-  <div class="ym-g62 ym-gl">
-El Sistema de Referencias Bibliográficas es un repositorio de producción bibliográfica del Centro de Ciencias Matemáticas.
-  </div>
+            <h1>Centro de Ciencias Matemáticas UNAM</h1><br />
+            <h2>Referencias Bibliográficas</h2><br />
 
-   <div class="ym-g62 ym-gl" style="padding: 20px 0">
-   <b>Búsqueda rápida</b>
-   </div>
-   <div class="ym-g62 ym-gl">
-   <!-- optional search form -->
-   <form action="{{ path('search') }}" method="get">
-            <input type="search" size="40px" placeholder="Search..." name="q" />
-            <input  type="submit" value="Search" />
-    </form>
-   </div>
+            <div class="ym-g62 ym-gl">
+                El Sistema de Referencias Bibliográficas es un repositorio de producción bibliográfica del Centro de Ciencias Matemáticas.
+            </div>
 
-  </div>
-</div>
+            <div class="ym-g62 ym-gl" style="padding: 20px 0">
+                <b>Búsqueda rápida</b>
+            </div>
+            <div class="ym-g62 ym-gl">
+                <!-- optional search form -->
+                <form action="{{ path('search') }}" method="get">
+                    <input type="search" size="40px" placeholder="Search..." name="q" />
+                    <input  type="submit" value="Search" />
+                </form>
+            </div>
+
+        </div>
+    </div>
 {% endblock %}
 
 
@@ -43,26 +43,24 @@ El Sistema de Referencias Bibliográficas es un repositorio de producción bibli
     <ul>
         <li> <a href="{{ path('referencia_new', { 'type': 'article' } ) }}"> Artículo </a> </li>
         <li> <a href="{{ path('referencia_new', { 'type': 'incollection' } ) }}"> Capítulo de Libro </a> </li>
-{# <!--<ul>
-        <li> <a href="{{ path('referencia_new', { 'type': 'edicion' } ) }}"> Edicion de Libro </a> </li>
-    </ul>--> #}
         <li> <a href="{{ path('referencia_new', { 'type': 'proceedings' } ) }}"> Editor de Memorias de Congreso </a> </li>
         <li> <a href="{{ path('referencia_new', { 'type': 'book' } ) }}"> Libro </a> </li>
         <li> <a href="{{ path('referencia_new', { 'type': 'inproceedings' } ) }}"> Memoria de Congreso </a> </li>
         <li> <a href="{{ path('referencia_new', { 'type': 'preprint' } ) }}"> Preprint </a> </li>
+        <li> <a href="{{ path('referencia_new', { 'type': 'thesis' } ) }}"> Tesis </a> </li>
     </ul>
 {% endblock %}
 
 
 {% block menuL1 %}
 
-{% if is_granted('ROLE_ADMIN') %}
-    <h6 class="ym-vlist">Importar</h6>
-    <ul>
-        <li> <a href="{{ path('upload') }}"> Desde Archivo </a> </li>
-        <li> <a href="{{ path('arxiv') }}"> Desde Arxiv </a> </li>
-    </ul>
+    {% if is_granted('ROLE_ADMIN') %}
+        <h6 class="ym-vlist">Importar</h6>
+        <ul>
+            <li> <a href="{{ path('upload') }}"> Desde Archivo </a> </li>
+            <li> <a href="{{ path('arxiv') }}"> Desde Arxiv </a> </li>
+        </ul>
 
-{% endif %}
+    {% endif %}
 {% endblock %}
 

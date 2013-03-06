@@ -2,93 +2,93 @@
 {% extends 'CcmSrbBundle::layout.html.twig' %}
 
 {% block menu %}
-{{ knp_menu_render('CcmSrbBundle:Builder:mainMenu') }}
+    {{ knp_menu_render('CcmSrbBundle:Builder:mainMenu') }}
 {% endblock %}
 {% set option = 'Buscar publicación' %}
 
 
 {% block col3 %}
-<div class="ym-gbox-right">
-  <div class="ym-grid">
+    <div class="ym-gbox-right">
+        <div class="ym-grid">
 
-    <!-- 2 col margen a la derecha -->
-    <div style="margin-left: 160px;"><br />
-
-
-    <div style="margin-top: 10px;">
-        <h1>Búsqueda Avanzada</h1>
-    </div>
+            <!-- 2 col margen a la derecha -->
+            <div style="margin-left: 160px;"><br />
 
 
-    <form action="{{ path('query') }}" method="get" >
+                <div style="margin-top: 10px;">
+                    <h1>Búsqueda Avanzada</h1>
+                </div>
 
-       <div style="padding: 5px 0;">
-         <br><b>Título:</b>
-         <div>
-            <input type="text" name="Title" style="width: 380px;"/>
-         </div>
-       </div>
 
-      <div style="padding: 5px 0;">
-        <br><b>Típo de Publicación:</b>
-      </div>
+                <form action="{{ path('query') }}" method="get" >
 
-      <div>
-        <select name="Type"  style="width: 380px;">
-           <option value="">Todos</option>
-           <option value="article">Article</option>
-           <option value="book">Book</option>
-           <option value="incollection">Incollection</option>
-           <option value="inproceedings">Inproceedings</option>
-           <option value="proceedings">Proceedings</option>
-           <option value="preprint">Preprint</option></select>
-      </div>
+                    <div style="padding: 5px 0;">
+                        <br><b>Título:</b>
+                        <div>
+                            <input type="text" name="Title" style="width: 380px;"/>
+                        </div>
+                    </div>
 
-      <div style="padding: 5px 0;">
-        <br><b>Autor:</b>
-        <div>
-            <input type="text" name="Author" style="width: 380px"/>
+                    <div style="padding: 5px 0;">
+                        <br><b>Típo de Publicación:</b>
+                    </div>
+
+                    <div>
+                        <select name="Type"  style="width: 380px;">
+                            <option value="">Todos</option>
+                            <option value="article">Article</option>
+                            <option value="book">Book</option>
+                            <option value="incollection">Incollection</option>
+                            <option value="inproceedings">Inproceedings</option>
+                            <option value="proceedings">Proceedings</option>
+                            <option value="preprint">Preprint</option></select>
+                    </div>
+
+                    <div style="padding: 5px 0;">
+                        <br><b>Autor:</b>
+                        <div>
+                            <input type="text" name="Author" style="width: 380px"/>
+                        </div>
+                    </div>
+
+                    <div class="ym-g33 ym-gl">
+                        <br /><b>Año de inicio </b><br />
+                        <div style="padding: 5px 0;">
+                            <select name="yearStart" required="required"><option value="1999">1999</option><option value="2000">2000</option><option value="2001">2001</option><option value="2002">2002</option><option value="2003">2003</option><option value="2004">2004</option><option value="2005">2005</option><option value="2006">2006</option><option value="2007">2007</option><option value="2008">2008</option><option value="2009">2009</option><option value="2010">2010</option><option value="2011">2011</option><option value="2012">2012</option></select>
+                        </div>
+                    </div>
+
+                    <div class="ym-g33 ym-gl">
+                        <br /><b>Año final</b><br />
+                        <select name="yearEnd" required="required"><option value="1999">1999</option><option value="2000">2000</option><option value="2001">2001</option><option value="2002">2002</option><option value="2003">2003</option><option value="2004">2004</option><option value="2005">2005</option><option value="2006">2006</option><option value="2007">2007</option><option value="2008">2008</option><option value="2009">2009</option><option value="2010">2010</option><option value="2011">2011</option><option value="2012">2012</option></select>
+                    </div>
+
+                    <div class="ym-g80 ym-gl">
+                        <br><b>¿Mostrar todos los años?</b><br />
+                        <input type="checkbox"  name="allYears" value="1" />
+                    </div>
+                    <br>
+
+                    <div class="ym-g80 ym-gl">
+                        <button type="submit" class="ym-button ym-search" /> Buscar</button>
+                    </div>
+
+                </form>
+
+            </div>
+            <!-- Espacio horizontal 2 col -->
         </div>
-      </div>
-
-      <div class="ym-g33 ym-gl">
-        <br /><b>Año de inicio </b><br />
-        <div style="padding: 5px 0;">
-            <select name="yearStart" required="required"><option value="1999">1999</option><option value="2000">2000</option><option value="2001">2001</option><option value="2002">2002</option><option value="2003">2003</option><option value="2004">2004</option><option value="2005">2005</option><option value="2006">2006</option><option value="2007">2007</option><option value="2008">2008</option><option value="2009">2009</option><option value="2010">2010</option><option value="2011">2011</option><option value="2012">2012</option></select>
-        </div>
-      </div>
-
-      <div class="ym-g33 ym-gl">
-        <br /><b>Año final</b><br />
-        <select name="yearEnd" required="required"><option value="1999">1999</option><option value="2000">2000</option><option value="2001">2001</option><option value="2002">2002</option><option value="2003">2003</option><option value="2004">2004</option><option value="2005">2005</option><option value="2006">2006</option><option value="2007">2007</option><option value="2008">2008</option><option value="2009">2009</option><option value="2010">2010</option><option value="2011">2011</option><option value="2012">2012</option></select>
-      </div>
-
-      <div class="ym-g80 ym-gl">
-         <br><b>¿Mostrar todos los años?</b><br />
-         <input type="checkbox"  name="allYears" value="1" />
-      </div>
-      <br>
-
-      <div class="ym-g80 ym-gl">
-        <button type="submit" class="ym-button ym-search" /> Buscar</button>
-      </div>
-
-    </form>
-
+        <!-- div grid -->
     </div>
-    <!-- Espacio horizontal 2 col -->
-  </div>
-  <!-- div grid -->
-</div>
-<!-- block col3 -->
+    <!-- block col3 -->
 
 {% endblock %}
 
 {% block menuL %}
 
 
-<ul class="record_actions">
-      <li> <a href='javascript:history.back(1)'> Regresar </a> </li>
-</ul>
+    <ul class="record_actions">
+        <li> <a href='javascript:history.back(1)'> Regresar </a> </li>
+    </ul>
 
 {% endblock %}

@@ -17,7 +17,6 @@ class ArticuloType extends AbstractType
    ->add('author','text', array('required'=> true, 'label'=>'*Author'))
    ->add('title','textarea', array ('required'=>true , 'label'=>'*Title'))
    ->add('type', 'choice', array('choices'=>array('article'=>'Article')))
-   //->add('yearPub','text',array('empty_value' => array('year' => 'Year', 'month' => 'Month', 'day' => 'Day'), 'years'=> range(1950,2012)))
    ->add('yearPub','number', array ('required'=> true , 'label'=>'*Year'))
    ->add('journal', 'text', array('required' => true, 'label'=>'*Journal'))
    ->add('issue', 'text', array('required' => false, 'label'=>'Number'))

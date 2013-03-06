@@ -12,7 +12,7 @@ class AuthorType extends AbstractType
         $builder
             ->add('name', null, array('label'=>'Nombre'))
             ->add('alias', null, array('label'=>'Alias'))
-	    ->add('user', null, array('label'=>'Usuario'))
+            ->add('user', null, array('label'=>'Usuario'))
 //             ->add('publications')
         ;
     }

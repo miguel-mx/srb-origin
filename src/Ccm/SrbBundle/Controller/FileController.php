@@ -31,73 +31,73 @@ class FileController extends BaseController
      * @Template()
      */
     public function indexAction()
-{
-    $upload = new Upload();
-    $form = $this->createForm(new UploadType(), $upload);
-    $request = $this->container->get('request');
+    {
+        $upload = new Upload();
+        $form = $this->createForm(new UploadType(), $upload);
+        $request = $this->container->get('request');
 
-    if ('POST' === $request->getMethod()) {
-        $form->bindRequest($request);
-        if ($form->isValid()) {
-            $file = $form['attachment']->getData();
-            $randomName= $upload->generateRandomFileName($file);
-            if ($file) {
-                $file->move($upload->getUploadDir(), $randomName);
-            }
+        if ('POST' === $request->getMethod()) {
+            $form->bindRequest($request);
+            if ($form->isValid()) {
+                $file = $form['attachment']->getData();
+                $randomName= $upload->generateRandomFileName($file);
+                if ($file) {
+                    $file->move($upload->getUploadDir(), $randomName);
+                }
 
-    // upload->bibTex regresa una estructura de Bibtex
-    $bibTex = $upload->bibTex($randomName);
+                // upload->bibTex regresa una estructura de Bibtex
+                $bibTex = $upload->bibTex($randomName);
 
-        //if ($bibTex) {
-          //  throw $this->createNotFoundException(print_r($bibTex));
-        //}
-
-
-    $repository = $this->getDoctrine()->getRepository('CcmSrbBundle:Referencia');
-        $j=0;
-    $k=0;
-    $norepeat=null;
-    $repeat=null;
+                //if ($bibTex) {
+                //  throw $this->createNotFoundException(print_r($bibTex));
+                //}
 
 
-    for($i=0;$i<count($bibTex);$i++){
-      $titles= $repository->findOneByTitle(preg_replace("'\s+'",' ', $bibTex[$i]['title']));
-       if ($titles){
-              $repeat[$k]=$bibTex[$i];
-          $k++;
-          unset($titles);
-       }
-       else {
-           $norepeat[$j]=$bibTex[$i];
-       $j++;
-       }
-    }
+                $repository = $this->getDoctrine()->getRepository('CcmSrbBundle:Referencia');
+                $j=0;
+                $k=0;
+                $norepeat=null;
+                $repeat=null;
 
-    $numrefsTotal=count($repeat)+count($norepeat);
-    $numrefsRepeat= count($repeat);
-    $numrefsNoRepeat= count($norepeat);
 
-        // ******************************
-        // Guarda las referencias
-        $this->persistBibStructure($norepeat);
+                for($i=0;$i<count($bibTex);$i++){
+                    $titles= $repository->findOneByTitle(preg_replace("'\s+'",' ', $bibTex[$i]['title']));
+                    if ($titles){
+                        $repeat[$k]=$bibTex[$i];
+                        $k++;
+                        unset($titles);
+                    }
+                    else {
+                        $norepeat[$j]=$bibTex[$i];
+                        $j++;
+                    }
+                }
 
-        // ******************************
-        // Muestra las referencias leídas
-        return $this->render('CcmSrbBundle:Refs:confirm.html.twig', array('bibTex' => $norepeat,'numrefsTotal'=>$numrefsTotal,
-        'numrefsRepeat'=>$numrefsRepeat, 'numrefsNoRepeat'=>$numrefsNoRepeat, 'bibTexRepeat'=>$repeat));
+                $numrefsTotal=count($repeat)+count($norepeat);
+                $numrefsRepeat= count($repeat);
+                $numrefsNoRepeat= count($norepeat);
 
-        // $this->get('session')->setFlash('notice', $randomName);
-        // return $this->render('CcmSrbBundle::upload.html.twig', array('refs'=>$refs, ));
+                // ******************************
+                // Guarda las referencias
+                $this->persistBibStructure($norepeat);
 
-        } // Is valid
+                // ******************************
+                // Muestra las referencias leídas
+                return $this->render('CcmSrbBundle:Refs:confirm.html.twig', array('bibTex' => $norepeat,'numrefsTotal'=>$numrefsTotal,
+                    'numrefsRepeat'=>$numrefsRepeat, 'numrefsNoRepeat'=>$numrefsNoRepeat, 'bibTexRepeat'=>$repeat));
 
-      }
+                // $this->get('session')->setFlash('notice', $randomName);
+                // return $this->render('CcmSrbBundle::upload.html.twig', array('refs'=>$refs, ));
+
+            } // Is valid
+
+        }
 
         return $this->render('CcmSrbBundle::upload.html.twig', array(
             'form' => $form->createView(),
         ));
 
-}
+    }
 
 
 } // Class

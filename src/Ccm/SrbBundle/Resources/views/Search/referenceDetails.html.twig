@@ -1,7 +1,7 @@
 {# Resources/views/Search/referenceDetails.html.twig #}
 
 <div style="float:left;">
-{{ i }} - <b><a href="{{ path('referencia_show', { 'id': item.id }) }}">{{ item.title }}</a></b>,
+    {{ i }} - <b><a href="{{ path('referencia_show', { 'id': item.id }) }}">{{ item.title }}</a></b>,
 </div>
 <div style="font-size: 85%; color: #6B6B6B; float:left;">
     {{ item.type|title }}
@@ -17,11 +17,11 @@
 {% if item.address != null %}{{ item.address }}{% endif %}
 <br>
 {% if item.author != null %}
-{% for key in item.author|explode %}
-    <a href="{{ path('search', {'q': key | trim | url_encode() }) }}"> {{key}}</a>;
-{% endfor %}
+    {% for key in item.author|explode %}
+        <a href="{{ path('search', {'q': key | trim | url_encode() }) }}"> {{key}}</a>;
+    {% endfor %}
 {% else %}
-{% if item.editor != null %}{{ item.editor }}{% endif %}
+    {% if item.editor != null %}{{ item.editor }}{% endif %}
 {% endif %}
 <br><br>
 

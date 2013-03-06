@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class Referencia 
+class Referencia
 {
     /**
      * @ORM\Id
@@ -18,18 +18,18 @@ class Referencia
      */
     protected $id;
 
-     /**
+    /**
      * @ORM\Column(type="text", nullable=true)
      */
-     private $author;
+    private $author;
 
     /**
      * @var authors
      * @ORM\ManyToMany(targetEntity="Author", inversedBy="publications")
      */
-     private $authors;
+    private $authors;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=1500)
      * @Assert\NotBlank()
      */
@@ -41,189 +41,186 @@ class Referencia
      */
     public $type;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=4, nullable=true)
      * @Assert\MaxLength(4)(message="Debe ser un año válido")
      */
     protected $yearPreprint;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=4, nullable=true)
      * @Assert\MaxLength(4)(message="Debe ser un año válido")
      *
      */
     protected $yearPub;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=250, nullable=true)
-
-
      */
     protected $publication;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=250, nullable=true)
      */
     protected $journal;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=10, nullable=true)
      */
     protected $issue;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=10, nullable=true)
      */
     protected $volume;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=10, nullable=true)
      */
     protected $pages;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=250, nullable=true)
-
      */
     protected $corporateAuthor;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=250, nullable=true)
      */
-    protected $thesis;
+    protected $school;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=250, nullable=true)
      */
     protected $address;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=1500, nullable=true)
      */
     protected $keywords;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=1500, nullable=true)
      */
     protected $abst;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=250, nullable=true)
      */
     protected $publisher;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=250, nullable=true)
      */
     protected $placePub;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=250, nullable=true)
      */
     protected $editor;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=250, nullable=true)
      */
     protected $issn;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=250, nullable=true)
      */
     protected $isbn;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=250, nullable=true)
      */
     protected $medium;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=250, nullable=true)
      */
-    protected $area;
+    protected $advisor;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=250, nullable=true)
      */
-    protected $conference;
+    protected $thesisType;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=1500, nullable=true)
      */
     protected $notas;
 
-     /**
+    /**
      * @ORM\Column(type="boolean", length=2, nullable=true)
      */
     protected $revision;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=250, nullable=true)
      */
     protected $file;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=250, nullable=true)
      */
     protected $url;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=250, nullable=true)
      */
     protected $doi;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=250, nullable=true)
      */
     protected $arxiv;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=250, nullable=true)
      */
     protected $mathscinet;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=250, nullable=true)
      */
     protected $zmath;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=250, nullable=true)
      */
     protected $inspires;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=250, nullable=true)
      */
     protected $reportNumber;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=1500, nullable=true)
      */
     protected $msc;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=1500, nullable=true)
      */
     protected $mrNumber;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=1500, nullable=true)
      */
     protected $bookTitle;
 
 
- /**
+    /**
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $created;
 
-     /**
+    /**
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $modified;
 
-     /**
+    /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="modifiedby")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      *
@@ -233,93 +230,93 @@ class Referencia
     private $user;
 
 
-        //--------------------------------------------------------------------------------
-        // Definiciones de métodos para la relación Referencia - Author
+    //--------------------------------------------------------------------------------
+    // Definiciones de métodos para la relación Referencia - Author
 
-       /**
-        * Constructor de la clase, inicializa el arreglo de authors
-        *
-        *
-        */
-        public function __construct()
-        {
-            $this->authors = new \Doctrine\Common\Collections\ArrayCollection();
-        }
+    /**
+     * Constructor de la clase, inicializa el arreglo de authors
+     *
+     *
+     */
+    public function __construct()
+    {
+        $this->authors = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
-       /**
-        * Add Author
-        *
-        * @param Ccm\SrbBundle\Entity\Author $author
-        */
-        public function addAuthor(\Ccm\SrbBundle\Entity\Author $author)
-        {
-            $author->addPublication($this); // synchronously updating inverse side
-            $this->authors[] = $author;
-        }
+    /**
+     * Add Author
+     *
+     * @param Ccm\SrbBundle\Entity\Author $author
+     */
+    public function addAuthor(\Ccm\SrbBundle\Entity\Author $author)
+    {
+        $author->addPublication($this); // synchronously updating inverse side
+        $this->authors[] = $author;
+    }
 
-       /**
-        * Get authors
-        *
-        * @return Doctrine\Common\Collections\Collection
-        */
-        public function getAuthors()
-        {
-          return $this->authors;
-        }
-
-
-        public function __toString()
-        {
-          return $this->title;
-        }
-
-        //--------------------------------------------------------------------------------
-
-        /**
-         * @ORM\PrePersist
-         */
-        public function prePersist()
-        {
-            $this->setCreated(new \DateTime());
-            //$this->setModified(new \DateTime());
-        }
+    /**
+     * Get authors
+     *
+     * @return Doctrine\Common\Collections\Collection
+     */
+    public function getAuthors()
+    {
+        return $this->authors;
+    }
 
 
-        /**
-         * @ORM\PreUpdate
-         */
-        public function preUpdate()
-        {
-            $this->setModified(new \DateTime());
+    public function __toString()
+    {
+        return $this->title;
+    }
 
-        }
+    //--------------------------------------------------------------------------------
 
-        /**
-         * Set created
-         *
-         * @param datetime $created
-         */
-        public function setCreated($created)
-        {
-            $this->created = $created;
-        }
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        $this->setCreated(new \DateTime());
+        //$this->setModified(new \DateTime());
+    }
 
-        /**
-         * Set modified
-         *
-         * @param datetime $modified
 
-         */
-        public function setModified($modified)
-        {
-            $this->modified = $modified;
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        $this->setModified(new \DateTime());
 
-        }
+    }
+
+    /**
+     * Set created
+     *
+     * @param datetime $created
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    }
+
+    /**
+     * Set modified
+     *
+     * @param datetime $modified
+
+     */
+    public function setModified($modified)
+    {
+        $this->modified = $modified;
+
+    }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -339,7 +336,7 @@ class Referencia
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -347,7 +344,7 @@ class Referencia
     }
 
     /**
-     * Set type 
+     * Set type
      *
      * @param string $type
      */
@@ -359,15 +356,15 @@ class Referencia
     /**
      * Get type
      *
-     * @return string 
+     * @return string
      */
     public function getType()
     {
         return $this->type;
     }
 
-     /**
-     * Set yearPreprint 
+    /**
+     * Set yearPreprint
      *
      * @param string $yearPreprint
      */
@@ -379,14 +376,14 @@ class Referencia
     /**
      * Get yearPreprint
      *
-     * @return string 
+     * @return string
      */
     public function getYearPreprint()
     {
         return $this->yearPreprint;
     }
 
-     /**
+    /**
      * Set yearPub
      *
      * @param string $yearPub
@@ -399,14 +396,14 @@ class Referencia
     /**
      * Get yearPub
      *
-     * @return string 
+     * @return string
      */
     public function getYearPub()
     {
         return $this->yearPub;
     }
 
-     /**
+    /**
      * Set publication
      *
      * @param string $publication
@@ -419,14 +416,14 @@ class Referencia
     /**
      * Get publication
      *
-     * @return string 
+     * @return string
      */
     public function getPublication()
     {
         return $this->publication;
     }
 
-     /**
+    /**
      * Set journal
      *
      * @param string $journal
@@ -439,14 +436,14 @@ class Referencia
     /**
      * Get journal
      *
-     * @return string 
+     * @return string
      */
     public function getJournal()
     {
         return $this->journal;
     }
- 
-     /**
+
+    /**
      * Set volume
      *
      * @param string $volume
@@ -459,14 +456,14 @@ class Referencia
     /**
      * Get volume
      *
-     * @return string 
+     * @return string
      */
     public function getVolume()
     {
         return $this->volume;
     }
 
-     /**
+    /**
      * Set issue
      *
      * @param string $issue
@@ -479,14 +476,14 @@ class Referencia
     /**
      * Get issue
      *
-     * @return string 
+     * @return string
      */
     public function getIssue()
     {
         return $this->issue;
     }
 
-     /**
+    /**
      * Set pages
      *
      * @param string $pages
@@ -499,14 +496,14 @@ class Referencia
     /**
      * Get pages
      *
-     * @return string 
+     * @return string
      */
     public function getPages()
     {
         return $this->pages;
     }
 
-     /**
+    /**
      * Set corporateAuthor
      *
      * @param string $corporateAuthor
@@ -519,34 +516,34 @@ class Referencia
     /**
      * Get corporateAuthor
      *
-     * @return string 
+     * @return string
      */
     public function getCorporateAuthor()
     {
         return $this->corporateAuthor;
     }
 
-     /**
-     * Set thesis
+    /**
+     * Set school
      *
-     * @param string $thesis
+     * @param string $school
      */
-    public function setThesis($thesis)
+    public function setSchool($school)
     {
-        $this->thesis = $thesis;
+        $this->school = $school;
     }
 
     /**
-     * Get thesis
+     * Get school
      *
-     * @return string 
+     * @return string
      */
-    public function getThesis()
+    public function getSchool()
     {
-        return $this->thesis;
+        return $this->school;
     }
 
-     /**
+    /**
      * Set address
      *
      * @param string $address
@@ -559,14 +556,14 @@ class Referencia
     /**
      * Get address
      *
-     * @return string 
+     * @return string
      */
     public function getAddress()
     {
         return $this->address;
     }
 
-     /**
+    /**
      * Set keywords
      *
      * @param string $keywords
@@ -579,14 +576,14 @@ class Referencia
     /**
      * Get keywords
      *
-     * @return string 
+     * @return string
      */
     public function getKeywords()
     {
         return $this->keywords;
     }
 
-     /**
+    /**
      * Set abst
      *
      * @param string $abst
@@ -599,14 +596,14 @@ class Referencia
     /**
      * Get abst
      *
-     * @return string 
+     * @return string
      */
     public function getAbst()
     {
         return $this->abst;
     }
 
-     /**
+    /**
      * Set publisher
      *
      * @param string $publisher
@@ -619,14 +616,14 @@ class Referencia
     /**
      * Get publisher
      *
-     * @return string 
+     * @return string
      */
     public function getPublisher()
     {
         return $this->publisher;
     }
 
-     /**
+    /**
      * Set place
      *
      * @param string $place
@@ -639,14 +636,14 @@ class Referencia
     /**
      * Get place
      *
-     * @return string 
+     * @return string
      */
     public function getPlace()
     {
         return $this->place;
     }
 
-     /**
+    /**
      * Set editor
      *
      * @param string $editor
@@ -659,14 +656,14 @@ class Referencia
     /**
      * Get editor
      *
-     * @return string 
+     * @return string
      */
     public function getEditor()
     {
         return $this->editor;
     }
 
-     /**
+    /**
      * Set issn
      *
      * @param string $issn
@@ -679,14 +676,14 @@ class Referencia
     /**
      * Get issn
      *
-     * @return string 
+     * @return string
      */
     public function getIssn()
     {
         return $this->issn;
     }
 
-     /**
+    /**
      * Set isbn
      *
      * @param string $isbn
@@ -699,7 +696,7 @@ class Referencia
     /**
      * Get isbn
      *
-     * @return string 
+     * @return string
      */
     public function getIsbn()
     {
@@ -719,54 +716,54 @@ class Referencia
     /**
      * Get medium
      *
-     * @return string 
+     * @return string
      */
     public function getMedium()
     {
         return $this->medium;
     }
 
-     /**
-     * Set area
+    /**
+     * Set advisor
      *
-     * @param string $area
+     * @param string $advisor
      */
-    public function setArea($area)
+    public function setAdvisor($advisor)
     {
-        $this->area = $area;
+        $this->advisor = $advisor;
     }
 
     /**
-     * Get area
+     * Get advisor
      *
-     * @return string 
+     * @return string
      */
-    public function getArea()
+    public function getAdvisor()
     {
-        return $this->area;
-    }
-
-     /**
-     * Set conference
-     *
-     * @param string $conference
-     */
-    public function setConference($conference)
-    {
-        $this->conference = $conference;
+        return $this->advisor;
     }
 
     /**
-     * Get conference
+     * Set thesisType
      *
-     * @return string 
+     * @param string $thesisType
      */
-    public function getConference()
+    public function setThesisType($thesisType)
     {
-        return $this->conference;
+        $this->thesisType = $thesisType;
     }
 
-     /**
+    /**
+     * Get thesisType
+     *
+     * @return string
+     */
+    public function getThesisType()
+    {
+        return $this->thesisType;
+    }
+
+    /**
      * Set notes
      *
      * @param string $notes
@@ -779,7 +776,7 @@ class Referencia
     /**
      * Get notes
      *
-     * @return string 
+     * @return string
      */
     public function getNotes()
     {
@@ -799,7 +796,7 @@ class Referencia
     /**
      * Get revision
      *
-     * @return string 
+     * @return string
      */
     public function getRevision()
     {
@@ -819,7 +816,7 @@ class Referencia
     /**
      * Get file
      *
-     * @return string 
+     * @return string
      */
     public function getFile()
     {
@@ -839,7 +836,7 @@ class Referencia
     /**
      * Get url
      *
-     * @return string 
+     * @return string
      */
     public function getUrl()
     {
@@ -859,14 +856,14 @@ class Referencia
     /**
      * Get doi
      *
-     * @return string 
+     * @return string
      */
     public function getDoi()
     {
         return $this->doi;
     }
 
-     /**
+    /**
      * Set arxiv
      *
      * @param string $arxiv
@@ -879,7 +876,7 @@ class Referencia
     /**
      * Get arxiv
      *
-     * @return string 
+     * @return string
      */
     public function getArxiv()
     {
@@ -887,7 +884,7 @@ class Referencia
     }
 
 
-     /**
+    /**
      * Set mathscinet
      *
      * @param string $mathscinet
@@ -900,14 +897,14 @@ class Referencia
     /**
      * Get mathscinet
      *
-     * @return string 
+     * @return string
      */
     public function getMathscinet()
     {
         return $this->mathscinet;
     }
 
-     /**
+    /**
      * Set zmath
      *
      * @param string $zmath
@@ -927,7 +924,7 @@ class Referencia
         return $this->zmath;
     }
 
-     /**
+    /**
      * Set inspires
      *
      * @param string $inspires
@@ -940,7 +937,7 @@ class Referencia
     /**
      * Get inspires
      *
-     * @return string 
+     * @return string
      */
     public function getInspires()
     {
@@ -962,7 +959,7 @@ class Referencia
     /**
      * Get author
      *
-     * @return text 
+     * @return text
      */
     public function getAuthor()
     {
@@ -982,7 +979,7 @@ class Referencia
     /**
      * Get placePub
      *
-     * @return string 
+     * @return string
      */
     public function getPlacePub()
     {
@@ -1002,63 +999,63 @@ class Referencia
     /**
      * Get notas
      *
-     * @return string 
+     * @return string
      */
     public function getNotas()
     {
         return $this->notas;
     }
 
-/*    /**
-     * Set created
-     *
-     * @param 
-     */
-/*    public function setCreated()
-    {
-        $this->created = new \DateTime("now");
-    }
+    /*    /**
+         * Set created
+         *
+         * @param
+         */
+    /*    public function setCreated()
+        {
+            $this->created = new \DateTime("now");
+        }
 
-*/    /**
-     * Get created
-     *
-     * @return string
-     */
+    */    /**
+ * Get created
+ *
+ * @return string
+ */
     public function getCreated()
     {
         return $this->created;
     }
 
-/*    /**
-     * Set modified
-     *
-     * @param 
-     */
-/*    public function setModified()
-    {
-        $this->modified = new \DateTime("now");
-    }
+    /*    /**
+         * Set modified
+         *
+         * @param
+         */
+    /*    public function setModified()
+        {
+            $this->modified = new \DateTime("now");
+        }
 
-*/    /**
-     * Get modified
-     *
-     * @return string 
-     */
+    */    /**
+ * Get modified
+ *
+ * @return string
+ */
     public function getModified()
     {
         return $this->modified;
     }
 
-     /**
+    /**
      * @Assert\True(message = "Es necesario que exista un Autor o un Editor")
      */
     public function isEditorAuthor()
 
     {
-     if (($this->editor != null)|| ($this->author != null)){
-        return true;	}
+        if (($this->editor != null)|| ($this->author != null)){
+            return true;	}
         else
-        return false;
+            return false;
 
     }
 
@@ -1075,7 +1072,7 @@ class Referencia
     /**
      * Get user
      *
-     * @return Ccm\SrbBundle\Entity\User 
+     * @return Ccm\SrbBundle\Entity\User
      */
     public function getUser()
     {
@@ -1096,7 +1093,7 @@ class Referencia
     /**
      * Get reportNumber
      *
-     * @return string 
+     * @return string
      */
     public function getReportNumber()
     {
@@ -1116,14 +1113,14 @@ class Referencia
     /**
      * Get msc
      *
-     * @return string 
+     * @return string
      */
     public function getMsc()
     {
         return $this->msc;
     }
 
-     /**
+    /**
      * Set mrNumber
      *
      * @param string $mrNumber
@@ -1136,14 +1133,14 @@ class Referencia
     /**
      * Get mrNumber
      *
-     * @return string 
+     * @return string
      */
     public function getMrNumber()
     {
         return $this->mrNumber;
     }
 
-   /**
+    /**
      * Set bookTitle
      *
      * @param string $bookTitle
@@ -1156,7 +1153,7 @@ class Referencia
     /**
      * Get bookTitle
      *
-     * @return string 
+     * @return string
      */
     public function getBookTitle()
     {
