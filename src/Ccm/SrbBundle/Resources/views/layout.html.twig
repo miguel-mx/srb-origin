@@ -1,141 +1,142 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!--<html xmlns="http://www.w3.org/1999/xhtml">-->
 <head>
-    {% block head %}<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>{% endblock %}
+{% block head %}<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>{% endblock %}
 
-    <title>{% block title %}Sistema de Referencias Bibliográficas - CCM UNAM-Morelia {% endblock %}</title>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
+<title>{% block title %}Sistema de Referencias Bibliográficas - CCM UNAM-Morelia {% endblock %}</title>
+<meta name="description" content=""/>
+<meta name="author" content=""/>
+  
+<!-- mobile viewport optimisation -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+<!-- stylesheets -->
+<link rel="stylesheet" href="{{ asset('bundles/ccmsrb/css/central.css') }}" type="text/css"/>
+<link rel="stylesheet" href="{{ asset('bundles/makerlabspager/css/clean.css') }}" type="text/css"/>
+<!-- <link rel="stylesheet" href="{{ asset('bundles/whiteoctoberpagerfanta/css/pagerfantaDefault.css') }}" type="text/css" media="all" /> -->
+<link rel="shortcut icon" href="{{ asset('bundles/ccmsrb/images/favicon.ico') }}" />
+<!-- <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<!-- <script type="text/javascript" src="{{ asset('bundles/ccmevsec/js/superfish.js') }}"></script> -->
+<!--<link rel="stylesheet" type="text/css" href="css/superfish.css" media="screen">-->
+ 
+<!--[if lte IE 7]>
+<link rel="stylesheet" href="{{ asset('bundles/ccmsrb/yaml/core/iehacks.min.css') }}" type="text/css"/>
+<![endif]-->
 
-    <!-- mobile viewport optimisation -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!--<script src="js/prototype.js" type="text/javascript"></script>
+<script src="js/scriptaculous.js" type="text/javascript"></script>-->
 
-    <!-- stylesheets -->
-    <link rel="stylesheet" href="{{ asset('bundles/ccmsrb/css/central.css') }}" type="text/css"/>
-    <link rel="stylesheet" href="{{ asset('bundles/makerlabspager/css/clean.css') }}" type="text/css"/>
-    <!-- <link rel="stylesheet" href="{{ asset('bundles/whiteoctoberpagerfanta/css/pagerfantaDefault.css') }}" type="text/css" media="all" /> -->
-    <link rel="shortcut icon" href="{{ asset('bundles/ccmsrb/images/favicon.ico') }}" />
-    <!-- <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
-    <!-- <script type="text/javascript" src="{{ asset('bundles/ccmevsec/js/superfish.js') }}"></script> -->
-    <!--<link rel="stylesheet" type="text/css" href="css/superfish.css" media="screen">-->
+<!--<script type="text/javascript" src="superfish/js/jquery-1.2.6.min.js"></script>
+<script type="text/javascript" src="superfish/js/hoverIntent.js"></script>
+<script type="text/javascript" src="superfish/js/superfish.js"></script>
+<script type="text/javascript">
 
-    <!--[if lte IE 7] -->
-    <!-- <link rel="stylesheet" href="yaml/core/iehacks.min.css" type="text/css"/> -->
-    <!--[endif]-->
+        // initialise plugins
+        jQuery(function(){
+  jQuery('ul.sf-menu').superfish();
+});
 
-    <!--<script src="js/prototype.js" type="text/javascript"></script>
-    <script src="js/scriptaculous.js" type="text/javascript"></script>-->
-
-    <!--<script type="text/javascript" src="superfish/js/jquery-1.2.6.min.js"></script>
-    <script type="text/javascript" src="superfish/js/hoverIntent.js"></script>
-    <script type="text/javascript" src="superfish/js/superfish.js"></script>
-    <script type="text/javascript">
-
-            // initialise plugins
-            jQuery(function(){
-      jQuery('ul.sf-menu').superfish();
-    });
-
-    </script>-->
+</script>-->
 
 </head>
 {% block body %}<body>{% endblock %}
 
 <header>
-    <div class="ym-wrapper">
-        <div style="padding:15px 10px;">
-            <div class="ym-grid">
-                <!--        <div style="float:left; width:230px;">
+<div class="ym-wrapper">
+  <div style="padding:15px 10px;">
+    <div class="ym-grid">
+<!--        <div style="float:left; width:230px;">
         <center><img src="{{ asset('bundles/ccmsrb/images/unam_blanco.png') }}" alt="Logo UNAM" /></center>
         </div>-->
-                <!--        <br />
-                        <br />-->
-                <div style="float:left; padding:0 0 0 10px;">
-                    <h2> Sistema de Referencias Bibliográficas</h2><h3>Centro de Ciencias Matemáticas UNAM</h3>
-                    <div>
-                    </div>
-                </div>
-            </div>
+<!--        <br />
+        <br />-->
+        <div style="float:left; padding:0 0 0 10px;">
+        <h2> Sistema de Referencias Bibliográficas</h2><h3>Centro de Ciencias Matemáticas UNAM</h3>
+        </div>
+    </div>
+  </div>
+</div>
 </header>
 
-<nav class="ym-hlist">
-    <div class="ym-wrapper">
-        <div class="ym-wbox">
+<nav class="ym-hlist">  
+<div class="ym-wrapper">
+    <div class="ym-wbox">
 
-            {% block menu %} {% endblock %}
-            <!-- optional search form -->
-            |   <form class="ym-searchform" action="{{ path('search') }}" method="get">
+    {% block menu %} {% endblock %}
+    <!-- optional search form -->
+|   <form class="ym-searchform" action="{{ path('search') }}" method="get">
             <input class="ym-searchfield" type="search" placeholder="Search..." name="q" />
             <input class="ym-searchbutton" type="submit" value="Search" />
-        </form>
-        </div>
+    </form>
     </div>
+ </div>
 </nav>
 
-<div class="ym-wrapper">
-    <div id="main">
-        <div class="ym-wbox">
-            <div class="ym-column linearize-level-1">
-                <div class="ym-col1">
-                    <div class="ym-gbox-left">
-                        <div class="nav-wrapper">
-                            <h6 class="ym-vlist">{{ option }}</h6>
-                            <div class="ym-vlist">
+            <div class="ym-wrapper">
+                <div id="main">
+                    <div class="ym-wbox">
+                       <div class="ym-column linearize-level-1">
+                            <div class="ym-col1">
+                                <div class="ym-gbox-left">
+                                    <div class="nav-wrapper">
+                                            <h6 class="ym-vlist">{{ option }}</h6>
+                                            <div class="ym-vlist">
 
-                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                {% block menuL %}   {% endblock %}
+                                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                            {% block menuL %}   {% endblock %}
+                                            </div>
+                                            <div class="ym-vlist">
+                                            {% block menuL1 %}{% endblock %}
+
+                                            {% else %}
+                                                <ul>
+                                                <li> <a href="{{ path('login') }}">  Login </a> </li>
+                                                </ul>
+                                            {% endif %}
+                                            </div>
+
+                                    </div>
+
+                                    <div class="nav-wrapper">
+                                            <h6 class="ym-vlist">Búsqueda</h6>
+                                        <div class="ym-vlist">
+
+                                            {% block menuL2 %}
+                                            <ul>
+                                            <li> <a href="{{ path('busqueda') }}"> Búsqueda Avanzada </a> </li>
+                                            </ul>
+                                            {% endblock %}
+                                          </div>
+                                    </div>
+
+                                    <div class="box info">
+                                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                            Sesión iniciada como: <b>{{ app.user.username }}</b><br>
+                                            <br><a href="{{ path('fos_user_security_logout') }}">Cerrar sesión</a>
+                                            {% else %}
+                                            Usuario: <b>guest</b><br>No has iniciado sesión
+                                            {% endif %}
+
+                                    </div>
+                                </div>
                             </div>
-                            <div class="ym-vlist">
-                                {% block menuL1 %}{% endblock %}
-
-                                {% else %}
-                                    <ul>
-                                        <li> <a href="{{ path('login') }}">  Login </a> </li>
-                                    </ul>
-                                {% endif %}
+                            <div class="ym-col3">
+                                    {% block col3 %} {% endblock %}
                             </div>
-
-                        </div>
-
-                        <div class="nav-wrapper">
-                            <h6 class="ym-vlist">Búsqueda</h6>
-                            <div class="ym-vlist">
-
-                                {% block menuL2 %}
-                                    <ul>
-                                        <li> <a href="{{ path('busqueda') }}"> Búsqueda Avanzada </a> </li>
-                                    </ul>
-                                {% endblock %}
-                            </div>
-                        </div>
-
-                        <div class="box info">
-                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                Sesión iniciada como: <b>{{ app.user.username }}</b><br>
-                                <br><a href="{{ path('fos_user_security_logout') }}">Cerrar sesión</a>
-                            {% else %}
-                                Usuario: <b>guest</b><br>No has iniciado sesión
-                            {% endif %}
 
                         </div>
                     </div>
                 </div>
-                <div class="ym-col3">
-                    {% block col3 %} {% endblock %}
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
+             </div>
 
 <footer>
     <div class="ym-wrapper">
-        <div class="ym-wbox">
-            <p>© CCM-UNAM Campus Morelia 2013 &ndash; Layout based on <a href="http://www.yaml.de">YAML</a></p>
-        </div>
+      <div class="ym-wbox">
+            <p>© CCM-UNAM Campus Morelia 2012 &ndash; Layout based on <a href="http://www.yaml.de">YAML</a></p>
+      </div>
     </div>
 </footer>
+
 
 </body>
 </html>

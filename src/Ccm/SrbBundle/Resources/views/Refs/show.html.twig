@@ -1,6 +1,6 @@
 {% extends 'CcmSrbBundle::layout.html.twig' %}
 
-{% block head %}
+{% block head %} 
 
 {% endblock %}
 
@@ -13,162 +13,162 @@
 <div class="ym-gbox-right">
 
 <!--<h1>{{entity.type|title}}</h1> <br>-->
-{% if entity.type != null %}
-    <div  style="padding:5px 0;">
+    {% if entity.type != null %}
+      <div  style="padding:5px 0;">
         <b> Type: </b> {{ entity.type | title }}
-    </div>
-{% endif %}
+      </div>
+    {% endif %}
 
-{% if entity.title != null %}
-    <div style="padding-top: 5px;">
+    {% if entity.title != null %}
+      <div style="padding-top: 5px;">
         <h1 style="line-height:110%;">{{ entity.title }}</h1>
-    </div>
-{% endif %}
+      </div>
+    {% endif %}
 
-{% if entity.author != null %}
-    <div style="padding:10px 0;">
+    {% if entity.author != null %}
+      <div style="padding:10px 0;">
         {% for key in entity.author|explode %}<a href="{{ path('search', {'q': key | trim | url_encode() }) }}"> {{key|trim}}</a>; {% endfor %}
-    </div>
-{% endif %}
-
-{% if entity.bookTitle != null %}
-    <div style="padding:10px 0;">
+      </div>
+    {% endif %}
+ 
+    {% if entity.bookTitle != null %}
+      <div style="padding:10px 0;">
         <b> Book Title: </b> {{ entity.bookTitle }} </b>
-    </div>
-{% endif %}
+      </div>
+    {% endif %}
 
-{% if entity.editor != null %}
-    <div style="padding:10px 0;">
+    {% if entity.editor != null %}
+      <div style="padding:10px 0;">
         <b> Editor: </b> {{ entity.editor }}
-    </div>
-{% endif %}
+      </div>
+    {% endif %}
 
 
-{% if entity.abst != null %}
-    <div style="padding:5px 5px 10px 0">
+    {% if entity.abst != null %}
+      <div style="padding:5px 5px 10px 0">
         <b> Abstract: </b><br /><br /> {{ entity.abst }}
-    </div>
-{% endif %}
-
-
-
-<div class="ym-grid">
-    {% if entity.keywords != null %}
-        <div class="ym-g80 ym-gl">
-            <div style="padding:5px 5px 10px 0;">
-                <b> Keywords: </b> {{ entity.keywords }}
-            </div>
-        </div>
+      </div>
     {% endif %}
 
-    {% if entity.msc != null %}
-        <div class="ym-g80 ym-gl">
+   
+
+  <div class="ym-grid">
+      {% if entity.keywords != null %}
+         <div class="ym-g80 ym-gl">
             <div style="padding:5px 5px 10px 0;">
-                <b> MSC: </b> {{ entity.msc }}
+             <b> Keywords: </b> {{ entity.keywords }}
             </div>
-        </div>
+         </div>
+      {% endif %}
+
+      {% if entity.msc != null %}
+         <div class="ym-g80 ym-gl">
+            <div style="padding:5px 5px 10px 0;">
+             <b> MSC: </b> {{ entity.msc }}
+            </div>
+         </div>
+       {% endif %}
+ </div>
+
+<div class="ym-grid">
+{% if entity.publisher != null %}
+      <div class="ym-g80 ym-gl" style="padding:5px 0 10px 0;">
+        <b> Publisher: </b> {{ entity.publisher }}
+      </div>
+    {% endif %}
+
+ {% if entity.address != null %}
+      <div class="ym-g80 ym-gl" style="padding:5px 0 10px 0;">
+        <b> Address: </b> {{ entity.address }}
+      </div>
     {% endif %}
 </div>
 
-<div class="ym-grid">
-    {% if entity.publisher != null %}
-        <div class="ym-g80 ym-gl" style="padding:5px 0 10px 0;">
-            <b> Publisher: </b> {{ entity.publisher }}
-        </div>
-    {% endif %}
 
-    {% if entity.address != null %}
-        <div class="ym-g80 ym-gl" style="padding:5px 0 10px 0;">
-            <b> Address: </b> {{ entity.address }}
-        </div>
-    {% endif %}
-</div>
+   <div style="background: none no-repeat scroll center center #9B9B9B; height: 1px; margin: 3px 0; "></div>
 
 
-<div style="background: none no-repeat scroll center center #9B9B9B; height: 1px; margin: 3px 0; "></div>
-
-
-<div class="ym-grid">
-{% if entity.journal != null %}
+  <div class="ym-grid">
+    {% if entity.journal != null %}
     <div class="ym-g50 ym-gl">
-        <div style="padding:10px 0 5px 0; font-weight: ">
-            <b>Journal: </b>{{ entity.journal }}
-        </div>
-        <div>
-        </div>
-    </div>
-{% endif %}
-
-{% if entity.issn != null %}
-<div class="ym-g50 ym-gl">
-    <div style="padding:10px 0 5px 0; font-weight:">
-        <b>ISSN:</b>  {{ entity.issn }}
-    </div>
+      <div style="padding:10px 0 5px 0; font-weight: ">
+         <b>Journal: </b>{{ entity.journal }}
+      </div>
     <div>
-    </div>
+  </div>
+</div>
+    {% endif %}
+
+    {% if entity.issn != null %}
+    <div class="ym-g50 ym-gl">
+      <div style="padding:10px 0 5px 0; font-weight:">
+      <b>ISSN:</b>  {{ entity.issn }}
+      </div>
+     <div>
+  </div>
     {% endif %}
 </div>
 
-
+ 
 
 <div class="ym-grid">
 
     {% if entity.yearPub != null %}
-        <div class="ym-g25 ym-gl">
-            <div style="padding:10px 0 5px 0; font-weight:">
-                <b>Year: </b> {{ entity.yearPub }}
-            </div>
+       <div class="ym-g25 ym-gl">
+        <div style="padding:10px 0 5px 0; font-weight:">
+         <b>Year: </b> {{ entity.yearPub }}
         </div>
-    {% endif %}
+      </div>
+ {% endif %}
 
-    {% if entity.volume != null %}
-        <div class="ym-g25 ym-gl">
-            <div style="padding:10px 0 5px 0; font-weight:">
-                <b>Volume: </b> {{ entity.volume }}
-            </div>
-        </div>
-    {% endif %}
+   {% if entity.volume != null %}
+     <div class="ym-g25 ym-gl">
+      <div style="padding:10px 0 5px 0; font-weight:">
+        <b>Volume: </b> {{ entity.volume }}
+      </div>
+     </div>
+ {% endif %}
 
-    {% if entity.issue != null %}
-        <div class="ym-g25 ym-gl">
-            <div style="padding:10px 0 5px 0; font-weight:">
-                <b>Number: </b> {{ entity.issue }}
-            </div>
-        </div>
-    {% endif %}
+   {% if entity.issue != null %}
+   <div class="ym-g25 ym-gl">
+      <div style="padding:10px 0 5px 0; font-weight:">
+        <b>Number: </b> {{ entity.issue }}
+   </div>
+   </div>
+ {% endif %}
 
-    {% if entity.yearPreprint != null %}
-        <div class="ym-g25 ym-gl">
-            <div style="padding:10px 0 5px 0; font-weight:">
-                <b>Year Preprint: </b> {{ entity.yearPreprint }}
-            </div>
-        </div>
-    {% endif %}
+   {% if entity.yearPreprint != null %}
+   <div class="ym-g25 ym-gl">
+      <div style="padding:10px 0 5px 0; font-weight:">
+         <b>Year Preprint: </b> {{ entity.yearPreprint }}
+   </div>
+   </div>
+ {% endif %}
 
-    {% if entity.pages != null %}
-        <div class="ym-g25 ym-gl">
-            <div style="padding:10px 0 5px 0; font-weight:">
-                <b>Pages: </b> {{ entity.pages }}
-            </div>
-        </div>
-    {% endif %}
+       {% if entity.pages != null %}
+   <div class="ym-g25 ym-gl">
+      <div style="padding:10px 0 5px 0; font-weight:">
+         <b>Pages: </b> {{ entity.pages }}
+      </div>
+   </div>
+ {% endif %}
 </div>
 <div class="ym-grid">
 
-    {% if entity.mathscinet != null %}
-        <div class="ym-g50 ym-gl" style="padding:5px 0;">
-            <div style="padding:10px 0 5px 0; font-weight:">
-                <b> Mathscinet: </b> {{ entity.mathscinet }}
-            </div>
-        </div>
+ {% if entity.mathscinet != null %}
+      <div class="ym-g50 ym-gl" style="padding:5px 0;">
+      <div style="padding:10px 0 5px 0; font-weight:">
+        <b> Mathscinet: </b> {{ entity.mathscinet }}
+      </div>
+      </div>
     {% endif %}
 
     {% if entity.zmath != null %}
-        <div class="ym-g25 ym-gl" style="padding:5px 0;">
-            <div style="padding:10px 0 5px 0; font-weight:">
-                <b> Zbl Number: </b> <a href="{{ 'http://www.zentralblatt-math.org/zbmath/search/?q=an:' ~ entity.zmath }}"> {{ entity.zmath }}</a>
-            </div>
-        </div>
+      <div class="ym-g25 ym-gl" style="padding:5px 0;">
+       <div style="padding:10px 0 5px 0; font-weight:">
+        <b> Zbl Number: </b> <a href="{{ 'http://www.zentralblatt-math.org/zbmath/search/?q=an:' ~ entity.zmath }}"> {{ entity.zmath }}</a>
+      </div>
+</div>
     {% endif %}
 
 </div>
@@ -178,126 +178,120 @@
 <div class="ym-grid">
 
     {% if entity.placePub != null %}
-        <div class="ym-g33 ym-gl" style="padding:5px 0;">
-            <b> Place Pub: </b> {{ entity.placePub }}
-        </div>
+      <div class="ym-g33 ym-gl" style="padding:5px 0;">
+        <b> Place Pub: </b> {{ entity.placePub }}
+      </div>
     {% endif %}
 
 
     {% if entity.isbn != null %}
-        <div class="ym-g33 ym-gl" style="padding:5px 0;">
-            <b> ISBN: </b> {{ entity.isbn }}
-        </div>
+      <div class="ym-g33 ym-gl" style="padding:5px 0;">
+        <b> ISBN: </b> {{ entity.isbn }}
+      </div>
     {% endif %}
 
     {% if entity.mrNumber != null %}
-        <div class="ym-g33 ym-gl" style="padding:10px 0 5px 0; font-weight: ">
-            <b> MR Number: </b><a href="{{ 'http://www.ams.org/mathscinet-getitem?mr=' ~ entity.mrNumber|mr }}"> {{ entity.mrNumber }}</a>
-        </div>
+      <div class="ym-g33 ym-gl" style="padding:10px 0 5px 0; font-weight: ">
+        <b> MR Number: </b><a href="{{ 'http://www.ams.org/mathscinet-getitem?mr=' ~ entity.mrNumber|mr }}"> {{ entity.mrNumber }}</a>
+      </div>
     {% endif %}
 
     {% if entity.reportNumber != null %}
-        <div class="ym-g33 ym-gl" style="padding:10px 0 5px 0; font-weight: ">
-            <b> Report Number: </b> {{ entity.reportNumber }} </b>
-        </div>
+      <div class="ym-g33 ym-gl" style="padding:10px 0 5px 0; font-weight: ">
+        <b> Report Number: </b> {{ entity.reportNumber }} </b>
+      </div>
     {% endif %}
 
     {% if entity.medium != null %}
-        <div class="ym-g33 ym-gl" style="padding:10px 0 5px 0; font-weight: ">
-            <b> Medium: </b> {{ entity.medium }}
-        </div>
+      <div class="ym-g33 ym-gl" style="padding:10px 0 5px 0; font-weight: ">
+        <b> Medium: </b> {{ entity.medium }}
+      </div>
     {% endif %}
 
-    {% if entity.advisor != null %}
-        <div class="ym-g33 ym-gl" style="padding:10px 0 5px 0; font-weight: ">
-            <b> Advisor: </b> {{ entity.advisor }}
-        </div>
+    {% if entity.area != null %}
+      <div class="ym-g33 ym-gl" style="padding:10px 0 5px 0; font-weight: ">
+        <b> Area: </b> {{ entity.area }}
+      </div>
     {% endif %}
 
-    {% if entity.school != null %}
-        <div class="ym-g33 ym-gl" style="padding:10px 0 5px 0; font-weight: ">
-            <b> School: </b> {{ entity.school }}
-        </div>
-    {% endif %}
-
-    {% if entity.thesisType != null %}
-        <div class="ym-g33 ym-gl" style="padding:10px 0 5px 0; font-weight: ">
-            <b> Grade: </b> {{ entity.thesisType }}
-        </div>
+    {% if entity.conference != null %}
+      <div class="ym-g33 ym-gl" style="padding:10px 0 5px 0; font-weight: ">
+        <b> Conference: </b> {{ entity.conference }}
+      </div>
     {% endif %}
 
     {% if entity.revision != null %}
-        <div class="ym-g33 ym-gl" style="padding:10px 0 5px 0; font-weight: ">
-            <b> Revision: </b> {{ entity.revision }}
-        </div>
+      <div class="ym-g33 ym-gl" style="padding:10px 0 5px 0; font-weight: ">
+        <b> Revision: </b> {{ entity.revision }}
+      </div>
     {% endif %}
 
     {% if entity.file != null %}
-        <div class="ym-g33 ym-gl" style="padding:10px 0 5px 0; font-weight: ">
-            <b> File: </b> {{ entity.file }}
-        </div>
+      <div class="ym-g33 ym-gl" style="padding:10px 0 5px 0; font-weight: ">
+        <b> File: </b> {{ entity.file }}
+      </div>
     {% endif %}
 
     {% if entity.url != null %}
-        <div class="ym-g80 ym-gl" style="padding:5px 0;">
-            <b>URL: </b><a href="{{ entity.url }}">{{ entity.url }}</a>
-        </div>
+      <div class="ym-g80 ym-gl" style="padding:5px 0;">
+        <b>URL: </b><a href="{{ entity.url }}">{{ entity.url }}</a>
+      </div>
     {% endif %}
 
     {% if entity.doi != null %}
-        <div class="ym-g80 ym-gl" style="padding:5px 0;">
-            <b>DOI: </b> <a href="{{ 'http://dx.doi.org/' ~ entity.doi }}"> {{ entity.doi }}</a>
-        </div>
+      <div class="ym-g80 ym-gl" style="padding:5px 0;">
+        <b>DOI: </b> <a href="{{ 'http://dx.doi.org/' ~ entity.doi }}"> {{ entity.doi }}</a>
+      </div>
     {% endif %}
 
     {% if entity.arxiv != null %}
-        <div class="ym-g80 ym-gl" style="padding:5px 0;">
-            <b> arXiv: </b> <a href="{{ 'http://arxiv.org/abs/' ~ entity.arxiv }}"> {{ entity.arxiv }}</a>
-        </div>
+      <div class="ym-g80 ym-gl" style="padding:5px 0;">
+        <b> arXiv: </b> <a href="{{ 'http://arxiv.org/abs/' ~ entity.arxiv }}"> {{ entity.arxiv }}</a>
+      </div>
     {% endif %}
 
     {% if entity.inspires != null %}
-        <div class="ym-g80 ym-gl" style="padding:5px 0;">
-            <b> Inspires: </b> {{ entity.inspires }} </b>
-        </div>
+      <div class="ym-g80 ym-gl" style="padding:5px 0;">
+        <b> Inspires: </b> {{ entity.inspires }} </b>
+      </div>
     {% endif %}
 
     {% if entity.notas != null %}
-        <div class="ym-g80 ym-gl" style="padding:5px 0;">
-            <b>Notas: </b> {{ entity.notas }}
-        </div>
+      <div class="ym-g80 ym-gl" style="padding:5px 0;">
+        <b>Notas: </b> {{ entity.notas }}
+      </div>
     {% endif %}
 
 </div>
-<!-- grid -->
+ <!-- grid -->
 
-<div style="background: none no-repeat scroll center center #9B9B9B; height: 1px; margin: 3px 0; "></div>
+      <div style="background: none no-repeat scroll center center #9B9B9B; height: 1px; margin: 3px 0; "></div>
 
 
-<div style="padding-top:10px;">
+    <div style="padding-top:10px;">
 
 
     {% if entity.created != null %}
-        <div class="ym-g33 ym-gl" style="padding:5px 0;">
+      <div class="ym-g33 ym-gl" style="padding:5px 0;">
             <img src="{{ asset('bundles/ccmsrb/images/createdate.png') }}" alt="Created" style="padding:0 5px 0 0;" />
             <b>Created: </b> {{ entity.created|date('Y-m-d H:i:s') }}
-        </div>
+      </div>
     {% endif %}
 
     {% if entity.modified != null %}
-        <div class="ym-g33 ym-gl" style="padding:5px 0;">
+      <div class="ym-g33 ym-gl" style="padding:5px 0;">
             <img src="{{ asset('bundles/ccmsrb/images/modifydate.png') }}" alt="Modified" style="padding:0 5px 0 0;" />
             <b>Modified: </b>{{ entity.modified|date('Y-m-d H:i:s') }}
-        </div>
+      </div>
     {% endif %}
 
     {% if entity.revision != null %}
-        {% if entity.revision == 1 %}
-            <div class="ym-g80 ym-gl" style="padding:5px 0;">
-                <img src="{{ asset('bundles/ccmsrb/images/tick.png') }}" alt="Warn" style="padding:0 5px 0 0;" />
-                <b> Referencia revisada por: </b> {{ entity.user }}
-            </div>
-        {% endif %}
+      {% if entity.revision == 1 %}
+        <div class="ym-g80 ym-gl" style="padding:5px 0;">
+            <img src="{{ asset('bundles/ccmsrb/images/tick.png') }}" alt="Warn" style="padding:0 5px 0 0;" />
+            <b> Referencia revisada por: </b> {{ entity.user }}
+        </div>
+      {% endif %}
     {% else %}
         <div class="ym-g80 ym-gl" style="padding:5px 0;">
             <img src="{{ asset('bundles/ccmsrb/images/error.png') }}" alt="Warn" style="padding:0 5px 0 0;" />
@@ -309,50 +303,50 @@
 </div>
 
 <div class="ym-grid">
-    <div class="ym-g66 ym-gr">
-        <div class="box info">
+  <div class="ym-g66 ym-gr">
+    <div class="box info">
 
-            {% if authors|length == 0  %}
+{% if authors|length == 0  %}	
 
-                <div style="padding:5px 0;">
-                    <img src="{{ asset('bundles/ccmsrb/images/error.png') }}" alt="Warn" style="padding:0 5px 0 0;" />
-                    <b>Esta referencia no tiene un autor institucional asociado</b>
-                </div>
+    <div style="padding:5px 0;">
+   <img src="{{ asset('bundles/ccmsrb/images/error.png') }}" alt="Warn" style="padding:0 5px 0 0;" />
+   <b>Esta referencia no tiene un autor institucional asociado</b>
+   </div>
 
-            {% else %}
+{% else %}
 
-                <b> Autores Institucionales Asociados a la Referencia:</b>
+   <b> Autores Institucionales Asociados a la Referencia:</b>
 
-                <ul id="authors">
-                    {% for item in authors %}
-                        <li><a href="{{ path('author_show', { 'id': item.id }) }}">{{ item.name }}</a></li>
-                    {% endfor %}
-                </ul>
+    <ul id="authors">
+        {% for item in authors %}
+            <li><a href="{{ path('author_show', { 'id': item.id }) }}">{{ item.name }}</a></li>
+        {% endfor %}
+    </ul>
 
-            {% endif %}
+{% endif %}
 
-            {% if (is_granted('ROLE_ADMIN', entity)) or (is_granted('EDIT', entity))  %}
-                <br>
-                <img src="{{ asset('bundles/ccmsrb/images/add.png') }}" alt="Add" style="padding:0 5px 0 0;"/>
-                <a href="{{ path('article_authors', {'id': entity.id }) }}">Asociar autor(es) a éste artículo...</a>
+{% if (is_granted('ROLE_ADMIN', entity)) or (is_granted('EDIT', entity))  %}
+    <br>
+    <img src="{{ asset('bundles/ccmsrb/images/add.png') }}" alt="Add" style="padding:0 5px 0 0;"/>
+    <a href="{{ path('article_authors', {'id': entity.id }) }}">Asociar autor(es) a éste artículo...</a>
 
-            {% endif %}
+{% endif %}
 
-        </div>
-        <!-- box info -->
+      </div>
+      <!-- box info -->
 
-        {% if (is_granted('ROLE_ADMIN', entity)) or (is_granted('EDIT', entity))  %}
-            <div class="ym-g80 ym-gl" style="padding:20px 5px 20px 0;">
-                <form action="{{ path('referencia_edit', { 'id': entity.id }) }}" method="post">
-                    <button type="submit" class="ym-button ym-edit">Editar</button>
-                </form>
-            </div>
-        {% endif %}
+{% if (is_granted('ROLE_ADMIN', entity)) or (is_granted('EDIT', entity))  %}
+     <div class="ym-g80 ym-gl" style="padding:20px 5px 20px 0;">
+            <form action="{{ path('referencia_edit', { 'id': entity.id }) }}" method="post">
+                <button type="submit" class="ym-button ym-edit">Editar</button>
+            </form>
+    </div>
+{% endif %}
 
     </div>
     <!-- grid 66% -->
-</div>
-<!-- grid -->
+  </div>
+  <!-- grid -->
 
 </div>
 <!-- block col3 -->
@@ -361,15 +355,15 @@
 
 {% block menuL %}
 
-    {% if (is_granted('ROLE_ADMIN', entity)) or (is_granted('EDIT', entity))  %}
-        <ul class="record_actions">
-        <li> <a href="{{ path('referencia_edit', { 'id': entity.id }) }}"> Editar </a> </li>
-    {% endif %}
+{% if (is_granted('ROLE_ADMIN', entity)) or (is_granted('EDIT', entity))  %}
+   <ul class="record_actions">
+      <li> <a href="{{ path('referencia_edit', { 'id': entity.id }) }}"> Editar </a> </li>
+{% endif %}
 
-    <li> <a href="{{ app.session.get('last_page') }}"> Regresar </a> </li>
-    </ul>
+      <li> <a href="{{ app.session.get('last_page') }}"> Regresar </a> </li>
+   </ul>
 
-    <br />
+<br />
 
 {% endblock %}
 
