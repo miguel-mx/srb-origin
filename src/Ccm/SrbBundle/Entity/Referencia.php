@@ -90,7 +90,7 @@ class Referencia
      /**
      * @ORM\Column(type="string", length=250, nullable=true)
      */
-    protected $thesis;
+    protected $school;
 
      /**
      * @ORM\Column(type="string", length=250, nullable=true)
