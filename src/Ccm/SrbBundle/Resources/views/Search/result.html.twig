@@ -12,13 +12,18 @@
             {% if pager.getResults|length == 0   %}
                 <h1>No se encontraron resultados en la búsqueda</h1>
             {% else %}
-                <h1>Resultados de la búsqueda</h1>
+                <h1>{{ total }} resultados de la búsqueda</h1>
             {% endif %}
 
+
             <br><br>
+            {#
+             {{ 'Actual  ' ~ single.current }}<br>
+             {{  single.next }}<br>
+            {{ 'Siguiente  '~ single.current }}<br>
+            #}
 
             {% set i = 1 + (( page - 1) * limit) %}
-
             {% for item in pager.getResults %}
 
                 {% include 'CcmSrbBundle:Search:referenceDetails.html.twig' %}

@@ -80,6 +80,7 @@ class SearchController extends Controller
               ->add('where', $dql)
               ->orderBy('r.yearPub', 'DESC');
 
+
           $page = 1;
           $adapter = new DoctrineOrmAdapter($qb);
           $limit = 10;
@@ -163,10 +164,13 @@ class SearchController extends Controller
 
               $dql = substr($dql, 0, -4); // remove the last " AND ";
 
-              $qb->add('select', 'r')
+
+
+        $qb->add('select', 'r')
                   ->add('from', 'CcmSrbBundle:Referencia r')
                   ->add('where', $dql)
                   ->orderBy('r.yearPub', 'DESC');
+
 
               $criterios['page'] = $request->query->get('page', '');
 
@@ -175,11 +179,18 @@ class SearchController extends Controller
               else
                   $page = $criterios['page'];
 
+
+
               $adapter = new DoctrineOrmAdapter($qb);
+
+              $total= $adapter->getTotalResults();
+        //    $single= new ArrayAdapter($adapter->getResults(0,$total));
+
+       //     print_r(get_object_vars($single));
               $limit = 10;
               $pager = new Pager($adapter, array('page' => $page, 'limit' => $limit));
 
-          return $this->render('CcmSrbBundle:Search:result.html.twig', array('pager' => $pager, 'page' => $page, 'limit' => $limit));
+          return $this->render('CcmSrbBundle:Search:result.html.twig', array('pager' => $pager, 'page' => $page, 'limit' => $limit, 'total' => $total /*, 'single'=> $single*/ ));
     }
 
 
@@ -202,11 +213,13 @@ class SearchController extends Controller
       $referencias = $finder->find($searchTerm, 100);
 
       $adapter = new ArrayAdapter($referencias);
+      $total= $adapter->getTotalResults();
 
-      $limit = 10;
+
+        $limit = 10;
       $pager = new Pager($adapter, array('page' => $page, 'limit' => $limit));
 
-      return $this->render('CcmSrbBundle:Search:search.html.twig', array('pager' => $pager, 'page' => $page, 'limit' => $limit));
+      return $this->render('CcmSrbBundle:Search:search.html.twig', array('pager' => $pager, 'page' => $page, 'limit' => $limit, 'total' => $total /*, 'single'=> $single*/ ));
     }
 
 }

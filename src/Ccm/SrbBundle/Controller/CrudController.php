@@ -19,7 +19,7 @@ use Ccm\SrbBundle\Form\LibroType;
 use Ccm\SrbBundle\Form\EditorType;
 use Ccm\SrbBundle\Form\CapituloType;
 use Ccm\SrbBundle\Form\TesisType;
-use Ccm\SrbBundle\Form\UploadTesis;
+use Ccm\SrbBundle\Form\UploadFile;
 use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
 use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
 use Symfony\Component\Security\Acl\Permission\MaskBuilder;
@@ -145,13 +145,74 @@ class CrudController extends Controller
         $entity  = new Referencia();
         $request = $this->getRequest();
         if($type=='article'){        $form   = $this->createForm(new ArticuloType(), $entity);}
-        if($type=='preprint'){       $form   = $this->createForm(new PreprintType(), $entity);}
         if($type=='inproceedings'){  $form   = $this->createForm(new MemoriaType(), $entity);}
         if($type=='book'){           $form   = $this->createForm(new LibroType(), $entity);}
         if($type=='thesis'){         $form   = $this->createForm(new TesisType(), $entity);}
         if($type=='proceedings'){    $form   = $this->createForm(new EditorType(), $entity);}
         if($type=='incollection'){   $form   = $this->createForm(new CapituloType(), $entity);}
+        if($type=='preprint'){       $form   = $this->createForm(new PreprintType(), $entity);}
+
         $form->bindRequest($request);
+
+        $currentYear=2013;
+
+        if( $entity->getYearPreprint() == $currentYear ){
+
+
+            $em = $this->getDoctrine()->getEntityManager();
+            $last = $em->createQuery('SELECT r.reportNumber
+                                      FROM CcmSrbBundle:Referencia r
+                                      WHERE r.yearPreprint = :currentYear
+                                      ORDER BY r.id DESC')->setParameter('currentYear', $currentYear);
+            $last->setMaxResults(30);
+
+            //UNAM-CCM-2013-1
+            $result = $last->getResult();
+
+            if( count($result) == 0 ){
+                $id_current = 1;
+                $id_current = 'UNAM-CCM-'.$currentYear.'-'.$id_current;
+                $entity->setReportNumber($id_current);
+            }
+
+            else{
+
+                for( $i=0; $i< count($result); $i++ ) {
+                    $tmp[$i] = $result[$i]['reportNumber'];
+                    $tmp2[$i] = explode(";", $tmp[$i]);
+                }
+
+                $k=0;
+                for($i=0; $i< count($tmp2); $i++) {
+                    foreach ($tmp2[$i] as $key=>$value) {
+                        preg_match("/^UNAM-CCM-".$currentYear."-[0-9]+/",$value,$matches2);
+                        $numbers[$k] = $matches2;
+                        print_r($matches2);
+                        $k++;
+                    }
+                }
+
+                $k=0;
+                for($i=0; $i< count($numbers); $i++) {
+                    foreach ($numbers[$i] as $key=>$value) {
+                        $numberLast[$k] = $value;
+                        $k++;
+                    }
+                }
+
+                rsort($numberLast);
+                foreach ($numberLast as $key => $value) {
+                    $arrayLast[$key]= $value;
+                }
+
+                $id_last = explode("-", $arrayLast[0]);
+                $id_current = $id_last[3]+1;
+                $id_current = 'UNAM-CCM-'.$currentYear.'-'.$id_current;
+                $entity->setReportNumber($id_current);
+            }
+        }
+
+
         if ($form->isValid()) {
 
 
@@ -169,14 +230,12 @@ class CrudController extends Controller
             }
             else {
 
-                if($type=='thesis'){
-                    $uploadTesis = new UploadTesis();
-                    $tesisFile = $form['file']->getData();
-                    if ($tesisFile) {
-                        $tesisName= $uploadTesis->generateTesisName($tesisFile);
-                        $tesisFile->move($uploadTesis->getUploadDir(), $tesisName);
-                        $entity->setFile($tesisName);
-                    }
+                if($form['file']->getData()){
+                    $uploadFile = new UploadFile();
+                    $file = $form['file']->getData();
+                    $fileName= $uploadFile->generateFileName($file);
+                    $file->move($uploadFile->getUploadDir().'/'.$type.'/', $fileName);
+                    $entity->setFile($fileName);
                 }
 
                 // retrieving the security identity of the currently logged-in user
@@ -319,42 +378,36 @@ class CrudController extends Controller
                 }
 
                 else {
-                    if($entity->getType() == 'thesis'){
-                        $uploadTesis = new UploadTesis();
-                        $tesisFile = $editForm['file']->getData();
-                        if ($tesisFile) {
-                            $tesisName= $uploadTesis->generateTesisName($tesisFile);
-                            $tesisFile->move($uploadTesis->getUploadDir(), $tesisName);
-                            $entity->setFile($tesisName);
-                        }
-                    }
+                    $uploadFile = new UploadFile();
+                    $file = $editForm['file']->getData();
+                    $fileName= $uploadFile->generateFileName($file);
+                    $file->move($uploadFile->getUploadDir().'/'.$entity->getType().'/', $fileName);
+                    $entity->setFile($fileName);
                 }
 
-            if(false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+                if(false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
 
-                 $user = $this->container->get('security.context')->getToken()->getUser();
-                 $entity->setUser($user);
-                 $entity->setRevision(false);
-                 $em->persist($entity);
-                 $em->flush();
+                    $user = $this->container->get('security.context')->getToken()->getUser();
+                    $entity->setUser($user);
+                    $entity->setRevision(false);
+                    $em->persist($entity);
+                    $em->flush();
+                }
+
+                else{
+                    $user = $this->container->get('security.context')->getToken()->getUser();
+                    $entity->setUser($user);
+                    $em->persist($entity);
+                    $em->flush();
+
+                }
+
             }
 
-             else{
-                 $user = $this->container->get('security.context')->getToken()->getUser();
-                 $entity->setUser($user);
-                 $em->persist($entity);
-                 $em->flush();
+            return $this->redirect($this->generateUrl('referencia_show', array('id'=>$id)));
 
-             }
-
-            }
-
-        return $this->redirect($this->generateUrl('referencia_show', array('id'=>$id)));
-
+        }
     }
-
-
-}
 
     /**
      * Deletes a Referencia entity.
@@ -432,13 +485,13 @@ class CrudController extends Controller
         if(count(@$preferred)>0){
             $form = $this->createFormBuilder($entity)
                 ->add('authors', null, array('label'  => 'Autor(es) Institucionales','required'=>false, 'multiple'=>true,
-                                             'expanded'=>false, 'preferred_choices' => $preferred) )
+                'expanded'=>false, 'preferred_choices' => $preferred) )
                 ->getForm();
         }
         else{
             $form = $this->createFormBuilder($entity)
                 ->add('authors', null, array('label'  => 'Autor(es) Institucionales','required'=>false, 'multiple'=>true,
-                                             'expanded'=>false))
+                'expanded'=>false))
                 ->getForm();
         }
 

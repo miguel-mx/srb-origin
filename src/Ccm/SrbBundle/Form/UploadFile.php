@@ -5,21 +5,21 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
-class UploadTesis
+class UploadFile
 {
 
-    protected $tesis_dir = '/var/www/srb/uploads/tesis';
+    protected $files_dir = '/var/www/web/SRB/web/uploads/files';
 
     public function getUploadDir()
     {
-        return $this->tesis_dir;
+        return $this->files_dir;
     }
 
     /**
      * @param \Symfony\Component\HttpFoundation\File\UploadedFile $file
      * @return string
      */
-    public function generateTesisName(UploadedFile $file)
+    public function generateFileName(UploadedFile $file)
     {
         $extension = $file->guessExtension();
         if (!$extension) {

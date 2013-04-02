@@ -18,6 +18,13 @@
         </div><br>
     {% endif %}
 
+    {% if repeat is defined %}
+        <div style="color: red;">
+            <b>La referencia no fue guardada porque su título ya existe en el sistema.</b><br>
+        </div>
+    {% endif %}
+
+
     {% if form.type is defined  %}
         <div> {{ form_label(form.type) }} </div>
         <div> {{ form_widget(form.type) }} </div>
@@ -25,13 +32,13 @@
     {% endif %}
 
     {% if form.title is defined  %}
-        <div> {{ form_label(form.title) }} </div>
+        <div> {{ form_label(form.title) }}  </div>
         <div> {{ form_widget(form.title, { 'attr': {'style': 'width: 95%','rows':'1'} }) }}  </div>
         <div> {{ form_errors(form.title) }} </div> <br>
     {% endif %}
 
     {% if form.author is defined  %}
-        <div> {{ form_label(form.author) }} </div>
+        <div> {{ form_label(form.author) }}</div>
         <div> {{ form_widget(form.author, { 'attr': {'style': 'width:95%'} }) }} </div>
         <div> {{ form_errors(form.author) }} </div>	<br>
     {% endif %}
@@ -202,12 +209,23 @@
 
     </div>
 
+
+
+
+
     <div class="ym-grid">
 
         {% if form.reportNumber is defined  %}
-            <div class="ym-g25 ym-gl">
+
+
+            <div class="box info" style="width: 90%;">
+                Si el preprint es del año en curso, el sistema automáticamente generará su Report Number.<br>
+            </div>
+            <br>
+
+            <div class="ym-g50 ym-gl">
                 <div> {{ form_label(form.reportNumber) }} </div>
-                <div> {{ form_widget(form.reportNumber, { 'attr': {'style': 'width:80%'} }) }} </div>
+                <div> {{ form_widget(form.reportNumber, { 'attr': {'style': 'width:90%', 'placeholder':'Si es más de uno deberá separarse con ;'} }) }} </div>
                 <div> {{ form_errors(form.reportNumber) }} </div> <br>
             </div>
         {% endif %}

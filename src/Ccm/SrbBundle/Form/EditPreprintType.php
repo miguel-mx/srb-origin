@@ -28,6 +28,8 @@ class EditPreprintType extends AbstractType
             ->add('revision', 'checkbox', array('label' =>'Revisado','required'=> false))
             ->add('url', 'text', array('required' => false))
             ->add('pages', 'text', array('required' => false))
+            ->add('file', 'file', array('required' => false, 'data_class' => null))
+
 
         ;
     }

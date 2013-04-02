@@ -28,6 +28,8 @@ class LibroType extends AbstractType
             ->add('msc', 'textarea', array('required'=>false, 'label'=>'MSC'))
             ->add('revision', 'checkbox', array('label' => 'Aprobación','required'  => false))
             ->add('pages', 'text', array('required' => false))
+            ->add('file', 'file', array('required' => false, 'data_class' => null))
+
 
 
         ;

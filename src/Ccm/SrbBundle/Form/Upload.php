@@ -19,7 +19,7 @@ class Upload
      * @Assert\File(mimeTypesMessage={"Favor de seleccionar un archivo válido"})
      */
     protected $attachment;
-    protected $upload_dir = '/var/www/srb/uploads';
+    protected $upload_dir = '/var/www/web/SRB/web/uploads/files';
 
     /**
      * @return string

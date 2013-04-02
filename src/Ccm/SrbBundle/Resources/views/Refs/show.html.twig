@@ -226,9 +226,12 @@
       </div>
     {% endif %}
 
+
+    {% set upload_dir = '../uploads/files/'~ entity.type~'/'~entity.file  %}
+
     {% if entity.file != null %}
       <div class="ym-g33 ym-gl" style="padding:10px 0 5px 0; font-weight: ">
-        <b> File: </b> {{ entity.file }}
+        <b> File: </b>  <a href="{{ upload_dir }}">{{ entity.file }}</a>
       </div>
     {% endif %}
 

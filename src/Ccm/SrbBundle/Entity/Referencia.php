@@ -4,6 +4,8 @@ namespace Ccm\SrbBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Ccm\SrbBundle\Entity\Referencia;
+
 
 /**
  * @ORM\Entity
@@ -282,6 +284,7 @@ class Referencia
         {
             $this->setCreated(new \DateTime());
             //$this->setModified(new \DateTime());
+
         }
 
 
@@ -1162,6 +1165,8 @@ class Referencia
     {
         return $this->bookTitle;
     }
+
+
 
 
 }

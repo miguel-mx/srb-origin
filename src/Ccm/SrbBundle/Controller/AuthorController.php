@@ -228,10 +228,12 @@ class AuthorController extends Controller
 
       $limit = 10;
       $adapter = new DoctrineOrmAdapter($qb);
+      $total= $adapter->getTotalResults();
 
-      $pager = new Pager($adapter, array('page' => $page, 'limit' => $limit));
 
-      return $this->render('CcmSrbBundle:Author:references.html.twig',array('pager'=> $pager, 'page' => $page, 'limit' => $limit, 'id' => $id, 'name'=> $entity->getName()));
+        $pager = new Pager($adapter, array('page' => $page, 'limit' => $limit));
+
+      return $this->render('CcmSrbBundle:Author:references.html.twig',array('pager'=> $pager, 'page' => $page, 'limit' => $limit, 'id' => $id,'total'=> $total, 'name'=> $entity->getName()));
 
     }
 

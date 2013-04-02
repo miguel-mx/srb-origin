@@ -29,6 +29,8 @@ class EditorType extends AbstractType
             ->add('revision', 'checkbox', array('label' => 'Aprobación','required'=> false))
             ->add('issn', 'text', array('required' => false, 'label'=>'ISSN'))
             ->add('pages', 'text', array('required' => false))
+            ->add('file', 'file', array('required' => false, 'data_class' => null))
+
 
 
 

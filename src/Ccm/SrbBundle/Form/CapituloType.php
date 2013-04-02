@@ -29,6 +29,8 @@ class CapituloType extends AbstractType
             ->add('zmath', 'text', array('required' => false, 'label'=>'Zbl Number'))
             ->add('msc', 'textarea', array('required' => false, 'label'=>'MSC'))
             ->add('revision', 'checkbox', array('label' => 'Aprobación','required'  => false))
+            ->add('file', 'file', array('required' => false, 'data_class' => null))
+
         ;
     }
 

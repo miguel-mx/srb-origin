@@ -218,13 +218,6 @@
         </div>
     {% endif %}
 
-    {% if edit_form.reportNumber is defined  %}
-        <div class="ym-g25 ym-gl">
-            <div> {{ form_label(edit_form.reportNumber) }} </div>
-            <div> {{ form_widget(edit_form.reportNumber, { 'attr': {'style': 'width:80%'} }) }} </div>
-            <div> {{ form_errors(edit_form.reportNumber) }} </div> <br>
-        </div>
-    {% endif %}
 </div>
 <div class="ym-grid">
 
@@ -244,11 +237,20 @@
         </div>
     {% endif %}
 
+
     {% if edit_form.medium is defined  %}
         <div class="ym-g25 ym-gl">
             <div> {{ form_label(edit_form.medium) }} </div>
             <div> {{ form_widget(edit_form.medium) }} </div>
             <div> {{ form_errors(edit_form.medium) }} </div> <br>
+        </div>
+    {% endif %}
+
+    {% if edit_form.reportNumber is defined  %}
+        <div class="ym-g50 ym-gl">
+            <div> {{ form_label(edit_form.reportNumber) }} </div>
+            <div> {{ form_widget(edit_form.reportNumber, { 'attr': {'style': 'width:90%', 'placeholder':'Si es más de un valor deberá separarse con ;'} }) }} </div>
+            <div> {{ form_errors(edit_form.reportNumber) }} </div> <br>
         </div>
     {% endif %}
 
