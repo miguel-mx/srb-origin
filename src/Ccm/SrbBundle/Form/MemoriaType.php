@@ -33,6 +33,8 @@ class MemoriaType extends AbstractType
             ->add('arxiv', 'text', array('required' => false, 'label'=>'arXiv'))
             ->add('editor', 'text', array('required'=>true))
             ->add('file', 'file', array('required' => false, 'data_class' => null))
+            ->add('abst', 'textarea', array('required' => false, 'label'=>'Abstract'))
+
 
 
 
