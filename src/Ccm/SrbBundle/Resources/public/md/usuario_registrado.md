@@ -3,7 +3,7 @@ Sistema de Rerencias Bibliográficas SRB
 
 ### Centro de Ciencias Matemáticas UNAM-Morelia
 
-[Página anterior](index.markdown)
+[Página anterior](index.md)
 
 ## Introducción Administración de Referencias
 
@@ -35,7 +35,7 @@ las opciones del menú de la barra izquierda:
 * Memoria de Congreso
 * Preprint
 
-Cada tipo de referencia bibliográfica tiene campos obligatorios diferentes. [Ver el documento de inicio](index.markdown#referencias)
+Cada tipo de referencia bibliográfica tiene campos obligatorios diferentes. [Ver el documento de inicio](index.md#referencias)
 
 **Al crear una nueva referencia bibliográfica se validará que no exista un registro en el sistema con el mismo título.**
 

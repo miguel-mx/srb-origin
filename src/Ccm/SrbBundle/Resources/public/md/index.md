@@ -6,8 +6,8 @@ Sistema de Rerencias Bibliográficas SRB
 ### Centro de Ciencias Matemáticas UNAM-Morelia
   
 
-[Funcionalidad como usuario anónimo](usuario_anonimo.markdown)  
-[Funcionalidad usuario registrado](usuario_registrado.markdown)
+[Funcionalidad como usuario anónimo](usuario_anonimo.md)<br>
+[Funcionalidad usuario registrado](usuario_registrado.md)
   
 ## Introducción
   
@@ -80,7 +80,7 @@ También podemos ver el catálogo de autores y dentro de cada registro de autor 
 
 (se listan los campos obligatorios)
 
-**Artículo (de revista)**
+**Artículo (Artículo de Revista)**
 
 * Title
 * Author
@@ -91,28 +91,42 @@ También podemos ver el catálogo de autores y dentro de cada registro de autor 
 
 * Title
 * Author
+* Book Title
+* Publisher
+* Year
 
-**Proceedings (Editor de memorias)**
+**Proceedings (Editor de Memorias de Congreso)**
 
 * Title
 * Editor
-* Year
 * Publisher
+* Year
 
 **Book (Libro)**
 
 * Title
+* Publisher
+* Year
 
-**Inproceedings**
+**Inproceedings (Memoria de Congreso)**
 
 * Title
 * Author
 * Year
 
-**Unpublished (Preprint)**
+**Preprint**
 
 * Title
 * Author
+* Year Preprint
+
+**Tesis**
+
+* Title
+* Author
+* Advisor
+* School
+* Year
 
 
 Como usuario registrado con login y password puedo agregar una nueva referencia bibliográfica.
@@ -121,7 +135,7 @@ Como propietario de mis referencias yo puedo editar a las mismas.
 Como propietario de mis referencias yo puedo asociarle otros autores a las mismas.
 Al asociar otro autor a una referencia, este nuevo autor también será propietario de la referencia.
 
-Si soy usuario registrado y tengo asociado un autor institucional, al crear una nueva referencia bibliográfica ésta quedará asociada a mi autor. Esto no ocurre si soy administrador del sistema. 
+Si soy usuario registrado y tengo asociado un autor institucional, al crear una nueva referencia bibliográfica ésta quedará asociada a mi autor.
 
 [Volver al inicio de la página](#inicio)
 

@@ -10,7 +10,7 @@ use Knp\Bundle\MarkdownBundle\Parser\MarkdownParser as Parser;
 class DocController extends Controller
 {
     /**
-     * @Route("/doc/{file}", defaults={"file" = "index.markdown"}, name="doc")
+     * @Route("/doc/{file}", defaults={"file" = "index.md"}, name="doc")
      * @Template()
      */
     public function indexAction($file)
