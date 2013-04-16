@@ -30,6 +30,8 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Ccm\SrbBundle\Controller\RoleSecurityIdentity;
+use JMS\SecurityExtraBundle\Annotation\Secure;
+
 
 class CrudController extends Controller
 {
@@ -113,6 +115,7 @@ class CrudController extends Controller
      *
      * @Route("/{type}/new", name="referencia_new")
      * @Template("CcmSrbBundle:Refs:new.html.twig")
+     * @Secure(roles="ROLE_USER")
      */
     public function newAction($type)
     {

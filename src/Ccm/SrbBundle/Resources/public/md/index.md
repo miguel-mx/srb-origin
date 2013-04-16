@@ -1,13 +1,12 @@
-
 <a id="inicio"></a>
-Sistema de Rerencias Bibliográficas SRB
-=======================================  
+<a href="http://gaspacho.matmor.unam.mx/SRB/">Sistema de Rerencias Bibliográficas SRB</a>
+=======================================
+### Centro de Ciencias Matemáticas UNAM
 
-### Centro de Ciencias Matemáticas UNAM-Morelia
-  
 
-[Funcionalidad como usuario anónimo](usuario_anonimo.md)<br>
-[Funcionalidad usuario registrado](usuario_registrado.md)
+
+[Funcionalidad como usuario anónimo](./doc/usuario_anonimo.md)<br>
+[Funcionalidad usuario registrado](./doc/usuario_registrado.md)
   
 ## Introducción
   

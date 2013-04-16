@@ -1,9 +1,9 @@
-Sistema de Rerencias Bibliográficas SRB
+<a href="http://gaspacho.matmor.unam.mx/SRB/">Sistema de Rerencias Bibliográficas SRB</a>
 =======================================
 
 ### Centro de Ciencias Matemáticas UNAM-Morelia
 
-[Página anterior](index.md)
+[Página de inicio](../doc)
 
 ## Introducción Administración de Referencias
 
@@ -35,7 +35,7 @@ las opciones del menú de la barra izquierda:
 * Memoria de Congreso
 * Preprint
 
-Cada tipo de referencia bibliográfica tiene campos obligatorios diferentes. [Ver el documento de inicio](index.md#referencias)
+Cada tipo de referencia bibliográfica tiene campos obligatorios diferentes. [Ver el documento de inicio](../doc#referencias)
 
 **Al crear una nueva referencia bibliográfica se validará que no exista un registro en el sistema con el mismo título.**
 
@@ -119,4 +119,4 @@ Este paso no es reversible.
 En ningún otro caso es posible cambiar el tipo de publicación.
 
 
-
+[Página de inicio](../doc)

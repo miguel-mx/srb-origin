@@ -1,9 +1,9 @@
-Sistema de Rerencias Bibliográficas SRB
+<a href="http://gaspacho.matmor.unam.mx/SRB/">Sistema de Rerencias Bibliográficas SRB</a>
 =======================================
 
 ### Centro de Ciencias Matemáticas UNAM-Morelia
 
-[Página anterior](index.md)
+[Página de inicio](../doc)
 
 ## Introducción
 
@@ -38,7 +38,7 @@ Las acciones que se pueden realizar en el sistema dependerá de los roles que te
 * Como usuario registrado puedo tener asociado un autor institucional del catálogo de autores.
 * Como propietario de una referencia puedo cambiar los autores asociados a ésta.
 
-Ver [Administración de Referencias](usuario_registrado.md)
+Ver [Administración de Referencias](./usuario_registrado.md)
 
 #### 1.2 Búsqueda avanzada
 
@@ -86,7 +86,7 @@ El detalle de cada referencia depende de su tipo y de qué campos se hayan llena
 
 Solamente cuando se es propietario de una referencia es posible modificar ésta información.
 
-Ver [funcionalidad como usuario registrado](usuario_registrado.md)
+Ver [funcionalidad como usuario registrado](./usuario_registrado.md)
 
 
 #### 1.5 Autores institucionales
@@ -105,5 +105,5 @@ En la tabla del catálogo autores tendremos la opción de **Ver** cada autor. Es
 **En la página de cada autor tenemos la opción de ver las referencias bibliográficas asociadas a éste autor.**
 
 
-[Página anterior](index.md)
+[Página de inicio](../doc)
 

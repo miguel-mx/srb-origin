@@ -17,6 +17,7 @@ class Builder extends ContainerAware
         $menu->addChild('Inicio', array('route' => 'index'));
         $menu->addChild('Autores', array('route' => 'author'));
         $menu->addChild('Usuario', array('route' => 'fos_user_profile_show'));
+        $menu->addChild('Ayuda', array('route' => 'doc', 'target' => '_blank'));
 //         $menu->addChild('Login', array('route' => 'login'));
 
 
