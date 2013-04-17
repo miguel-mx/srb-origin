@@ -272,6 +272,22 @@ class CrudController extends Controller
                 $aclProvider->updateAcl($acl);
 
 
+
+                // Envío de correo para notificación de una nueva referencia
+                $mailer = $this->get('mailer');
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('Nuevo registro de publicación SRB')
+                    ->setFrom('webmaster@matmor.unam.mx')
+                    ->setTo('lidia@matmor.unam.mx')
+                    ->setBcc('rudos@matmor.unam.mx')
+                    ->setBody($this->renderView('CcmSrbBundle:Refs:email.txt.twig', array('entity' => $entity)))
+                ;
+                $mailer->send($message);
+                $this->get('session')->setFlash('notice', 'Message sent!');
+
+
+
+
                 return $this->redirect($this->generateUrl('referencia_show', array('id' => $entity->getId(),'type'=>$type)));
             }
         }
