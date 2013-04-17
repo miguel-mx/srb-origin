@@ -1,0 +1,13 @@
+{% block col3 %}
+    <div>
+        {% block fos_user_content %}
+            <div class="fos_user_user_show">
+                <p><b>{{ 'E-mail'|trans({}, 'FOSUserBundle') }}: </b> {{ user.email }}</p>
+                <p><a href=" {{ path('fos_user_change_password') }}">Cambiar Contraseña</a></p>
+            </div>
+        {% endblock fos_user_content %}
+    </div>
+
+{% endblock %}
+
+
