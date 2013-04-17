@@ -260,18 +260,13 @@ class CrudController extends Controller
                 $objectIdentity = ObjectIdentity::fromDomainObject($entity);
                 $acl = $aclProvider->createAcl($objectIdentity);
 
-
-
                 //$sid = new RoleSecurityIdentity('ROLE_ADMIN');
-
 
                 //$acl->insertClassAce($sid, MaskBuilder::MASK_OWNER);
 
                 // grant owner access
                 $acl->insertObjectAce($securityIdentity, MaskBuilder::MASK_OWNER);
                 $aclProvider->updateAcl($acl);
-
-
 
                 // Envío de correo para notificación de una nueva referencia
                 $mailer = $this->get('mailer');
@@ -284,9 +279,6 @@ class CrudController extends Controller
                 ;
                 $mailer->send($message);
                 $this->get('session')->setFlash('notice', 'Message sent!');
-
-
-
 
                 return $this->redirect($this->generateUrl('referencia_show', array('id' => $entity->getId(),'type'=>$type)));
             }
