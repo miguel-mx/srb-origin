@@ -11,29 +11,22 @@
 <h1>Catálogo de autores</h1>
 
 <table class="records_list">
-    <thead>
+    <thead >
         <tr>
-            <th>Id</th>
             <th>Nombre</th>
-            <th>Alias</th>
-            <th>Referencias</th>
-            <th>Opciones</th>
+            <th>Ver Referencias</th>
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('author_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td><b>{{ entity.name }}</b></td>
-            <td>{{ entity.alias }}</td>
+            <td><b><a href="{{ path('author_show', { 'id': entity.id }) }}">{{ entity.name }}</b></a></td>
             <td>
              <a href="{{ path('author_references', { 'id': entity.id }) }}">Referencias</a>
             </td>
             <td>
                 <ul>
-                    <li>
-                        <a href="{{ path('author_show', { 'id': entity.id }) }}">Ver</a>
-                    </li>
+
                     {% if is_granted('ROLE_ADMIN') %}
                         <li>
                             <a href="{{ path('author_edit', { 'id': entity.id }) }}">Editar</a>
