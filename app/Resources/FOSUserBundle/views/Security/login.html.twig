@@ -1,0 +1,53 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+
+
+
+{% block col3 %}
+    {% block fos_user_content %}
+
+        <div class="ym-gbox-right">
+            <div class="ym-grid">
+
+
+                <!-- 2 col margen a la derecha -->
+                <div style="margin-left: 160px;"><br />
+
+                    <div style="margin-top: 10px;">
+                        <H1>Login</H1>
+                    </div>
+                    <br>
+
+
+                        <form action="{{ path("fos_user_security_check") }}" method="post">
+                            <div style="padding:5px 0;">
+                                <b>Usuario</b><br>
+                                <input type="text" id="username" name="_username" style="width: 40%" /><br>
+                            </div>
+
+                            <div style="padding:5px 0;">
+                                <b>Contraseña</b><br>
+                                <input type="password" id="password" name="_password" style="width: 40%" /><br>
+                            </div>
+
+                            <div style="padding:5px 0;">
+                                <input type="checkbox" id="remember_me" name="_remember_me" value="off" />
+                                <label for="remember_me">Recordarme</label><br><br>
+                            </div>
+
+                            {% if error %}
+                                <div style="color: red;">{{ error|trans({}, 'FOSUserBundle') }}</div>
+                            {% endif %}
+                            <button type="submit" class="ym-button ym-next">Login</button>
+                        </form>
+
+
+
+                </div>
+                <!-- 2 col margen a la derecha -->
+            </div>
+            <!-- grid -->
+        </div>
+        <!-- gbox -->
+    {% endblock %}
+{% endblock %}
+

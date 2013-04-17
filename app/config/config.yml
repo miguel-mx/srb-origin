@@ -63,6 +63,11 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: Ccm\SrbBundle\Entity\User
+    change_password:
+        form:
+            type:               fos_user_change_password
+            name:               fos_user_change_password_form
+            validation_groups:  [ChangePassword, Default]
 
 foq_elastica:
     clients:
