@@ -24,8 +24,8 @@ security:
 #        - { path: ^/author, role: ROLE_USER }
         - { path: ^/author/new, role: ROLE_ADMIN }
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        - { path: ^/profile/change-password, role: ROLE_USER, requires_channel: https }
         - { path: ^/upload, role: ROLE_USER }
         - { path: ^/article/new, role: ROLE_USER }
         - { path: ^/unpublished/new, role: ROLE_USER }
@@ -37,6 +37,8 @@ security:
         - { path: ^/inbook/new, role: ROLE_USER }
         - { path: ^/arxiv, role: ROLE_USER }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/register/, role: ROLE_ADMIN }
+
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
